@@ -1,6 +1,6 @@
 [![](https://dcbadge.limes.pink/api/server/864aya7h)](https://discord.gg/864aya7h)
 
-# <img src="./underatom.svg" width="256"/>
+# underatom
 
 **Multi-framework component library made to be fully owned.**
 
