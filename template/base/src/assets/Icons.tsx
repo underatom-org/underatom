@@ -1,0 +1,47 @@
+export type IconType = (props: { className?: string; style?: React.CSSProperties; fill?: string }) => JSX.Element;
+
+export const CaretDown: IconType = () => <></>;
+export const CaretRight: IconType = () => <></>;
+export const CaretLeft: IconType = () => <></>;
+export const Atom: IconType = () => <></>;
+export const Check: IconType = () => <></>;
+export const Minus: IconType = () => <></>;
+export const X: IconType = () => <></>;
+export const Loader: IconType = () => <></>;
+export const Rosette: IconType = () => <></>;
+
+// Story
+export const IconMail: IconType = () => <></>;
+export const IconUser: IconType = () => <></>;
+export const IconSettings: IconType = () => <></>;
+export const IconPlug: IconType = () => <></>;
+export const IconKey: IconType = () => <></>;
+export const IconDeviceAnalytics: IconType = () => <></>;
+export const IconMoon: IconType = () => <></>;
+export const IconCommand: IconType = () => <></>;
+export const IconSearch: IconType = () => <></>;
+export const IconPalette: IconType = () => <></>;
+export const IconMessage: IconType = () => <></>;
+export const IconVideo: IconType = () => <></>;
+export const IconPhone: IconType = () => <></>;
+export const IconLogout: IconType = () => <></>;
+export const IconEyeOff: IconType = () => <></>;
+export const IconCopy: IconType = () => <></>;
+export const IconArrowUp: IconType = () => <></>;
+export const IconArrowDown: IconType = () => <></>;
+export const IconTerminal2: IconType = () => <></>;
+export const IconCirclePlus: IconType = () => <></>;
+export const IconGrid3x3: IconType = () => <></>;
+export const IconApple: IconType = () => <></>;
+export const IconBrandFacebook: IconType = () => <></>;
+export const IconBrandLinkedin: IconType = () => <></>;
+export const IconBrandYoutube: IconType = () => <></>;
+export const IconCarrot: IconType = () => <></>;
+export const IconCherry: IconType = () => <></>;
+export const IconLemon: IconType = () => <></>;
+export const IconMushroom: IconType = () => <></>;
+export const IconPlus: IconType = () => <></>;
+export const IconEdit: IconType = () => <></>;
+export const IconReplace: IconType = () => <></>;
+export const IconTrash: IconType = () => <></>;
+export const IconBrandGoogle: IconType = () => <></>;

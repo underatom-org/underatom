@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  outline: none;
+}
+
+img {
+  max-width: unset;
+}
+
+[cmdk-group][hidden] {
+  display: none;
+}
+
+body {
+  background-color: #fcfcfc;
+}
