@@ -178,7 +178,7 @@ Same as with frameworks, we'll love the community to decide the path forward and
 
 We know is a pretty ambitious goal to add more design systems, but we designed Underatom to be extensible also from this standpoint.
 
-We have some exciting design systems into the pipeline. Our plan is to make this a paid options but we might add new open source ones as well.
+We have some exciting design systems into the pipeline. Our plan is to make this a paid option but we might add new open source ones as well.
 
 # Docs
 
