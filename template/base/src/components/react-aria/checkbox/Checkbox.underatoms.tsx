@@ -1,5 +1,4 @@
 import { ComponentPropsWithoutRef, ReactNode } from "react";
-import { mergeProps, useFocusRing } from "react-aria";
 import {
   checkboxAsteriskClass,
   checkboxButtonClass,
@@ -72,16 +71,10 @@ export const UCheckboxLabel = ({ children, className }: UCheckboxLabelProps) => 
 
 export type UCheckboxButtonProps = ComponentPropsWithoutRef<"div">;
 export const UCheckboxButtonRoot = (props: UCheckboxButtonProps) => {
-  const { focusProps, isFocusVisible } = useFocusRing();
   const checkboxProps = useCheckboxInternalProvider();
 
   return (
-    <div
-      {...mergeProps(props, focusProps)}
-      className={checkboxButtonClass({ className: props.className, checkboxProps })}
-      data-ring={isFocusVisible}
-      aria-hidden="true"
-    />
+    <div {...props} className={checkboxButtonClass({ className: props.className, checkboxProps })} aria-hidden="true" />
   );
 };
 export type UCheckboxButtonIndicatorProps = {
