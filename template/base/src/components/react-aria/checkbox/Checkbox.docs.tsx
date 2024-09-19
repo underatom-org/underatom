@@ -102,7 +102,7 @@ const Docs = () => {
 const checkboxRoute = "/checkbox";
 export const checkboxRouteObj: DocsRoute<typeof checkboxRoute> = {
   path: checkboxRoute,
-  group: "radix",
+  group: "react-aria",
   label: "Checkbox",
   component: Docs,
 };
