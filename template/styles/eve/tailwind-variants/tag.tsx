@@ -8,23 +8,18 @@ export const tagClass = ({ className }: TagType) => {
 };
 
 export const tagLabelClass = ({ className }: TagType) => {
-  return `text-[#18181b] text-sm font-text font-medium ${className}`;
+  return `text-base-950 text-sm font-text font-medium ${className}`;
 };
 
 export const tagIconClass = ({ className }: TagType) => {
-  return `w-5 h-5 text-[#18181b] ${className}`;
+  return `w-5 h-5 text-base-600 ${className}`;
 };
 
 export const tagDotClass = ({ className, tagDotProps }: TagDotType) => {
   const dotClass = tv({
     base: "w-[6px] h-[6px] rounded-xs",
     variants: {
-      dotColor: {
-        base: "[background:#18181b]",
-        primary: "[background:#18181b]",
-        green: "[background:#318a00]",
-        red: "[background:#dc2626]",
-      },
+      dotColor: { base: "bg-base-950", primary: "bg-primary-950", green: "bg-success-600", red: "bg-danger-500" },
     },
 
     defaultVariants: { dotColor: tagDotDefaults.color },

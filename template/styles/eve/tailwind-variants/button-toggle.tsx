@@ -18,6 +18,7 @@ group/buttonToggle
   data-[toggled=true]:hover:bg-primary-200
   data-[toggled=true]:data-[ring=true]:bg-primary-200
   data-[ring=true]:shadow-focus-ring
+  border-base-300
   hover:bg-base-100
   data-[ring=true]:bg-base-100
   data-[toggled=true]:data-[disabled=true]:bg-base-50
@@ -27,20 +28,12 @@ group/buttonToggle
 `,
     variants: {
       attachment: {
-        none: `
-data-[toggled=true]:bg-primary-100
-  data-[toggled=true]:data-[active=true]:bg-primary-100
-  rounded-md
-  border-base-300
-  data-[disabled=true]:border-[#f1f1f3]
-  data-[ring=true]:border-[#e4e4e7]
-  data-[toggled=true]:data-[ring=true]:border-primary-950
-`,
+        none: "data-[toggled=true]:bg-primary-100 data-[toggled=true]:data-[active=true]:bg-primary-100 rounded-md data-[ring=true]:border-[#e4e4e7] data-[toggled=true]:data-[ring=true]:border-primary-950",
         center:
-          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 data-[ring=true]:rounded-md border-base-300",
+          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 data-[ring=true]:rounded-md",
         start:
-          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-md rounded-r-[0px] data-[ring=true]:rounded-md border-[#e4e4e7] data-[disabled=true]:border-[#f1f1f3]",
-        end: "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-[0px] rounded-r-md data-[ring=true]:rounded-md border-[#e4e4e7] data-[disabled=true]:border-[#f1f1f3]",
+          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-md rounded-r-[0px] data-[ring=true]:rounded-md data-[disabled=true]:border-[#f1f1f3]",
+        end: "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-[0px] rounded-r-md data-[ring=true]:rounded-md data-[disabled=true]:border-[#f1f1f3]",
       },
     },
 

@@ -55,8 +55,7 @@ export const checkboxButtonIndicatorClass = ({ className }: CheckboxButtonType) 
   h-[14px]
   group-data-[selected=true]/checkbox:h-[14px]
   group-data-[state=indeterminate]/checkbox:h-[14px]
-  group-data-[selected=true]/checkbox:text-white
-  group-data-[state=indeterminate]/checkbox:text-white
+  text-white
   group-data-[disabled=true]/checkbox:group-data-[selected=true]/checkbox:text-base-400
   group-data-[disabled=true]/checkbox:group-data-[state=indeterminate]/checkbox:text-base-400
   ${className}

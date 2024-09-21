@@ -21,10 +21,10 @@ export const datePanelGridBodyRowCellButtonClass = ({ className }: DatePanelGrid
   group-hover/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
   group-data-[pressed]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
   group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-hover/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[pressed]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-hover/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[pressed]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
   group-hover/datePanelGridBodyRowCell:bg-base-100
   group-data-[pressed]/datePanelGridBodyRowCell:bg-base-100
   group-data-[focus-visible]/datePanelGridBodyRowCell:bg-base-100
@@ -33,7 +33,7 @@ export const datePanelGridBodyRowCellButtonClass = ({ className }: DatePanelGrid
   group-data-[invalid]/datePanel:group-data-[focus-visible]/datePanelGridBodyRowCell:bg-danger-100
   group-data-[focus-visible]/datePanelGridBodyRowCell:shadow-focus-ring
   group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:shadow-none
-  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:shadow-none
+  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:shadow-none
   group-data-[selected]/datePanelGridBodyRowCell:bg-primary-950
   group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:bg-primary-950
   group-hover/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:bg-primary-800
@@ -50,13 +50,13 @@ export const datePanelGridBodyRowCellButtonClass = ({ className }: DatePanelGrid
   group-hover/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
   group-data-[pressed]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
   group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[invalid]/datePanel:group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[invalid]/datePanel:group-hover/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[invalid]/datePanel:group-data-[pressed]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[invalid]/datePanel:group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-hover/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[pressed]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
-  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[invalid]/datePanel:group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[invalid]/datePanel:group-hover/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[invalid]/datePanel:group-data-[pressed]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[invalid]/datePanel:group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-hover/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[pressed]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
+  group-data-[focus-visible]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[background:unset]
   ${className}
   `;
 };
@@ -65,32 +65,32 @@ export const datePanelGridBodyRowCellButtonTextClass = ({ className }: DatePanel
   return `
   text-base-950
   text-sm
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-sm
-  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-sm
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-sm
+  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-sm
   font-text
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:font-text
-  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:font-text
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:font-text
+  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:font-text
   font-medium
   group-data-[invalid]/datePanel:text-danger-500
   group-data-[outside-month]/datePanelGridBodyRowCell:text-base-400
   group-data-[disabled]/datePanelGridBodyRowCell:text-base-400
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[text-decoration-line:unset]
-  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:[text-decoration-line:unset]
-  group-data-[disabled]/datePanelGridBodyRowCell:text-base-600
-  group-data-[disabled]/datePanelGridBodyRowCell:text-[14px]
-  group-data-[disabled]/datePanelGridBodyRowCell:font-['GeistVariable']
-  group-data-[disabled]/datePanelGridBodyRowCell:leading-[24px]
-  group-data-[disabled]/datePanelGridBodyRowCell:line-through
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[text-decoration-line:unset]
+  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:[text-decoration-line:unset]
+  group-data-[unavailable]/datePanelGridBodyRowCell:text-base-600
+  group-data-[unavailable]/datePanelGridBodyRowCell:text-[14px]
+  group-data-[unavailable]/datePanelGridBodyRowCell:font-['GeistVariable']
+  group-data-[unavailable]/datePanelGridBodyRowCell:leading-[24px]
+  group-data-[unavailable]/datePanelGridBodyRowCell:line-through
   group-data-[selected]/datePanelGridBodyRowCell:text-white
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-base-400
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-base-400
   group-data-[selected]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:text-base-400
-  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-base-400
+  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-base-400
   group-data-[disabled]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:text-base-400
   group-data-[invalid]/datePanel:group-data-[outside-month]/datePanelGridBodyRowCell:text-base-400
   group-data-[invalid]/datePanel:group-data-[disabled]/datePanelGridBodyRowCell:text-base-400
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-base-600
-  group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:text-base-600
-  group-data-[invalid]/datePanel:group-data-[disabled]/datePanelGridBodyRowCell:text-base-600
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-base-600
+  group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:text-base-600
+  group-data-[invalid]/datePanel:group-data-[unavailable]/datePanelGridBodyRowCell:text-base-600
   group-data-[invalid]/datePanel:group-data-[selected]/datePanelGridBodyRowCell:text-white
   ${className}
   `;
@@ -106,18 +106,18 @@ export const datePanelGridBodyRowCellButtonDotClass = ({ className }: DatePanelG
   group-data-[invalid]/datePanel:bg-danger-500
   group-data-[outside-month]/datePanelGridBodyRowCell:bg-base-400
   group-data-[disabled]/datePanelGridBodyRowCell:bg-base-400
-  group-data-[disabled]/datePanelGridBodyRowCell:bg-base-800
+  group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-800
   group-data-[selected]/datePanelGridBodyRowCell:[background:#ffffff]
   group-data-[invalid]/datePanel:group-data-[disabled]/datePanelGridBodyRowCell:bg-danger-500
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-400
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-400
   group-data-[selected]/datePanelGridBodyRowCell:group-data-[outside-month]/datePanelGridBodyRowCell:bg-base-400
-  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-400
+  group-data-[disabled]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-400
   group-data-[disabled]/datePanelGridBodyRowCell:group-data-[selected]/datePanelGridBodyRowCell:bg-base-400
   group-data-[invalid]/datePanel:group-data-[outside-month]/datePanelGridBodyRowCell:bg-base-400
   group-data-[invalid]/datePanel:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-400
-  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-800
-  group-data-[selected]/datePanelGridBodyRowCell:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-800
-  group-data-[invalid]/datePanel:group-data-[disabled]/datePanelGridBodyRowCell:bg-base-800
+  group-data-[outside-month]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-800
+  group-data-[selected]/datePanelGridBodyRowCell:group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-800
+  group-data-[invalid]/datePanel:group-data-[unavailable]/datePanelGridBodyRowCell:bg-base-800
   group-data-[invalid]/datePanel:group-data-[selected]/datePanelGridBodyRowCell:[background:#ffffff]
   ${className}
   `;
@@ -143,7 +143,7 @@ export const DatePanelGridBodyRowCellButtonLayout = ({
   );
 
 export const datePanelGridBodyRowCellClass = ({ className }: DatePanelGridBodyRowCellType) => {
-  return `group/datePanelGridBodyRowCell group-data-[disabled]/datePanel:pointer-events-none data-[disabled]:pointer-events-none data-[outside-month]:pointer-events-none data-[disabled]:pointer-events-none ${className}`;
+  return `group/datePanelGridBodyRowCell group-data-[disabled]/datePanel:pointer-events-none data-[unavailable]:pointer-events-none data-[outside-month]:pointer-events-none data-[disabled]:pointer-events-none ${className}`;
 };
 
 export const DatePanelGridBodyRowCellLayout = ({

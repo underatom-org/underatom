@@ -47,20 +47,20 @@ export const chipToggleClass = ({ className }: ChipToggleType) => {
 };
 
 export const chipToggleLabelClass = ({ className }: ChipToggleType) => {
-  return `text-[#18181b] text-sm font-text font-medium group-disabled/chipToggle:text-[#8b8b8d] group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
+  return `text-base-950 text-sm font-text font-medium group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
 };
 
 export const chipToggleIconClass = ({ className }: ChipToggleType) => {
-  return `w-5 h-5 text-[#18181b] group-disabled/chipToggle:text-[#8b8b8d] group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
+  return `w-5 h-5 text-base-950 group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
 };
 
 export const chipToggleDotClass = ({ className, chipToggleDotProps }: ChipToggleDotType) => {
   const dotClass = tv({
-    base: "w-[6px] h-[6px] rounded-xs group-disabled/chipToggle:[background:#8b8b8d] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:[background:#fcfcfc] group-data-[toggled=true]/chipToggle:[background:#fafafa]",
+    base: "w-[6px] h-[6px] rounded-xs group-disabled/chipToggle:bg-base-400 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:[background:#fcfcfc] group-data-[toggled=true]/chipToggle:[background:#fafafa]",
     variants: {
       dotColor: {
-        base: "[background:#09090b]",
-        primary: "[background:#18181b]",
+        base: "bg-base-950",
+        primary: "bg-primary-950",
         green: "[background:#318a00]",
         red: "[background:#dc2626]",
       },
