@@ -114,7 +114,7 @@ export type UDatePanelGridRootProps = Omit<CalendarGridProps, "children"> & {
 export const UDatePanelGridRoot = (props: UDatePanelGridRootProps) => {
   return (
     <CalendarGrid
-      style={{ width: "240px", minWidth: "240px" }}
+      style={{ width: "100%", minWidth: "240px" }}
       {...props}
       className={datePanelGridClass({ className: props.className })}
     />

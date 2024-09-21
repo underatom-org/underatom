@@ -13,6 +13,8 @@ export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.Rea
           justifyContent: "center",
           alignItems: "center",
           minHeight: 300,
+          overflow: "auto",
+          maxWidth: "700px",
         }}
       >
         {children}

@@ -141,7 +141,7 @@ const rootRoute = createRootRoute({
               marginRight: "40px",
               height: "calc(100vh - 110px)",
               position: "sticky",
-              top: "0px",
+              top: "82px",
               overflowY: "auto",
             }}
           >
