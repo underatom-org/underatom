@@ -11,6 +11,12 @@ import {
   useCheckboxInternalProvider,
 } from "./Checkbox.underatoms";
 
+/*
+  ====================================
+  Checkbox
+  ====================================
+*/
+
 export type CheckboxProps = Omit<
   UCheckboxRootProps & {
     label?: string;
@@ -18,7 +24,6 @@ export type CheckboxProps = Omit<
   },
   "children"
 >;
-
 export const Checkbox = ({ label, description, className, ...props }: CheckboxProps) => {
   return (
     <CheckboxLayout
@@ -35,6 +40,12 @@ export const Checkbox = ({ label, description, className, ...props }: CheckboxPr
     />
   );
 };
+
+/*
+  ====================================
+  CheckboxButton
+  ====================================
+*/
 
 export type CheckboxButtonProps = Omit<UCheckboxButtonProps, "asChild" | "children">;
 export const CheckboxButton = (props: CheckboxButtonProps) => {
