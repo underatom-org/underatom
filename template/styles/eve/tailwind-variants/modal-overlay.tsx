@@ -2,7 +2,7 @@ import type { RenderRoot } from "../../../base/src/_utils";
 import type { ModalOverlayType } from "~/base/src/styles/modal-overlay";
 
 export const modalOverlayClass = ({ className }: ModalOverlayType) => {
-  return `group/modalOverlay [background:#18181b] ${className}`;
+  return `group/modalOverlay [background:#18181b4d] ${className}`;
 };
 
 export const ModalOverlayLayout = ({

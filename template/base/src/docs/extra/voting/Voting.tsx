@@ -104,14 +104,14 @@ const Voting = () => {
 
   if (hasVoted && isLoggedIn)
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: 32, padding: 16 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
         <ThankYouCard />
         <VotingAccordion data={options || []} withVoting={false} />
       </div>
     );
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: "0 16px" }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       <VotingPowerCard remainingStars={remainingStars} onClear={handleClearVotes} invalid={isInvalid} />
       <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>

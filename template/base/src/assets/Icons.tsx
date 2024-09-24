@@ -45,3 +45,5 @@ export const IconEdit: IconType = () => <></>;
 export const IconReplace: IconType = () => <></>;
 export const IconTrash: IconType = () => <></>;
 export const IconBrandGoogle: IconType = () => <></>;
+export const IconArrowNarrowLeft: IconType = () => <></>;
+export const IconMenu2: IconType = () => <></>;
