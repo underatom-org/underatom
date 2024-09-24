@@ -757,12 +757,12 @@ export const ActionPanelGroupItemKBDLayout = ({
 
 export const actionPanelGroupItemClass = ({ className, actionPanelGroupItemProps }: ActionPanelGroupItemType) => {
   const rootClass = tv({
-    base: "group/actionPanelGroupItem bg-transparent data-[disabled]:bg-transparent rounded-sm cursor-pointer transition-all",
+    base: "group/actionPanelGroupItem bg-transparent data-[disabled]:bg-transparent rounded-sm cursor-pointer transition-all data-[disabled]:pointer-events-none",
     variants: {
       groupItemVariant: {
         default: "hover:bg-base-100 data-[highlighted]:bg-base-100 active:bg-base-50 data-[state=open]:bg-base-50",
         destructive:
-          "hover:bg-danger-500 data-[highlighted]:bg-danger-500 pointer-events-none data-[disabled]:pointer-events-none active:bg-danger-600 data-[state=open]:bg-danger-600",
+          "hover:bg-danger-500 data-[highlighted]:bg-danger-500 active:bg-danger-600 data-[state=open]:bg-danger-600",
       },
     },
 

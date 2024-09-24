@@ -90,7 +90,7 @@ export const ChipToggleLayout = ({
       <div
         className={tv({
           base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          variants: { size: { sm: "pr-1", md: "pr-1", lg: "pr-[6px]" } },
 
           defaultVariants: { size: chipToggleDefaults.size },
         })({ size: chipToggleProps?.size })}
@@ -101,9 +101,7 @@ export const ChipToggleLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-3 pr-[6px]" } },
 
       defaultVariants: { size: chipToggleDefaults.size },
     })({
@@ -128,8 +126,8 @@ export const ChipToggleWithIconLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center",
+          variants: { size: { sm: "gap-1 pr-1", md: "gap-1 pr-1", lg: "gap-[6px] pr-[6px]" } },
 
           defaultVariants: { size: chipToggleDefaults.size },
         })({ size: chipToggleProps?.size })}
@@ -141,9 +139,7 @@ export const ChipToggleWithIconLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-1 px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 px-1", md: "h-8 px-[6px]", lg: "h-9 pl-2 pr-[6px]" } },
 
       defaultVariants: { size: chipToggleDefaults.size },
     })({
@@ -169,7 +165,7 @@ export const ChipToggleWithDotLayout = ({
       <div
         className={tv({
           base: "h-fit w-fit flex flex-row items-center gap-[6px]",
-          variants: { size: { sm: "pl-1 pr-[2px]", md: "justify-center pr-1", lg: "pr-1" } },
+          variants: { size: { sm: "justify-center pr-1", md: "justify-center pr-[6px]", lg: "pr-1" } },
 
           defaultVariants: { size: chipToggleDefaults.size },
         })({ size: chipToggleProps?.size })}
@@ -180,8 +176,8 @@ export const ChipToggleWithDotLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center gap-[6px]",
-      variants: { size: { sm: "h-7 px-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
+      base: "w-fit flex flex-row justify-center items-center",
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
 
       defaultVariants: { size: chipToggleDefaults.size },
     })({
@@ -206,8 +202,8 @@ export const ChipToggleWithAvatarLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row items-center",
-          variants: { size: { sm: "gap-[6px]", md: "justify-center gap-[6px]", lg: "justify-center gap-2" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center pr-1",
+          variants: { size: { sm: "gap-1", md: "gap-1", lg: "gap-[6px]" } },
 
           defaultVariants: { size: chipToggleDefaults.size },
         })({ size: chipToggleProps?.size })}
@@ -218,8 +214,10 @@ export const ChipToggleWithAvatarLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center",
-      variants: { size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-2 pl-1 pr-[6px]", lg: "h-9 gap-2 pl-1 pr-[6px]" } },
+      base: "w-fit flex flex-row items-center",
+      variants: {
+        size: { sm: "h-7 justify-center px-1", md: "h-8 justify-center pl-1 pr-[6px]", lg: "h-9 pl-1 pr-[6px]" },
+      },
 
       defaultVariants: { size: chipToggleDefaults.size },
     })({

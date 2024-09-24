@@ -402,7 +402,7 @@ export const SelectTriggerBoxLayout = ({
     </>,
     tv({
       base: "w-full flex flex-row items-center",
-      variants: { size: { sm: "h-9 gap-1 px-2", md: "h-11 gap-1 px-3", lg: "h-[48px] gap-[6px] px-5" } },
+      variants: { size: { sm: "h-9 gap-1 px-2", md: "h-11 gap-1 px-3", lg: "h-[48px] gap-[6px] pl-3 pr-5" } },
 
       defaultVariants: { size: selectTriggerDefaults.size },
     })({
@@ -436,7 +436,7 @@ export const SelectTriggerBoxWithAvatarLayout = ({
       variants: {
         size: {
           sm: "h-9 gap-1 pl-[6px] pr-3",
-          md: "h-11 gap-1 pl-[6px] pr-3",
+          md: "h-11 gap-1 pl-[10px] pr-3",
           lg: "h-[48px] gap-[6px] pl-[14px] pr-5",
         },
       },

@@ -274,7 +274,7 @@ hover:bg-base-100
   group-data-[disabled]/accordionItem:[background:unset]
   group-data-[state=open]/accordionItem:bg-primary-950
   group-data-[state=open]/accordionItem:active:bg-primary-950
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-400
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-200
   data-[ring=true]:rounded-[9px]
   group-data-[disabled]/accordionItem:active:[background:unset]
   group-data-[disabled]/accordionItem:hover:[background:unset]
@@ -284,9 +284,9 @@ hover:bg-base-100
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-bl-[10px]
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-tr-[9px]
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-br-[10px]
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:active:bg-base-400
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:hover:bg-base-400
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:data-[ring=true]:bg-base-400
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:active:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:hover:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:data-[ring=true]:bg-base-200
   group-data-[state=open]/accordionItem:data-[ring=true]:rounded-[9px]
 `,
       },
@@ -302,11 +302,11 @@ hover:bg-base-100
 
 export const accordionItemHeaderIconClass = ({ className, accordionProps }: AccordionItemHeaderType) => {
   const iconClass = tv({
-    base: "w-5 h-5 z-10 group-data-[disabled]/accordionItem:text-base-200",
+    base: "w-5 h-5 z-10 group-data-[disabled]/accordionItem:text-base-400",
     variants: {
       variant: {
         separated:
-          "text-base-600 group-data-[state=open]/accordionItem:text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-200",
+          "text-base-600 group-data-[state=open]/accordionItem:text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-400",
         attached: "text-base-600",
       },
     },
@@ -322,11 +322,11 @@ export const accordionItemHeaderIconClass = ({ className, accordionProps }: Acco
 
 export const accordionItemHeaderLabelClass = ({ className, accordionProps }: AccordionItemHeaderType) => {
   const labelClass = tv({
-    base: "text-sm font-text font-medium z-10 group-data-[disabled]/accordionItem:text-base-200",
+    base: "text-sm font-text font-medium z-10 group-data-[disabled]/accordionItem:text-base-400",
     variants: {
       variant: {
         separated:
-          "text-base-950 group-data-[state=open]/accordionItem:text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-200",
+          "text-base-950 group-data-[state=open]/accordionItem:text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-400",
         attached: "text-base-950",
       },
     },
@@ -342,11 +342,11 @@ export const accordionItemHeaderLabelClass = ({ className, accordionProps }: Acc
 
 export const accordionItemHeaderCaretClass = ({ className, accordionProps }: AccordionItemHeaderType) => {
   const caretClass = tv({
-    base: "w-5 h-5 z-10 group-data-[disabled]/accordionItem:text-base-200",
+    base: "w-5 h-5 z-10 group-data-[disabled]/accordionItem:text-base-400",
     variants: {
       variant: {
         separated:
-          "text-base-600 group-data-[state=open]/accordionItem:text-base-700 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-200",
+          "text-base-600 group-data-[state=open]/accordionItem:text-base-700 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-400",
         attached: "text-base-600",
       },
     },
@@ -361,12 +361,12 @@ export const accordionItemHeaderCaretClass = ({ className, accordionProps }: Acc
 };
 
 export const accordionItemHeaderPercentageClass = ({ className }: AccordionItemHeaderType) => {
-  return `text-base-500 text-xs font-text font-medium z-10 group-data-[disabled]/accordionItem:text-base-200 ${className}`;
+  return `text-base-500 text-xs font-text font-medium z-10 group-data-[disabled]/accordionItem:text-base-400 ${className}`;
 };
 
 export const accordionItemHeaderFillClass = ({ className, accordionProps }: AccordionItemHeaderType) => {
   const fillClass = tv({
-    base: "w-[64px] h-[42px] transition-all group-data-[disabled]/accordionItem:bg-base-200",
+    base: "w-[64px] h-[42px] transition-all",
     variants: {
       variant: {
         separated: `
@@ -376,13 +376,21 @@ group-data-[state=open]/accordionItem:bg-primary-900
   group-data-[state=open]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-primary-700
   bg-base-100
   group-active/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:bg-base-100
   group-hover/accordionItemHeader:bg-base-200
   group-data-[ring=true]/accordionItemHeader:bg-base-200
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-200
-  group-data-[disabled]/accordionItem:group-active/accordionItemHeader:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-100
+  group-data-[disabled]/accordionItem:group-hover/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-base-100
 `,
-        attached:
-          "bg-base-100 group-active/accordionItemHeader:bg-base-100 group-hover/accordionItemHeader:bg-base-200 group-data-[ring=true]/accordionItemHeader:bg-base-200 group-data-[disabled]/accordionItem:group-active/accordionItemHeader:bg-base-200",
+        attached: `
+bg-base-100
+  group-active/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-hover/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-base-100
+  group-hover/accordionItemHeader:bg-base-200
+  group-data-[ring=true]/accordionItemHeader:bg-base-200
+`,
       },
     },
 
