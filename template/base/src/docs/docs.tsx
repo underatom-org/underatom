@@ -17,6 +17,8 @@ import {
   SideNavGroupItemBox,
   SideNavGroupItemLink,
 } from "../components/radix/side-nav/SideNav.atoms";
+
+import { votingRouteObj } from "./extra/voting/Voting";
 import { sideNavRouteObj } from "../components/radix/side-nav/SideNav.docs";
 import { commandRouteObj } from "../components/cmdk/command/Command.docs";
 import { actionPanelRouteObj } from "../components/radix/action-panel/ActionPanel.docs";
@@ -43,13 +45,14 @@ import { checkboxGroupRouteObj } from "../components/react-aria/checkbox-group/C
 import { selectTriggerRouteObj } from "../components/radix/select-trigger/SelectTrigger.docs";
 import { accordionRouteObj } from "../components/radix/accordion/Accordion.docs";
 import { rateRouteObj } from "../components/ark-ui/rate/Rate.docs";
+import { switchRouteObj } from "../components/radix/switch/Switch.docs";
+
 import SuperTokens from "supertokens-web-js";
 import Session from "supertokens-web-js/recipe/session";
 import ThirdParty from "supertokens-web-js/recipe/thirdparty";
 import { AuthCallback } from "./extra/AuthCallback";
 import { LoginButton } from "./extra/LoginButton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { votingRouteObj } from "./extra/voting/Voting";
 import { API_BASE_URL } from "./extra/voting/utils/constants";
 import { Body } from "../components/no-headless/typography/Typography.atoms";
 import { useMediaQuery } from "./utils";
@@ -96,6 +99,7 @@ const routes = [
   selectTriggerRouteObj,
   accordionRouteObj,
   rateRouteObj,
+  switchRouteObj,
 ];
 const groups = [...new Set(routes.map((route) => route.group))];
 const routesByGroup = Object.fromEntries(
