@@ -28,17 +28,17 @@ const WithLabelAndDescriptionExample = () => {
   );
 };
 
-const SizesExample = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsRow>
-        <Switch label="Switch Label" description="This is a description" size="sm" />
-        <Switch label="Switch Label" description="This is a description" size="md" />
-        <Switch label="Switch Label" description="This is a description" size="lg" />
-      </VariantsRow>
-    </ShowcaseFrame>
-  );
-};
+// const SizesExample = () => {
+//   return (
+//     <ShowcaseFrame>
+//       <VariantsRow>
+//         <Switch label="Switch Label" description="This is a description" size="sm" />
+//         <Switch label="Switch Label" description="This is a description" size="md" />
+//         <Switch label="Switch Label" description="This is a description" size="lg" />
+//       </VariantsRow>
+//     </ShowcaseFrame>
+//   );
+// };
 
 const InvalidExample = () => {
   return (
@@ -115,9 +115,9 @@ const SwitchDocs = () => {
         <Example title="With Label and Description">
           <WithLabelAndDescriptionExample />
         </Example>
-        <Example title="Sizes">
+        {/* <Example title="Sizes">
           <SizesExample />
-        </Example>
+        </Example> */}
         <Example title="Required">
           <RequiredExample />
         </Example>
