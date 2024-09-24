@@ -94,7 +94,7 @@ export const accordionItemHeaderBadgeClass = ({
   accordionItemHeaderBadgeProps,
 }: AccordionItemHeaderBadgeType) => {
   const rootClass = tv({
-    base: "group/accordionItemHeaderBadge rounded-[999px] z-10 group-data-[disabled]/accordionItem:bg-base-400",
+    base: "group/accordionItemHeaderBadge rounded-[999px] z-10 group-data-[disabled]/accordionItem:bg-base-300",
     variants: {
       variant: { attached: "", separated: "" },
       itemHeaderBadgeColor: { base: "", primary: "", red: "bg-danger-500", green: "bg-success-600" },
@@ -105,14 +105,14 @@ export const accordionItemHeaderBadgeClass = ({
         variant: ["separated"],
         itemHeaderBadgeColor: ["base"],
         class:
-          "bg-base-950 transition-all group-data-[state=open]/accordionItem:bg-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-400",
+          "bg-base-950 transition-all group-data-[state=open]/accordionItem:bg-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-300",
       },
       { variant: ["attached"], itemHeaderBadgeColor: ["primary"], class: "bg-primary-950" },
       {
         variant: ["separated"],
         itemHeaderBadgeColor: ["primary"],
         class:
-          "bg-primary-950 transition-all group-data-[state=open]/accordionItem:bg-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-400",
+          "bg-primary-950 transition-all group-data-[state=open]/accordionItem:bg-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-300",
       },
     ],
     defaultVariants: {
@@ -133,7 +133,7 @@ export const accordionItemHeaderBadgeLabelClass = ({
   accordionItemHeaderBadgeProps,
 }: AccordionItemHeaderBadgeType) => {
   const labelClass = tv({
-    base: "text-xs font-text font-normal group-data-[disabled]/accordionItem:text-base-200",
+    base: "text-xs font-text font-normal",
     variants: {
       variant: { attached: "text-base-50", separated: "" },
       itemHeaderBadgeColor: { primary: "", base: "", green: "text-base-50", red: "text-base-50" },
@@ -143,7 +143,7 @@ export const accordionItemHeaderBadgeLabelClass = ({
         variant: ["separated"],
         itemHeaderBadgeColor: ["primary", "base"],
         class:
-          "group-data-[state=open]/accordionItem:text-base-950 text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-200",
+          "group-data-[disabled]/accordionItem:text-base-50 text-base-50 group-data-[state=open]/accordionItem:text-base-950 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-50",
       },
     ],
     defaultVariants: {
@@ -165,7 +165,7 @@ export const accordionItemHeaderBadgeIconClass = ({
   accordionItemHeaderBadgeProps,
 }: AccordionItemHeaderBadgeType) => {
   const iconClass = tv({
-    base: "w-3 h-3 group-data-[disabled]/accordionItem:text-base-200",
+    base: "w-3 h-3",
     variants: {
       variant: { attached: "text-base-50", separated: "" },
       itemHeaderBadgeColor: { primary: "", base: "", green: "text-base-50", red: "text-base-50" },
@@ -175,7 +175,7 @@ export const accordionItemHeaderBadgeIconClass = ({
         variant: ["separated"],
         itemHeaderBadgeColor: ["primary", "base"],
         class:
-          "group-data-[state=open]/accordionItem:text-base-950 text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-200",
+          "group-data-[state=open]/accordionItem:text-base-950 text-base-50 group-data-[disabled]/accordionItem:text-base-50 group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:text-base-50",
       },
     ],
     defaultVariants: {
@@ -274,7 +274,7 @@ hover:bg-base-100
   group-data-[disabled]/accordionItem:[background:unset]
   group-data-[state=open]/accordionItem:bg-primary-950
   group-data-[state=open]/accordionItem:active:bg-primary-950
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-400
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-200
   data-[ring=true]:rounded-[9px]
   group-data-[disabled]/accordionItem:active:[background:unset]
   group-data-[disabled]/accordionItem:hover:[background:unset]
@@ -284,9 +284,9 @@ hover:bg-base-100
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-bl-[10px]
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-tr-[9px]
   group-data-[disabled]/accordionItem:data-[ring=true]:rounded-br-[10px]
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:active:bg-base-400
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:hover:bg-base-400
-  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:data-[ring=true]:bg-base-400
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:active:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:hover:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:data-[ring=true]:bg-base-200
   group-data-[state=open]/accordionItem:data-[ring=true]:rounded-[9px]
 `,
       },
@@ -366,21 +366,31 @@ export const accordionItemHeaderPercentageClass = ({ className }: AccordionItemH
 
 export const accordionItemHeaderFillClass = ({ className, accordionProps }: AccordionItemHeaderType) => {
   const fillClass = tv({
-    base: "w-[64px] h-[42px]",
+    base: "w-[64px] h-[42px] transition-all",
     variants: {
       variant: {
         separated: `
 group-data-[state=open]/accordionItem:bg-primary-900
   group-data-[state=open]/accordionItem:group-active/accordionItemHeader:bg-primary-900
-  transition-all
   group-data-[state=open]/accordionItem:group-hover/accordionItemHeader:bg-primary-700
   group-data-[state=open]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-primary-700
   bg-base-100
   group-active/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:bg-base-100
+  group-hover/accordionItemHeader:bg-base-200
+  group-data-[ring=true]/accordionItemHeader:bg-base-200
+  group-data-[state=open]/accordionItem:group-data-[disabled]/accordionItem:bg-base-100
+  group-data-[disabled]/accordionItem:group-hover/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-base-100
+`,
+        attached: `
+bg-base-100
+  group-active/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-hover/accordionItemHeader:bg-base-100
+  group-data-[disabled]/accordionItem:group-data-[ring=true]/accordionItemHeader:bg-base-100
   group-hover/accordionItemHeader:bg-base-200
   group-data-[ring=true]/accordionItemHeader:bg-base-200
 `,
-        attached: "bg-base-200",
       },
     },
 
@@ -411,7 +421,7 @@ export const AccordionItemHeaderLayout = ({
   renderRoot(
     <>
       <div className="h-fit w-full flex flex-row items-center gap-[6px]">
-        <div className="h-fit w-fit flex flex-row items-center gap-1">
+        <div className="h-fit w-fit flex flex-row items-center gap-[6px]">
           {iconSlot}
           {labelSlot}
         </div>
@@ -442,7 +452,7 @@ export const AccordionItemHeaderVotingLayout = ({
 }) =>
   renderRoot(
     <>
-      <div className="h-fit w-full flex flex-row items-center gap-3">
+      <div className="h-fit w-full flex flex-row items-center gap-[6px]">
         <div className="h-fit w-9 flex flex-row items-center gap-[10px]">{percentageSlot}</div>
         <div className="h-fit w-full flex flex-row items-center gap-[6px]">
           {labelSlot}
@@ -483,7 +493,7 @@ export const AccordionItemLayout = ({
   renderRoot: RenderRoot;
   styleProps: AccordionItemType;
   headerSlot: React.ReactNode;
-}) => renderRoot(<>{headerSlot}</>, `h-fit w-full flex flex-col data-[expanded]:h-full ${className}`);
+}) => renderRoot(<>{headerSlot}</>, `h-fit w-full flex flex-col data-[state=open]:h-full ${className}`);
 
 export const accordionClass = ({ className }: AccordionType) => {
   return `group/accordion  ${className}`;

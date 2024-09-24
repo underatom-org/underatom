@@ -1,6 +1,6 @@
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
-import { IconBrandGoogle } from "../../assets/Icons";
-import { Button, ButtonWithLeftIcon } from "../../components/react-aria/button/Button.atoms";
+import { IconBrandGoogle, IconLogout } from "../../assets/Icons";
+import { ButtonProps, ButtonWithLeftIcon } from "../../components/react-aria/button/Button.atoms";
 import { getAuthorisationURLWithQueryParamsAndSetState } from "supertokens-web-js/recipe/thirdparty";
 import { signOut } from "supertokens-web-js/recipe/session";
 import { getLoggedInStateKey, useLoggedInState } from "./voting/utils/state";
@@ -38,23 +38,30 @@ async function logout(queryClient: QueryClient) {
   queryClient.invalidateQueries({ queryKey: getLoggedInStateKey() });
 }
 
-export const LoginButton = ({ text }: { text?: string }) => {
+export const LoginButton = ({ text, ...props }: Omit<ButtonProps, "children"> & { text?: string }) => {
   const queryClient = useQueryClient();
   const { data: isLoggedIn } = useLoggedInState();
-
-  console.log(isLoggedIn);
 
   return (
     <>
       {!isLoggedIn && (
         <ButtonWithLeftIcon
+          {...props}
           onPress={googleSignInClicked}
           icon={(className) => <IconBrandGoogle className={className} />}
         >
           {text ? text : "Sign In"}
         </ButtonWithLeftIcon>
       )}
-      {isLoggedIn && <Button onPress={() => logout(queryClient)}>Sign Out</Button>}
+      {isLoggedIn && (
+        <ButtonWithLeftIcon
+          {...props}
+          icon={(className) => <IconLogout className={className} />}
+          onPress={() => logout(queryClient)}
+        >
+          Sign Out
+        </ButtonWithLeftIcon>
+      )}
     </>
   );
 };

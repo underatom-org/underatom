@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../styles.css";
 import "../assets/fonts/fonts.css";
@@ -17,6 +17,8 @@ import {
   SideNavGroupItemBox,
   SideNavGroupItemLink,
 } from "../components/radix/side-nav/SideNav.atoms";
+
+import { votingRouteObj } from "./extra/voting/Voting";
 import { sideNavRouteObj } from "../components/radix/side-nav/SideNav.docs";
 import { commandRouteObj } from "../components/cmdk/command/Command.docs";
 import { actionPanelRouteObj } from "../components/radix/action-panel/ActionPanel.docs";
@@ -37,21 +39,27 @@ import { buttonToggleRouteObj } from "../components/react-aria/button-toggle/But
 import { textRouteObj } from "../components/no-headless/typography/Typography.docs";
 import { windowRouteObj } from "../components/no-headless/window/Window.docs";
 import { tabsRouteObj } from "../components/radix/tabs/Tabs.docs";
-import { Logo } from "../assets/brand/Brand";
+import { Logo, MobileLogo } from "../assets/brand/Brand";
 import { radioGroupRouteObj } from "../components/radix/radio-group/RadioGroup.docs";
 import { checkboxGroupRouteObj } from "../components/react-aria/checkbox-group/CheckboxGroup.docs";
 import { selectTriggerRouteObj } from "../components/radix/select-trigger/SelectTrigger.docs";
 import { accordionRouteObj } from "../components/radix/accordion/Accordion.docs";
 import { rateRouteObj } from "../components/ark-ui/rate/Rate.docs";
+import { switchRouteObj } from "../components/radix/switch/Switch.docs";
+import { checkboxRouteObj } from "../components/react-aria/checkbox/Checkbox.docs";
+
 import SuperTokens from "supertokens-web-js";
 import Session from "supertokens-web-js/recipe/session";
 import ThirdParty from "supertokens-web-js/recipe/thirdparty";
 import { AuthCallback } from "./extra/AuthCallback";
 import { LoginButton } from "./extra/LoginButton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { votingRouteObj } from "./extra/voting/Voting";
 import { API_BASE_URL } from "./extra/voting/utils/constants";
 import { Body } from "../components/no-headless/typography/Typography.atoms";
+import { useMediaQuery } from "./utils";
+import { Sheet, SheetTrigger } from "../components/react-aria/sheet/Sheet.atoms";
+import { IconButton } from "../components/react-aria/button/Button.atoms";
+import { IconArrowNarrowLeft, IconMenu2 } from "../assets/Icons";
 
 const queryClient = new QueryClient();
 
@@ -92,6 +100,8 @@ const routes = [
   selectTriggerRouteObj,
   accordionRouteObj,
   rateRouteObj,
+  switchRouteObj,
+  checkboxRouteObj,
 ];
 const groups = [...new Set(routes.map((route) => route.group))];
 const routesByGroup = Object.fromEntries(
@@ -101,6 +111,34 @@ const routesByGroup = Object.fromEntries(
 const rootRoute = createRootRoute({
   component: () => {
     const { pathname } = useLocation();
+    const isMobile = useMediaQuery("(max-width: 768px)");
+    const isVotingPage = pathname === "/voting";
+    const [isOpen, setIsOpen] = useState(false);
+
+    const IntermediateSideNav = () => {
+      return (
+        <SideNav
+          accordionProps={{ defaultValue: groups, type: "multiple" }}
+          value={pathname}
+          groupSlots={[
+            Object.entries(routesByGroup).map(([group, routes]) => (
+              <SideNavGroup
+                key={group}
+                value={group}
+                headerSlot={<SideNavGroupHeader label={group} hasCaret />}
+                itemSlots={routes.map((route) => (
+                  <SideNavGroupItemLink
+                    linkProps={{ to: route.path }}
+                    value={route.path}
+                    boxSlot={<SideNavGroupItemBox label={route.label} />}
+                  />
+                ))}
+              />
+            )),
+          ]}
+        />
+      );
+    };
     return (
       <>
         <div
@@ -123,49 +161,59 @@ const rootRoute = createRootRoute({
               alignItems: "center",
             }}
           >
-            <Logo />
-            <LoginButton />
+            {isMobile ? (
+              <>
+                <SheetTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
+                  <IconButton
+                    size="sm"
+                    variant="base"
+                    icon={(className) =>
+                      isOpen ? <IconArrowNarrowLeft className={className} /> : <IconMenu2 className={className} />
+                    }
+                  />
+                  <Sheet side="left" style={{ width: "65%", top: 52, overflowY: "auto" }}>
+                    <div style={{ padding: 10 }}>
+                      <LoginButton variant="base" fullWidth size="sm" />
+                    </div>
+                    <div style={{ position: "relative", zIndex: 20 }}>
+                      <IntermediateSideNav />
+                    </div>
+                  </Sheet>
+                </SheetTrigger>
+                <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+                  <MobileLogo />
+                </div>
+              </>
+            ) : (
+              <>
+                <Logo />
+                <LoginButton />
+              </>
+            )}
           </div>
         </div>
         <div
           style={{
             display: "flex",
             maxWidth: "1000px",
-            margin: "80px auto 0",
+            margin: isVotingPage ? "42px auto 0" : "80px auto 0",
             padding: "20px",
           }}
         >
-          <div
-            style={{
-              width: "220px",
-              marginRight: "40px",
-              height: "calc(100vh - 110px)",
-              position: "sticky",
-              top: "0px",
-              overflowY: "auto",
-            }}
-          >
-            <SideNav
-              accordionProps={{ defaultValue: groups, type: "multiple" }}
-              value={pathname}
-              groupSlots={[
-                Object.entries(routesByGroup).map(([group, routes]) => (
-                  <SideNavGroup
-                    key={group}
-                    value={group}
-                    headerSlot={<SideNavGroupHeader label={group} hasCaret />}
-                    itemSlots={routes.map((route) => (
-                      <SideNavGroupItemLink
-                        linkProps={{ to: route.path }}
-                        value={route.path}
-                        boxSlot={<SideNavGroupItemBox label={route.label} />}
-                      />
-                    ))}
-                  />
-                )),
-              ]}
-            />
-          </div>
+          {!isMobile && (
+            <div
+              style={{
+                width: "220px",
+                marginRight: "40px",
+                height: "calc(100vh - 110px)",
+                position: "sticky",
+                top: "82px",
+                overflowY: "auto",
+              }}
+            >
+              <IntermediateSideNav />
+            </div>
+          )}
           <div style={{ flex: 1 }}>
             <Outlet />
           </div>

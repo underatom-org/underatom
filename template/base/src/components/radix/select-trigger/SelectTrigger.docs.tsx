@@ -23,10 +23,11 @@ import { avatar1Src } from "../../../assets/images/Images";
 const SelectTriggerHelper = (
   props: SelectTriggerProps & {
     rootProps?: Select.SelectProps;
+    helperStyle?: React.CSSProperties;
   },
 ) => {
   return (
-    <div style={{ width: 400 }}>
+    <div style={{ width: 400, ...props.helperStyle }}>
       <Select.Root {...props.rootProps}>
         <SelectTrigger
           label="Language"
@@ -116,21 +117,18 @@ export const DisabledExample = () => (
 
 export const AttachmentExample = () => (
   <ShowcaseFrame>
-    <div style={{ display: "flex", width: "100%" }}>
+    <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
       <SelectTriggerHelper
+        helperStyle={{ width: 200 }}
         attachment="start"
-        description="Select a programming language"
+        description="Select a property type"
         boxSlot={<SelectTriggerBox textProps={{ placeholder: "Property type" }} />}
       />
       <SelectTriggerHelper
-        attachment="center"
-        description="Select a programming language"
-        boxSlot={<SelectTriggerBox textProps={{ placeholder: "Location" }} />}
-      />
-      <SelectTriggerHelper
+        helperStyle={{ width: 200 }}
         attachment="end"
-        description="Select a programming language"
-        boxSlot={<SelectTriggerBox textProps={{ placeholder: "Price range" }} />}
+        description="Select a location"
+        boxSlot={<SelectTriggerBox textProps={{ placeholder: "Location" }} />}
       />
     </div>
   </ShowcaseFrame>

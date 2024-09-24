@@ -98,7 +98,10 @@ export const SwitchToggleLayout = ({
   styleProps: SwitchToggleType;
   handleSlot: React.ReactNode;
 }) =>
-  renderRoot(<>{handleSlot}</>, `h-7 w-12 flex flex-row items-center px-[2px] data-[toggled]:justify-end ${className}`);
+  renderRoot(
+    <>{handleSlot}</>,
+    `h-7 w-12 flex flex-row items-center px-[2px] data-[state=checked]:pl-[22px] data-[state=checked]:pr-[2px] ${className}`,
+  );
 
 export const switchClass = ({ className }: SwitchType) => {
   return `group/switch  ${className}`;
@@ -112,10 +115,14 @@ export const switchAsteriskClass = ({ className }: SwitchType) => {
   return `
   hidden
   group-data-[invalid=true]/switch:group-data-[required=true]/switch:[display:unset]
-  group-data-[invalid=true]/switch:group-data-[required=true]/switch:text-danger-500
+  group-data-[required=true]/switch:[display:unset]
+  group-data-[required=true]/switch:text-danger-500
   group-data-[invalid=true]/switch:group-data-[required=true]/switch:text-xs
+  group-data-[required=true]/switch:text-xs
   group-data-[invalid=true]/switch:group-data-[required=true]/switch:font-text
+  group-data-[required=true]/switch:font-text
   group-data-[invalid=true]/switch:group-data-[required=true]/switch:font-medium
+  group-data-[required=true]/switch:font-medium
   group-data-[disabled=true]/switch:group-data-[invalid=true]/switch:group-data-[required=true]/switch:text-base-400
   ${className}
   `;
@@ -142,14 +149,14 @@ export const SwitchLayout = ({
 }) =>
   renderRoot(
     <>
-      <div className="h-fit w-fit flex flex-row gap-2">
+      <div className="h-fit w-full flex flex-row gap-2">
         {toggleSlot}
         <div className="h-fit w-fit flex flex-row gap-1">
           {labelSlot}
           {asteriskSlot}
         </div>
       </div>
-      <div className="h-fit w-fit flex flex-col pl-14">{descriptionSlot}</div>
+      <div className="h-fit w-full flex flex-col pl-14">{descriptionSlot}</div>
     </>,
-    `h-fit w-fit flex flex-col [&>*:not(:first-child)]:[margin-top:-2px] ${className}`,
+    `h-fit w-fit flex flex-col [&>*:not(:first-child)]:[margin-top:-4px] ${className}`,
   );

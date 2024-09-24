@@ -72,7 +72,7 @@ export const tabsItemBadgeIconClass = ({ className, tabsProps }: TabsItemBadgeTy
       variant: {
         underline: "text-base-50",
         handle: "text-base-50",
-        fill: "group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-base-50 text-base-50 group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-base-50 group-data-[state=active]/tabsItem:text-base-950",
+        fill: "group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-base-50 text-base-50 group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-base-50 group-data-[state=active]/tabsItem:text-base-700",
       },
     },
 
@@ -338,14 +338,14 @@ text-primary-700
   font-text
   font-medium
   select-none
-  group-data-[disabled=true]/tabs:text-primary-400
-  group-data-[disabled]/tabsItem:text-primary-400
-  group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-primary-400
-  group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-primary-400
+  group-data-[disabled=true]/tabs:text-base-400
+  group-data-[disabled]/tabsItem:text-base-400
+  group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-base-400
+  group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-base-400
 `,
     variants: {
       variant: {
-        fill: "group-data-[state=active]/tabsItem:text-white",
+        fill: "group-data-[state=active]/tabsItem:text-base-50",
         underline: "group-data-[state=active]/tabsItem:text-primary-950",
         handle: "group-data-[state=active]/tabsItem:text-primary-950",
       },
@@ -393,20 +393,12 @@ group-data-[state=active]/tabsItem:bg-white
 
 export const tabsItemIconClass = ({ className, tabsProps }: TabsItemType) => {
   const iconClass = tv({
-    base: `
-w-5
-  h-5
-  text-primary-700
-  group-data-[disabled=true]/tabs:text-primary-400
-  group-data-[disabled]/tabsItem:text-primary-400
-  group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-primary-400
-  group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-primary-400
-`,
+    base: "w-5 h-5 group-data-[disabled=true]/tabs:text-base-400 group-data-[disabled]/tabsItem:text-base-400",
     variants: {
       variant: {
-        fill: "group-data-[state=active]/tabsItem:text-white",
-        underline: "group-data-[state=active]/tabsItem:text-primary-950",
-        handle: "group-data-[state=active]/tabsItem:text-primary-950",
+        fill: "text-base-600 group-data-[state=active]/tabsItem:text-base-50 group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-base-400 group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-base-400",
+        underline: "text-base-600",
+        handle: "text-base-600",
       },
     },
 
@@ -425,15 +417,15 @@ export const tabsItemLoaderClass = ({ className, tabsProps }: TabsItemType) => {
 w-5
   h-5
   text-primary-700
-  group-data-[disabled=true]/tabs:text-primary-400
-  group-data-[disabled]/tabsItem:text-primary-400
-  group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-primary-400
-  group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-primary-400
+  group-data-[disabled=true]/tabs:text-base-400
+  group-data-[disabled]/tabsItem:text-base-400
+  group-data-[disabled=true]/tabs:group-data-[state=active]/tabsItem:text-base-400
+  group-data-[disabled]/tabsItem:group-data-[state=active]/tabsItem:text-base-400
   animate-spin
 `,
     variants: {
       variant: {
-        fill: "group-data-[state=active]/tabsItem:text-white",
+        fill: "group-data-[state=active]/tabsItem:text-base-50",
         underline: "group-data-[state=active]/tabsItem:text-primary-950",
         handle: "group-data-[state=active]/tabsItem:text-primary-950",
       },
@@ -519,7 +511,7 @@ export const TabsItemWithIconLayout = ({
     <>
       <div className="h-fit w-fit flex flex-row gap-[6px]">
         <div className="h-fit w-fit flex flex-row justify-center items-center gap-[6px]">
-          <div className="h-fit w-fit flex flex-row justify-center items-center gap-1">
+          <div className="h-fit w-fit flex flex-row justify-center items-center gap-[6px]">
             {iconSlot}
             {labelSlot}
           </div>

@@ -7,17 +7,17 @@ export const chipClass = ({ className }: ChipType) => {
   return `
   group/chip
   border-solid
-  border-primary-200
-  data-[active=true]:border-primary-200
-  disabled:border-primary-200
+  border-base-200
+  data-[active=true]:border-base-200
+  disabled:border-base-200
   border-1
   bg-base-50
   data-[active=true]:bg-base-50
   disabled:bg-base-50
   rounded-[16px]
-  hover:border-primary-300
-  data-[ring=true]:border-primary-300
-  data-[state=open]:border-primary-300
+  hover:border-base-300
+  data-[ring=true]:border-base-300
+  data-[state=open]:border-base-300
   hover:bg-base-100
   data-[ring=true]:bg-base-100
   data-[state=open]:bg-base-100
@@ -28,23 +28,18 @@ export const chipClass = ({ className }: ChipType) => {
 };
 
 export const chipLabelClass = ({ className }: ChipType) => {
-  return `text-[#18181b] text-sm font-text font-medium group-disabled/chip:text-[#8b8b8d] ${className}`;
+  return `text-base-950 text-sm font-text font-medium group-disabled/chip:text-base-400 ${className}`;
 };
 
 export const chipIconClass = ({ className }: ChipType) => {
-  return `w-5 h-5 text-[#18181b] group-disabled/chip:text-[#8b8b8d] ${className}`;
+  return `w-5 h-5 text-primary-600 group-disabled/chip:text-base-400 ${className}`;
 };
 
 export const chipDotClass = ({ className, chipDotProps }: ChipDotType) => {
   const dotClass = tv({
-    base: "w-[6px] h-[6px] rounded-xs group-disabled/chip:[background:#8b8b8d]",
+    base: "w-[6px] h-[6px] rounded-xs group-disabled/chip:bg-base-400",
     variants: {
-      dotColor: {
-        base: "[background:#09090b]",
-        primary: "[background:#18181b]",
-        green: "[background:#318a00]",
-        red: "[background:#dc2626]",
-      },
+      dotColor: { base: "bg-base-950", primary: "bg-primary-950", green: "bg-success-600", red: "bg-danger-500" },
     },
 
     defaultVariants: { dotColor: chipDotDefaults.color },
@@ -71,7 +66,7 @@ export const ChipLayout = ({
       <div
         className={tv({
           base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          variants: { size: { sm: "pr-1", md: "pr-1", lg: "pr-[6px]" } },
 
           defaultVariants: { size: chipDefaults.size },
         })({ size: chipProps?.size })}
@@ -82,9 +77,7 @@ export const ChipLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-3 pr-[6px]" } },
 
       defaultVariants: { size: chipDefaults.size },
     })({
@@ -109,8 +102,8 @@ export const ChipWithIconLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center",
+          variants: { size: { sm: "gap-1 pr-1", md: "gap-1 pr-1", lg: "gap-[6px] pr-[6px]" } },
 
           defaultVariants: { size: chipDefaults.size },
         })({ size: chipProps?.size })}
@@ -122,9 +115,7 @@ export const ChipWithIconLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-1 px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 px-1", md: "h-8 px-[6px]", lg: "h-9 pl-2 pr-[6px]" } },
 
       defaultVariants: { size: chipDefaults.size },
     })({
@@ -149,8 +140,8 @@ export const ChipWithDotLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center gap-[6px]",
-          variants: { size: { sm: "pl-1 pr-[2px]", md: "pr-1", lg: "pr-1" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center",
+          variants: { size: { sm: "gap-[6px] pr-1", md: "gap-[6px] pr-[6px]", lg: "gap-2 pr-[6px]" } },
 
           defaultVariants: { size: chipDefaults.size },
         })({ size: chipProps?.size })}
@@ -161,8 +152,8 @@ export const ChipWithDotLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center gap-[6px]",
-      variants: { size: { sm: "h-7 px-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
+      base: "w-fit flex flex-row justify-center items-center",
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
 
       defaultVariants: { size: chipDefaults.size },
     })({
@@ -187,8 +178,8 @@ export const ChipWithAvatarLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center",
-          variants: { size: { sm: "gap-[6px]", md: "gap-[6px]", lg: "gap-2" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center pr-1",
+          variants: { size: { sm: "gap-1", md: "gap-1", lg: "gap-[6px]" } },
 
           defaultVariants: { size: chipDefaults.size },
         })({ size: chipProps?.size })}
@@ -199,8 +190,10 @@ export const ChipWithAvatarLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center",
-      variants: { size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-2 pl-1 pr-[6px]", lg: "h-9 gap-2 pl-1 pr-[6px]" } },
+      base: "w-fit flex flex-row items-center",
+      variants: {
+        size: { sm: "h-7 justify-center px-1", md: "h-8 justify-center pl-1 pr-[6px]", lg: "h-9 pl-1 pr-[6px]" },
+      },
 
       defaultVariants: { size: chipDefaults.size },
     })({

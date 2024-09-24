@@ -5,4 +5,4 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8088:8088"
+      - "${VITE_PORT}:${VITE_PORT}"

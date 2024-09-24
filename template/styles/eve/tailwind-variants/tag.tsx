@@ -8,23 +8,18 @@ export const tagClass = ({ className }: TagType) => {
 };
 
 export const tagLabelClass = ({ className }: TagType) => {
-  return `text-[#18181b] text-sm font-text font-medium ${className}`;
+  return `text-base-950 text-sm font-text font-medium ${className}`;
 };
 
 export const tagIconClass = ({ className }: TagType) => {
-  return `w-5 h-5 text-[#18181b] ${className}`;
+  return `w-5 h-5 text-base-600 ${className}`;
 };
 
 export const tagDotClass = ({ className, tagDotProps }: TagDotType) => {
   const dotClass = tv({
     base: "w-[6px] h-[6px] rounded-xs",
     variants: {
-      dotColor: {
-        base: "[background:#18181b]",
-        primary: "[background:#18181b]",
-        green: "[background:#318a00]",
-        red: "[background:#dc2626]",
-      },
+      dotColor: { base: "bg-base-950", primary: "bg-primary-950", green: "bg-success-600", red: "bg-danger-500" },
     },
 
     defaultVariants: { dotColor: tagDotDefaults.color },
@@ -51,7 +46,7 @@ export const TagLayout = ({
       <div
         className={tv({
           base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          variants: { size: { sm: "pr-1", md: "pr-1", lg: "pr-[6px]" } },
 
           defaultVariants: { size: tagDefaults.size },
         })({ size: tagProps?.size })}
@@ -62,9 +57,7 @@ export const TagLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-3 pr-[6px]" } },
 
       defaultVariants: { size: tagDefaults.size },
     })({
@@ -89,8 +82,8 @@ export const TagWithIconLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center gap-1",
-          variants: { size: { sm: "px-1", md: "pr-1", lg: "pr-[6px]" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center",
+          variants: { size: { sm: "gap-1 pr-1", md: "gap-1 pr-1", lg: "gap-[6px] pr-[6px]" } },
 
           defaultVariants: { size: tagDefaults.size },
         })({ size: tagProps?.size })}
@@ -102,9 +95,7 @@ export const TagWithIconLayout = ({
     </>,
     tv({
       base: "w-fit flex flex-row justify-center items-center",
-      variants: {
-        size: { sm: "h-7 gap-1 px-1", md: "h-8 gap-[6px] pl-[10px] pr-[6px]", lg: "h-9 gap-1 pl-3 pr-[6px]" },
-      },
+      variants: { size: { sm: "h-7 px-1", md: "h-8 px-[6px]", lg: "h-9 pl-2 pr-[6px]" } },
 
       defaultVariants: { size: tagDefaults.size },
     })({
@@ -129,8 +120,8 @@ export const TagWithDotLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center gap-[6px]",
-          variants: { size: { sm: "pl-1 pr-[2px]", md: "pr-1", lg: "pr-1" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center",
+          variants: { size: { sm: "gap-[6px] pr-1", md: "gap-[6px] pr-[6px]", lg: "gap-2 pr-[6px]" } },
 
           defaultVariants: { size: tagDefaults.size },
         })({ size: tagProps?.size })}
@@ -141,8 +132,8 @@ export const TagWithDotLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center gap-[6px]",
-      variants: { size: { sm: "h-7 px-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
+      base: "w-fit flex flex-row justify-center items-center",
+      variants: { size: { sm: "h-7 pl-2 pr-1", md: "h-8 pl-[10px] pr-[6px]", lg: "h-9 pl-[10px] pr-[6px]" } },
 
       defaultVariants: { size: tagDefaults.size },
     })({
@@ -167,8 +158,8 @@ export const TagWithAvatarLayout = ({
     <>
       <div
         className={tv({
-          base: "h-fit w-fit flex flex-row justify-center items-center",
-          variants: { size: { sm: "gap-[6px]", md: "gap-[6px]", lg: "gap-2" } },
+          base: "h-fit w-fit flex flex-row justify-center items-center pr-1",
+          variants: { size: { sm: "gap-1", md: "gap-1", lg: "gap-[6px]" } },
 
           defaultVariants: { size: tagDefaults.size },
         })({ size: tagProps?.size })}
@@ -179,8 +170,10 @@ export const TagWithAvatarLayout = ({
       {dismissSlot}
     </>,
     tv({
-      base: "w-fit flex flex-row justify-center items-center",
-      variants: { size: { sm: "h-7 gap-[6px] px-1", md: "h-8 gap-2 pl-1 pr-[6px]", lg: "h-9 gap-2 pl-1 pr-[6px]" } },
+      base: "w-fit flex flex-row items-center",
+      variants: {
+        size: { sm: "h-7 justify-center px-1", md: "h-8 justify-center pl-1 pr-[6px]", lg: "h-9 pl-1 pr-[6px]" },
+      },
 
       defaultVariants: { size: tagDefaults.size },
     })({

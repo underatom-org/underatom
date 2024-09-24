@@ -1,9 +1,11 @@
 import { Body, H1, H2, H3, Subheader } from "../components/no-headless/typography/Typography.atoms";
 import { Window } from "../components/no-headless/window/Window.atoms";
+import { useMediaQuery } from "./utils";
 
 export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.ReactNode; paddingX?: number }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <Window>
+    <Window style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
       <div
         style={{
           padding: 40,
@@ -13,6 +15,7 @@ export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.Rea
           justifyContent: "center",
           alignItems: "center",
           minHeight: 300,
+          overflow: "auto",
         }}
       >
         {children}
