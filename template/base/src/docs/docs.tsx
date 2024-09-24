@@ -46,6 +46,7 @@ import { selectTriggerRouteObj } from "../components/radix/select-trigger/Select
 import { accordionRouteObj } from "../components/radix/accordion/Accordion.docs";
 import { rateRouteObj } from "../components/ark-ui/rate/Rate.docs";
 import { switchRouteObj } from "../components/radix/switch/Switch.docs";
+import { checkboxRouteObj } from "../components/react-aria/checkbox/Checkbox.docs";
 
 import SuperTokens from "supertokens-web-js";
 import Session from "supertokens-web-js/recipe/session";
@@ -100,6 +101,7 @@ const routes = [
   accordionRouteObj,
   rateRouteObj,
   switchRouteObj,
+  checkboxRouteObj,
 ];
 const groups = [...new Set(routes.map((route) => route.group))];
 const routesByGroup = Object.fromEntries(

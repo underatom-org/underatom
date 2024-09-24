@@ -16,33 +16,33 @@ export const checkboxButtonClass = ({ className }: CheckboxButtonType) => {
   group-data-[invalid=true]/checkbox:bg-danger-50
   group-data-[invalid=true]/checkbox:group-active/checkbox:bg-danger-50
   group-data-[selected=true]/checkbox:bg-primary-950
-  group-data-[state=indeterminate]/checkbox:bg-primary-950
+  group-data-[indeterminate=true]/checkbox:bg-primary-950
   group-active/checkbox:group-data-[selected=true]/checkbox:bg-primary-950
-  group-active/checkbox:group-data-[state=indeterminate]/checkbox:bg-primary-950
+  group-active/checkbox:group-data-[indeterminate=true]/checkbox:bg-primary-950
   group-data-[invalid=true]/checkbox:group-data-[selected=true]/checkbox:bg-danger-500
-  group-data-[invalid=true]/checkbox:group-data-[state=indeterminate]/checkbox:bg-danger-500
+  group-data-[invalid=true]/checkbox:group-data-[indeterminate=true]/checkbox:bg-danger-500
   group-data-[invalid=true]/checkbox:group-active/checkbox:group-data-[selected=true]/checkbox:bg-danger-500
-  group-data-[invalid=true]/checkbox:group-active/checkbox:group-data-[state=indeterminate]/checkbox:bg-danger-500
+  group-data-[invalid=true]/checkbox:group-active/checkbox:group-data-[indeterminate=true]/checkbox:bg-danger-500
   group-hover/checkbox:bg-base-100
-  group-data-[ring=true]/checkbox:bg-base-100
+  group-data-[focus-visible=true]/checkbox:bg-base-100
   group-data-[invalid=true]/checkbox:group-hover/checkbox:bg-danger-100
-  group-data-[invalid=true]/checkbox:group-data-[ring=true]/checkbox:bg-danger-100
+  group-data-[invalid=true]/checkbox:group-data-[focus-visible=true]/checkbox:bg-danger-100
   group-hover/checkbox:group-data-[selected=true]/checkbox:bg-primary-800
-  group-hover/checkbox:group-data-[state=indeterminate]/checkbox:bg-primary-800
-  group-data-[ring=true]/checkbox:group-data-[selected=true]/checkbox:bg-primary-800
-  group-data-[ring=true]/checkbox:group-data-[state=indeterminate]/checkbox:bg-primary-800
+  group-hover/checkbox:group-data-[indeterminate=true]/checkbox:bg-primary-800
+  group-data-[focus-visible=true]/checkbox:group-data-[selected=true]/checkbox:bg-primary-800
+  group-data-[focus-visible=true]/checkbox:group-data-[indeterminate=true]/checkbox:bg-primary-800
   group-data-[invalid=true]/checkbox:group-hover/checkbox:group-data-[selected=true]/checkbox:bg-danger-700
-  group-data-[invalid=true]/checkbox:group-hover/checkbox:group-data-[state=indeterminate]/checkbox:bg-danger-700
-  group-data-[invalid=true]/checkbox:group-data-[ring=true]/checkbox:group-data-[selected=true]/checkbox:bg-danger-700
-  group-data-[invalid=true]/checkbox:group-data-[ring=true]/checkbox:group-data-[state=indeterminate]/checkbox:bg-danger-700
-  group-data-[ring=true]/checkbox:shadow-focus-ring
+  group-data-[invalid=true]/checkbox:group-hover/checkbox:group-data-[indeterminate=true]/checkbox:bg-danger-700
+  group-data-[invalid=true]/checkbox:group-data-[focus-visible=true]/checkbox:group-data-[selected=true]/checkbox:bg-danger-700
+  group-data-[invalid=true]/checkbox:group-data-[focus-visible=true]/checkbox:group-data-[indeterminate=true]/checkbox:bg-danger-700
+  group-data-[focus-visible=true]/checkbox:shadow-focus-ring
   group-data-[disabled=true]/checkbox:border-base-200
   group-data-[disabled=true]/checkbox:group-data-[selected=true]/checkbox:bg-base-200
-  group-data-[disabled=true]/checkbox:group-data-[state=indeterminate]/checkbox:bg-base-200
+  group-data-[disabled=true]/checkbox:group-data-[indeterminate=true]/checkbox:bg-base-200
   group-data-[invalid=true]/checkbox:group-data-[disabled=true]/checkbox:border-base-200
   group-data-[invalid=true]/checkbox:group-data-[disabled=true]/checkbox:bg-base-50
   group-data-[invalid=true]/checkbox:group-data-[disabled=true]/checkbox:group-data-[selected=true]/checkbox:bg-base-200
-  group-data-[invalid=true]/checkbox:group-data-[disabled=true]/checkbox:group-data-[state=indeterminate]/checkbox:bg-base-200
+  group-data-[invalid=true]/checkbox:group-data-[disabled=true]/checkbox:group-data-[indeterminate=true]/checkbox:bg-base-200
   ${className}
   `;
 };
@@ -51,13 +51,13 @@ export const checkboxButtonIndicatorClass = ({ className }: CheckboxButtonType) 
   return `
   w-[14px]
   group-data-[selected=true]/checkbox:w-[14px]
-  group-data-[state=indeterminate]/checkbox:w-[14px]
+  group-data-[indeterminate=true]/checkbox:w-[14px]
   h-[14px]
   group-data-[selected=true]/checkbox:h-[14px]
-  group-data-[state=indeterminate]/checkbox:h-[14px]
+  group-data-[indeterminate=true]/checkbox:h-[14px]
   text-white
   group-data-[disabled=true]/checkbox:group-data-[selected=true]/checkbox:text-base-400
-  group-data-[disabled=true]/checkbox:group-data-[state=indeterminate]/checkbox:text-base-400
+  group-data-[disabled=true]/checkbox:group-data-[indeterminate=true]/checkbox:text-base-400
   ${className}
   `;
 };
