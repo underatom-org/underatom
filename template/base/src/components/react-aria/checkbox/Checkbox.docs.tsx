@@ -1,4 +1,4 @@
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Checkbox } from "./Checkbox.atoms";
 import { useState } from "react";
@@ -33,17 +33,17 @@ const IndeterminateExample = () => {
   );
 };
 
-const SizesExample = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsRow>
-        <Checkbox size="sm" label="Checkbox" description="Checkbox description" />
-        <Checkbox size="md" label="Checkbox" description="Checkbox description" />
-        <Checkbox size="lg" label="Checkbox" description="Checkbox description" />
-      </VariantsRow>
-    </ShowcaseFrame>
-  );
-};
+// const SizesExample = () => {
+//   return (
+//     <ShowcaseFrame>
+//       <VariantsRow>
+//         <Checkbox size="sm" label="Checkbox" description="Checkbox description" />
+//         <Checkbox size="md" label="Checkbox" description="Checkbox description" />
+//         <Checkbox size="lg" label="Checkbox" description="Checkbox description" />
+//       </VariantsRow>
+//     </ShowcaseFrame>
+//   );
+// };
 
 const DisabledExample = () => {
   return (
@@ -82,9 +82,9 @@ const Docs = () => {
         <Example title="Indeterminate">
           <IndeterminateExample />
         </Example>
-        <Example title="Sizes">
+        {/* <Example title="Sizes">
           <SizesExample />
-        </Example>
+        </Example> */}
         <Example title="Disabled">
           <DisabledExample />
         </Example>
