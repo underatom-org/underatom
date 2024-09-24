@@ -5,6 +5,4 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT}:8088"
-    environment:
-      - PORT=${PORT}
+      - "${PORT}:${PORT}"

@@ -6,6 +6,8 @@ import path from "node:path";
 // import { visualizer } from "rollup-plugin-visualizer";
 // const isLibrary = process.env.BUILD_TARGET === "library";
 
+const port = parseInt(process.env.VITE_PORT || "8088");
+
 export default defineConfig({
   plugins: [
     react(),
@@ -19,12 +21,8 @@ export default defineConfig({
     //     ]
     //   : []),
   ],
-  preview: {
-    port: 8080,
-    strictPort: true,
-  },
   server: {
-    port: 8088,
+    port,
     strictPort: true,
     host: true,
   },
