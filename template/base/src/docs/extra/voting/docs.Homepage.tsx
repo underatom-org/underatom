@@ -1,5 +1,6 @@
 import { Body, H1, H3, Subheader } from "../../../components/no-headless/typography/Typography.atoms";
 import { DocsRoute } from "../../docs.types";
+import heroImage from "../../../assets/brand/hero.png";
 
 export const Homepage = () => {
   return (
@@ -7,6 +8,7 @@ export const Homepage = () => {
       <H1 style={{ marginBottom: "6px" }}>Getting Started</H1>
       <Subheader color="secondary">Ambitious Component Library Builder.</Subheader>
       <Subheader color="secondary">Choose your favorite Framework, Headless, CSS library and Design.</Subheader>
+      <img src={heroImage} style={{ width: "100%", height: "auto", marginTop: "16px" }} alt="Underatom" />
 
       <H3 style={{ marginTop: "32px", marginBottom: "6px" }}>Documentation</H3>
       <Body>All components are showcased and documented. Let us know what you think!</Body>
