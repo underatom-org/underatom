@@ -55,11 +55,11 @@ import { AuthCallback } from "./extra/AuthCallback";
 import { LoginButton } from "./extra/LoginButton";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { API_BASE_URL } from "./extra/voting/utils/constants";
-import { Body } from "../components/no-headless/typography/Typography.atoms";
 import { useMediaQuery } from "./utils";
 import { Sheet, SheetTrigger } from "../components/react-aria/sheet/Sheet.atoms";
 import { IconButton } from "../components/react-aria/button/Button.atoms";
 import { IconArrowNarrowLeft, IconMenu2 } from "../assets/Icons";
+import { Homepage } from "./extra/voting/docs.Homepage";
 
 const queryClient = new QueryClient();
 
@@ -231,14 +231,10 @@ const createdRoutes = routes.map((route) => {
   });
 });
 
-const Home = () => {
-  return <Body>Underatom Docs</Body>;
-};
-
 const newCreatedRoutes = [
   ...createdRoutes,
   createRoute({ getParentRoute: () => rootRoute, path: "/auth/callback", component: AuthCallback }),
-  createRoute({ getParentRoute: () => rootRoute, path: "/", component: Home }),
+  createRoute({ getParentRoute: () => rootRoute, path: "/", component: Homepage }),
 ];
 
 const routeTree = rootRoute.addChildren(newCreatedRoutes);
