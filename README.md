@@ -1,12 +1,14 @@
-[![](https://dcbadge.limes.pink/api/server/864aya7h)](https://discord.gg/864aya7h)
+[![](https://dcbadge.limes.pink/api/server/BcSvJefqFC)](https://discord.gg/BcSvJefqFC)
 
-# underatom
+# underatom (v0.1)
 
-**Multi-framework component library made to be fully owned.**
+Ambitious component library builder.
 
-Build your Design System with your favorite stack. Choose between:
+Choose your favorite Framework, Headless, CSS Library and Design.
 
-- frameworks
+## Mix and match
+
+**Frameworks**
   - React
   - Dioxus (WIP)
   - Solid (TBD)
@@ -16,7 +18,9 @@ Build your Design System with your favorite stack. Choose between:
   - web-components (TBD)
   - React Native (TBD)
   - Flutter (TBD)
-- styling libraries
+  - **any Community picked framework** 🫡
+
+**CSS Libraries**
   - Tailwind
   - PandaCSS (WIP)
   - CSS (TBD)
@@ -25,6 +29,21 @@ Build your Design System with your favorite stack. Choose between:
   - vanilla-extract (TBD)
   - SCSS (TBD)
   - Pigment CSS (TBD)
+  - **any Community picked CSS library** 🫡
+
+**Headless**
+  - Radix UI
+  - react-aria
+  - react-aria components
+  - Ark UI
+  - Headless UI (TBD)
+  - MUI Base (TBD)
+  - zag JS (TBD)
+  - AriaKit (TBD)
+  - Corvu (TBD)
+  - Kobalte (TBD)
+  - **any Community picked headless library** 🫡
+
 
 # Installation
 

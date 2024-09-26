@@ -28,13 +28,14 @@ export const { Provider: TypographyInternalProvider, useComponentContext: useTyp
 export type UTypographyRootProps = TypographyStyleProps & {
   children?: ReactNode;
   className?: string;
+  style?: React.CSSProperties;
 };
 export const UTypographyRoot = (props: UTypographyRootProps) => {
   const Component = elementMap[props.type ?? "body"];
   return (
     <Component
       className={typographyClass({ className: props.className, typographyProps: props })}
-      style={{ display: displayMap[props.type ?? "body"] }}
+      style={{ ...props.style, display: displayMap[props.type ?? "body"] }}
     >
       <TypographyInternalProvider value={props}>{props.children}</TypographyInternalProvider>
     </Component>
