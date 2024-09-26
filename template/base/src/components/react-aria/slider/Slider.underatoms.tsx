@@ -9,6 +9,7 @@ import {
   SliderOutputProps,
   SliderStateContext,
   SliderThumbProps,
+  SliderTrackProps,
 } from "react-aria-components";
 import { getGenericContext } from "../../../_utils";
 import {
@@ -29,7 +30,6 @@ import {
   sliderValueClass,
 } from "../../../styles/slider";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
-import { SliderTrackProps } from "@ark-ui/react";
 import React from "react";
 
 /*
@@ -76,7 +76,11 @@ export type USliderValueProps = SliderOutputProps & {
 };
 export const USliderValue = (props: USliderValueProps) => {
   const sliderProps = useSliderInternalProvider();
-  return <SliderOutput {...props} className={sliderValueClass({ className: props.className, sliderProps })} />;
+  return (
+    <SliderOutput {...props} className={sliderValueClass({ className: props.className, sliderProps })}>
+      {({ state }) => state.values.map((_, i) => state.getThumbValueLabel(i)).join(" – ")}
+    </SliderOutput>
+  );
 };
 
 export type USliderIconProps = {
@@ -94,7 +98,7 @@ export const USliderIcon = ({ children, className }: USliderIconProps) => {
   ====================================
 */
 
-export type USliderBarRootProps = SliderTrackProps;
+export type USliderBarRootProps = SliderTrackProps & { className?: string };
 export const USliderBarRoot = (props: USliderBarRootProps) => {
   const sliderProps = useSliderInternalProvider();
   return <SliderTrack {...props} className={sliderBarClass({ className: props.className, sliderProps })} />;
@@ -103,11 +107,42 @@ export const USliderBarRoot = (props: USliderBarRootProps) => {
 export type USliderBarFillProps = ComponentPropsWithoutRef<"div">;
 export const USliderBarFill = (props: USliderBarFillProps) => {
   const sliderProps = useSliderInternalProvider();
+  let state = React.useContext(SliderStateContext)!;
+  const isVertical = state.orientation === "vertical";
+
+  const thumbCount = state.values.length;
+  const firstThumbPercent = state.getThumbPercent(0);
+  const secondThumbPercent = thumbCount > 1 ? state.getThumbPercent(1) : null;
+
+  let fillStyle;
+  if (thumbCount === 1) {
+    // Single thumb: fill from start to thumb
+    fillStyle = isVertical
+      ? { top: 0, height: `${firstThumbPercent * 100}%` }
+      : { left: 0, width: `${firstThumbPercent * 100}%` };
+  } else {
+    // Two thumbs: fill between thumbs
+    const startPercent = Math.min(firstThumbPercent, secondThumbPercent!);
+    const endPercent = Math.max(firstThumbPercent, secondThumbPercent!);
+    fillStyle = isVertical
+      ? {
+          top: `${startPercent * 100}%`,
+          height: `${(endPercent - startPercent) * 100}%`,
+        }
+      : {
+          left: `${startPercent * 100}%`,
+          width: `${(endPercent - startPercent) * 100}%`,
+        };
+  }
+
   return (
     <div
       {...props}
-      className={sliderBarFillClass({ className: props.className, sliderProps })}
-      style={{ position: "absolute", width: "auto" }}
+      className={sliderBarFillClass({ className: props.className, sliderProps }) + " FILL"}
+      style={{
+        position: "absolute",
+        ...fillStyle,
+      }}
     />
   );
 };
@@ -152,7 +187,13 @@ export type USliderBarThumbRootProps = SliderThumbProps & {
 };
 export const USliderBarThumbRoot = (props: USliderBarThumbRootProps) => {
   const sliderProps = useSliderInternalProvider();
-  return <SliderThumb {...props} className={sliderBarThumbClass({ className: props.className, sliderProps })} />;
+  return (
+    <SliderThumb
+      {...props}
+      className={sliderBarThumbClass({ className: props.className, sliderProps })}
+      style={{ transform: "translate(-50%, 0%)" }}
+    />
+  );
 };
 
 export type USliderBarThumbIconProps = {

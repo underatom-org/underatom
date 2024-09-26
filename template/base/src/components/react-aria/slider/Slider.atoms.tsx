@@ -4,6 +4,7 @@
   ====================================
 */
 
+import React from "react";
 import {
   SliderBarLayout,
   SliderBarThumbLayout,
@@ -35,6 +36,7 @@ import {
   USliderValue,
 } from "./Slider.underatoms";
 import { ReactNode } from "react";
+import { SliderStateContext } from "react-aria-components";
 
 /*
   ====================================
@@ -64,7 +66,7 @@ export const Slider = ({ label, description, tooltipSlot, icon, tickLabelSlots, 
       valueSlot={<USliderValue />}
       iconSlot={icon && <USliderIcon>{icon}</USliderIcon>}
       barSlot={<SliderBar tickSlots={tickSlots} />}
-      tooltipSlot={tooltipSlot}
+      tooltipSlot={null}
       tickLabelSlots={tickLabelSlots}
     />
   );
@@ -81,6 +83,8 @@ export type SliderBarProps = USliderBarRootProps & {
 };
 export const SliderBar = ({ tickSlots, ...props }: SliderBarProps) => {
   const sliderProps = useSliderInternalProvider();
+  let state = React.useContext(SliderStateContext)!;
+
   return (
     <SliderBarLayout
       renderRoot={(children, className) => (
@@ -90,7 +94,9 @@ export const SliderBar = ({ tickSlots, ...props }: SliderBarProps) => {
       )}
       styleProps={{ className: props.className, sliderProps }}
       fillSlot={<USliderBarFill />}
-      thumbSlot={<SliderBarThumb />}
+      thumbSlot={state.values.map((_, i) => (
+        <SliderBarThumb key={i} index={i} />
+      ))}
       tickSlots={tickSlots}
     />
   );
