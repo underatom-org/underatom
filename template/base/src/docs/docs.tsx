@@ -215,7 +215,7 @@ const rootRoute = createRootRoute({
               <IntermediateSideNav />
             </div>
           )}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, paddingBottom: "80px" }}>
             <Outlet />
           </div>
         </div>

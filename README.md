@@ -2,48 +2,52 @@
 
 # underatom (v0.1)
 
-Ambitious Component Library Builder.
+**Ambitious Component Library Builder.**
 
 Choose your favorite Framework, Headless, CSS Library and Design.
+
+![Underatom](hero.png)
 
 ## Mix and match
 
 **Frameworks**
-  - React
-  - Dioxus (WIP)
-  - Solid (TBD)
-  - Angular (TBD)
-  - Vue (TBD)
-  - Svelte (TBD)
-  - web-components (TBD)
-  - React Native (TBD)
-  - Flutter (TBD)
-  - **any Community picked framework** 🫡
+
+- React
+- Dioxus (WIP)
+- Solid (TBD)
+- Angular (TBD)
+- Vue (TBD)
+- Svelte (TBD)
+- web-components (TBD)
+- React Native (TBD)
+- Flutter (TBD)
+- **any Community picked framework** 🫡
 
 **CSS Libraries**
-  - Tailwind
-  - PandaCSS (WIP)
-  - CSS (TBD)
-  - styled-components (TBD)
-  - emotion (TBD)
-  - vanilla-extract (TBD)
-  - SCSS (TBD)
-  - Pigment CSS (TBD)
-  - **any Community picked CSS library** 🫡
+
+- Tailwind
+- PandaCSS (WIP)
+- CSS (TBD)
+- styled-components (TBD)
+- emotion (TBD)
+- vanilla-extract (TBD)
+- SCSS (TBD)
+- Pigment CSS (TBD)
+- **any Community picked CSS library** 🫡
 
 **Headless**
-  - Radix UI
-  - react-aria
-  - react-aria components
-  - Ark UI
-  - Headless UI (TBD)
-  - MUI Base (TBD)
-  - zag JS (TBD)
-  - AriaKit (TBD)
-  - Corvu (TBD)
-  - Kobalte (TBD)
-  - **any Community picked headless library** 🫡
 
+- Radix UI
+- react-aria
+- react-aria components
+- Ark UI
+- Headless UI (TBD)
+- MUI Base (TBD)
+- zag JS (TBD)
+- AriaKit (TBD)
+- Corvu (TBD)
+- Kobalte (TBD)
+- **any Community picked headless library** 🫡
 
 # Installation
 
