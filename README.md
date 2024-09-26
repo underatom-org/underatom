@@ -2,7 +2,7 @@
 
 # underatom (v0.1)
 
-Ambitious component library builder.
+Ambitious Component Library Builder.
 
 Choose your favorite Framework, Headless, CSS Library and Design.
 
