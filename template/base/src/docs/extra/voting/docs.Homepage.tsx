@@ -1,10 +1,11 @@
 import { Body, H1, H3, Subheader } from "../../../components/no-headless/typography/Typography.atoms";
+import { DocsRoute } from "../../docs.types";
 
 export const Homepage = () => {
   return (
     <div>
       <H1 style={{ marginBottom: "6px" }}>Getting Started</H1>
-      <Subheader color="secondary">Ambitious component library builder.</Subheader>
+      <Subheader color="secondary">Ambitious Component Library Builder.</Subheader>
       <Subheader color="secondary">Choose your favorite Framework, Headless, CSS library and Design.</Subheader>
 
       <H3 style={{ marginTop: "32px", marginBottom: "6px" }}>Documentation</H3>
@@ -30,4 +31,13 @@ export const Homepage = () => {
       </Body>
     </div>
   );
+};
+
+const homepageRoute = "/";
+
+export const homepageRouteObj: DocsRoute<typeof homepageRoute> = {
+  path: homepageRoute,
+  group: "getting-started",
+  label: "Home",
+  component: Homepage,
 };

@@ -18,6 +18,7 @@ import {
   SideNavGroupItemLink,
 } from "../components/radix/side-nav/SideNav.atoms";
 
+import { homepageRouteObj } from "./extra/voting/docs.Homepage";
 import { votingRouteObj } from "./extra/voting/Voting";
 import { sideNavRouteObj } from "../components/radix/side-nav/SideNav.docs";
 import { commandRouteObj } from "../components/cmdk/command/Command.docs";
@@ -59,7 +60,6 @@ import { useMediaQuery } from "./utils";
 import { Sheet, SheetTrigger } from "../components/react-aria/sheet/Sheet.atoms";
 import { IconButton } from "../components/react-aria/button/Button.atoms";
 import { IconArrowNarrowLeft, IconMenu2 } from "../assets/Icons";
-import { Homepage } from "./extra/voting/docs.Homepage";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +74,7 @@ SuperTokens.init({
 });
 
 const routes = [
+  homepageRouteObj,
   votingRouteObj,
   commandRouteObj,
   actionPanelRouteObj,
@@ -234,7 +235,6 @@ const createdRoutes = routes.map((route) => {
 const newCreatedRoutes = [
   ...createdRoutes,
   createRoute({ getParentRoute: () => rootRoute, path: "/auth/callback", component: AuthCallback }),
-  createRoute({ getParentRoute: () => rootRoute, path: "/", component: Homepage }),
 ];
 
 const routeTree = rootRoute.addChildren(newCreatedRoutes);
