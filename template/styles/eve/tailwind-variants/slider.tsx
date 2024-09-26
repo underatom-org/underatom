@@ -101,7 +101,7 @@ export const SliderBarLayout = ({
 }) =>
   renderRoot(
     <>
-      <div className="h-fit w-fit flex flex-row items-center [&>*:not(:first-child)]:[margin-left:-2px]">
+      <div className="h-fit w-full flex flex-row items-center [&>*:not(:first-child)]:[margin-left:-2px]">
         {fillSlot}
         {thumbSlot}
       </div>

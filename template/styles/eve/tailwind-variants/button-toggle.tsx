@@ -28,12 +28,12 @@ group/buttonToggle
 `,
     variants: {
       attachment: {
-        none: "data-[toggled=true]:bg-primary-100 data-[toggled=true]:data-[active=true]:bg-primary-100 rounded-md data-[ring=true]:border-[#e4e4e7] data-[toggled=true]:data-[ring=true]:border-primary-950",
+        none: "data-[toggled=true]:bg-primary-100 data-[toggled=true]:data-[active=true]:bg-primary-100 rounded-md data-[ring=true]:border-base-200 data-[toggled=true]:data-[ring=true]:border-primary-950",
         center:
           "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 data-[ring=true]:rounded-md",
         start:
-          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-md rounded-r-[0px] data-[ring=true]:rounded-md data-[disabled=true]:border-[#f1f1f3]",
-        end: "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-[0px] rounded-r-md data-[ring=true]:rounded-md data-[disabled=true]:border-[#f1f1f3]",
+          "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-md rounded-r-[0px] data-[ring=true]:rounded-md",
+        end: "data-[toggled=true]:bg-base-100 data-[toggled=true]:data-[active=true]:bg-base-100 rounded-l-[0px] rounded-r-md data-[ring=true]:rounded-md",
       },
     },
 
@@ -46,50 +46,18 @@ group/buttonToggle
 };
 
 export const buttonToggleIconClass = ({ className }: ButtonToggleType) => {
-  return `
-  w-5
-  h-5
-  group-data-[toggled=true]/buttonToggle:text-[#18181b]
-  group-data-[toggled=true]/buttonToggle:group-data-[active=true]/buttonToggle:text-[#18181b]
-  group-data-[toggled=true]/buttonToggle:group-data-[ring=true]/buttonToggle:text-[#18181b]
-  group-hover/buttonToggle:text-[#18181b]
-  group-data-[disabled=true]/buttonToggle:text-[#8b8b8d]
-  text-[#09090b]
-  group-data-[active=true]/buttonToggle:text-[#09090b]
-  group-data-[ring=true]/buttonToggle:text-[#09090b]
-  group-data-[toggled=true]/buttonToggle:group-data-[disabled=true]/buttonToggle:text-[#8b8b8d]
-  ${className}
-  `;
+  return `w-5 h-5 text-base-950 group-data-[disabled=true]/buttonToggle:text-base-400 ${className}`;
 };
 
 export const buttonToggleLabelClass = ({ className }: ButtonToggleType) => {
-  return `
-  group-data-[toggled=true]/buttonToggle:text-[#18181b]
-  group-data-[toggled=true]/buttonToggle:group-data-[active=true]/buttonToggle:text-[#18181b]
-  group-data-[toggled=true]/buttonToggle:group-data-[ring=true]/buttonToggle:text-[#18181b]
-  group-hover/buttonToggle:text-[#18181b]
-  text-sm
-  font-text
-  font-medium
-  group-data-[disabled=true]/buttonToggle:text-[#8b8b8d]
-  text-[#09090b]
-  group-data-[active=true]/buttonToggle:text-[#09090b]
-  group-data-[ring=true]/buttonToggle:text-[#09090b]
-  group-data-[toggled=true]/buttonToggle:group-data-[disabled=true]/buttonToggle:text-[#8b8b8d]
-  ${className}
-  `;
+  return `text-base-950 text-sm font-text font-medium group-data-[disabled=true]/buttonToggle:text-base-400 ${className}`;
 };
 
 export const buttonToggleDotClass = ({ className, buttonToggleDotProps }: ButtonToggleDotType) => {
   const dotClass = tv({
-    base: "w-[6px] h-[6px] rounded-xs group-data-[disabled=true]/buttonToggle:[background:#8b8b8d]",
+    base: "w-[6px] h-[6px] rounded-xs group-data-[disabled=true]/buttonToggle:bg-base-400",
     variants: {
-      dotColor: {
-        base: "[background:#09090b]",
-        primary: "[background:#18181b]",
-        red: "[background:#dc2626]",
-        green: "[background:#318a00]",
-      },
+      dotColor: { base: "bg-base-950", primary: "bg-primary-950", red: "bg-danger-500", green: "bg-success-600" },
     },
 
     defaultVariants: { dotColor: buttonToggleDotDefaults.color },
@@ -101,7 +69,7 @@ export const buttonToggleDotClass = ({ className, buttonToggleDotProps }: Button
 };
 
 export const buttonToggleLoaderClass = ({ className }: ButtonToggleType) => {
-  return `group-data-[disabled=true]/buttonToggle:w-5 group-data-[disabled=true]/buttonToggle:h-5 group-data-[disabled=true]/buttonToggle:text-primary-400 animate-spin ${className}`;
+  return `group-data-[disabled=true]/buttonToggle:w-5 group-data-[disabled=true]/buttonToggle:h-5 group-data-[disabled=true]/buttonToggle:text-base-400 animate-spin ${className}`;
 };
 
 export const IconButtonToggleLayout = ({

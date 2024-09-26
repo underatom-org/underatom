@@ -145,7 +145,7 @@ export const avatarToggleCheckClass = ({ className, avatarToggleProps }: AvatarT
 
 export const avatarToggleCheckIconClass = ({ className, avatarToggleProps }: AvatarToggleCheckType) => {
   const iconClass = tv({
-    base: "text-success-900 group-data-[disabled]/avatarToggle:text-primary-400",
+    base: "text-white group-data-[disabled]/avatarToggle:text-primary-400",
     variants: { size: { sm: "w-[14px] h-[14px]", md: "w-[14px] h-[14px]", lg: "w-5 h-5", xl: "w-6 h-6" } },
 
     defaultVariants: { size: avatarToggleDefaults.size },

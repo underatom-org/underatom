@@ -204,7 +204,7 @@ export const actionPanelGroupItemBoxAvatarImageClass = ({
   actionPanelGroupItemBoxAvatarProps,
 }: ActionPanelGroupItemBoxAvatarType) => {
   const imageClass = tv({
-    base: "rounded-[50px] group-data-[disabled]/actionPanelGroupItem:shadow-[inset_0px_0px_0px_1000px_#d9d9d9b2]",
+    base: "rounded-[50px] group-data-[disabled]/actionPanelGroupItem:opacity-[0.42]",
     variants: { groupItemBoxAvatarMultiline: { true: "w-10 h-10", false: "w-7 h-7" } },
 
     defaultVariants: { groupItemBoxAvatarMultiline: actionPanelGroupItemBoxAvatarDefaults.multiline },
@@ -440,7 +440,7 @@ export const actionPanelGroupItemBoxIconClass = ({
       groupItemVariant: {
         default: "text-base-600",
         destructive:
-          "text-danger-500 group-hover/actionPanelGroupItem:text-[#fafafa] group-active/actionPanelGroupItem:text-[#fafafa] group-data-[highlighted]/actionPanelGroupItem:text-[#fafafa] group-data-[state=open]/actionPanelGroupItem:text-[#fafafa]",
+          "text-danger-500 group-hover/actionPanelGroupItem:text-base-50 group-active/actionPanelGroupItem:text-base-50 group-data-[highlighted]/actionPanelGroupItem:text-base-50 group-data-[state=open]/actionPanelGroupItem:text-base-50",
       },
     },
 
@@ -462,8 +462,13 @@ export const actionPanelGroupItemBoxLabelClass = ({
     variants: {
       groupItemVariant: {
         default: "text-base-950",
-        destructive:
-          "text-danger-600 group-hover/actionPanelGroupItem:text-[#fafafa] group-active/actionPanelGroupItem:text-[#fafafa] group-data-[highlighted]/actionPanelGroupItem:text-[#fafafa] group-data-[state=open]/actionPanelGroupItem:text-[#fafafa]",
+        destructive: `
+text-danger-600
+  group-hover/actionPanelGroupItem:text-background-50
+  group-active/actionPanelGroupItem:text-background-50
+  group-data-[highlighted]/actionPanelGroupItem:text-background-50
+  group-data-[state=open]/actionPanelGroupItem:text-background-50
+`,
       },
     },
 
@@ -481,7 +486,7 @@ export const actionPanelGroupItemBoxSupportingClass = ({
   actionPanelGroupItemProps,
 }: ActionPanelGroupItemBoxType) => {
   const supportingClass = tv({
-    base: "text-[#95969d] text-xs font-text font-medium select-none group-data-[disabled]/actionPanelGroupItem:text-base-400",
+    base: "text-base-500 text-xs font-text font-medium select-none group-data-[disabled]/actionPanelGroupItem:text-base-400",
     variants: {
       groupItemVariant: {
         default: "",
@@ -504,7 +509,7 @@ export const actionPanelGroupItemBoxDescriptionClass = ({
   actionPanelGroupItemProps,
 }: ActionPanelGroupItemBoxType) => {
   const descriptionClass = tv({
-    base: "text-[#71727a] text-sm font-text font-medium select-none group-data-[disabled]/actionPanelGroupItem:text-base-400",
+    base: "text-base-700 text-sm font-text font-medium select-none group-data-[disabled]/actionPanelGroupItem:text-base-400",
     variants: {
       groupItemVariant: {
         default: "",
@@ -826,7 +831,7 @@ export const actionPanelGroupItemCaretClass = ({ className, actionPanelGroupItem
       groupItemVariant: {
         default: "text-base-800",
         destructive:
-          "text-[#dc2626] group-hover/actionPanelGroupItem:text-[#fafafa] group-active/actionPanelGroupItem:text-[#fafafa] group-data-[highlighted]/actionPanelGroupItem:text-[#fafafa] group-data-[state=open]/actionPanelGroupItem:text-[#fafafa]",
+          "text-danger-500 group-hover/actionPanelGroupItem:text-base-50 group-active/actionPanelGroupItem:text-base-50 group-data-[highlighted]/actionPanelGroupItem:text-base-50 group-data-[state=open]/actionPanelGroupItem:text-base-50",
       },
     },
 
@@ -982,7 +987,7 @@ export const ActionPanelGroupLayout = ({
   );
 
 export const actionPanelClass = ({ className }: ActionPanelType) => {
-  return `group/actionPanel border-solid border-[#e4e4e7] border-1 bg-white shadow-md rounded-md min-w-[300px] ${className}`;
+  return `group/actionPanel border-solid border-base-100 border-1 bg-background-50 shadow-md rounded-md min-w-[300px] ${className}`;
 };
 
 export const ActionPanelLayout = ({
