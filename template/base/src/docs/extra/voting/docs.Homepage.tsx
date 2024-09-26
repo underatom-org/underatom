@@ -1,4 +1,5 @@
 import { Body, H1, H3, Subheader } from "../../../components/no-headless/typography/Typography.atoms";
+import { DocsRoute } from "../../docs.types";
 
 export const Homepage = () => {
   return (
@@ -30,4 +31,13 @@ export const Homepage = () => {
       </Body>
     </div>
   );
+};
+
+const homepageRoute = "/";
+
+export const homepageRouteObj: DocsRoute<typeof homepageRoute> = {
+  path: homepageRoute,
+  group: "getting-started",
+  label: "Home",
+  component: Homepage,
 };

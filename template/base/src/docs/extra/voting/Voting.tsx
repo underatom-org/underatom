@@ -11,6 +11,7 @@ import { atomWithStorage } from "jotai/utils";
 import { useLoggedInState, useConfirmedUserVotes, useOptions } from "./utils/state";
 import { useSendVoteMutation } from "./utils/mutations";
 import { useTemporaryToggle } from "./utils/hooks";
+import { DocsRoute } from "../../docs.types";
 
 const userVotesAtom = atomWithStorage<UserVote[]>("userVotes", []);
 const feedbackTextAtom = atomWithStorage<string>("feedbackText", "");
@@ -136,8 +137,9 @@ const Voting = () => {
   );
 };
 
-export const votingRouteObj = {
-  path: "/voting",
+const votingRoute = "/voting";
+export const votingRouteObj: DocsRoute<typeof votingRoute> = {
+  path: votingRoute,
   group: "getting-started",
   label: "Voting",
   component: Voting,
