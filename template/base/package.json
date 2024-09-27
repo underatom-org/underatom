@@ -50,7 +50,8 @@
     "@radix-ui/react-progress": "^1.1.0",
     "supertokens-web-js": "^0.13.0",
     "jotai": "^2.9.1",
-    "axios": "^1.7.7"
+    "axios": "^1.7.7",
+    "posthog-js": "^1.165.0"
   },
   "devDependencies": {
     "@babel/core": "^7.19.1",

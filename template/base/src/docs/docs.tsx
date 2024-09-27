@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "../styles.css";
 import "../assets/fonts/fonts.css";
@@ -60,6 +60,8 @@ import { useMediaQuery } from "./utils";
 import { Sheet, SheetTrigger } from "../components/react-aria/sheet/Sheet.atoms";
 import { IconButton } from "../components/react-aria/button/Button.atoms";
 import { IconArrowNarrowLeft, IconMenu2 } from "../assets/Icons";
+import { POSTHOG_API_KEY, POSTHOG_HOST, POSTHOG_UI_HOST } from "./docs.constants";
+import posthog from "posthog-js";
 
 const queryClient = new QueryClient();
 
@@ -237,6 +239,24 @@ const newCreatedRoutes = [
   createRoute({ getParentRoute: () => rootRoute, path: "/auth/callback", component: AuthCallback }),
 ];
 
+const App = () => {
+  useEffect(() => {
+    if (POSTHOG_API_KEY && POSTHOG_HOST && POSTHOG_UI_HOST) {
+      posthog.init(POSTHOG_API_KEY, {
+        api_host: POSTHOG_HOST,
+        ui_host: POSTHOG_UI_HOST,
+        person_profiles: "always",
+      });
+    }
+  }, []);
+
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
+};
+
 const routeTree = rootRoute.addChildren(newCreatedRoutes);
 
 const router = createRouter({ routeTree });
@@ -248,8 +268,6 @@ declare module "@tanstack/react-router" {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <App />
   </React.StrictMode>,
 );
