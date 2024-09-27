@@ -47,23 +47,18 @@ export const chipToggleClass = ({ className }: ChipToggleType) => {
 };
 
 export const chipToggleLabelClass = ({ className }: ChipToggleType) => {
-  return `text-base-950 text-sm font-text font-medium group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
+  return `text-base-950 text-sm font-text font-medium group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-base-50 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-base-200 ${className}`;
 };
 
 export const chipToggleIconClass = ({ className }: ChipToggleType) => {
-  return `w-5 h-5 text-base-950 group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
+  return `w-5 h-5 text-base-950 group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-base-50 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-base-200 ${className}`;
 };
 
 export const chipToggleDotClass = ({ className, chipToggleDotProps }: ChipToggleDotType) => {
   const dotClass = tv({
-    base: "w-[6px] h-[6px] rounded-xs group-disabled/chipToggle:bg-base-400 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:[background:#fcfcfc] group-data-[toggled=true]/chipToggle:[background:#fafafa]",
+    base: "w-[6px] h-[6px] rounded-xs group-disabled/chipToggle:bg-base-400 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:bg-base-200 group-data-[toggled=true]/chipToggle:bg-base-50",
     variants: {
-      dotColor: {
-        base: "bg-base-950",
-        primary: "bg-primary-950",
-        green: "[background:#318a00]",
-        red: "[background:#dc2626]",
-      },
+      dotColor: { base: "bg-base-950", primary: "bg-primary-950", green: "bg-success-600", red: "bg-danger-600" },
     },
 
     defaultVariants: { dotColor: chipToggleDotDefaults.color },
@@ -259,12 +254,12 @@ export const chipToggleAvatarImageClass = ({ className, chipToggleProps }: ChipT
 };
 
 export const chipToggleAvatarLabelClass = ({ className }: ChipToggleAvatarType) => {
-  return `text-[#18181b] text-xs font-text font-medium group-disabled/chipToggle:text-[#8b8b8d] group-data-[toggled=true]/chipToggle:text-[#fafafa] group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] ${className}`;
+  return `text-base-950 text-xs font-text font-medium group-disabled/chipToggle:text-base-400 group-data-[toggled=true]/chipToggle:text-base-50 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-base-200 ${className}`;
 };
 
 export const chipToggleAvatarIconClass = ({ className, chipToggleProps }: ChipToggleAvatarType) => {
   const iconClass = tv({
-    base: "text-base-800 group-disabled/chipToggle:text-base-400 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-[#fcfcfc] group-data-[toggled=true]/chipToggle:text-[#fafafa]",
+    base: "text-base-800 group-disabled/chipToggle:text-base-400 group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-base-200 group-data-[toggled=true]/chipToggle:text-base-50",
     variants: { size: { sm: "w-3 h-3", lg: "w-5 h-5", md: "w-[14px] h-[14px]" } },
 
     defaultVariants: { size: chipToggleDefaults.size },
@@ -352,16 +347,17 @@ export const chipToggleDismissIconClass = ({ className }: ChipToggleDismissType)
   group-disabled/chipToggleDismiss:group-disabled/chipToggle:w-[14px]
   h-[14px]
   group-disabled/chipToggleDismiss:group-disabled/chipToggle:h-[14px]
-  text-[#848485]
-  group-disabled/chipToggleDismiss:text-[#8b8b8d]
-  group-hover/chipToggleDismiss:text-[#09090b]
-  group-data-[ring=true]/chipToggleDismiss:text-[#09090b]
-  group-data-[active=true]/chipToggleDismiss:text-[#09090b]
-  group-data-[toggled=true]/chipToggle:text-[#f6f6f7]
-  group-hover/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-[#fafafa]
-  group-data-[active=true]/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-[#fafafa]
-  group-data-[ring=true]/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-[#fafafa]
-  group-disabled/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-[#fcfcfc]
+  text-base-600
+  group-data-[active=true]/chipToggleDismiss:text-base-600
+  group-disabled/chipToggleDismiss:text-base-400
+  group-hover/chipToggleDismiss:text-base-950
+  group-data-[ring=true]/chipToggleDismiss:text-base-950
+  group-data-[toggled=true]/chipToggle:text-base-200
+  group-disabled/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-base-200
+  group-disabled/chipToggleDismiss:group-disabled/chipToggle:group-data-[toggled=true]/chipToggle:text-base-200
+  group-hover/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-base-50
+  group-data-[active=true]/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-base-50
+  group-data-[ring=true]/chipToggleDismiss:group-data-[toggled=true]/chipToggle:text-base-50
   ${className}
   `;
 };

@@ -276,7 +276,7 @@ export const tagDismissClass = ({ className }: TagDismissType) => {
 };
 
 export const tagDismissIconClass = ({ className }: TagDismissType) => {
-  return `w-[14px] h-[14px] text-[#848485] group-data-[active=true]/tagDismiss:text-[#848485] group-disabled/tagDismiss:text-[#8b8b8d] group-hover/tagDismiss:text-[#18181b] group-data-[ring=true]/tagDismiss:text-[#18181b] ${className}`;
+  return `w-[14px] h-[14px] text-base-600 group-data-[active=true]/tagDismiss:text-base-600 group-disabled/tagDismiss:text-base-400 group-hover/tagDismiss:text-base-950 group-data-[ring=true]/tagDismiss:text-base-950 ${className}`;
 };
 
 export const TagDismissLayout = ({

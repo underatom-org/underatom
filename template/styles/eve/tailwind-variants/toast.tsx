@@ -343,8 +343,8 @@ export const toastTitleClass = ({ className, toastProps }: ToastType) => {
     base: "text-sm font-text font-medium",
     variants: {
       status: {
-        primary: "text-[#000000]",
-        base: "text-[#000000]",
+        primary: "text-primary-950",
+        base: "text-base-950",
         success: "text-success-900",
         warning: "text-warning-900",
         danger: "text-danger-900",

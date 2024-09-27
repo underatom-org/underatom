@@ -75,6 +75,10 @@ export const theme = {
     },
     white: "#ffffff",
     transparent: "#00000000",
+    misc: {
+      blue: "#0b6de0",
+      orange: "#ef952a",
+    },
   },
   boxShadow: {
     sm: "0px 2px 6px -6px #0000001a",

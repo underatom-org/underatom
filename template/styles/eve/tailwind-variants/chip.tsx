@@ -208,7 +208,7 @@ export const chipAvatarClass = ({ className }: ChipAvatarType) => {
 
 export const chipAvatarImageClass = ({ className, chipProps }: ChipAvatarType) => {
   const imageClass = tv({
-    base: "rounded-[50px] group-disabled/chip:shadow-[inset_0px_0px_0px_1000px_#d9d9d9b2]",
+    base: "rounded-[50px] group-disabled/chip:opacity-[0.42]",
     variants: { size: { sm: "w-5 h-5", md: "w-6 h-6", lg: "w-7 h-7" } },
 
     defaultVariants: { size: chipDefaults.size },
@@ -314,15 +314,15 @@ export const chipDismissIconClass = ({ className }: ChipDismissType) => {
   return `
   w-[14px]
   h-[14px]
-  text-[#848485]
-  group-hover/chipDismiss:text-[#09090b]
-  group-data-[active=true]/chipDismiss:text-[#09090b]
-  group-data-[ring=true]/chipDismiss:text-[#09090b]
-  group-disabled/chipDismiss:text-[#8b8b8d]
-  group-disabled/chip:text-[#8b8b8d]
-  group-hover/chipDismiss:group-disabled/chip:text-[#8b8b8d]
-  group-data-[active=true]/chipDismiss:group-disabled/chip:text-[#8b8b8d]
-  group-data-[ring=true]/chipDismiss:group-disabled/chip:text-[#8b8b8d]
+  text-base-600
+  group-data-[active=true]/chipDismiss:text-base-600
+  group-hover/chipDismiss:text-base-950
+  group-data-[ring=true]/chipDismiss:text-base-950
+  group-disabled/chipDismiss:text-base-400
+  group-disabled/chip:text-base-400
+  group-hover/chipDismiss:group-disabled/chip:text-base-400
+  group-data-[active=true]/chipDismiss:group-disabled/chip:text-base-400
+  group-data-[ring=true]/chipDismiss:group-disabled/chip:text-base-400
   ${className}
   `;
 };
