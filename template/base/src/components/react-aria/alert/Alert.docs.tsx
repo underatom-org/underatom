@@ -9,30 +9,46 @@ import {
   AlertWithStatus,
   AlertWithStatusProps,
 } from "./Alert.atoms";
-import { Atom } from "../../../assets/Icons";
+import { Atom, IconCircleCheck, IconCircleX, IconInfoCircle } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
+import { ReactNode } from "react";
+
+const getIcon = (status: AlertProps["status"]): ((className: string) => ReactNode) => {
+  switch (status) {
+    case "primary":
+      return (className) => <IconInfoCircle className={className} />;
+    case "base":
+      return (className) => <IconInfoCircle className={className} />;
+    case "danger":
+      return (className) => <IconCircleX className={className} />;
+    case "warning":
+      return (className) => <IconInfoCircle className={className} />;
+    case "success":
+      return (className) => <IconCircleCheck className={className} />;
+    default:
+      return (className) => <IconInfoCircle className={className} />;
+  }
+};
 
 const Default = () => {
   return (
     <ShowcaseFrame>
       <VariantsGrid<AlertProps>
-        renderVariant={(props) => {
-          return (
-            <Alert
-              {...props}
-              icon={(className) => <Atom className={className} />}
-              title="Title"
-              subtitle="Subtitle"
-              description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
-              dismissSlot={<AlertDismiss />}
-              primaryActionSlot={
-                <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
-              }
-              secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
-            />
-          );
-        }}
+        renderVariant={(props) => (
+          <Alert
+            {...props}
+            icon={getIcon(props.status)}
+            title="Title"
+            subtitle="Subtitle"
+            description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
+            dismissSlot={<AlertDismiss />}
+            primaryActionSlot={
+              <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
+            }
+            secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
+          />
+        )}
         variantPropsMap={[
           [
             { status: "primary" },
@@ -55,11 +71,11 @@ const WithStatus = () => {
           return (
             <AlertWithStatus
               {...props}
-              icon={(className) => <Atom className={className} />}
+              icon={getIcon(props.status)}
               title="Title"
               subtitle="Subtitle"
               description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
-              statusSlot={<AlertStatus icon={(className) => <Atom className={className} />} />}
+              statusSlot={<AlertStatus icon={getIcon(props.status)} />}
               primaryActionSlot={
                 <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
               }
