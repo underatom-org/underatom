@@ -41,7 +41,7 @@ import { buttonToggleRouteObj } from "../components/react-aria/button-toggle/But
 import { textRouteObj } from "../components/no-headless/typography/Typography.docs";
 import { windowRouteObj } from "../components/no-headless/window/Window.docs";
 import { tabsRouteObj } from "../components/radix/tabs/Tabs.docs";
-import { Logo, LogoWithText } from "../assets/brand/Brand";
+import { LogoWithText } from "../assets/brand/Brand";
 import { radioGroupRouteObj } from "../components/radix/radio-group/RadioGroup.docs";
 import { checkboxGroupRouteObj } from "../components/react-aria/checkbox-group/CheckboxGroup.docs";
 import { selectTriggerRouteObj } from "../components/radix/select-trigger/SelectTrigger.docs";
@@ -210,7 +210,10 @@ const rootRoute = createRootRoute({
               </>
             ) : (
               <>
-                <Logo />
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <LogoWithText />
+                  <Label color="secondary">alpha</Label>
+                </div>
                 <LoginButton />
               </>
             )}
