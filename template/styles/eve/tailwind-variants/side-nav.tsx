@@ -184,7 +184,7 @@ export const sideNavGroupHeaderLabelClass = ({ className }: SideNavGroupHeaderTy
 };
 
 export const sideNavGroupHeaderCaretClass = ({ className }: SideNavGroupHeaderType) => {
-  return `w-5 h-5 text-base-600 group-data-[disabled]/sideNavGroup:text-base-300 ${className}`;
+  return `w-5 h-5 text-base-600 transition-all group-data-[state=open]/sideNavGroup:rotate-[180deg] group-data-[disabled]/sideNavGroup:text-base-300 ${className}`;
 };
 
 export const SideNavGroupHeaderLayout = ({
