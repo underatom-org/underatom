@@ -9,6 +9,7 @@ import {
   createRoute,
   createRouter,
   useLocation,
+  useRouter,
 } from "@tanstack/react-router";
 import {
   SideNav,
@@ -40,7 +41,7 @@ import { buttonToggleRouteObj } from "../components/react-aria/button-toggle/But
 import { textRouteObj } from "../components/no-headless/typography/Typography.docs";
 import { windowRouteObj } from "../components/no-headless/window/Window.docs";
 import { tabsRouteObj } from "../components/radix/tabs/Tabs.docs";
-import { Logo, MobileLogo } from "../assets/brand/Brand";
+import { Logo, LogoWithText } from "../assets/brand/Brand";
 import { radioGroupRouteObj } from "../components/radix/radio-group/RadioGroup.docs";
 import { checkboxGroupRouteObj } from "../components/react-aria/checkbox-group/CheckboxGroup.docs";
 import { selectTriggerRouteObj } from "../components/radix/select-trigger/SelectTrigger.docs";
@@ -59,9 +60,10 @@ import { API_BASE_URL } from "./extra/voting/utils/constants";
 import { useMediaQuery } from "./utils";
 import { Sheet, SheetTrigger } from "../components/react-aria/sheet/Sheet.atoms";
 import { IconButton } from "../components/react-aria/button/Button.atoms";
-import { IconArrowNarrowLeft, IconMenu2 } from "../assets/Icons";
+import { IconMenu2, X } from "../assets/Icons";
 import { POSTHOG_API_KEY, POSTHOG_HOST, POSTHOG_UI_HOST } from "./docs.constants";
 import posthog from "posthog-js";
+import { Label } from "../components/no-headless/typography/Typography.atoms";
 
 const queryClient = new QueryClient();
 
@@ -117,6 +119,22 @@ const rootRoute = createRootRoute({
     const isMobile = useMediaQuery("(max-width: 768px)");
     const isVotingPage = pathname === "/voting";
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
+
+    // reset scroll on page change
+    useEffect(() => {
+      const handleScrollToTop = () => {
+        window.scrollTo(0, 0);
+      };
+
+      const unsubscribe = router.subscribe("onResolved", () => {
+        handleScrollToTop();
+      });
+
+      return () => {
+        unsubscribe();
+      };
+    }, [router]);
 
     const IntermediateSideNav = () => {
       return (
@@ -131,9 +149,10 @@ const rootRoute = createRootRoute({
                 headerSlot={<SideNavGroupHeader label={group} hasCaret />}
                 itemSlots={routes.map((route) => (
                   <SideNavGroupItemLink
-                    linkProps={{ to: route.path }}
+                    linkProps={{ to: route.path, resetScroll: false }}
                     value={route.path}
                     boxSlot={<SideNavGroupItemBox label={route.label} />}
+                    onClick={() => setIsOpen(false)}
                   />
                 ))}
               />
@@ -166,15 +185,20 @@ const rootRoute = createRootRoute({
           >
             {isMobile ? (
               <>
+                <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+                  <LogoWithText />
+                  <Label color="secondary">alpha</Label>
+                </div>
                 <SheetTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
                   <IconButton
                     size="sm"
                     variant="base"
-                    icon={(className) =>
-                      isOpen ? <IconArrowNarrowLeft className={className} /> : <IconMenu2 className={className} />
-                    }
+                    icon={(className) => (isOpen ? <X className={className} /> : <IconMenu2 className={className} />)}
                   />
-                  <Sheet side="left" style={{ width: "65%", top: 52, overflowY: "auto" }}>
+                  <Sheet
+                    side="right"
+                    style={{ width: "65%", top: 52, bottom: 0, left: "auto", right: 0, overflowY: "auto" }}
+                  >
                     <div style={{ padding: 10 }}>
                       <LoginButton variant="base" fullWidth size="sm" />
                     </div>
@@ -183,9 +207,6 @@ const rootRoute = createRootRoute({
                     </div>
                   </Sheet>
                 </SheetTrigger>
-                <div style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
-                  <MobileLogo />
-                </div>
               </>
             ) : (
               <>
@@ -199,7 +220,7 @@ const rootRoute = createRootRoute({
           style={{
             display: "flex",
             maxWidth: "1000px",
-            margin: isVotingPage ? "42px auto 0" : "80px auto 0",
+            margin: isVotingPage && isMobile ? "42px auto 0" : "80px auto 0",
             padding: "20px",
           }}
         >
