@@ -50,3 +50,4 @@ export const IconMenu2: IconType = () => <></>;
 export const IconCircleCheck: IconType = () => <></>;
 export const IconCircleX: IconType = () => <></>;
 export const IconInfoCircle: IconType = () => <></>;
+export const IconPencil: IconType = () => <></>;

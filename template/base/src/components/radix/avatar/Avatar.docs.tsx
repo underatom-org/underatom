@@ -11,7 +11,7 @@ import {
   AvatarProps,
   AvatarStatus,
 } from "./Avatar.atoms";
-import { Atom } from "../../../assets/Icons";
+import { Atom, IconPencil } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
@@ -94,9 +94,9 @@ const WithActionExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsRow>
-        <ImageAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
-        <TextAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
-        <IconAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
+        <ImageAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
+        <TextAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
+        <IconAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
       </VariantsRow>
     </ShowcaseFrame>
   );
