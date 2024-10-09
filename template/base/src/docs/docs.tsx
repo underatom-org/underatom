@@ -231,6 +231,7 @@ const rootRoute = createRootRoute({
             <div
               style={{
                 width: "220px",
+                minWidth: "220px",
                 marginRight: "40px",
                 height: "calc(100vh - 110px)",
                 position: "sticky",
