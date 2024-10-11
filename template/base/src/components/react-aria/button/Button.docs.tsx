@@ -255,7 +255,7 @@ const AnchorButtonExample = () => {
 
 const ButtonWithDotExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame paddingX={20}>
       <VariantsGrid<ButtonWithDotProps>
         renderVariant={(props) => {
           return <ButtonWithDot {...props}>Button</ButtonWithDot>;

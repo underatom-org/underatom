@@ -333,15 +333,15 @@ export const textareaBoxClass = ({ className }: TextareaBoxType) => {
   group-data-[invalid]/textarea:border-danger-400
   hover:border-base-300
   group-data-[invalid]/textarea:hover:border-danger-600
-  &:not(:has(button:active)):active:border-base-950
+  active:border-base-950
   data-[ring=true]:border-base-950
-  group-data-[invalid]/textarea:&:not(:has(button:active)):active:border-danger-500
+  group-data-[invalid]/textarea:active:border-danger-500
   group-data-[invalid]/textarea:data-[ring=true]:border-danger-500
   group-data-[disabled]/textarea:bg-base-100
   group-data-[disabled]/textarea:shadow-none
   group-data-[disabled]/textarea:pointer-events-none
   group-data-[disabled]/textarea:hover:border-base-200
-  group-data-[disabled]/textarea:&:not(:has(button:active)):active:border-base-200
+  group-data-[disabled]/textarea:active:border-base-200
   group-data-[disabled]/textarea:data-[ring=true]:border-base-200
   group-data-[invalid]/textarea:group-data-[disabled]/textarea:border-base-200
   ${className}
@@ -390,7 +390,7 @@ export const TextareaBoxWithTagsLayout = ({
     <>
       <div className="h-fit w-full flex flex-row gap-[6px]">
         <div className="h-fit w-full flex flex-col gap-[6px]">
-          <div className="h-fit w-full flex flex-row gap-[6px]">{tagSlots}</div>
+          <div className="h-fit w-full flex flex-row gap-[6px] flex-wrap">{tagSlots}</div>
           {textSlot}
         </div>
       </div>

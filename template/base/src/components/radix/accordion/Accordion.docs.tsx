@@ -132,6 +132,7 @@ const WithBadge = () => {
         <Accordion
           type="multiple"
           variant="separated"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -168,6 +169,7 @@ const WithBadge = () => {
         <Accordion
           type="multiple"
           variant="attached"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="4"
@@ -216,6 +218,7 @@ const WithBadgeWithIcon = () => {
         <Accordion
           type="multiple"
           variant="separated"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -270,6 +273,7 @@ const WithBadgeWithIcon = () => {
         <Accordion
           type="multiple"
           variant="attached"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="4"
@@ -318,6 +322,7 @@ const WithVotingHeader = () => {
         <Accordion
           type="multiple"
           variant="separated"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -360,6 +365,7 @@ const WithVotingHeader = () => {
         <Accordion
           type="multiple"
           variant="attached"
+          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -417,6 +423,7 @@ const Disabled = () => {
             return (
               <Accordion
                 {...props}
+                style={{ minWidth: 400 }}
                 itemSlots={[
                   <AccordionItem
                     value="1"
@@ -463,6 +470,7 @@ const Disabled = () => {
             return (
               <Accordion
                 {...props}
+                style={{ minWidth: 400 }}
                 itemSlots={[
                   <AccordionItem
                     value="1"

@@ -27,8 +27,11 @@ import {
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
+import { useMediaQuery } from "../../../docs/utils";
 
 const DefaultExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -39,7 +42,7 @@ const DefaultExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : 300 }}
             groupSlots={[
               <SelectPanelGroup
                 title="Programming languages"
@@ -59,6 +62,8 @@ const DefaultExample = () => {
 };
 
 const MultipleGroupsExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -69,7 +74,7 @@ const MultipleGroupsExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : 300 }}
             groupSlots={[
               <SelectPanelGroup
                 title="Fruits"
@@ -149,6 +154,8 @@ const MultipleGroupsExample = () => {
 };
 
 const StatusExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -159,7 +166,7 @@ const StatusExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}
             groupSlots={[
               <SelectPanelGroup
                 title="Status"
@@ -187,6 +194,8 @@ const StatusExample = () => {
 };
 
 const AvatarSingleLineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -197,7 +206,7 @@ const AvatarSingleLineExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}
             groupSlots={[
               <SelectPanelGroup
                 title="People"
@@ -254,6 +263,8 @@ const AvatarSingleLineExample = () => {
 };
 
 const AvatarMultilineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -264,7 +275,7 @@ const AvatarMultilineExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}
             groupSlots={[
               <SelectPanelGroup
                 title="People"
@@ -328,6 +339,8 @@ const AvatarMultilineExample = () => {
 };
 
 const IconMultilineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -338,7 +351,7 @@ const IconMultilineExample = () => {
 
         <Select.Portal>
           <SelectPanel
-            style={{ minWidth: 400 }}
+            style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}
             groupSlots={[
               <SelectPanelGroup
                 title="Social media"

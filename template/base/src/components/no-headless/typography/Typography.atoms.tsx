@@ -45,7 +45,10 @@ export type LabelProps = TypographyProps;
 export const Label = (props: LabelProps) => {
   return <Typography {...props} type="label" />;
 };
-
+export type SublabelProps = TypographyProps;
+export const Sublabel = (props: SublabelProps) => {
+  return <Typography {...props} type="sublabel" />;
+};
 export type CodeProps = TypographyProps;
 export const Code = (props: CodeProps) => {
   return <Typography {...props} type="code" />;

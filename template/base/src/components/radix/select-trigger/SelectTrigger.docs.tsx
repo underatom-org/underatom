@@ -116,7 +116,7 @@ export const DisabledExample = () => (
 );
 
 export const AttachmentExample = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame paddingX={30}>
     <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
       <SelectTriggerHelper
         helperStyle={{ width: 200 }}

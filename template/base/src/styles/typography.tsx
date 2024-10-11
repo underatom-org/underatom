@@ -7,7 +7,7 @@ import type { RenderRoot } from "../_utils";
 */
 
 export type TypographyStyleProps = {
-  type?: "h1" | "h2" | "h3" | "subheader" | "body" | "code" | "label";
+  type?: "h1" | "h2" | "h3" | "subheader" | "body" | "code" | "label" | "sublabel";
   color?: "base" | "secondary";
 };
 

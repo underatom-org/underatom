@@ -2,7 +2,15 @@ import { Body, H1, H2, H3, Subheader } from "../components/no-headless/typograph
 import { Window } from "../components/no-headless/window/Window.atoms";
 import { useMediaQuery } from "./utils";
 
-export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.ReactNode; paddingX?: number }) => {
+export const ShowcaseFrame = ({
+  children,
+  paddingX = 40,
+  style,
+}: {
+  children: React.ReactNode;
+  paddingX?: number;
+  style?: React.CSSProperties;
+}) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <Window style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
@@ -16,6 +24,7 @@ export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.Rea
           alignItems: "center",
           minHeight: 300,
           overflow: "auto",
+          ...style,
         }}
       >
         {children}
@@ -74,12 +83,21 @@ export const Example = ({
 };
 
 export const VariantsRow = ({ children }: { children: React.ReactNode }) => {
-  return <div style={{ display: "flex", gap: "16px", justifyContent: "center" }}>{children}</div>;
+  return <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>{children}</div>;
 };
 
 export const VariantsColumn = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", alignItems: "center", width: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        alignItems: "center",
+        width: "100%",
+        flexWrap: "wrap",
+      }}
+    >
       {children}
     </div>
   );

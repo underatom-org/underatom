@@ -2,6 +2,7 @@ import { Atom } from "../../../assets/Icons";
 import { avatar1Src } from "../../../assets/images/Images";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
+import { useMediaQuery } from "../../../docs/utils";
 import { Button } from "../button/Button.atoms";
 import {
   Input,
@@ -16,7 +17,8 @@ import {
 } from "./Input.atoms";
 
 const InputShowcaseFrame = ({ children }: { children: React.ReactNode }) => {
-  return <ShowcaseFrame paddingX={200}>{children}</ShowcaseFrame>;
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return <ShowcaseFrame paddingX={isMobile ? 30 : 200}>{children}</ShowcaseFrame>;
 };
 
 const Default = () => {
@@ -210,37 +212,41 @@ const InputWithTagsHelper = (props: Partial<InputProps>) => {
 };
 
 const WithTags = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80}>
       <InputWithTagsHelper />
     </ShowcaseFrame>
   );
 };
 
 const WithTagsInvalid = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80}>
       <InputWithTagsHelper isInvalid />
     </ShowcaseFrame>
   );
 };
 
 const WithTagsDisabled = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80}>
       <InputWithTagsHelper isDisabled />
     </ShowcaseFrame>
   );
 };
 
 const WithTagsSizes = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80}>
-      <VariantsColumn>
-        <InputWithTagsHelper size="sm" />
-        <InputWithTagsHelper size="md" />
-        <InputWithTagsHelper size="lg" />
-      </VariantsColumn>
+    <ShowcaseFrame paddingX={isMobile ? 20 : 80} style={{ justifyContent: isMobile ? "unset" : "center" }}>
+      <div>
+        <InputWithTagsHelper size="sm" style={{ minWidth: 400 }} />
+        <InputWithTagsHelper size="md" style={{ minWidth: 400 }} />
+        <InputWithTagsHelper size="lg" style={{ minWidth: 400 }} />
+      </div>
     </ShowcaseFrame>
   );
 };

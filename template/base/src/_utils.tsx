@@ -71,6 +71,7 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
         display: "flex",
         // gap: 16 * (variantPropsMap.length - index),
         gap: 16,
+        flexWrap: "wrap",
         ...(index % 2 === (isHorizontal ? 1 : 0)
           ? {
               flexDirection: "column",

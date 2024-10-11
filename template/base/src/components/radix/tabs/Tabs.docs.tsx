@@ -12,6 +12,12 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { IconHome, IconSettings, IconUserCircle } from "@tabler/icons-react";
 import { useState } from "react";
+import { useMediaQuery } from "../../../docs/utils";
+
+const ShowcaseFrame2 = (props: React.ComponentPropsWithoutRef<typeof ShowcaseFrame>) => {
+  const isMobile = useMediaQuery("(max-width: 568px)");
+  return <ShowcaseFrame {...props} style={{ justifyContent: isMobile ? "unset" : "center" }} />;
+};
 
 /*
   ====================================
@@ -182,17 +188,17 @@ export const FillDisabledExample = () => {
 
 export const FillWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
 export const FillWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 export const FillWithIndicatorExample = () => {
@@ -272,17 +278,17 @@ export const UnderlineDisabledExample = () => {
 
 export const UnderlineWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
 export const UnderlineWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 export const UnderlineWithIndicatorExample = () => {
@@ -362,17 +368,17 @@ export const HandleDisabledExample = () => {
 
 export const HandleWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
 export const HandleWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame2>
       <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 export const HandleWithIndicatorExample = () => {
