@@ -403,7 +403,7 @@ const IconMultilineExample = () => {
 
 const SelectPanelDocs = () => {
   return (
-    <Page title="SelectPanel" subtitle="SelectPanel">
+    <Page title="SelectPanel" subtitle="SelectPanel" command="npx underatom@latest add select-panel">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

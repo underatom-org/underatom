@@ -1,5 +1,4 @@
 import { Atom } from "phosphor-react";
-import { VariantsGrid } from "./../../../_utils";
 import {
   ChipToggle,
   ChipToggleAvatar,
@@ -11,7 +10,15 @@ import {
   ChipToggleWithIcon,
 } from "./ChipToggle.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
+import {
+  Example,
+  Page,
+  Section,
+  ShowcaseFrame,
+  VariantsColumn,
+  VariantsGrid,
+  VariantsRow,
+} from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
 const Default = () => {
@@ -168,7 +175,7 @@ const WithIcon = () => {
 
 const ChipToggleDocs = () => {
   return (
-    <Page title="ChipToggle" subtitle="">
+    <Page title="ChipToggle" subtitle="" command="npx underatom@latest add chip-toggle">
       <Example>
         <Default />
       </Example>

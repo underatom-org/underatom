@@ -71,7 +71,7 @@ const RequiredExample = () => {
 
 const Docs = () => {
   return (
-    <Page title="Checkbox" subtitle="Checkbox">
+    <Page title="Checkbox" subtitle="" command="npx underatom@latest add checkbox">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

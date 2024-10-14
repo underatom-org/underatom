@@ -534,6 +534,7 @@ const ActionPanelDocs = () => {
             <Code>DropdownMenu</Code> component.
           </>
         }
+        command="npx underatom@latest add action-panel"
       >
         <Section title="Showcase">
           <Example title="" description="Complex example with multiple groups and items.">

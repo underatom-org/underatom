@@ -20,10 +20,9 @@ import {
 } from "../../../styles/accordion";
 import * as Progress from "@radix-ui/react-progress";
 import React, { ReactNode } from "react";
-import { CaretDown } from "../../../assets/Icons";
+import { CaretDown, Rosette } from "../../../assets/Icons";
 import { mergeProps, useFocusRing } from "react-aria";
 import { RatingGroup } from "@ark-ui/react";
-import { IconRosette } from "@tabler/icons-react";
 import { getGenericContext } from "../../../_utils";
 
 /*
@@ -337,7 +336,7 @@ export const UAccordionItemHeaderRateItemIcon = (props: UAccordionItemHeaderRate
     <RatingGroup.ItemContext>
       {({ highlighted }) =>
         highlighted ? (
-          <IconRosette
+          <Rosette
             fill="currentColor"
             className={accordionItemHeaderRateItemIconClass({
               className: props.className,
@@ -346,7 +345,7 @@ export const UAccordionItemHeaderRateItemIcon = (props: UAccordionItemHeaderRate
             })}
           />
         ) : (
-          <IconRosette
+          <Rosette
             className={accordionItemHeaderRateItemIconClass({
               className: props.className,
               accordionItemProps,

@@ -102,7 +102,11 @@ const SecondaryColorExample = () => {
 
 const TextDocs = () => {
   return (
-    <Page title="Typography" subtitle="Generic text components split into multiple atoms.">
+    <Page
+      title="Typography"
+      subtitle="Generic text components split into multiple atoms."
+      command="npx underatom@latest add typography"
+    >
       <Section title="Showcase">
         <Example title="H1">
           <Heading1Example />

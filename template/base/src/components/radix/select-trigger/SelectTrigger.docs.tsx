@@ -213,7 +213,7 @@ export const WithTagsExample = () => {
 };
 
 export const Docs = () => (
-  <Page title="SelectTrigger" subtitle="Subtitle">
+  <Page title="SelectTrigger" subtitle="Subtitle" command="npx underatom@latest add select-trigger">
     <Section title="Showcase">
       <Example title="Default">
         <DefaultExample />

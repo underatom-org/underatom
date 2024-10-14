@@ -1,4 +1,3 @@
-import { VariantsGrid } from "../../../_utils";
 import {
   AvatarButton,
   AvatarButtonBadge,
@@ -12,7 +11,7 @@ import {
 } from "./AvatarButton.atoms";
 import { Atom } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsRow } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
 export const AvatarButtonWithContent = (props: Omit<AvatarButtonProps, "contentSlot">) => {
@@ -205,7 +204,7 @@ const WithTextExample = () => {
 
 const AvatarButtonDocs = () => (
   <>
-    <Page title="AvatarButton" subtitle="Subtitle">
+    <Page title="AvatarButton" subtitle="Subtitle" command="npx underatom@latest add avatar-button">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

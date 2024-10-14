@@ -1,5 +1,4 @@
 import { Atom } from "phosphor-react";
-import { VariantsGrid } from "./../../../_utils";
 import {
   ButtonToggle,
   ButtonToggleWithDot,
@@ -10,7 +9,15 @@ import {
   LoadingButtonToggle,
 } from "./ButtonToggle.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
+import {
+  Example,
+  Page,
+  Section,
+  ShowcaseFrame,
+  VariantsColumn,
+  VariantsGrid,
+  VariantsRow,
+} from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 
 const BasicExample = () => {
@@ -173,7 +180,11 @@ const LoadingButtonToggleExample = () => {
 
 const ButtonToggleDocs = () => {
   return (
-    <Page title="ButtonToggle" subtitle="Toggle buttons are used to toggle between two states.">
+    <Page
+      title="ButtonToggle"
+      subtitle="Toggle buttons are used to toggle between two states."
+      command="npx underatom@latest add button-toggle"
+    >
       <Section title="Showcase">
         <Example
           title="Default"

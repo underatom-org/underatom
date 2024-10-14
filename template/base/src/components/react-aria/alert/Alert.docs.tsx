@@ -1,4 +1,3 @@
-import { VariantsGrid } from "../../../_utils";
 import {
   Alert,
   AlertAction,
@@ -11,7 +10,7 @@ import {
 } from "./Alert.atoms";
 import { Atom } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsGrid } from "../../../docs/docs.components";
 
 const Default = () => {
   return (
@@ -83,7 +82,7 @@ const WithStatus = () => {
 
 const AlertDocs = () => {
   return (
-    <Page title="Alert" subtitle="">
+    <Page title="Alert" subtitle="" command="npx underatom@latest add alert">
       <Section title="Showcase">
         <Example title="Variants">
           <Default />

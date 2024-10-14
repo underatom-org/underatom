@@ -120,17 +120,10 @@ export const AccordionItemHeader = ({ icon, label, badgeSlot, ...props }: Accord
 export type AccordionItemHeaderVotingProps = Omit<UAccordionItemHeaderVotingRootProps, "children"> & {
   label: string;
   badgeSlot?: React.ReactNode;
-  count?: number;
   rateSlot?: React.ReactNode;
 };
 
-export const AccordionItemHeaderVoting = ({
-  label,
-  badgeSlot,
-  count,
-  rateSlot,
-  ...props
-}: AccordionItemHeaderVotingProps) => {
+export const AccordionItemHeaderVoting = ({ label, badgeSlot, rateSlot, ...props }: AccordionItemHeaderVotingProps) => {
   const accordionProps = useAccordionInternalProvider();
   const accordionItemProps = useAccordionItemInternalProvider();
   return (

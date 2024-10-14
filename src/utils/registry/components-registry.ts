@@ -1,0 +1,212 @@
+import type { RegistryItem } from "./schema";
+
+export type ComponentRegistry = RegistryItem & { relativePath: string; stylingName: string };
+
+export const componentsRegistry: ComponentRegistry[] = [
+  {
+    name: "rate",
+    type: "registry:ui",
+    relativePath: "ark-ui/rate",
+    stylingName: "rate.tsx",
+    dependencies: ["@ark-ui/react", "react-aria"],
+  },
+  {
+    name: "command",
+    type: "registry:ui",
+    relativePath: "cmdk/command",
+    stylingName: "command.tsx",
+    dependencies: ["@radix-ui/react-switch", "@radix-ui/react-avatar", "cmdk", "react-aria"],
+  },
+
+  // no-headless
+  {
+    name: "floating-paper",
+    type: "registry:ui",
+    relativePath: "no-headless/floating-paper",
+    stylingName: "floating-paper.tsx",
+  },
+  {
+    name: "typography",
+    type: "registry:ui",
+    relativePath: "no-headless/typography",
+    stylingName: "typography.tsx",
+  },
+  {
+    name: "window",
+    type: "registry:ui",
+    relativePath: "no-headless/window",
+    stylingName: "window.tsx",
+  },
+
+  // radix
+  {
+    name: "accordion",
+    type: "registry:ui",
+    relativePath: "radix/accordion",
+    stylingName: "accordion.tsx",
+    dependencies: ["@radix-ui/react-accordion", "@radix-ui/react-progress", "@ark-ui/react"],
+  },
+  {
+    name: "action-panel",
+    type: "registry:ui",
+    relativePath: "radix/action-panel",
+    stylingName: "action-panel.tsx",
+    dependencies: ["@radix-ui/react-dropdown-menu", "@radix-ui/react-switch", "@radix-ui/react-avatar", "react-aria"],
+  },
+  {
+    name: "avatar",
+    type: "registry:ui",
+    relativePath: "radix/avatar",
+    stylingName: "avatar.tsx",
+    dependencies: ["@radix-ui/react-avatar", "react-aria"],
+  },
+  {
+    name: "avatar-button",
+    type: "registry:ui",
+    relativePath: "radix/avatar-button",
+    stylingName: "avatar-button.tsx",
+    dependencies: ["@radix-ui/react-avatar", "react-aria"],
+  },
+  {
+    name: "avatar-group",
+    type: "registry:ui",
+    relativePath: "radix/avatar-group",
+    stylingName: "avatar-group.tsx",
+    dependencies: ["@radix-ui/react-avatar", "react-aria"],
+  },
+  {
+    name: "avatar-toggle",
+    type: "registry:ui",
+    relativePath: "radix/avatar-toggle",
+    stylingName: "avatar-toggle.tsx",
+    dependencies: ["@radix-ui/react-avatar", "react-aria-components"],
+  },
+  {
+    name: "radio-group",
+    type: "registry:ui",
+    relativePath: "radix/radio-group",
+    stylingName: "radio-group.tsx",
+    dependencies: ["@radix-ui/react-radio-group", "react-aria"],
+  },
+  {
+    name: "select-panel",
+    type: "registry:ui",
+    relativePath: "radix/select-panel",
+    stylingName: "select-panel.tsx",
+    dependencies: ["@radix-ui/react-select", "@radix-ui/react-avatar"],
+  },
+  {
+    name: "select-trigger",
+    type: "registry:ui",
+    relativePath: "radix/select-trigger",
+    stylingName: "select-trigger.tsx",
+    dependencies: ["@radix-ui/react-select", "@radix-ui/react-avatar", "react-aria-components", "react-aria"],
+  },
+  {
+    name: "side-nav",
+    type: "registry:ui",
+    relativePath: "radix/side-nav",
+    stylingName: "side-nav.tsx",
+    dependencies: ["@radix-ui/react-accordion", "@radix-ui/react-toggle-group", "@tanstack/react-router", "react-aria"],
+  },
+  {
+    name: "switch",
+    type: "registry:ui",
+    relativePath: "radix/switch",
+    stylingName: "switch.tsx",
+    dependencies: ["@radix-ui/react-switch", "react-aria"],
+  },
+  {
+    name: "tabs",
+    type: "registry:ui",
+    relativePath: "radix/tabs",
+    stylingName: "tabs.tsx",
+    dependencies: ["@radix-ui/react-tabs", "react-aria"],
+  },
+
+  // react-aria
+  {
+    name: "alert",
+    type: "registry:ui",
+    relativePath: "react-aria/alert",
+    stylingName: "alert.tsx",
+    dependencies: ["react-aria"],
+  },
+  {
+    name: "button",
+    type: "registry:ui",
+    relativePath: "react-aria/button",
+    stylingName: "button.tsx",
+    dependencies: ["react-aria"],
+  },
+  {
+    name: "button-toggle",
+    type: "registry:ui",
+    relativePath: "react-aria/button-toggle",
+    stylingName: "button-toggle.tsx",
+    dependencies: ["react-aria", "react-stately"],
+  },
+  {
+    name: "checkbox",
+    type: "registry:ui",
+    relativePath: "react-aria/checkbox",
+    stylingName: "checkbox.tsx",
+    dependencies: ["react-aria-components"],
+  },
+  {
+    name: "checkbox-group",
+    type: "registry:ui",
+    relativePath: "react-aria/checkbox-group",
+    stylingName: "checkbox-group.tsx",
+    dependencies: ["react-aria-components", "react-stately"],
+  },
+  {
+    name: "chip",
+    type: "registry:ui",
+    relativePath: "react-aria/chip",
+    stylingName: "chip.tsx",
+    dependencies: ["react-aria", "@radix-ui/react-avatar"],
+  },
+  {
+    name: "chip-toggle",
+    type: "registry:ui",
+    relativePath: "react-aria/chip-toggle",
+    stylingName: "chip-toggle.tsx",
+    dependencies: ["react-aria", "@radix-ui/react-avatar", "react-stately"],
+  },
+  {
+    name: "date-panel",
+    type: "registry:ui",
+    relativePath: "react-aria/date-panel",
+    stylingName: "date-panel.tsx",
+    dependencies: ["react-aria-components"],
+  },
+  {
+    name: "input",
+    type: "registry:ui",
+    relativePath: "react-aria/input",
+    stylingName: "input.tsx",
+    dependencies: ["react-aria", "@radix-ui/react-avatar", "react-aria-components"],
+  },
+  // {
+  //   name: "sheet",
+  //   type: "registry:ui",
+  //   relativePath: "react-aria/sheet",
+  //   stylingName: "sheet.tsx",
+  //   dependencies: ["react-aria-components"],
+  // },
+  {
+    name: "tag",
+    type: "registry:ui",
+    relativePath: "react-aria/tag",
+    stylingName: "tag.tsx",
+    dependencies: ["react-aria", "@radix-ui/react-avatar"],
+  },
+  {
+    name: "textarea",
+    type: "registry:ui",
+    relativePath: "react-aria/textarea",
+    stylingName: "textarea.tsx",
+    dependencies: ["react-aria-components", "react-aria", "@radix-ui/react-avatar", "@radix-ui/react-radio-group"],
+  },
+];
