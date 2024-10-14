@@ -24,7 +24,11 @@ const DefaultExample = () => {
 
 const WindowDocs = () => {
   return (
-    <Page title="Window" subtitle="A window is a container that can be used to display content.">
+    <Page
+      title="Window"
+      subtitle="A window is a container that can be used to display content."
+      command="npx underatom@latest add window"
+    >
       <Section title="Showcase">
         <Example title="">
           <DefaultExample />

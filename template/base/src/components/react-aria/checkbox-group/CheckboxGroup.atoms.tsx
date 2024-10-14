@@ -12,6 +12,7 @@ import {
   UCheckboxGroupCheckboxLabel,
   UCheckboxGroupCheckboxRoot,
   UCheckboxGroupCheckboxRootProps,
+  UCheckboxGroupDescription,
   UCheckboxGroupLabel,
   UCheckboxGroupRoot,
   UCheckboxGroupRootProps,
@@ -42,7 +43,7 @@ export const CheckboxGroup = ({ label, description, checkboxGroupCheckboxSlots, 
       styleProps={{ className: props.className, checkboxGroupProps: props }}
       labelSlot={<UCheckboxGroupLabel>{label}</UCheckboxGroupLabel>}
       asteriskSlot={<UCheckboxGroupAsterisk />}
-      descriptionSlot={<UCheckboxGroupLabel />}
+      descriptionSlot={<UCheckboxGroupDescription>{description}</UCheckboxGroupDescription>}
       checkboxSlots={checkboxGroupCheckboxSlots}
     />
   );

@@ -104,7 +104,7 @@ const IconExample = () => {
 
 const SwitchDocs = () => {
   return (
-    <Page title="Switch " subtitle="Switch">
+    <Page title="Switch " subtitle="Switch" command="npx underatom@latest add switch">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

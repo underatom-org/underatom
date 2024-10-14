@@ -1,4 +1,3 @@
-import { VariantsGrid } from "../../../_utils";
 import {
   Avatar,
   AvatarAction,
@@ -13,7 +12,15 @@ import {
 } from "./Avatar.atoms";
 import { Atom } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
+import {
+  Example,
+  Page,
+  Section,
+  ShowcaseFrame,
+  VariantsColumn,
+  VariantsGrid,
+  VariantsRow,
+} from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 import { avatar1Src, avatar2Src, avatar3Src } from "../../../assets/images/Images";
 
@@ -193,6 +200,7 @@ const AvatarDocs = () => {
           Composable avatar component based on the Radix <Code>Avatar</Code>.
         </>
       }
+      command="npx underatom@latest add avatar"
     >
       <Section title="Showcase">
         <Example title="Default" description="The avatar with the default props.">

@@ -9,7 +9,6 @@ import {
   Button,
   ButtonProps,
 } from "react-aria-components";
-import { _RadioIndicatorProps1 } from "@radix-ui/react-radio-group";
 import { ReactNode, useRef, useState } from "react";
 
 import * as RadixAvatar from "@radix-ui/react-avatar";

@@ -1,5 +1,4 @@
 import { Atom } from "phosphor-react";
-import { VariantsGrid } from "../../../_utils";
 import {
   AnchorButton,
   AnchorButtonProps,
@@ -17,7 +16,7 @@ import {
   LoadingButtonProps,
 } from "./Button.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsRow } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 
 const VariantsExample = () => {
@@ -348,6 +347,7 @@ const ButtonDocs = () => {
     <Page
       title="Button"
       subtitle="Buttons are used to trigger actions. They can be used to submit a form, navigate to a new page, or perform a certain action."
+      command="npx underatom@latest add button"
     >
       <Section title="Showcase">
         <Example

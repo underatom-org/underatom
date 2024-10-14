@@ -62,7 +62,7 @@ const DefaultExample = () => {
 const SideNavDocs = () => {
   return (
     <>
-      <Page title="SideNav" subtitle="SideNav">
+      <Page title="SideNav" subtitle="SideNav" command="npx underatom@latest add side-nav">
         <Section title="Showcase">
           <Example title="Default">
             <DefaultExample />

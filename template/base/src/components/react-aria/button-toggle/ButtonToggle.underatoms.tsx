@@ -6,6 +6,7 @@ import { useToggleState } from "react-stately";
 import { Loader } from "../../../assets/Icons";
 import { getGenericContext } from "../../../_utils";
 import {
+  ButtonToggleDotStyleProps,
   ButtonToggleStyleProps,
   buttonToggleClass,
   buttonToggleDotClass,
@@ -13,7 +14,6 @@ import {
   buttonToggleLabelClass,
   buttonToggleLoaderClass,
 } from "../../../styles/button-toggle";
-import { ButtonDotStyleProps } from "../../../styles/button";
 
 export const { Provider: ButtonToggleInternalProvider, useComponentContext: useButtonToggleInternalProvider } =
   getGenericContext<UButtonToggleRootProps>("ButtonToggleInternalProvider");
@@ -26,7 +26,7 @@ export type UButtonToggleRootProps = ButtonToggleStyleProps &
 export const UButtonToggleRoot = (props: UButtonToggleRootProps) => {
   const refs = useRef<HTMLButtonElement>(null);
   const { innerRef = refs } = props;
-  let state = useToggleState(props);
+  const state = useToggleState(props);
   const { buttonProps, isPressed } = useToggleButton(props, state, refs);
   const { isFocusVisible, focusProps } = useFocusRing();
 
@@ -65,7 +65,7 @@ export const UButtonToggleIcon = ({ children, className }: UButtonToggleIconProp
   return <>{children(buttonToggleIconClass({ className, buttonToggleProps }))}</>;
 };
 
-export type UButtonToggleDotProps = ButtonDotStyleProps & {
+export type UButtonToggleDotProps = ButtonToggleDotStyleProps & {
   className?: string;
 };
 export const UButtonToggleDot = ({ className, ...props }: UButtonToggleDotProps) => {

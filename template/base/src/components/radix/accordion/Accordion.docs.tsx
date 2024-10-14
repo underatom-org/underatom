@@ -9,11 +9,10 @@ import {
   AccordionProps,
 } from "./Accordion.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsGrid } from "../../../docs/docs.components";
 import { Body } from "../../no-headless/typography/Typography.atoms";
 import { Atom } from "../../../assets/Icons";
 import { IconInfinity, IconStars } from "@tabler/icons-react";
-import { VariantsGrid } from "../../../_utils";
 
 const QUANTUM_MECHANICS_TEXT =
   "Quantum mechanics is a fundamental theory in physics that describes nature at the smallest scales of energy levels of atoms and subatomic particles. It provides a mathematical description of much of the dual particle-like and wave-like behavior and interactions of energy and matter.";
@@ -514,7 +513,7 @@ const Disabled = () => {
 
 const AccordionDocs = () => {
   return (
-    <Page title="Accordion" subtitle="Accordion">
+    <Page title="Accordion" subtitle="Accordion" command="npx underatom@latest add accordion">
       <Section title="Showcase">
         <Example title="Default">
           <Default />

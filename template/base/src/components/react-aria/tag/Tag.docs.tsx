@@ -69,7 +69,7 @@ const WithAvatar = () => {
 
 const TagDocs = () => {
   return (
-    <Page title="Tag" subtitle="Tag component">
+    <Page title="Tag" subtitle="Tag component" command="npx underatom@latest add tag">
       <Example title="Default">
         <Default />
       </Example>

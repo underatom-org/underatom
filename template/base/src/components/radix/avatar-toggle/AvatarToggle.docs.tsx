@@ -1,4 +1,3 @@
-import { VariantsGrid } from "../../../_utils";
 import {
   AvatarToggle,
   AvatarToggleContent,
@@ -7,7 +6,15 @@ import {
 } from "./AvatarToggle.atoms";
 import { Atom } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsRow } from "../../../docs/docs.components";
+import {
+  Example,
+  Page,
+  Section,
+  ShowcaseFrame,
+  VariantsColumn,
+  VariantsGrid,
+  VariantsRow,
+} from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
 export const AvatarToggleWithContent = (props: Omit<AvatarToggleProps, "contentSlot">) => {
@@ -172,7 +179,7 @@ const WithTextExample = () => {
 
 const AvatarToggleDocs = () => (
   <>
-    <Page title="AvatarToggle" subtitle="Subtitle">
+    <Page title="AvatarToggle" subtitle="Subtitle" command="npx underatom@latest add avatar-toggle">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

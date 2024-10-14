@@ -1,8 +1,8 @@
 import { RatingGroup } from "@ark-ui/react";
 import { rateClass, rateItemClass, rateItemIconClass, RateStyleProps } from "../../../styles/rate";
-import { IconRosette } from "@tabler/icons-react";
 import { getGenericContext } from "../../../_utils";
 import { mergeProps, useFocusRing } from "react-aria";
+import { Rosette } from "../../../assets/Icons";
 
 /*
   ====================================
@@ -52,9 +52,9 @@ export const URateItemIcon = (props: URateItemIconProps) => {
     <RatingGroup.ItemContext>
       {({ highlighted }) =>
         highlighted ? (
-          <IconRosette fill="currentColor" className={rateItemIconClass({ className: props.className, rateProps })} />
+          <Rosette fill="currentColor" className={rateItemIconClass({ className: props.className, rateProps })} />
         ) : (
-          <IconRosette className={rateItemIconClass({ className: props.className, rateProps })} />
+          <Rosette className={rateItemIconClass({ className: props.className, rateProps })} />
         )
       }
     </RatingGroup.ItemContext>

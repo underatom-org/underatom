@@ -247,7 +247,7 @@ const WithTagsSizes = () => {
 
 const InputDocs = () => {
   return (
-    <Page title="Input" subtitle="">
+    <Page title="Input" subtitle="" command="npx underatom@latest add input">
       <Example title="Default">
         <Default />
       </Example>
