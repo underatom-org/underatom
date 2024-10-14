@@ -1,5 +1,4 @@
-import { VariantsGrid } from "../../../_utils";
-import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsGrid } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { RadioGroup, RadioGroupProps, RadioGroupRadio } from "./RadioGroup.atoms";
 
@@ -160,7 +159,7 @@ export const RequiredExample = () => {
 };
 const RadioGroupDocs = () => {
   return (
-    <Page title="RadioGroup" subtitle="RadioGroup">
+    <Page title="RadioGroup" subtitle="RadioGroup" command="npx underatom@latest add radio-group">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

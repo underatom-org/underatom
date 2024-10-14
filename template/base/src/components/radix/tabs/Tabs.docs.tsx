@@ -417,7 +417,7 @@ export const HandleWithLoadingExample = () => {
 
 const TabsDocs = () => {
   return (
-    <Page title="Tabs" subtitle="Tabs">
+    <Page title="Tabs" subtitle="Tabs" command="npx underatom@latest add tabs">
       <Section title="Fill Variant">
         <Example title="Default">
           <FillDefaultExample />

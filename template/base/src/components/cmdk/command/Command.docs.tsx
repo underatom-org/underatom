@@ -486,7 +486,7 @@ export const ItemsWithIconsExample = () => {
 const CommandDocs = () => {
   return (
     <>
-      <Page title="Command" subtitle="Composable command menu with search, groups, destructive actions, and more.">
+      <Page title="Command" subtitle="Composable command menu with search, groups, destructive actions, and more." command="npx underatom@latest add command">
         {/* <Section title="Showcase"> */}
         <Example title="Showcase" description="A complex example of what can be done with the Command component.">
           <DefaultExample />

@@ -1,5 +1,4 @@
 import { Atom } from "phosphor-react";
-import { VariantsGrid } from "./../../../_utils";
 import {
   Chip,
   ChipAvatar,
@@ -12,7 +11,7 @@ import {
   ChipWithIcon,
 } from "./Chip.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, Section, ShowcaseFrame, VariantsRow } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
 const ClickableExample = () => {
@@ -137,7 +136,7 @@ const WithIconExample = () => {
 
 const ChipDocs = () => {
   return (
-    <Page title="Chip" subtitle="">
+    <Page title="Chip" subtitle="" command="npx underatom@latest add chip">
       <Section title="Showcase">
         <Example title="Clickable">
           <ClickableExample />

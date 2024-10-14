@@ -139,7 +139,7 @@ const WithTagsSizes = () => {
 
 const TextareaDocs = () => {
   return (
-    <Page title="Textarea" subtitle="">
+    <Page title="Textarea" subtitle="" command="npx underatom@latest add textarea">
       <Example title="Default">
         <Default />
       </Example>

@@ -1,5 +1,4 @@
 import type { CustomThemeConfig } from "tailwindcss/types/config";
-import defaultTheme from "tailwindcss/defaultTheme";
 
 export const theme = {
   colors: {
@@ -129,7 +128,25 @@ export const theme = {
     "4xl": ["48px", "56px"],
   },
   fontFamily: {
-    display: ["GeistVariable", ...defaultTheme.fontFamily.sans],
-    text: ["GeistVariable", ...defaultTheme.fontFamily.sans],
+    display: [
+      "GeistVariable",
+      "ui-sans-serif",
+      "system-ui",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji",
+    ],
+    text: [
+      "GeistVariable",
+      "ui-sans-serif",
+      "system-ui",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji",
+    ],
   },
 } satisfies Partial<CustomThemeConfig>;

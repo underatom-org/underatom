@@ -10,7 +10,7 @@ export const Default = () => (
 
 const RateDocs = () => {
   return (
-    <Page title="Rate" subtitle="Rate">
+    <Page title="Rate" subtitle="Rate" command="npx underatom@latest add rate">
       <Section title="Showcase">
         <Example title="Default">
           <Default />

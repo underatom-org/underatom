@@ -1,11 +1,10 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Switch from "@radix-ui/react-switch";
 import * as Avatar from "@radix-ui/react-avatar";
-import { CaretDown } from "../../../assets/Icons";
+import { CaretDown, Check } from "../../../assets/Icons";
 import { ReactNode } from "react";
 import { mergeProps, useFocusRing } from "react-aria";
 import { getGenericContext } from "../../../_utils";
-import { Check } from "phosphor-react";
 import {
   ActionPanelGroupItemBoxAvatarStyleProps,
   ActionPanelGroupItemBoxBadgeStyleProps,
@@ -48,7 +47,7 @@ import {
 export const { Provider: ActionPanelInternalProvider, useComponentContext: useActionPanelInternalProvider } =
   getGenericContext<UActionPanelRootProps>("ActionPanelInternalProvider");
 
-export type UActionPanelRootProps = ActionPanelStyleProps & DropdownMenu.MenuContentProps;
+export type UActionPanelRootProps = ActionPanelStyleProps & DropdownMenu.DropdownMenuContentProps;
 export const UActionPanelRoot = (props: UActionPanelRootProps) => {
   return (
     <DropdownMenu.Content

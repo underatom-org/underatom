@@ -211,7 +211,7 @@ const Sizes = () => {
 
 const AvatarGroupDocs = () => {
   return (
-    <Page title="AvatarGroup" subtitle="Subtitle">
+    <Page title="AvatarGroup" subtitle="Subtitle" command="npx underatom@latest add avatar-group">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

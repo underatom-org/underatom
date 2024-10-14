@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { VariantsGrid } from "../../../_utils";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsGrid } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Button } from "../button/Button.atoms";
 import { CheckboxGroup, CheckboxGroupCheckbox, CheckboxGroupProps } from "./CheckboxGroup.atoms";
@@ -200,7 +199,7 @@ export const RequiredExample = () => {
 
 const CheckboxGroupDocs = () => {
   return (
-    <Page title="CheckboxGroup" subtitle="CheckboxGroup">
+    <Page title="CheckboxGroup" subtitle="" command="npx underatom@latest add checkbox-group">
       <Section title="Showcase">
         <Example title="Default">
           <DefaultExample />

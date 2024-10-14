@@ -24,7 +24,8 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "~/*": ["src/*", "template/*", "./orval.config.ts"]
+      "~/*": ["src/*", "template/*", "./orval.config.ts"],
+      "@/*": ["./*"]
     }
   },
   "include": ["src", "types", "template"]

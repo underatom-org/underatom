@@ -247,7 +247,7 @@ const RangeMultipleMonths = () => {
 
 const DatePanelDocs = () => {
   return (
-    <Page title="DatePanel" subtitle="">
+    <Page title="DatePanel" subtitle="" command="npx underatom@latest add date-panel">
       <Section title="Showcase">
         <Example title="Default">
           <Default />
