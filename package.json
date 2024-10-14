@@ -2,7 +2,7 @@
   "name": "underatom",
   "author": "playdev",
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Ambitious Component Library Builder. Choose your favorite Framework, Headless, CSS library and Design System.",
   "homepage": "https://github.com/underatom-org/underatom#readme",
   "repository": {
