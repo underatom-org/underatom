@@ -49,7 +49,7 @@ export const init = new Command()
       const options = initOptionsSchema.parse({
         ...opts,
         cwd: path.resolve(opts.cwd),
-        isNewProject: false,
+        isNewProject: true,
         components,
       });
 
