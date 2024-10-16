@@ -132,7 +132,6 @@ const WithBadge = () => {
         <Accordion
           type="multiple"
           variant="separated"
-          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -169,7 +168,6 @@ const WithBadge = () => {
         <Accordion
           type="multiple"
           variant="attached"
-          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="4"
@@ -218,7 +216,6 @@ const WithBadgeWithIcon = () => {
         <Accordion
           type="multiple"
           variant="separated"
-          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="1"
@@ -273,7 +270,6 @@ const WithBadgeWithIcon = () => {
         <Accordion
           type="multiple"
           variant="attached"
-          style={{ minWidth: 400 }}
           itemSlots={[
             <AccordionItem
               value="4"
@@ -419,11 +415,11 @@ const Disabled = () => {
     <ShowcaseFrame>
       <VariantsColumn>
         <VariantsGrid<AccordionProps>
+          style={{ minWidth: 400 }}
           renderVariant={(props) => {
             return (
               <Accordion
                 {...props}
-                style={{ minWidth: 400 }}
                 itemSlots={[
                   <AccordionItem
                     value="1"
@@ -466,11 +462,11 @@ const Disabled = () => {
           variantPropsMap={[[{ variant: "separated" }, { variant: "attached" }]]}
         />
         <VariantsGrid<AccordionProps>
+          style={{ minWidth: 400 }}
           renderVariant={(props) => {
             return (
               <Accordion
                 {...props}
-                style={{ minWidth: 400 }}
                 itemSlots={[
                   <AccordionItem
                     value="1"

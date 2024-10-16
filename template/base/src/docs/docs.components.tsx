@@ -16,7 +16,7 @@ export const ShowcaseFrame = ({
     <Window style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
       <div
         style={{
-          padding: 40,
+          padding: isMobile ? 10 : 40,
           paddingLeft: paddingX,
           paddingRight: paddingX,
           display: "flex",

@@ -255,6 +255,7 @@ export const UAccordionItemHeaderBadgeRoot = (props: UAccordionItemHeaderBadgeRo
         accordionItemProps,
         accordionProps,
       })}
+      style={{ width: "max-content" }}
     >
       <AccordionItemHeaderBadgeInternalProvider value={props}>
         {props.children}
@@ -280,6 +281,7 @@ export const UAccordionItemHeaderBadgeLabel = (props: UAccordionItemHeaderBadgeL
         accordionItemProps,
         accordionProps,
       })}
+      style={{ width: "max-content" }}
     >
       {props.children}
     </div>

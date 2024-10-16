@@ -243,9 +243,9 @@ const WithTagsSizes = () => {
   return (
     <ShowcaseFrame paddingX={isMobile ? 20 : 80} style={{ justifyContent: isMobile ? "unset" : "center" }}>
       <div>
-        <InputWithTagsHelper size="sm" style={{ minWidth: 400 }} />
-        <InputWithTagsHelper size="md" style={{ minWidth: 400 }} />
-        <InputWithTagsHelper size="lg" style={{ minWidth: 400 }} />
+        <InputWithTagsHelper size="sm" style={{ minWidth: 464 }} />
+        <InputWithTagsHelper size="md" style={{ minWidth: 464 }} />
+        <InputWithTagsHelper size="lg" style={{ minWidth: 464 }} />
       </div>
     </ShowcaseFrame>
   );

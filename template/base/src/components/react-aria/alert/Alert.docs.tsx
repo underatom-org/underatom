@@ -9,7 +9,7 @@ import {
   AlertWithStatus,
   AlertWithStatusProps,
 } from "./Alert.atoms";
-import { Atom, IconCircleCheck, IconCircleX, IconInfoCircle } from "../../../assets/Icons";
+import { IconCircleCheck, IconCircleX, IconInfoCircle } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { ReactNode } from "react";
@@ -43,9 +43,7 @@ const Default = () => {
             subtitle="Subtitle"
             description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
             dismissSlot={<AlertDismiss />}
-            primaryActionSlot={
-              <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
-            }
+            primaryActionSlot={<AlertActionWithIcon icon={getIcon(props.status)}>Action</AlertActionWithIcon>}
             secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
           />
         )}
@@ -76,9 +74,7 @@ const WithStatus = () => {
               subtitle="Subtitle"
               description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
               statusSlot={<AlertStatus icon={getIcon(props.status)} />}
-              primaryActionSlot={
-                <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
-              }
+              primaryActionSlot={<AlertActionWithIcon icon={getIcon(props.status)}>Action</AlertActionWithIcon>}
               secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
             />
           );

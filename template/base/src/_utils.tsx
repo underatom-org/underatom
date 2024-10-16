@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext, useContext, CSSProperties } from "react";
 
 export const getGenericContext = <T,>(displayName: string) => {
   const context = createContext<T | undefined>(undefined);
@@ -33,10 +33,12 @@ export const VariantsGrid = <T extends Record<string, any>>({
   renderVariant,
   variantPropsMap,
   isHorizontal = false,
+  style,
 }: {
   renderVariant: (props: T) => ReactNode;
   variantPropsMap: (Partial<T> & { [dataAttribute: DataAttributeKey]: unknown })[][];
   isHorizontal?: boolean;
+  style?: CSSProperties;
 }) => (
   <VariantsGridInternal
     renderVariant={renderVariant}
@@ -44,6 +46,7 @@ export const VariantsGrid = <T extends Record<string, any>>({
     index={0}
     variantProps={{} as any}
     isHorizontal={isHorizontal}
+    style={style}
   />
 );
 
@@ -53,12 +56,14 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
   index,
   variantProps,
   isHorizontal,
+  style,
 }: {
   renderVariant: (props: T) => ReactNode;
   variantPropsMap: VariantPropsMap;
   index: number;
   variantProps: T;
   isHorizontal: boolean;
+  style?: CSSProperties;
 }) => {
   if (index === variantPropsMap.length) return renderVariant(variantProps);
 
@@ -69,18 +74,16 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
     <div
       style={{
         display: "flex",
-        // gap: 16 * (variantPropsMap.length - index),
         gap: 16,
         flexWrap: "wrap",
         ...(index % 2 === (isHorizontal ? 1 : 0)
           ? {
               flexDirection: "column",
-              // justifyContent: "center",
             }
           : {
               flexDirection: "row",
-              // alignItems: "center",
             }),
+        ...style, // Apply the custom style passed as a prop
       }}
     >
       {variantPropsByProp.map((variant, i) => (
@@ -91,6 +94,7 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
           index={index + 1}
           variantProps={{ ...variantProps, ...variant }}
           isHorizontal={isHorizontal}
+          style={style}
         />
       ))}
     </div>
