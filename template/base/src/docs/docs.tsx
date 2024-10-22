@@ -120,26 +120,17 @@ const rootRoute = createRootRoute({
 
     const IntermediateSideNav = () => {
       return (
-        <SideNav
-          accordionProps={{ defaultValue: groups, type: "multiple" }}
-          value={pathname}
-          groupSlots={[
-            Object.entries(routesByGroup).map(([group, routes]) => (
-              <SideNavGroup
-                key={group}
-                value={group}
-                headerSlot={<SideNavGroupHeader label={group} hasCaret />}
-                itemSlots={routes.map((route) => (
-                  <SideNavGroupItemLink
-                    linkProps={{ to: route.path }}
-                    value={route.path}
-                    boxSlot={<SideNavGroupItemBox label={route.label} />}
-                  />
-                ))}
-              />
-            )),
-          ]}
-        />
+        <SideNav accordionProps={{ defaultValue: groups, type: "multiple" }} value={pathname}>
+          {Object.entries(routesByGroup).map(([group, routes]) => (
+            <SideNavGroup key={group} value={group} headerSlot={<SideNavGroupHeader label={group} hasCaret />}>
+              {routes.map((route) => (
+                <SideNavGroupItemLink key={route.path} linkProps={{ to: route.path }} value={route.path}>
+                  <SideNavGroupItemBox label={route.label} />
+                </SideNavGroupItemLink>
+              ))}
+            </SideNavGroup>
+          ))}
+        </SideNav>
       );
     };
     return (

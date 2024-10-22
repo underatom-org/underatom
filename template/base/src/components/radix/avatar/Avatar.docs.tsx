@@ -24,32 +24,32 @@ import {
 import { Code } from "../../no-headless/typography/Typography.atoms";
 import { avatar1Src, avatar2Src, avatar3Src } from "../../../assets/images/Images";
 
-export const ImageAvatarHelper = (props: Omit<AvatarProps, "contentSlot">) => {
+export const ImageAvatarHelper = (props: Omit<AvatarProps, "children">) => {
   return (
-    <Avatar
-      {...props}
-      contentSlot={
-        <AvatarContent
-          imageProps={{
-            src: avatar1Src,
-            alt: "Avatar 1",
-          }}
-        />
-      }
-    />
+    <Avatar {...props}>
+      <AvatarContent
+        imageProps={{
+          src: avatar1Src,
+          alt: "Avatar 1",
+        }}
+      />
+    </Avatar>
   );
 };
 
-export const TextAvatarHelper = (props: Omit<AvatarProps, "contentSlot">) => {
-  return <Avatar {...props} contentSlot={<AvatarContent fallbackText="A" />} />;
+export const TextAvatarHelper = (props: Omit<AvatarProps, "children">) => {
+  return (
+    <Avatar {...props}>
+      <AvatarContent fallbackText="A" />
+    </Avatar>
+  );
 };
 
-export const IconAvatarHelper = (props: Omit<AvatarProps, "contentSlot">) => {
+export const IconAvatarHelper = (props: Omit<AvatarProps, "children">) => {
   return (
-    <Avatar
-      {...props}
-      contentSlot={<AvatarContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-    />
+    <Avatar {...props}>
+      <AvatarContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+    </Avatar>
   );
 };
 
@@ -74,7 +74,7 @@ const SizesExample = () => {
           [{ size: "sm" }, { size: "md" }, { size: "lg" }, { size: "xl" }],
           [
             {
-              contentSlot: (
+              children: (
                 <AvatarContent
                   imageProps={{
                     src: avatar2Src,
@@ -85,10 +85,10 @@ const SizesExample = () => {
               ),
             },
             {
-              contentSlot: <AvatarContent fallbackText="S" />,
+              children: <AvatarContent fallbackText="S" />,
             },
             {
-              contentSlot: <AvatarContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
+              children: <AvatarContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
             },
           ],
         ]}

@@ -42,11 +42,9 @@ import {
   ====================================
 */
 
-export type AccordionProps = UAccordionRootProps & {
-  itemSlots: React.ReactNode[];
-};
+export type AccordionProps = UAccordionRootProps;
 
-export const Accordion = ({ itemSlots, ...props }: AccordionProps) => {
+export const Accordion = ({ children, ...props }: AccordionProps) => {
   return (
     <AccordionLayout
       renderRoot={(children, className) => (
@@ -55,7 +53,7 @@ export const Accordion = ({ itemSlots, ...props }: AccordionProps) => {
         </UAccordionRoot>
       )}
       styleProps={{ className: props.className, accordionProps: props }}
-      itemSlots={itemSlots}
+      itemSlots={children}
     />
   );
 };
@@ -66,19 +64,18 @@ export const Accordion = ({ itemSlots, ...props }: AccordionProps) => {
   ====================================
 */
 
-export type AccordionItemProps = Omit<UAccordionItemRootProps, "children"> & {
+export type AccordionItemProps = UAccordionItemRootProps & {
   headerSlot?: React.ReactNode;
-  contentSlot?: React.ReactNode;
 };
-export const AccordionItem = ({ contentSlot, headerSlot, ...props }: AccordionItemProps) => {
+export const AccordionItem = ({ children, headerSlot, ...props }: AccordionItemProps) => {
   const accordionProps = useAccordionInternalProvider();
   return (
     <AccordionItemLayout
       styleProps={{ className: props.className, accordionItemProps: props, accordionProps }}
-      renderRoot={(children, className) => (
+      renderRoot={(renderChildren, className) => (
         <UAccordionItemRoot {...props} className={className}>
-          {children}
-          <UAccordionItemContent>{contentSlot}</UAccordionItemContent>
+          {renderChildren}
+          <UAccordionItemContent>{children}</UAccordionItemContent>
         </UAccordionItemRoot>
       )}
       headerSlot={headerSlot}

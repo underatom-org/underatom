@@ -20,12 +20,9 @@ const TextareaShowcaseFrame = ({ children }: { children: React.ReactNode }) => {
 
 const DefaultTextarea = (props: Partial<TextareaProps>) => {
   return (
-    <Textarea
-      {...props}
-      label="Leave a review"
-      textareaProps={{ placeholder: "Write a review...", rows: 4 }}
-      boxSlot={<TextareaBox />}
-    />
+    <Textarea {...props} label="Leave a review" textareaProps={{ placeholder: "Write a review...", rows: 4 }}>
+      <TextareaBox />
+    </Textarea>
   );
 };
 
@@ -71,33 +68,28 @@ const Disabled = () => {
 
 const TextareaWithTagsHelper = (props: Partial<TextareaProps>) => {
   return (
-    <Textarea
-      {...props}
-      label="Recipients"
-      textareaProps={{ placeholder: "Write an email...", rows: 4 }}
-      boxSlot={
-        <TextareaBoxWithTags
-          tagSlots={[
-            <TextareaBoxTag label="Tag" />,
-            <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />,
-            <TextareaBoxTagWithDot label="Tag" />,
-            <TextareaBoxTagWithAvatar
-              label="Tag"
-              avatarSlot={
-                <TextareaBoxAvatar
-                  imageProps={{
-                    src: avatar1Src,
-                    alt: "Avatar",
-                  }}
-                  fallbackText="AV"
-                />
-              }
-              onDismiss={() => console.log("dismissed")}
-            />,
-          ]}
-        />
-      }
-    />
+    <Textarea {...props} label="Recipients" textareaProps={{ placeholder: "Write an email...", rows: 4 }}>
+      <TextareaBoxWithTags
+        tagSlots={[
+          <TextareaBoxTag label="Tag" />,
+          <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />,
+          <TextareaBoxTagWithDot label="Tag" />,
+          <TextareaBoxTagWithAvatar
+            label="Tag"
+            avatarSlot={
+              <TextareaBoxAvatar
+                imageProps={{
+                  src: avatar1Src,
+                  alt: "Avatar",
+                }}
+                fallbackText="AV"
+              />
+            }
+            onDismiss={() => console.log("dismissed")}
+          />,
+        ]}
+      />
+    </Textarea>
   );
 };
 

@@ -22,7 +22,9 @@ const InputShowcaseFrame = ({ children }: { children: React.ReactNode }) => {
 const Default = () => {
   return (
     <InputShowcaseFrame>
-      <Input label="Name" placeholder="Enter your name..." boxSlot={<InputBox />} />
+      <Input label="Name" placeholder="Enter your name...">
+        <InputBox />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -30,7 +32,9 @@ const Default = () => {
 const Required = () => {
   return (
     <InputShowcaseFrame>
-      <Input label="Name" isRequired placeholder="Enter your name..." boxSlot={<InputBox />} />
+      <Input label="Name" isRequired placeholder="Enter your name...">
+        <InputBox />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -38,12 +42,9 @@ const Required = () => {
 const WithDescription = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Name"
-        placeholder="Enter your name..."
-        description="Your full name as shown on your ID"
-        boxSlot={<InputBox />}
-      />
+      <Input label="Name" placeholder="Enter your name..." description="Your full name as shown on your ID">
+        <InputBox />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -51,14 +52,9 @@ const WithDescription = () => {
 const Invalid = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Name"
-        isRequired
-        isInvalid
-        placeholder="Enter your name..."
-        description="Name is required."
-        boxSlot={<InputBox />}
-      />
+      <Input label="Name" isRequired isInvalid placeholder="Enter your name..." description="Name is required.">
+        <InputBox />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -66,11 +62,9 @@ const Invalid = () => {
 const WithClear = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Name"
-        placeholder="Enter your name..."
-        boxSlot={<InputBox onClear={() => console.log("cleared")} />}
-      />
+      <Input label="Name" placeholder="Enter your name...">
+        <InputBox onClear={() => console.log("cleared")} />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -78,11 +72,9 @@ const WithClear = () => {
 const WithTrailingIcon = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Name"
-        placeholder="Enter your name..."
-        boxSlot={<InputBox trailingIcon={(className) => <Atom className={className} />} />}
-      />
+      <Input label="Name" placeholder="Enter your name...">
+        <InputBox trailingIcon={(className) => <Atom className={className} />} />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -90,11 +82,9 @@ const WithTrailingIcon = () => {
 const WithLeadingIcon = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Name"
-        placeholder="Enter your name..."
-        boxSlot={<InputBox leadingIcon={(className) => <Atom className={className} />} />}
-      />
+      <Input label="Name" placeholder="Enter your name...">
+        <InputBox leadingIcon={(className) => <Atom className={className} />} />
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -103,9 +93,15 @@ const Sizes = () => {
   return (
     <InputShowcaseFrame>
       <VariantsColumn>
-        <Input label="Name" size="sm" placeholder="Enter your name..." boxSlot={<InputBox />} />
-        <Input label="Name" size="md" placeholder="Enter your name..." boxSlot={<InputBox />} />
-        <Input label="Name" size="lg" placeholder="Enter your name..." boxSlot={<InputBox />} />
+        <Input label="Name" size="sm" placeholder="Enter your name...">
+          <InputBox />
+        </Input>
+        <Input label="Name" size="md" placeholder="Enter your name...">
+          <InputBox />
+        </Input>
+        <Input label="Name" size="lg" placeholder="Enter your name...">
+          <InputBox />
+        </Input>
       </VariantsColumn>
     </InputShowcaseFrame>
   );
@@ -115,9 +111,15 @@ const Group = () => {
   return (
     <ShowcaseFrame>
       <div style={{ display: "flex" }}>
-        <Input label="First name" placeholder="Enter your first name..." attachment="start" boxSlot={<InputBox />} />
-        <Input label="Last name" placeholder="Enter your last name..." attachment="center" boxSlot={<InputBox />} />
-        <Input label="Email" placeholder="Enter your email..." attachment="end" boxSlot={<InputBox />} />
+        <Input label="First name" placeholder="Enter your first name..." attachment="start">
+          <InputBox />
+        </Input>
+        <Input label="Last name" placeholder="Enter your last name..." attachment="center">
+          <InputBox />
+        </Input>
+        <Input label="Email" placeholder="Enter your email..." attachment="end">
+          <InputBox />
+        </Input>
       </div>
     </ShowcaseFrame>
   );
@@ -127,16 +129,21 @@ const InvalidGroup = () => {
   return (
     <ShowcaseFrame>
       <div style={{ display: "flex" }}>
-        <Input label="First name" placeholder="Enter your first name..." attachment="start" boxSlot={<InputBox />} />
+        <Input label="First name" placeholder="Enter your first name..." attachment="start">
+          <InputBox />
+        </Input>
         <Input
           label="Last name"
           isInvalid
           placeholder="Enter your last name..."
           description="Last name is required."
           attachment="center"
-          boxSlot={<InputBox />}
-        />
-        <Input label="Email" placeholder="Enter your email..." attachment="end" boxSlot={<InputBox />} />
+        >
+          <InputBox />
+        </Input>
+        <Input label="Email" placeholder="Enter your email..." attachment="end">
+          <InputBox />
+        </Input>
       </div>
     </ShowcaseFrame>
   );
@@ -145,17 +152,12 @@ const InvalidGroup = () => {
 const WithButton = () => {
   return (
     <InputShowcaseFrame>
-      <Input
-        label="Email"
-        attachment="start"
-        placeholder="Enter your email..."
-        boxSlot={
-          <div style={{ display: "flex" }}>
-            <InputBox />
-            <Button attachment="end">Subscribe</Button>
-          </div>
-        }
-      />
+      <Input label="Email" attachment="start" placeholder="Enter your email...">
+        <div style={{ display: "flex" }}>
+          <InputBox />
+          <Button attachment="end">Subscribe</Button>
+        </div>
+      </Input>
     </InputShowcaseFrame>
   );
 };
@@ -169,43 +171,39 @@ const Disabled = () => {
         isRequired
         placeholder="Enter your name..."
         description="Your full name as shown on your ID"
-        boxSlot={<InputBox />}
-      />
+      >
+        <InputBox />
+      </Input>
     </InputShowcaseFrame>
   );
 };
 
 const InputWithTagsHelper = (props: Partial<InputProps>) => {
   return (
-    <Input
-      {...props}
-      label="Label"
-      placeholder="Enter email..."
-      boxSlot={
-        <InputBoxWithTags
-          trailingIcon={(className) => <Atom className={className} />}
-          onClear={() => console.log("cleared")}
-          tagSlots={[
-            <InputBoxTag label="Tag" />,
-            <InputBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />,
-            <InputBoxTagWithDot label="Tag" />,
-            <InputBoxTagWithAvatar
-              label="Tag"
-              avatarSlot={
-                <InputBoxAvatar
-                  imageProps={{
-                    src: avatar1Src,
-                    alt: "Avatar",
-                  }}
-                  fallbackText="AV"
-                />
-              }
-              onDismiss={() => console.log("dismissed")}
-            />,
-          ]}
-        />
-      }
-    />
+    <Input {...props} label="Label" placeholder="Enter email...">
+      <InputBoxWithTags
+        trailingIcon={(className) => <Atom className={className} />}
+        onClear={() => console.log("cleared")}
+        tagSlots={[
+          <InputBoxTag label="Tag" />,
+          <InputBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />,
+          <InputBoxTagWithDot label="Tag" />,
+          <InputBoxTagWithAvatar
+            label="Tag"
+            avatarSlot={
+              <InputBoxAvatar
+                imageProps={{
+                  src: avatar1Src,
+                  alt: "Avatar",
+                }}
+                fallbackText="AV"
+              />
+            }
+            onDismiss={() => console.log("dismissed")}
+          />,
+        ]}
+      />
+    </Input>
   );
 };
 

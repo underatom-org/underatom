@@ -14,19 +14,16 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
-export const AvatarButtonWithContent = (props: Omit<AvatarButtonProps, "contentSlot">) => {
+export const AvatarButtonWithContent = (props: Omit<AvatarButtonProps, "children">) => {
   return (
-    <AvatarButton
-      {...props}
-      contentSlot={
-        <AvatarButtonContent
-          imageProps={{
-            src: avatar1Src,
-            alt: "Avatar",
-          }}
-        />
-      }
-    />
+    <AvatarButton {...props}>
+      <AvatarButtonContent
+        imageProps={{
+          src: avatar1Src,
+          alt: "Avatar",
+        }}
+      />
+    </AvatarButton>
   );
 };
 
@@ -51,7 +48,7 @@ const SizesExample = () => {
           [{ size: "sm" }, { size: "md" }, { size: "lg" }, { size: "xl" }],
           [
             {
-              contentSlot: (
+              children: (
                 <AvatarButtonContent
                   imageProps={{
                     src: avatar1Src,
@@ -62,10 +59,10 @@ const SizesExample = () => {
               ),
             },
             {
-              contentSlot: <AvatarButtonContent fallbackText="S" />,
+              children: <AvatarButtonContent fallbackText="S" />,
             },
             {
-              contentSlot: <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
+              children: <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
             },
           ],
         ]}
@@ -77,23 +74,21 @@ const DisabledExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-          isDisabled
-        />
-        <AvatarButton contentSlot={<AvatarButtonContent fallbackText="S" />} isDisabled />
-        <AvatarButton
-          contentSlot={<AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-          isDisabled
-        />
+        <AvatarButton isDisabled>
+          <AvatarButtonContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarButton>
+        <AvatarButton isDisabled>
+          <AvatarButtonContent fallbackText="S" />
+        </AvatarButton>
+        <AvatarButton isDisabled>
+          <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        </AvatarButton>
       </VariantsRow>
     </ShowcaseFrame>
   );
@@ -162,20 +157,18 @@ const WithIconExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarButton
-          contentSlot={<AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-        />
+        <AvatarButton>
+          <AvatarButtonContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarButton>
+        <AvatarButton>
+          <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        </AvatarButton>
       </VariantsRow>
     </ShowcaseFrame>
   );
@@ -185,18 +178,18 @@ const WithTextExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarButton contentSlot={<AvatarButtonContent fallbackText="AV" />} />
+        <AvatarButton>
+          <AvatarButtonContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarButton>
+        <AvatarButton>
+          <AvatarButtonContent fallbackText="AV" />
+        </AvatarButton>
       </VariantsRow>
     </ShowcaseFrame>
   );

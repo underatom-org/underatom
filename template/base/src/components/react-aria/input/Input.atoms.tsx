@@ -53,10 +53,9 @@ import React from "react";
 export type InputProps = UInputRootProps & {
   label?: string;
   description?: string;
-  boxSlot: React.ReactNode;
 };
 
-export const Input = ({ label, description, boxSlot, ...props }: InputProps) => (
+export const Input = ({ label, description, children, ...props }: InputProps) => (
   <InputLayout
     renderRoot={(children, className) => (
       <UInputRoot {...props} className={className}>
@@ -67,7 +66,7 @@ export const Input = ({ label, description, boxSlot, ...props }: InputProps) => 
     labelSlot={<UInputLabel>{label}</UInputLabel>}
     descriptionSlot={<UInputDescription>{description}</UInputDescription>}
     asteriskSlot={<UInputAsterisk />}
-    boxSlot={boxSlot}
+    boxSlot={children}
   />
 );
 

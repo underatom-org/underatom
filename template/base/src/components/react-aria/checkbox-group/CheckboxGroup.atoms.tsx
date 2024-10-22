@@ -25,14 +25,13 @@ import {
   ====================================
 */
 
-export type CheckboxGroupProps = Omit<UCheckboxGroupRootProps, "children"> & {
+export type CheckboxGroupProps = UCheckboxGroupRootProps & {
   label: string;
   description: string;
   className?: string;
-  checkboxGroupCheckboxSlots: React.ReactNode[];
 };
 
-export const CheckboxGroup = ({ label, description, checkboxGroupCheckboxSlots, ...props }: CheckboxGroupProps) => {
+export const CheckboxGroup = ({ label, description, children, ...props }: CheckboxGroupProps) => {
   return (
     <CheckboxGroupLayout
       renderRoot={(children, className) => (
@@ -44,7 +43,7 @@ export const CheckboxGroup = ({ label, description, checkboxGroupCheckboxSlots, 
       labelSlot={<UCheckboxGroupLabel>{label}</UCheckboxGroupLabel>}
       asteriskSlot={<UCheckboxGroupAsterisk />}
       descriptionSlot={<UCheckboxGroupDescription>{description}</UCheckboxGroupDescription>}
-      checkboxSlots={checkboxGroupCheckboxSlots}
+      checkboxSlots={children}
     />
   );
 };

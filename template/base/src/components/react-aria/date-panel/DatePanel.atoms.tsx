@@ -62,10 +62,8 @@ export const DatePanelGridBodyCellButton = ({ hasDot = false, ...props }: DatePa
   ====================================
 */
 
-export type DatePanelGridBodyCellProps = Omit<UDatePanelGridBodyCellRootProps, "children"> & {
-  buttonSlot: React.ReactNode;
-};
-export const DatePanelGridBodyCell = ({ buttonSlot, ...props }: DatePanelGridBodyCellProps) => (
+export type DatePanelGridBodyCellProps = UDatePanelGridBodyCellRootProps;
+export const DatePanelGridBodyCell = ({ children, ...props }: DatePanelGridBodyCellProps) => (
   <DatePanelGridBodyRowCellLayout
     renderRoot={(children, className) => (
       <UDatePanelGridBodyCellRoot {...props} className={className}>
@@ -73,7 +71,7 @@ export const DatePanelGridBodyCell = ({ buttonSlot, ...props }: DatePanelGridBod
       </UDatePanelGridBodyCellRoot>
     )}
     styleProps={{ className: props.className }}
-    buttonSlot={buttonSlot}
+    buttonSlot={children}
   />
 );
 
@@ -139,11 +137,10 @@ export const DatePanelButton = ({ icon, ...props }: DatePanelButtonProps) => (
   ====================================
 */
 
-export type DatePanelGridProps = Omit<UDatePanelGridRootProps, "children"> & {
+export type DatePanelGridProps = UDatePanelGridRootProps & {
   headerSlot: React.ReactNode;
-  bodySlot: React.ReactNode;
 };
-export const DatePanelGrid = ({ headerSlot, bodySlot, ...props }: DatePanelGridProps) => (
+export const DatePanelGrid = ({ headerSlot, children, ...props }: DatePanelGridProps) => (
   <DatePanelGridLayout
     renderRoot={(children) => (
       <UDatePanelGridRoot {...props} className={props.className}>
@@ -152,7 +149,7 @@ export const DatePanelGrid = ({ headerSlot, bodySlot, ...props }: DatePanelGridP
     )}
     styleProps={{ className: props.className }}
     headerSlot={headerSlot}
-    bodySlot={bodySlot}
+    bodySlot={children}
   />
 );
 
@@ -162,12 +159,11 @@ export const DatePanelGrid = ({ headerSlot, bodySlot, ...props }: DatePanelGridP
   ====================================
 */
 
-export type DatePanelProps = Omit<UDatePanelRootProps, "children"> & {
-  buttonSlot1: React.ReactNode;
-  buttonSlot2: React.ReactNode;
-  gridSlot: React.ReactNode;
+export type DatePanelProps = UDatePanelRootProps & {
+  previousButton: React.ReactNode;
+  nextButton: React.ReactNode;
 };
-export const DatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }: DatePanelProps) => (
+export const DatePanel = ({ previousButton, nextButton, children, ...props }: DatePanelProps) => (
   <DatePanelLayout
     renderRoot={(children, className) => (
       <UDatePanelRoot {...props} className={className}>
@@ -176,9 +172,9 @@ export const DatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }: Date
     )}
     styleProps={{ className: props.className }}
     titleSlot={<UDatePanelTitle />}
-    buttonSlot1={buttonSlot1}
-    buttonSlot2={buttonSlot2}
-    gridSlot={gridSlot}
+    buttonSlot1={previousButton}
+    buttonSlot2={nextButton}
+    gridSlot={children}
   />
 );
 
@@ -188,15 +184,14 @@ export const DatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }: Date
   ====================================
 */
 
-export type DatePanelMultipleMonthsProps = Omit<UDatePanelRootProps, "children"> & {
-  buttonSlot1: React.ReactNode;
-  buttonSlot2: React.ReactNode;
-  gridsSlot: React.ReactNode;
+export type DatePanelMultipleMonthsProps = UDatePanelRootProps & {
+  previousButton: React.ReactNode;
+  nextButton: React.ReactNode;
 };
 export const DatePanelMultipleMonths = ({
-  buttonSlot1,
-  buttonSlot2,
-  gridsSlot,
+  previousButton,
+  nextButton,
+  children,
   ...props
 }: DatePanelMultipleMonthsProps) => (
   <DatePanelMultipleMonthsLayout
@@ -207,9 +202,9 @@ export const DatePanelMultipleMonths = ({
     )}
     styleProps={{ className: props.className }}
     titleSlot={<UDatePanelTitle />}
-    buttonSlot1={buttonSlot1}
-    buttonSlot2={buttonSlot2}
-    gridSlots={gridsSlot}
+    buttonSlot1={previousButton}
+    buttonSlot2={nextButton}
+    gridSlots={children}
   />
 );
 
@@ -219,12 +214,11 @@ export const DatePanelMultipleMonths = ({
   ====================================
 */
 
-export type RangeDatePanelProps = Omit<URangeDatePanelRootProps, "children"> & {
-  buttonSlot1: React.ReactNode;
-  buttonSlot2: React.ReactNode;
-  gridSlot: React.ReactNode;
+export type RangeDatePanelProps = URangeDatePanelRootProps & {
+  previousButton: React.ReactNode;
+  nextButton: React.ReactNode;
 };
-export const RangeDatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }: RangeDatePanelProps) => (
+export const RangeDatePanel = ({ previousButton, nextButton, children, ...props }: RangeDatePanelProps) => (
   <DatePanelLayout
     renderRoot={(children, className) => (
       <URangeDatePanelRoot {...props} className={className}>
@@ -233,9 +227,9 @@ export const RangeDatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }:
     )}
     styleProps={{ className: props.className }}
     titleSlot={<UDatePanelTitle />}
-    buttonSlot1={buttonSlot1}
-    buttonSlot2={buttonSlot2}
-    gridSlot={gridSlot}
+    buttonSlot1={previousButton}
+    buttonSlot2={nextButton}
+    gridSlot={children}
   />
 );
 
@@ -245,15 +239,14 @@ export const RangeDatePanel = ({ buttonSlot1, buttonSlot2, gridSlot, ...props }:
   ====================================
 */
 
-export type RangeDatePanelMultipleMonthsProps = Omit<URangeDatePanelRootProps, "children"> & {
-  buttonSlot1: React.ReactNode;
-  buttonSlot2: React.ReactNode;
-  gridsSlot: React.ReactNode;
+export type RangeDatePanelMultipleMonthsProps = URangeDatePanelRootProps & {
+  previousButton: React.ReactNode;
+  nextButton: React.ReactNode;
 };
 export const RangeDatePanelMultipleMonths = ({
-  buttonSlot1,
-  buttonSlot2,
-  gridsSlot,
+  previousButton,
+  nextButton,
+  children,
   ...props
 }: RangeDatePanelMultipleMonthsProps) => (
   <DatePanelMultipleMonthsLayout
@@ -264,8 +257,8 @@ export const RangeDatePanelMultipleMonths = ({
     )}
     styleProps={{ className: props.className }}
     titleSlot={<UDatePanelTitle />}
-    buttonSlot1={buttonSlot1}
-    buttonSlot2={buttonSlot2}
-    gridSlots={gridsSlot}
+    buttonSlot1={previousButton}
+    buttonSlot2={nextButton}
+    gridSlots={children}
   />
 );

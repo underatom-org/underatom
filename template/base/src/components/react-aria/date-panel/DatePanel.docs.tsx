@@ -24,22 +24,26 @@ const BaseGrid = ({ offset }: { offset?: DateDuration }) => {
     <DatePanelGrid
       offset={offset}
       headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
-      bodySlot={
-        <DatePanelGridBody>
-          {(date) => <DatePanelGridBodyCell date={date} buttonSlot={<DatePanelGridBodyCellButton date={date} />} />}
-        </DatePanelGridBody>
-      }
-    />
+    >
+      <DatePanelGridBody>
+        {(date) => (
+          <DatePanelGridBodyCell date={date}>
+            <DatePanelGridBodyCellButton date={date} />
+          </DatePanelGridBodyCell>
+        )}
+      </DatePanelGridBody>
+    </DatePanelGrid>
   );
 };
 
 const DatePanelIntermediate = (props: Partial<DatePanelProps>) => (
   <DatePanel
     {...props}
-    buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-    buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-    gridSlot={<BaseGrid />}
-  />
+    previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+    nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+  >
+    <BaseGrid />
+  </DatePanel>
 );
 
 const Default = () => {
@@ -118,16 +122,13 @@ const MultipleMonths = () => {
     <ShowcaseFrame>
       <DatePanelMultipleMonths
         visibleDuration={{ months: 3 }}
-        buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-        buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-        gridsSlot={
-          <>
-            <BaseGrid />
-            <BaseGrid offset={{ months: 1 }} />
-            <BaseGrid offset={{ months: 2 }} />
-          </>
-        }
-      />
+        previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+        nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+      >
+        <BaseGrid />
+        <BaseGrid offset={{ months: 1 }} />
+        <BaseGrid offset={{ months: 2 }} />
+      </DatePanelMultipleMonths>
     </ShowcaseFrame>
   );
 };
@@ -137,22 +138,26 @@ const RangeBaseGrid = ({ offset }: { offset?: DateDuration }) => {
     <DatePanelGrid
       offset={offset}
       headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
-      bodySlot={
-        <DatePanelGridBody>
-          {(date) => <DatePanelGridBodyCell date={date} buttonSlot={<DatePanelGridBodyCellButton date={date} />} />}
-        </DatePanelGridBody>
-      }
-    />
+    >
+      <DatePanelGridBody>
+        {(date) => (
+          <DatePanelGridBodyCell date={date}>
+            <DatePanelGridBodyCellButton date={date} />
+          </DatePanelGridBodyCell>
+        )}
+      </DatePanelGridBody>
+    </DatePanelGrid>
   );
 };
 
-const RangeDatePanelIntermediate = (props: Omit<RangeDatePanelProps, "buttonSlot1" | "buttonSlot2" | "gridSlot">) => (
+const RangeDatePanelIntermediate = (props: Omit<RangeDatePanelProps, "previousButton" | "nextButton" | "children">) => (
   <RangeDatePanel
     {...props}
-    buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-    buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-    gridSlot={<RangeBaseGrid />}
-  />
+    previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+    nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+  >
+    <RangeBaseGrid />
+  </RangeDatePanel>
 );
 
 const DefaultRange = () => {
@@ -231,16 +236,13 @@ const RangeMultipleMonths = () => {
     <ShowcaseFrame>
       <RangeDatePanelMultipleMonths
         visibleDuration={{ months: 3 }}
-        buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-        buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-        gridsSlot={
-          <>
-            <RangeBaseGrid />
-            <RangeBaseGrid offset={{ months: 1 }} />
-            <RangeBaseGrid offset={{ months: 2 }} />
-          </>
-        }
-      />
+        previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+        nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+      >
+        <RangeBaseGrid />
+        <RangeBaseGrid offset={{ months: 1 }} />
+        <RangeBaseGrid offset={{ months: 2 }} />
+      </RangeDatePanelMultipleMonths>
     </ShowcaseFrame>
   );
 };

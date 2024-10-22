@@ -24,30 +24,17 @@ const ASTROPHYSICS_TEXT =
 const Default = () => {
   return (
     <ShowcaseFrame>
-      <Accordion
-        type="multiple"
-        variant="attached"
-        itemSlots={[
-          <AccordionItem
-            value="1"
-            headerSlot={<AccordionItemHeader label="Quantum Mechanics" />}
-            contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            attachment="start"
-          />,
-          <AccordionItem
-            value="2"
-            headerSlot={<AccordionItemHeader label="Relativity Theory" />}
-            contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            attachment="center"
-          />,
-          <AccordionItem
-            value="3"
-            headerSlot={<AccordionItemHeader label="Astrophysics" />}
-            contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            attachment="end"
-          />,
-        ]}
-      />
+      <Accordion type="multiple" variant="attached">
+        <AccordionItem value="1" headerSlot={<AccordionItemHeader label="Quantum Mechanics" />} attachment="start">
+          <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+        </AccordionItem>
+        <AccordionItem value="2" headerSlot={<AccordionItemHeader label="Relativity Theory" />} attachment="center">
+          <Body>{RELATIVITY_THEORY_TEXT}</Body>
+        </AccordionItem>
+        <AccordionItem value="3" headerSlot={<AccordionItemHeader label="Astrophysics" />} attachment="end">
+          <Body>{ASTROPHYSICS_TEXT}</Body>
+        </AccordionItem>
+      </Accordion>
     </ShowcaseFrame>
   );
 };
@@ -56,69 +43,67 @@ const WithIcon = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Accordion
-          type="multiple"
-          variant="separated"
-          itemSlots={[
-            <AccordionItem
-              value="1"
-              headerSlot={
-                <AccordionItemHeader label="Quantum Mechanics" icon={(className) => <Atom className={className} />} />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="2"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  icon={(className) => <IconInfinity className={className} />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="3"
-              headerSlot={
-                <AccordionItemHeader label="Astrophysics" icon={(className) => <IconStars className={className} />} />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            />,
-          ]}
-        />
-        <Accordion
-          type="multiple"
-          variant="attached"
-          itemSlots={[
-            <AccordionItem
-              value="4"
-              headerSlot={
-                <AccordionItemHeader label="Quantum Mechanics" icon={(className) => <Atom className={className} />} />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-              attachment="start"
-            />,
-            <AccordionItem
-              value="5"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  icon={(className) => <IconInfinity className={className} />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-              attachment="center"
-            />,
-            <AccordionItem
-              value="6"
-              headerSlot={
-                <AccordionItemHeader label="Astrophysics" icon={(className) => <IconStars className={className} />} />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-              attachment="end"
-            />,
-          ]}
-        />
+        <Accordion type="multiple" variant="separated">
+          <AccordionItem
+            value="1"
+            headerSlot={
+              <AccordionItemHeader label="Quantum Mechanics" icon={(className) => <Atom className={className} />} />
+            }
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="2"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                icon={(className) => <IconInfinity className={className} />}
+              />
+            }
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="3"
+            headerSlot={
+              <AccordionItemHeader label="Astrophysics" icon={(className) => <IconStars className={className} />} />
+            }
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
+        <Accordion type="multiple" variant="attached">
+          <AccordionItem
+            value="4"
+            headerSlot={
+              <AccordionItemHeader label="Quantum Mechanics" icon={(className) => <Atom className={className} />} />
+            }
+            attachment="start"
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="5"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                icon={(className) => <IconInfinity className={className} />}
+              />
+            }
+            attachment="center"
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="6"
+            headerSlot={
+              <AccordionItemHeader label="Astrophysics" icon={(className) => <IconStars className={className} />} />
+            }
+            attachment="end"
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -128,81 +113,79 @@ const WithBadge = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Accordion
-          type="multiple"
-          variant="separated"
-          itemSlots={[
-            <AccordionItem
-              value="1"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Quantum Mechanics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="2"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="3"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Astrophysics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            />,
-          ]}
-        />
-        <Accordion
-          type="multiple"
-          variant="attached"
-          itemSlots={[
-            <AccordionItem
-              value="4"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Quantum Mechanics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-              attachment="start"
-            />,
-            <AccordionItem
-              value="5"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-              attachment="center"
-            />,
-            <AccordionItem
-              value="6"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Astrophysics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-              attachment="end"
-            />,
-          ]}
-        />
+        <Accordion type="multiple" variant="separated">
+          <AccordionItem
+            value="1"
+            headerSlot={
+              <AccordionItemHeader
+                label="Quantum Mechanics"
+                badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+              />
+            }
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="2"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+              />
+            }
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="3"
+            headerSlot={
+              <AccordionItemHeader
+                label="Astrophysics"
+                badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+              />
+            }
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
+        <Accordion type="multiple" variant="attached">
+          <AccordionItem
+            value="4"
+            headerSlot={
+              <AccordionItemHeader
+                label="Quantum Mechanics"
+                badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+              />
+            }
+            attachment="start"
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="5"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+              />
+            }
+            attachment="center"
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="6"
+            headerSlot={
+              <AccordionItemHeader
+                label="Astrophysics"
+                badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+              />
+            }
+            attachment="end"
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -212,99 +195,97 @@ const WithBadgeWithIcon = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Accordion
-          type="multiple"
-          variant="separated"
-          itemSlots={[
-            <AccordionItem
-              value="1"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Quantum Mechanics"
-                  badgeSlot={
-                    <AccordionItemHeaderBadgeWithIcon
-                      label="Niels Bohr"
-                      color="primary"
-                      icon={(className) => <Atom className={className} />}
-                    />
-                  }
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="2"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  badgeSlot={
-                    <AccordionItemHeaderBadgeWithIcon
-                      label="Albert Einstein"
-                      color="green"
-                      icon={(className) => <IconInfinity className={className} />}
-                    />
-                  }
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="3"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Astrophysics"
-                  badgeSlot={
-                    <AccordionItemHeaderBadgeWithIcon
-                      label="Edwin Hubble"
-                      color="red"
-                      icon={(className) => <IconStars className={className} />}
-                    />
-                  }
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            />,
-          ]}
-        />
-        <Accordion
-          type="multiple"
-          variant="attached"
-          itemSlots={[
-            <AccordionItem
-              value="4"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Quantum Mechanics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-              attachment="start"
-            />,
-            <AccordionItem
-              value="5"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Relativity Theory"
-                  badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-              attachment="center"
-            />,
-            <AccordionItem
-              value="6"
-              headerSlot={
-                <AccordionItemHeader
-                  label="Astrophysics"
-                  badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-              attachment="end"
-            />,
-          ]}
-        />
+        <Accordion type="multiple" variant="separated">
+          <AccordionItem
+            value="1"
+            headerSlot={
+              <AccordionItemHeader
+                label="Quantum Mechanics"
+                badgeSlot={
+                  <AccordionItemHeaderBadgeWithIcon
+                    label="Niels Bohr"
+                    color="primary"
+                    icon={(className) => <Atom className={className} />}
+                  />
+                }
+              />
+            }
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="2"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                badgeSlot={
+                  <AccordionItemHeaderBadgeWithIcon
+                    label="Albert Einstein"
+                    color="green"
+                    icon={(className) => <IconInfinity className={className} />}
+                  />
+                }
+              />
+            }
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="3"
+            headerSlot={
+              <AccordionItemHeader
+                label="Astrophysics"
+                badgeSlot={
+                  <AccordionItemHeaderBadgeWithIcon
+                    label="Edwin Hubble"
+                    color="red"
+                    icon={(className) => <IconStars className={className} />}
+                  />
+                }
+              />
+            }
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
+        <Accordion type="multiple" variant="attached">
+          <AccordionItem
+            value="4"
+            headerSlot={
+              <AccordionItemHeader
+                label="Quantum Mechanics"
+                badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+              />
+            }
+            attachment="start"
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="5"
+            headerSlot={
+              <AccordionItemHeader
+                label="Relativity Theory"
+                badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+              />
+            }
+            attachment="center"
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="6"
+            headerSlot={
+              <AccordionItemHeader
+                label="Astrophysics"
+                badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+              />
+            }
+            attachment="end"
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -314,94 +295,92 @@ const WithVotingHeader = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Accordion
-          type="multiple"
-          variant="separated"
-          itemSlots={[
-            <AccordionItem
-              value="1"
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 67 }}
-                  label="Quantum Mechanics"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="2"
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 67 }}
-                  label="Relativity Theory"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="3"
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 67 }}
-                  label="Astrophysics"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            />,
-          ]}
-        />
-        <Accordion
-          type="multiple"
-          variant="attached"
-          itemSlots={[
-            <AccordionItem
-              value="1"
-              attachment="start"
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 67 }}
-                  label="Quantum Mechanics"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                />
-              }
-              contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="2"
-              attachment="center"
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 100 }}
-                  label="Relativity Theory"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                />
-              }
-              contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-            />,
-            <AccordionItem
-              value="3"
-              attachment="end"
-              disabled
-              headerSlot={
-                <AccordionItemHeaderVoting
-                  progressProps={{ value: 33 }}
-                  label="Astrophysics"
-                  rateSlot={<AccordionItemHeaderRate count={3} />}
-                  badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                />
-              }
-              contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-            />,
-          ]}
-        />
+        <Accordion type="multiple" variant="separated">
+          <AccordionItem
+            value="1"
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 67 }}
+                label="Quantum Mechanics"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+              />
+            }
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="2"
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 67 }}
+                label="Relativity Theory"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+              />
+            }
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="3"
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 67 }}
+                label="Astrophysics"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+              />
+            }
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
+        <Accordion type="multiple" variant="attached">
+          <AccordionItem
+            value="1"
+            attachment="start"
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 67 }}
+                label="Quantum Mechanics"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+              />
+            }
+          >
+            <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="2"
+            attachment="center"
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 100 }}
+                label="Relativity Theory"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+              />
+            }
+          >
+            <Body>{RELATIVITY_THEORY_TEXT}</Body>
+          </AccordionItem>
+          <AccordionItem
+            value="3"
+            attachment="end"
+            disabled
+            headerSlot={
+              <AccordionItemHeaderVoting
+                progressProps={{ value: 33 }}
+                label="Astrophysics"
+                rateSlot={<AccordionItemHeaderRate count={3} />}
+                badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+              />
+            }
+          >
+            <Body>{ASTROPHYSICS_TEXT}</Body>
+          </AccordionItem>
+        </Accordion>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -414,45 +393,45 @@ const Disabled = () => {
         <VariantsGrid<AccordionProps>
           renderVariant={(props) => {
             return (
-              <Accordion
-                {...props}
-                itemSlots={[
-                  <AccordionItem
-                    value="1"
-                    headerSlot={
-                      <AccordionItemHeader
-                        icon={(className) => <Atom className={className} />}
-                        label="Quantum Mechanics"
-                        badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                      />
-                    }
-                    contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-                  />,
-                  <AccordionItem
-                    value="2"
-                    headerSlot={
-                      <AccordionItemHeader
-                        icon={(className) => <IconInfinity className={className} />}
-                        label="Relativity Theory"
-                        badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                      />
-                    }
-                    contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-                  />,
-                  <AccordionItem
-                    value="3"
-                    disabled
-                    headerSlot={
-                      <AccordionItemHeader
-                        icon={(className) => <IconStars className={className} />}
-                        label="Astrophysics"
-                        badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                      />
-                    }
-                    contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-                  />,
-                ]}
-              />
+              <Accordion {...props}>
+                <AccordionItem
+                  value="1"
+                  headerSlot={
+                    <AccordionItemHeader
+                      icon={(className) => <Atom className={className} />}
+                      label="Quantum Mechanics"
+                      badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+                    />
+                  }
+                >
+                  <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+                </AccordionItem>
+                <AccordionItem
+                  value="2"
+                  headerSlot={
+                    <AccordionItemHeader
+                      icon={(className) => <IconInfinity className={className} />}
+                      label="Relativity Theory"
+                      badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+                    />
+                  }
+                >
+                  <Body>{RELATIVITY_THEORY_TEXT}</Body>
+                </AccordionItem>
+                <AccordionItem
+                  value="3"
+                  disabled
+                  headerSlot={
+                    <AccordionItemHeader
+                      icon={(className) => <IconStars className={className} />}
+                      label="Astrophysics"
+                      badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+                    />
+                  }
+                >
+                  <Body>{ASTROPHYSICS_TEXT}</Body>
+                </AccordionItem>
+              </Accordion>
             );
           }}
           variantPropsMap={[[{ variant: "separated" }, { variant: "attached" }]]}
@@ -460,48 +439,48 @@ const Disabled = () => {
         <VariantsGrid<AccordionProps>
           renderVariant={(props) => {
             return (
-              <Accordion
-                {...props}
-                itemSlots={[
-                  <AccordionItem
-                    value="1"
-                    headerSlot={
-                      <AccordionItemHeaderVoting
-                        progressProps={{ value: 33 }}
-                        label="Quantum Mechanics"
-                        rateSlot={<AccordionItemHeaderRate count={3} />}
-                        badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
-                      />
-                    }
-                    contentSlot={<Body>{QUANTUM_MECHANICS_TEXT}</Body>}
-                  />,
-                  <AccordionItem
-                    value="2"
-                    headerSlot={
-                      <AccordionItemHeaderVoting
-                        progressProps={{ value: 100 }}
-                        label="Relativity Theory"
-                        rateSlot={<AccordionItemHeaderRate count={3} />}
-                        badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
-                      />
-                    }
-                    contentSlot={<Body>{RELATIVITY_THEORY_TEXT}</Body>}
-                  />,
-                  <AccordionItem
-                    value="3"
-                    disabled
-                    headerSlot={
-                      <AccordionItemHeaderVoting
-                        progressProps={{ value: 67 }}
-                        label="Astrophysics"
-                        rateSlot={<AccordionItemHeaderRate count={3} />}
-                        badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
-                      />
-                    }
-                    contentSlot={<Body>{ASTROPHYSICS_TEXT}</Body>}
-                  />,
-                ]}
-              />
+              <Accordion {...props}>
+                <AccordionItem
+                  value="1"
+                  headerSlot={
+                    <AccordionItemHeaderVoting
+                      progressProps={{ value: 33 }}
+                      label="Quantum Mechanics"
+                      rateSlot={<AccordionItemHeaderRate count={3} />}
+                      badgeSlot={<AccordionItemHeaderBadge label="Niels Bohr" color="primary" />}
+                    />
+                  }
+                >
+                  <Body>{QUANTUM_MECHANICS_TEXT}</Body>
+                </AccordionItem>
+                <AccordionItem
+                  value="2"
+                  headerSlot={
+                    <AccordionItemHeaderVoting
+                      progressProps={{ value: 100 }}
+                      label="Relativity Theory"
+                      rateSlot={<AccordionItemHeaderRate count={3} />}
+                      badgeSlot={<AccordionItemHeaderBadge label="Albert Einstein" color="green" />}
+                    />
+                  }
+                >
+                  <Body>{RELATIVITY_THEORY_TEXT}</Body>
+                </AccordionItem>
+                <AccordionItem
+                  value="3"
+                  disabled
+                  headerSlot={
+                    <AccordionItemHeaderVoting
+                      progressProps={{ value: 67 }}
+                      label="Astrophysics"
+                      rateSlot={<AccordionItemHeaderRate count={3} />}
+                      badgeSlot={<AccordionItemHeaderBadge label="Edwin Hubble" color="red" />}
+                    />
+                  }
+                >
+                  <Body>{ASTROPHYSICS_TEXT}</Body>
+                </AccordionItem>
+              </Accordion>
             );
           }}
           variantPropsMap={[[{ variant: "separated" }, { variant: "attached" }]]}

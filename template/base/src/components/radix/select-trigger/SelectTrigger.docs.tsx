@@ -35,19 +35,22 @@ const SelectTriggerHelper = (
           {...props}
         />
         <Select.Portal>
-          <SelectPanel
-            groupSlots={[
-              <SelectPanelGroup
-                title="Programming languages"
-                itemSlots={[
-                  <SelectPanelGroupItem value="javascript" boxSlot={<SelectPanelGroupItemBox label="Javascript" />} />,
-                  <SelectPanelGroupItem value="python" boxSlot={<SelectPanelGroupItemBox label="Python" />} />,
-                  <SelectPanelGroupItem value="c#" boxSlot={<SelectPanelGroupItemBox label="C#" />} />,
-                  <SelectPanelGroupItem disabled value="swift" boxSlot={<SelectPanelGroupItemBox label="Swift" />} />,
-                ]}
-              />,
-            ]}
-          />
+          <SelectPanel>
+            <SelectPanelGroup title="Programming languages">
+              <SelectPanelGroupItem value="javascript">
+                <SelectPanelGroupItemBox label="Javascript" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="python">
+                <SelectPanelGroupItemBox label="Python" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="c#">
+                <SelectPanelGroupItemBox label="C#" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem disabled value="swift">
+                <SelectPanelGroupItemBox label="Swift" />
+              </SelectPanelGroupItem>
+            </SelectPanelGroup>
+          </SelectPanel>
         </Select.Portal>
       </Select.Root>
     </div>
@@ -59,77 +62,63 @@ const SelectTriggerWithTagsHelper = (props: SelectTriggerProps) => {
   const selected = selection !== "";
 
   return (
-    <SelectTriggerHelper
-      {...props}
-      rootProps={{ value: selection, onValueChange: setSelection }}
-      boxSlot={
-        <SelectTriggerBoxWithTags
-          textProps={{ children: "Select a programming language...", hidden: selected }}
-          tagSlots={
-            selected && (
-              <SelectTriggerBoxTagWithIcon
-                icon={(className) => <Atom className={className} />}
-                onDismiss={() => setSelection("")}
-              />
-            )
-          }
-        />
-      }
-    />
+    <SelectTriggerHelper {...props} rootProps={{ value: selection, onValueChange: setSelection }}>
+      <SelectTriggerBoxWithTags
+        textProps={{ children: "Select a programming language...", hidden: selected }}
+        tagSlots={
+          selected && (
+            <SelectTriggerBoxTagWithIcon
+              icon={(className) => <Atom className={className} />}
+              onDismiss={() => setSelection("")}
+            />
+          )
+        }
+      />
+    </SelectTriggerHelper>
   );
 };
 
 export const DefaultExample = () => (
   <ShowcaseFrame>
-    <SelectTriggerHelper
-      boxSlot={<SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />}
-    />
+    <SelectTriggerHelper>
+      <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+    </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
 export const InvalidExample = () => (
   <ShowcaseFrame>
-    <SelectTriggerHelper
-      description="Please select a valid programming language"
-      invalid
-      boxSlot={<SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />}
-    />
+    <SelectTriggerHelper description="Please select a valid programming language" invalid>
+      <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+    </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
 export const RequiredExample = () => (
   <ShowcaseFrame>
-    <SelectTriggerHelper
-      required
-      boxSlot={<SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />}
-    />
+    <SelectTriggerHelper required>
+      <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+    </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
 export const DisabledExample = () => (
   <ShowcaseFrame>
-    <SelectTriggerHelper
-      disabled
-      boxSlot={<SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />}
-    />
+    <SelectTriggerHelper disabled>
+      <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+    </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
 export const AttachmentExample = () => (
   <ShowcaseFrame>
     <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
-      <SelectTriggerHelper
-        helperStyle={{ width: 200 }}
-        attachment="start"
-        description="Select a property type"
-        boxSlot={<SelectTriggerBox textProps={{ placeholder: "Property type" }} />}
-      />
-      <SelectTriggerHelper
-        helperStyle={{ width: 200 }}
-        attachment="end"
-        description="Select a location"
-        boxSlot={<SelectTriggerBox textProps={{ placeholder: "Location" }} />}
-      />
+      <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="start" description="Select a property type">
+        <SelectTriggerBox textProps={{ placeholder: "Property type" }} />
+      </SelectTriggerHelper>
+      <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="end" description="Select a location">
+        <SelectTriggerBox textProps={{ placeholder: "Location" }} />
+      </SelectTriggerHelper>
     </div>
   </ShowcaseFrame>
 );
@@ -137,32 +126,21 @@ export const AttachmentExample = () => (
 export const WithAvatarExample = () => (
   <ShowcaseFrame>
     <VariantsColumn>
-      <SelectTriggerHelper
-        boxSlot={
-          <SelectTriggerBoxWithAvatar
-            textProps={{ placeholder: "Select a programming language..." }}
-            avatarSlot={<SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />}
-          />
-        }
-      />
-      <SelectTriggerHelper
-        invalid
-        boxSlot={
-          <SelectTriggerBoxWithAvatar
-            textProps={{ placeholder: "Select a programming language..." }}
-            avatarSlot={<SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />}
-          />
-        }
-      />
-      <SelectTriggerHelper
-        disabled
-        boxSlot={
-          <SelectTriggerBoxWithAvatar
-            textProps={{ placeholder: "Select a programming language..." }}
-            avatarSlot={<SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />}
-          />
-        }
-      />
+      <SelectTriggerHelper>
+        <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+          <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+        </SelectTriggerBoxWithAvatar>
+      </SelectTriggerHelper>
+      <SelectTriggerHelper invalid>
+        <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+          <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+        </SelectTriggerBoxWithAvatar>
+      </SelectTriggerHelper>
+      <SelectTriggerHelper disabled>
+        <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+          <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+        </SelectTriggerBoxWithAvatar>
+      </SelectTriggerHelper>
     </VariantsColumn>
   </ShowcaseFrame>
 );
@@ -170,32 +148,24 @@ export const WithAvatarExample = () => (
 export const WithIconExample = () => (
   <ShowcaseFrame>
     <VariantsColumn>
-      <SelectTriggerHelper
-        boxSlot={
-          <SelectTriggerBox
-            textProps={{ placeholder: "Select a programming language..." }}
-            icon={(className) => <Atom className={className} />}
-          />
-        }
-      />
-      <SelectTriggerHelper
-        invalid
-        boxSlot={
-          <SelectTriggerBox
-            textProps={{ placeholder: "Select a programming language..." }}
-            icon={(className) => <Atom className={className} />}
-          />
-        }
-      />
-      <SelectTriggerHelper
-        disabled
-        boxSlot={
-          <SelectTriggerBox
-            textProps={{ placeholder: "Select a programming language..." }}
-            icon={(className) => <Atom className={className} />}
-          />
-        }
-      />
+      <SelectTriggerHelper>
+        <SelectTriggerBox
+          textProps={{ placeholder: "Select a programming language..." }}
+          icon={(className) => <Atom className={className} />}
+        />
+      </SelectTriggerHelper>
+      <SelectTriggerHelper invalid>
+        <SelectTriggerBox
+          textProps={{ placeholder: "Select a programming language..." }}
+          icon={(className) => <Atom className={className} />}
+        />
+      </SelectTriggerHelper>
+      <SelectTriggerHelper disabled>
+        <SelectTriggerBox
+          textProps={{ placeholder: "Select a programming language..." }}
+          icon={(className) => <Atom className={className} />}
+        />
+      </SelectTriggerHelper>
     </VariantsColumn>
   </ShowcaseFrame>
 );

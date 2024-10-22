@@ -28,9 +28,9 @@ import { ReactNode } from "react";
 */
 
 export type AvatarToggleProps = Omit<UAvatarToggleRootProps, "children"> & {
-  contentSlot: React.ReactNode;
+  children: ReactNode;
 };
-export const AvatarToggle = ({ contentSlot, ...props }: AvatarToggleProps) => {
+export const AvatarToggle = ({ children, ...props }: AvatarToggleProps) => {
   return (
     <AvatarToggleLayout
       renderRoot={(children, className) => (
@@ -39,7 +39,7 @@ export const AvatarToggle = ({ contentSlot, ...props }: AvatarToggleProps) => {
         </UAvatarToggleRoot>
       )}
       styleProps={{ className: props.className, avatarToggleProps: props }}
-      contentSlot={contentSlot}
+      contentSlot={children}
       checkSlot={<AvatarToggleCheck />}
     />
   );

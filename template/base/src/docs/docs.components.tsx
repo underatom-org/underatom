@@ -88,7 +88,7 @@ export const ShowcaseFrame = ({
 }: {
   children: React.ReactNode;
   paddingX?: number;
-  code: string;
+  code?: string;
 }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [showCode, setShowCode] = useState(false);
@@ -157,7 +157,7 @@ export const ShowcaseFrame = ({
             }}
             files={{
               "/index.js": {
-                code,
+                code: code ?? "",
               },
             }}
             style={{ maxWidth: isMobile ? "90vw" : "700px" }}

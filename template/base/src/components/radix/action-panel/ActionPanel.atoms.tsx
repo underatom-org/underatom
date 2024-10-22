@@ -67,11 +67,9 @@ import {
   ====================================
 */
 
-export type ActionPanelProps = UActionPanelRootProps & {
-  groupSlots: React.ReactNode;
-};
+export type ActionPanelProps = UActionPanelRootProps;
 
-export const ActionPanel = ({ groupSlots, ...props }: ActionPanelProps) => {
+export const ActionPanel = ({ children, ...props }: ActionPanelProps) => {
   return (
     <ActionPanelLayout
       renderRoot={(children, className) => (
@@ -80,7 +78,7 @@ export const ActionPanel = ({ groupSlots, ...props }: ActionPanelProps) => {
         </UActionPanelRoot>
       )}
       styleProps={{ className: props.className, actionPanelProps: props }}
-      groupSlots={groupSlots}
+      groupSlots={children}
     />
   );
 };
@@ -93,9 +91,8 @@ export const ActionPanel = ({ groupSlots, ...props }: ActionPanelProps) => {
 
 export type ActionPanelGroupProps = UActionPanelGroupRootProps & {
   title?: string;
-  itemSlots?: React.ReactNode;
 };
-export const ActionPanelGroup = ({ title, itemSlots, ...props }: ActionPanelGroupProps) => {
+export const ActionPanelGroup = ({ title, children, ...props }: ActionPanelGroupProps) => {
   const actionPanelProps = useActionPanelInternalProvider();
   return (
     <ActionPanelGroupLayout
@@ -106,7 +103,7 @@ export const ActionPanelGroup = ({ title, itemSlots, ...props }: ActionPanelGrou
       )}
       styleProps={{ className: props.className, actionPanelProps, actionPanelGroupProps: props }}
       titleSlot={title && <UActionPanelGroupTitle>{title}</UActionPanelGroupTitle>}
-      itemSlots={itemSlots}
+      itemSlots={children}
     />
   );
 };
@@ -117,10 +114,8 @@ export const ActionPanelGroup = ({ title, itemSlots, ...props }: ActionPanelGrou
   ====================================
 */
 
-export type ActionPanelGroupItemProps = UActionPanelGroupItemRootProps & {
-  boxSlot: React.ReactNode;
-};
-export const ActionPanelGroupItem = ({ boxSlot, ...props }: ActionPanelGroupItemProps) => {
+export type ActionPanelGroupItemProps = UActionPanelGroupItemRootProps;
+export const ActionPanelGroupItem = ({ children, ...props }: ActionPanelGroupItemProps) => {
   const actionPanelProps = useActionPanelInternalProvider();
   const actionPanelGroupProps = useActionPanelGroupInternalProvider();
   return (
@@ -137,15 +132,13 @@ export const ActionPanelGroupItem = ({ boxSlot, ...props }: ActionPanelGroupItem
         actionPanelGroupItemProps: props,
       }}
       checkIconSlot={null}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };
 
-export type ActionPanelGroupCheckboxItemProps = UActionPanelGroupCheckboxItemRootProps & {
-  boxSlot: React.ReactNode;
-};
-export const ActionPanelGroupCheckboxItem = ({ boxSlot, ...props }: ActionPanelGroupCheckboxItemProps) => {
+export type ActionPanelGroupCheckboxItemProps = UActionPanelGroupCheckboxItemRootProps;
+export const ActionPanelGroupCheckboxItem = ({ children, ...props }: ActionPanelGroupCheckboxItemProps) => {
   const actionPanelProps = useActionPanelInternalProvider();
   const actionPanelGroupProps = useActionPanelGroupInternalProvider();
   return (
@@ -162,15 +155,13 @@ export const ActionPanelGroupCheckboxItem = ({ boxSlot, ...props }: ActionPanelG
         actionPanelGroupItemProps: props,
       }}
       checkIconSlot={<UActionPanelGroupItemCheck />}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };
 
-export type ActionPanelGroupItemWithCaretProps = UActionPanelGroupItemRootProps & {
-  boxSlot: React.ReactNode;
-};
-export const ActionPanelGroupItemWithCaret = ({ boxSlot, ...props }: ActionPanelGroupItemWithCaretProps) => {
+export type ActionPanelGroupItemWithCaretProps = UActionPanelGroupItemRootProps;
+export const ActionPanelGroupItemWithCaret = ({ children, ...props }: ActionPanelGroupItemWithCaretProps) => {
   const actionPanelProps = useActionPanelInternalProvider();
   const actionPanelGroupProps = useActionPanelGroupInternalProvider();
   return (
@@ -188,16 +179,15 @@ export const ActionPanelGroupItemWithCaret = ({ boxSlot, ...props }: ActionPanel
       }}
       checkIconSlot={<UActionPanelGroupItemCheck />}
       caretSlot={<UActionPanelGroupItemCaret />}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };
 
 export type ActionPanelGroupItemWithKBDProps = UActionPanelGroupItemRootProps & {
-  boxSlot: React.ReactNode;
   KBDSlot?: React.ReactNode;
 };
-export const ActionPanelGroupItemWithKBD = ({ boxSlot, KBDSlot, ...props }: ActionPanelGroupItemWithKBDProps) => {
+export const ActionPanelGroupItemWithKBD = ({ children, KBDSlot, ...props }: ActionPanelGroupItemWithKBDProps) => {
   const actionPanelProps = useActionPanelInternalProvider();
   const actionPanelGroupProps = useActionPanelGroupInternalProvider();
   return (
@@ -215,7 +205,7 @@ export const ActionPanelGroupItemWithKBD = ({ boxSlot, KBDSlot, ...props }: Acti
       }}
       checkIconSlot={<UActionPanelGroupItemCheck />}
       kBDSlot={KBDSlot}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };

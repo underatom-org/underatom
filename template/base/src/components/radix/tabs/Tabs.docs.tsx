@@ -128,20 +128,15 @@ const TabsWithDismissHelper = (props: Partial<TabsProps>) => {
   const [value, setValue] = useState<string>("1");
 
   return (
-    <TabsWithContentHelper
-      {...props}
-      value={value}
-      onValueChange={setValue}
-      itemSlots={
-        <ItemSlotsWithDismissHelper
-          onDismiss={(v) => {
-            if (v === value) {
-              setValue("");
-            }
-          }}
-        />
-      }
-    />
+    <TabsWithContentHelper {...props} value={value} onValueChange={setValue}>
+      <ItemSlotsWithDismissHelper
+        onDismiss={(v) => {
+          if (v === value) {
+            setValue("");
+          }
+        }}
+      />
+    </TabsWithContentHelper>
   );
 };
 
@@ -154,7 +149,9 @@ const TabsWithDismissHelper = (props: Partial<TabsProps>) => {
 export const FillDefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper itemSlots={<ItemSlotsHelper />} />
+      <TabsWithContentHelper>
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -163,8 +160,12 @@ export const FillSizesExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="fill" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="fill" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -174,7 +175,9 @@ export const FillDisabledExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="fill" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -183,7 +186,9 @@ export const FillDisabledExample = () => {
 export const FillWithBadgeExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithBadgeHelper />} />
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -191,14 +196,18 @@ export const FillWithBadgeExample = () => {
 export const FillWithNotificationExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithNotificationHelper />} />
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 export const FillWithIndicatorExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -214,7 +223,9 @@ export const FillWithDismissExample = () => {
 export const FillFullWidthExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="fill" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper fullWidth variant="fill">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -222,7 +233,9 @@ export const FillFullWidthExample = () => {
 export const FillWithIconExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -230,7 +243,9 @@ export const FillWithIconExample = () => {
 export const FillWithLoadingExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsLoadingHelper />} />
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -244,7 +259,9 @@ export const FillWithLoadingExample = () => {
 export const UnderlineDefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -253,8 +270,12 @@ export const UnderlineSizesExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="underline" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="underline" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -264,7 +285,9 @@ export const UnderlineDisabledExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="underline" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -273,7 +296,9 @@ export const UnderlineDisabledExample = () => {
 export const UnderlineWithBadgeExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithBadgeHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -281,14 +306,18 @@ export const UnderlineWithBadgeExample = () => {
 export const UnderlineWithNotificationExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithNotificationHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 export const UnderlineWithIndicatorExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -304,7 +333,9 @@ export const UnderlineWithDismissExample = () => {
 export const UnderlineFullWidthExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="underline" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper fullWidth variant="underline">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -312,7 +343,9 @@ export const UnderlineFullWidthExample = () => {
 export const UnderlineWithIconExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -320,7 +353,9 @@ export const UnderlineWithIconExample = () => {
 export const UnderlineWithLoadingExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsLoadingHelper />} />
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -334,7 +369,9 @@ export const UnderlineWithLoadingExample = () => {
 export const HandleDefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -343,8 +380,12 @@ export const HandleSizesExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="handle" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="handle" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -354,7 +395,9 @@ export const HandleDisabledExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="handle" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -363,7 +406,9 @@ export const HandleDisabledExample = () => {
 export const HandleWithBadgeExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithBadgeHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -371,14 +416,18 @@ export const HandleWithBadgeExample = () => {
 export const HandleWithNotificationExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithNotificationHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 export const HandleWithIndicatorExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -394,7 +443,9 @@ export const HandleWithDismissExample = () => {
 export const HandleFullWidthExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="handle" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper fullWidth variant="handle">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -402,7 +453,9 @@ export const HandleFullWidthExample = () => {
 export const HandleWithIconExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithIconHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -410,7 +463,9 @@ export const HandleWithIconExample = () => {
 export const HandleWithLoadingExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsLoadingHelper />} />
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
