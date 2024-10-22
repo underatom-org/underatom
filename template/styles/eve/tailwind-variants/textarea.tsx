@@ -390,7 +390,7 @@ export const TextareaBoxWithTagsLayout = ({
     <>
       <div className="h-fit w-full flex flex-row gap-[6px]">
         <div className="h-fit w-full flex flex-col gap-[6px]">
-          <div className="h-fit w-full flex flex-row gap-[6px]">{tagSlots}</div>
+          <div className="h-fit w-full flex flex-row gap-[6px] ">{tagSlots}</div>
           {textSlot}
         </div>
       </div>

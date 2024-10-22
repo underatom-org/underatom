@@ -59,4 +59,5 @@ export {
   IconReplace,
   IconTrash,
   IconBrandGoogle,
+  IconCode,
 } from "@tabler/icons-react";

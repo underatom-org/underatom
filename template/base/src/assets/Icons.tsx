@@ -47,3 +47,4 @@ export const IconTrash: IconType = () => <></>;
 export const IconBrandGoogle: IconType = () => <></>;
 export const IconArrowNarrowLeft: IconType = () => <></>;
 export const IconMenu2: IconType = () => <></>;
+export const IconCode: IconType = () => <></>;

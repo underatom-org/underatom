@@ -2,10 +2,13 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import { IconCode } from "../assets/Icons";
 import { Body, Code, H1, H2, H3, Subheader } from "../components/no-headless/typography/Typography.atoms";
 import { Window } from "../components/no-headless/window/Window.atoms";
+import { IconButton } from "../components/react-aria/button/Button.atoms";
 import { useMediaQuery } from "./utils";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+import { SandpackCodeEditor, SandpackLayout, SandpackProvider } from "@codesandbox/sandpack-react";
 
 export type VariantProps = Record<string, any>;
 export type VariantPropsMap = VariantProps[][];
@@ -78,26 +81,100 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
   );
 };
 
-
-export const ShowcaseFrame = ({ children, paddingX = 40 }: { children: React.ReactNode; paddingX?: number }) => {
+export const ShowcaseFrame = ({
+  children,
+  paddingX = 40,
+  code,
+}: {
+  children: React.ReactNode;
+  paddingX?: number;
+  code: string;
+}) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
+  const [showCode, setShowCode] = useState(false);
+
   return (
-    <Window style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
-      <div
-        style={{
-          padding: 40,
-          paddingLeft: paddingX,
-          paddingRight: paddingX,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: 300,
-          overflow: "auto",
-        }}
-      >
-        {children}
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <Window variant="default" style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
+        <div
+          style={{
+            padding: 40,
+            paddingLeft: paddingX,
+            paddingRight: paddingX,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: 300,
+            overflow: "auto",
+          }}
+        >
+          {children}
+        </div>
+        <div style={{ display: "flex", justifyContent: "flex-end", paddingBottom: 16, paddingRight: 16 }}>
+          <IconButton
+            variant="base"
+            icon={(className) => <IconCode className={className} />}
+            onPress={() => setShowCode(!showCode)}
+          />
+        </div>
+      </Window>
+      <div>
+        {showCode && (
+          <SandpackProvider
+            theme={{
+              colors: {
+                surface1: "#1d1d20",
+                surface2: "#1d1d20",
+                surface3: "#1d1d20",
+                clickable: "#a8a9b2",
+                base: "#a8a9b2",
+                disabled: "#444344",
+                hover: "#FCFCFA",
+                accent: "#ffffff",
+                error: "#ffcdca",
+                errorSurface: "#c24038",
+              },
+              syntax: {
+                plain: "rgb(252, 252, 250)",
+                comment: {
+                  color: "#a8a9b2",
+                  fontStyle: "italic",
+                },
+                keyword: "#ef4445",
+                tag: "#ffffff",
+                punctuation: "#a8a9b2",
+                definition: "#ffffff",
+                property: "#a8a9b2",
+                static: "#ffffff",
+                string: "#ffffff",
+              },
+              font: {
+                body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+                mono: '"DM Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace',
+                size: "13px",
+                lineHeight: "20px",
+              },
+            }}
+            files={{
+              "/index.js": {
+                code,
+              },
+            }}
+            style={{ maxWidth: isMobile ? "90vw" : "700px" }}
+          >
+            <SandpackLayout style={{ borderRadius: 8 }}>
+              <SandpackCodeEditor
+                style={{ height: "auto", maxHeight: "600px" }}
+                readOnly
+                showTabs={false}
+                showLineNumbers={false}
+                showInlineErrors
+              />
+            </SandpackLayout>
+          </SandpackProvider>
+        )}
       </div>
-    </Window>
+    </div>
   );
 };
 
@@ -105,7 +182,7 @@ export const Page = ({
   children,
   title,
   subtitle,
-  command
+  command,
 }: {
   children: React.ReactNode;
   title: React.ReactNode;

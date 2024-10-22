@@ -100,7 +100,7 @@ export const SwitchToggleLayout = ({
 }) =>
   renderRoot(
     <>{handleSlot}</>,
-    `h-7 w-12 flex flex-row items-center px-[2px] data-[state=checked]:pl-[22px] data-[state=checked]:pr-[2px] ${className}`,
+    `h-7 w-12 flex flex-row items-center px-[2px] min-w-[44px] data-[state=checked]:pl-[22px] data-[state=checked]:pr-[2px] ${className}`,
   );
 
 export const switchClass = ({ className }: SwitchType) => {
