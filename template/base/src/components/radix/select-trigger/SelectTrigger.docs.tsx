@@ -78,40 +78,219 @@ const SelectTriggerWithTagsHelper = (props: SelectTriggerProps) => {
   );
 };
 
+const defaultCode = `
+import * as Select from "@radix-ui/react-select";
+
+<Select.Root {...props.rootProps}>
+  <SelectTrigger
+    label="Language"
+    description="Select a programming language from the list of most popular languages"
+  >
+    <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+  </SelectTrigger>
+  <Select.Portal>
+    <SelectPanel>
+      <SelectPanelGroup title="Programming languages">
+        <SelectPanelGroupItem value="javascript">
+          <SelectPanelGroupItemBox label="Javascript" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="python">
+          <SelectPanelGroupItemBox label="Python" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="c#">
+          <SelectPanelGroupItemBox label="C#" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem disabled value="swift">
+          <SelectPanelGroupItemBox label="Swift" />
+        </SelectPanelGroupItem>
+      </SelectPanelGroup>
+    </SelectPanel>
+  </Select.Portal>
+</Select.Root>
+`;
+
 export const DefaultExample = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame code={defaultCode}>
     <SelectTriggerHelper>
       <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
     </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
+const invalidCode = `
+import * as Select from "@radix-ui/react-select";
+
+<Select.Root {...props.rootProps}>
+  <SelectTrigger
+    label="Language"
+    description="Please select a valid programming language"
+    invalid
+  >
+    <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+  </SelectTrigger>
+  <Select.Portal>
+    <SelectPanel>
+      <SelectPanelGroup title="Programming languages">
+        <SelectPanelGroupItem value="javascript">
+          <SelectPanelGroupItemBox label="Javascript" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="python">
+          <SelectPanelGroupItemBox label="Python" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="c#">
+          <SelectPanelGroupItemBox label="C#" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem disabled value="swift">
+          <SelectPanelGroupItemBox label="Swift" />
+        </SelectPanelGroupItem>
+      </SelectPanelGroup>
+    </SelectPanel>
+  </Select.Portal>
+</Select.Root>
+`;
+
 export const InvalidExample = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame code={invalidCode}>
     <SelectTriggerHelper description="Please select a valid programming language" invalid>
       <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
     </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
+const requiredCode = `
+import * as Select from "@radix-ui/react-select";
+
+<Select.Root {...props.rootProps}>
+  <SelectTrigger
+    label="Language"
+    description="Select a programming language from the list of most popular languages"
+    required
+  >
+    <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+  </SelectTrigger>
+  <Select.Portal>
+    <SelectPanel>
+      <SelectPanelGroup title="Programming languages">
+        <SelectPanelGroupItem value="javascript">
+          <SelectPanelGroupItemBox label="Javascript" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="python">
+          <SelectPanelGroupItemBox label="Python" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="c#">
+          <SelectPanelGroupItemBox label="C#" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem disabled value="swift">
+          <SelectPanelGroupItemBox label="Swift" />
+        </SelectPanelGroupItem>
+      </SelectPanelGroup>
+    </SelectPanel>
+  </Select.Portal>
+</Select.Root>
+`;
+
 export const RequiredExample = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame code={requiredCode}>
     <SelectTriggerHelper required>
       <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
     </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
+const disabledCode = `
+import * as Select from "@radix-ui/react-select";
+
+<Select.Root {...props.rootProps}>
+  <SelectTrigger
+    label="Language"
+    description="Select a programming language from the list of most popular languages"
+    disabled
+  >
+    <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
+  </SelectTrigger>
+  <Select.Portal>
+    <SelectPanel>
+      <SelectPanelGroup title="Programming languages">
+        <SelectPanelGroupItem value="javascript">
+          <SelectPanelGroupItemBox label="Javascript" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="python">
+          <SelectPanelGroupItemBox label="Python" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem value="c#">
+          <SelectPanelGroupItemBox label="C#" />
+        </SelectPanelGroupItem>
+        <SelectPanelGroupItem disabled value="swift">
+          <SelectPanelGroupItemBox label="Swift" />
+        </SelectPanelGroupItem>
+      </SelectPanelGroup>
+    </SelectPanel>
+  </Select.Portal>
+</Select.Root>
+`;
+
 export const DisabledExample = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame code={disabledCode}>
     <SelectTriggerHelper disabled>
       <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
     </SelectTriggerHelper>
   </ShowcaseFrame>
 );
 
+const attachmentCode = `
+import * as Select from "@radix-ui/react-select";
+
+const SelectTriggerHelper = (
+  props: SelectTriggerProps & {
+    rootProps?: Select.SelectProps;
+    helperStyle?: React.CSSProperties;
+  },
+) => {
+  return (
+    <div style={{ width: 400, ...props.helperStyle }}>
+      <Select.Root {...props.rootProps}>
+        <SelectTrigger
+          label="Language"
+          description="Select a programming language from the list of most popular languages"
+          {...props}
+        />
+        <Select.Portal>
+          <SelectPanel>
+            <SelectPanelGroup title="Programming languages">
+              <SelectPanelGroupItem value="javascript">
+                <SelectPanelGroupItemBox label="Javascript" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="python">
+                <SelectPanelGroupItemBox label="Python" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="c#">
+                <SelectPanelGroupItemBox label="C#" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem disabled value="swift">
+                <SelectPanelGroupItemBox label="Swift" />
+              </SelectPanelGroupItem>
+            </SelectPanelGroup>
+          </SelectPanel>
+        </Select.Portal>
+      </Select.Root>
+    </div>
+  );
+};
+
 export const AttachmentExample = () => (
-  <ShowcaseFrame>
+  <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
+    <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="start" description="Select a property type">
+      <SelectTriggerBox textProps={{ placeholder: "Property type" }} />
+    </SelectTriggerHelper>
+    <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="end" description="Select a location">
+      <SelectTriggerBox textProps={{ placeholder: "Location" }} />
+    </SelectTriggerHelper>
+  </div>
+);
+`;
+
+export const AttachmentExample = () => (
+  <ShowcaseFrame code={attachmentCode}>
     <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
       <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="start" description="Select a property type">
         <SelectTriggerBox textProps={{ placeholder: "Property type" }} />
@@ -123,8 +302,69 @@ export const AttachmentExample = () => (
   </ShowcaseFrame>
 );
 
+const withAvatarCode = `
+import * as Select from "@radix-ui/react-select";
+
+const SelectTriggerHelper = (
+  props: SelectTriggerProps & {
+    rootProps?: Select.SelectProps;
+    helperStyle?: React.CSSProperties;
+  },
+) => {
+  return (
+    <div style={{ width: 400, ...props.helperStyle }}>
+      <Select.Root {...props.rootProps}>
+        <SelectTrigger
+          label="Language"
+          description="Select a programming language from the list of most popular languages"
+          {...props}
+        />
+        <Select.Portal>
+          <SelectPanel>
+            <SelectPanelGroup title="Programming languages">
+              <SelectPanelGroupItem value="javascript">
+                <SelectPanelGroupItemBox label="Javascript" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="python">
+                <SelectPanelGroupItemBox label="Python" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="c#">
+                <SelectPanelGroupItemBox label="C#" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem disabled value="swift">
+                <SelectPanelGroupItemBox label="Swift" />
+              </SelectPanelGroupItem>
+            </SelectPanelGroup>
+          </SelectPanel>
+        </Select.Portal>
+      </Select.Root>
+    </div>
+  );
+};
+
 export const WithAvatarExample = () => (
-  <ShowcaseFrame>
+  <>
+    <SelectTriggerHelper>
+      <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+        <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+      </SelectTriggerBoxWithAvatar>
+    </SelectTriggerHelper>
+    <SelectTriggerHelper invalid>
+      <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+        <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+      </SelectTriggerBoxWithAvatar>
+    </SelectTriggerHelper>
+    <SelectTriggerHelper disabled>
+      <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
+        <SelectTriggerBoxAvatar imageProps={{ src: avatar1Src }} />
+      </SelectTriggerBoxWithAvatar>
+    </SelectTriggerHelper>
+  </>
+);
+`;
+
+export const WithAvatarExample = () => (
+  <ShowcaseFrame code={withAvatarCode}>
     <VariantsColumn>
       <SelectTriggerHelper>
         <SelectTriggerBoxWithAvatar textProps={{ placeholder: "Select a programming language..." }}>
@@ -145,8 +385,72 @@ export const WithAvatarExample = () => (
   </ShowcaseFrame>
 );
 
+const withIconCode = `
+import * as Select from "@radix-ui/react-select";
+
+const SelectTriggerHelper = (
+  props: SelectTriggerProps & {
+    rootProps?: Select.SelectProps;
+    helperStyle?: React.CSSProperties;
+  },
+) => {
+  return (
+    <div style={{ width: 400, ...props.helperStyle }}>
+      <Select.Root {...props.rootProps}>
+        <SelectTrigger
+          label="Language"
+          description="Select a programming language from the list of most popular languages"
+          {...props}
+        />
+        <Select.Portal>
+          <SelectPanel>
+            <SelectPanelGroup title="Programming languages">
+              <SelectPanelGroupItem value="javascript">
+                <SelectPanelGroupItemBox label="Javascript" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="python">
+                <SelectPanelGroupItemBox label="Python" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem value="c#">
+                <SelectPanelGroupItemBox label="C#" />
+              </SelectPanelGroupItem>
+              <SelectPanelGroupItem disabled value="swift">
+                <SelectPanelGroupItemBox label="Swift" />
+              </SelectPanelGroupItem>
+            </SelectPanelGroup>
+          </SelectPanel>
+        </Select.Portal>
+      </Select.Root>
+    </div>
+  );
+};
+
 export const WithIconExample = () => (
-  <ShowcaseFrame>
+  <>
+    <SelectTriggerHelper>
+      <SelectTriggerBox
+        textProps={{ placeholder: "Select a programming language..." }}
+        icon={(className) => <Atom className={className} />}
+      />
+    </SelectTriggerHelper>
+    <SelectTriggerHelper invalid>
+      <SelectTriggerBox
+        textProps={{ placeholder: "Select a programming language..." }}
+        icon={(className) => <Atom className={className} />}
+      />
+    </SelectTriggerHelper>
+    <SelectTriggerHelper disabled>
+      <SelectTriggerBox
+        textProps={{ placeholder: "Select a programming language..." }}
+        icon={(className) => <Atom className={className} />}
+      />
+    </SelectTriggerHelper>
+  </>
+);
+`;
+
+export const WithIconExample = () => (
+  <ShowcaseFrame code={withIconCode}>
     <VariantsColumn>
       <SelectTriggerHelper>
         <SelectTriggerBox
@@ -169,10 +473,45 @@ export const WithIconExample = () => (
     </VariantsColumn>
   </ShowcaseFrame>
 );
+
+const withTagsCode = `
+import * as Select from "@radix-ui/react-select";
+
+const SelectTriggerWithTagsHelper = (props: SelectTriggerProps) => {
+  const [selection, setSelection] = useState<string>(props.disabled ? "javascript" : "");
+  const selected = selection !== "";
+
+  return (
+    <SelectTriggerHelper {...props} rootProps={{ value: selection, onValueChange: setSelection }}>
+      <SelectTriggerBoxWithTags
+        textProps={{ children: "Select a programming language...", hidden: selected }}
+        tagSlots={
+          selected && (
+            <SelectTriggerBoxTagWithIcon
+              icon={(className) => <Atom className={className} />}
+              onDismiss={() => setSelection("")}
+            />
+          )
+        }
+      />
+    </SelectTriggerHelper>
+  );
+};
 
 export const WithTagsExample = () => {
   return (
-    <ShowcaseFrame>
+    <>
+      <SelectTriggerWithTagsHelper />
+      <SelectTriggerWithTagsHelper invalid />
+      <SelectTriggerWithTagsHelper disabled />
+    </>
+  );
+};
+`;
+
+export const WithTagsExample = () => {
+  return (
+    <ShowcaseFrame code={withTagsCode}>
       <VariantsColumn>
         <SelectTriggerWithTagsHelper />
         <SelectTriggerWithTagsHelper invalid />

@@ -4,25 +4,37 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Switch } from "./Switch.atoms";
 import { Check, X } from "../../../assets/Icons";
 
+const defaultCode = `
+<Switch />
+`;
+
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <Switch />
     </ShowcaseFrame>
   );
 };
 
+const withLabelCode = `
+<Switch label="Switch Label" />
+`;
+
 const WithLabelExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withLabelCode}>
       <Switch label="Switch Label" />
     </ShowcaseFrame>
   );
 };
 
+const withLabelAndDescriptionCode = `
+<Switch label="Switch Label" description="This is a description" />
+`;
+
 const WithLabelAndDescriptionExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withLabelAndDescriptionCode}>
       <Switch label="Switch Label" description="This is a description" />
     </ShowcaseFrame>
   );
@@ -40,25 +52,38 @@ const WithLabelAndDescriptionExample = () => {
 //   );
 // };
 
+const invalidCode = `
+<Switch label="Switch Label" description="This is a description" invalid />
+`;
+
 const InvalidExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={invalidCode}>
       <Switch label="Switch Label" description="This is a description" invalid />
     </ShowcaseFrame>
   );
 };
 
+const disabledCode = `
+<Switch label="Switch Label" description="This is a description" disabled />
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <Switch label="Switch Label" description="This is a description" disabled />
     </ShowcaseFrame>
   );
 };
 
+const colorsCode = `
+<Switch label="Switch Label" description="This is a description" color="primary" defaultChecked />
+<Switch label="Switch Label" description="This is a description" color="success" defaultChecked />
+`;
+
 const ColorsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={colorsCode}>
       <VariantsRow>
         <Switch label="Switch Label" description="This is a description" color="primary" defaultChecked />
         <Switch label="Switch Label" description="This is a description" color="success" defaultChecked />
@@ -67,19 +92,50 @@ const ColorsExample = () => {
   );
 };
 
+const requiredCode = `
+<Switch label="Switch Label" description="This is a description" required />
+`;
+
 const RequiredExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={requiredCode}>
       <Switch label="Switch Label" description="This is a description" required />
     </ShowcaseFrame>
   );
 };
 
+const iconCode = `
 const IconExample = () => {
   const [checked1, setChecked1] = useState(false);
   const [checked2, setChecked2] = useState(true);
   return (
-    <ShowcaseFrame>
+    <>
+      <Switch
+        label="Switch Label"
+        description="This is a description"
+        checked={checked1}
+        onCheckedChange={setChecked1}
+        icon={(className) => (checked1 ? <Check className={className} /> : <X className={className} />)}
+        color="primary"
+      />
+      <Switch
+        label="Switch Label"
+        description="This is a description"
+        checked={checked2}
+        onCheckedChange={setChecked2}
+        icon={(className) => (checked2 ? <Check className={className} /> : <X className={className} />)}
+        color="success"
+      />
+    </>
+  );
+};
+`;
+
+const IconExample = () => {
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(true);
+  return (
+    <ShowcaseFrame code={iconCode}>
       <VariantsRow>
         <Switch
           label="Switch Label"

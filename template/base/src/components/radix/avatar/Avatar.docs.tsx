@@ -53,17 +53,50 @@ export const IconAvatarHelper = (props: Omit<AvatarProps, "children">) => {
   );
 };
 
+const defaultCode = `
+<Avatar>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <ImageAvatarHelper />
     </ShowcaseFrame>
   );
 };
 
+const variantsCode = `
+<Avatar>
+  <AvatarContent fallbackText="A" />
+</Avatar>
+
+<Avatar>
+  <AvatarContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+</Avatar>
+`;
+
+const VariantsExample = () => {
+  return (
+    <ShowcaseFrame code={variantsCode}>
+      <VariantsRow>
+        <TextAvatarHelper />
+        <IconAvatarHelper />
+      </VariantsRow>
+    </ShowcaseFrame>
+  );
+};
+
+const sizesCode = `
+<Avatar size="sm">
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<AvatarProps>
         renderVariant={(props) => (
           <div style={{ display: "flex" }}>
@@ -97,9 +130,17 @@ const SizesExample = () => {
   );
 };
 
+const withActionCode = `
+<Avatar
+  actionSlot={<AvatarAction icon={(className) => <AtomIcon className={className} />} />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const WithActionExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withActionCode}>
       <VariantsRow>
         <ImageAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
         <TextAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
@@ -109,9 +150,23 @@ const WithActionExample = () => {
   );
 };
 
+const withIndicatorCode = `
+<Avatar
+  indicatorSlot={<AvatarIndicator imageProps={{ src: "", alt: "" }} />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+
+<Avatar
+  indicatorSlot={<AvatarIndicatorWithIcon icon={(className) => <AtomIcon className={className} />} />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const WithIndicatorExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIndicatorCode}>
       <VariantsColumn>
         <VariantsRow>
           <ImageAvatarHelper
@@ -148,9 +203,17 @@ const WithIndicatorExample = () => {
   );
 };
 
+const withStatusCode = `
+<Avatar
+  statusSlot={<AvatarStatus status="online" />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const WithStatusExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withStatusCode}>
       <VariantsRow>
         <ImageAvatarHelper statusSlot={<AvatarStatus status="online" />} />
         <TextAvatarHelper statusSlot={<AvatarStatus status="offline" />} />
@@ -161,9 +224,17 @@ const WithStatusExample = () => {
   );
 };
 
+const withBadgeCode = `
+<Avatar
+  badgeSlot={<AvatarBadge label="Live" color="primary" />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const WithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withBadgeCode}>
       <VariantsRow>
         <ImageAvatarHelper badgeSlot={<AvatarBadge label="Live" color="primary" />} />
         <TextAvatarHelper badgeSlot={<AvatarBadge label="Live" color="red" />} />
@@ -174,9 +245,17 @@ const WithBadgeExample = () => {
   );
 };
 
+const withNotificationCode = `
+<Avatar
+  notificationSlot={<AvatarNotification counterText="4" color="primary" />}
+>
+  <AvatarContent imageProps={{ src: "", alt: "" }} />
+</Avatar>
+`;
+
 const WithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withNotificationCode}>
       <VariantsColumn>
         <VariantsRow>
           <ImageAvatarHelper notificationSlot={<AvatarNotification counterText="4" color="primary" />} />
@@ -205,6 +284,9 @@ const AvatarDocs = () => {
       <Section title="Showcase">
         <Example title="Default" description="The avatar with the default props.">
           <DefaultExample />
+        </Example>
+        <Example title="Variants" description="Avatar with only text or icon.">
+          <VariantsExample />
         </Example>
         <Example
           title="Sizes"

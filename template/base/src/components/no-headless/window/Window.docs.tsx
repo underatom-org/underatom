@@ -1,24 +1,29 @@
-import { Example, Page, Section } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Body } from "../typography/Typography.atoms";
-import { Window } from "./Window.atoms";
+
+const defaultCode = `
+<Window>
+  <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: 300 }}>
+    <Body> You can put anything you want in here</Body>
+  </div>
+</Window>
+`;
 
 const DefaultExample = () => {
   return (
-    <div>
-      <Window>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: 500,
-          }}
-        >
-          <Body> You can put anything you want in here</Body>
-        </div>
-      </Window>
-    </div>
+    <ShowcaseFrame code={defaultCode}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 300,
+        }}
+      >
+        <Body> You can put anything you want in here</Body>
+      </div>
+    </ShowcaseFrame>
   );
 };
 

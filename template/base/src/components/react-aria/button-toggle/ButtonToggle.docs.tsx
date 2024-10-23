@@ -20,17 +20,29 @@ import {
 } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 
+const basicCode = `
+<ButtonToggle>Button</ButtonToggle>
+`;
+
 const BasicExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={basicCode}>
       <ButtonToggle>Button</ButtonToggle>
     </ShowcaseFrame>
   );
 };
 
+const groupCode = `
+<div style={{ display: "flex" }}>
+  <ButtonToggle attachment="start">Start</ButtonToggle>
+  <ButtonToggle attachment="center">Center</ButtonToggle>
+  <ButtonToggle attachment="end">End</ButtonToggle>
+</div>
+`;
+
 const GroupExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={groupCode}>
       <VariantsRow>
         <div
           style={{
@@ -55,9 +67,15 @@ const GroupExample = () => {
   );
 };
 
+const sizesCode = `
+<ButtonToggle size="sm">Small</ButtonToggle>
+<ButtonToggle size="md">Medium</ButtonToggle>
+<ButtonToggle size="lg">Large</ButtonToggle>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsRow>
         <ButtonToggle size="sm">Small</ButtonToggle>
         <ButtonToggle size="md">Medium</ButtonToggle>
@@ -67,17 +85,27 @@ const SizesExample = () => {
   );
 };
 
+const fullWidthCode = `
+<div style={{ width: "300px" }}>
+  <ButtonToggle fullWidth>Button</ButtonToggle>
+</div>
+`;
+
 const FullWidthExample = () => {
   return (
-    <ShowcaseFrame>
-      <ButtonToggle fullWidth>Full Width</ButtonToggle>
+    <ShowcaseFrame code={fullWidthCode}>
+      <ButtonToggle fullWidth>Button</ButtonToggle>
     </ShowcaseFrame>
   );
 };
 
+const disabledCode = `
+<ButtonToggle isDisabled>Disabled</ButtonToggle>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <VariantsRow>
           <ButtonToggle isDisabled>Disabled</ButtonToggle>
@@ -111,9 +139,13 @@ const DisabledExample = () => {
   );
 };
 
+const iconButtonToggleCode = `
+<IconButtonToggle icon={(iconClass) => <Atom className={iconClass} />} />
+`;
+
 const IconButtonToggleExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={iconButtonToggleCode}>
       <VariantsRow>
         <IconButtonToggle icon={(iconClass) => <Atom className={iconClass} />} />
         <IconButtonToggle isSelected icon={(iconClass) => <Atom className={iconClass} />} />
@@ -122,9 +154,13 @@ const IconButtonToggleExample = () => {
   );
 };
 
+const buttonToggleWithDotCode = `
+<ButtonToggleWithDot dotColor="green">Button</ButtonToggleWithDot>
+`;
+
 const ButtonToggleWithDotExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonToggleWithDotCode}>
       <VariantsGrid<ButtonToggleWithDotProps>
         isHorizontal
         renderVariant={(props) => {
@@ -139,9 +175,15 @@ const ButtonToggleWithDotExample = () => {
   );
 };
 
+const buttonToggleWithLeftIconCode = `
+<ButtonToggleWithLeftIcon icon={(iconClass) => <Atom className={iconClass} />} >
+  Button
+</ButtonToggleWithLeftIcon>
+`;
+
 const ButtonToggleWithLeftIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonToggleWithLeftIconCode}>
       <VariantsRow>
         <ButtonToggleWithLeftIcon icon={(className) => <Atom className={className} />}>Button</ButtonToggleWithLeftIcon>
         <ButtonToggleWithLeftIcon isSelected icon={(className) => <Atom className={className} />}>
@@ -152,9 +194,15 @@ const ButtonToggleWithLeftIconExample = () => {
   );
 };
 
+const buttonToggleWithRightIconCode = `
+<ButtonToggleWithRightIcon icon={(iconClass) => <Atom className={iconClass} />}>
+  Button
+</ButtonToggleWithRightIcon>
+`;
+
 const ButtonToggleWithRightIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonToggleWithRightIconCode}>
       <VariantsRow>
         <ButtonToggleWithRightIcon icon={(className) => <Atom className={className} />}>
           Button
@@ -167,9 +215,13 @@ const ButtonToggleWithRightIconExample = () => {
   );
 };
 
+const loadingButtonToggleCode = `
+<LoadingButtonToggle>Button</LoadingButtonToggle>
+`;
+
 const LoadingButtonToggleExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={loadingButtonToggleCode}>
       <VariantsRow>
         <LoadingButtonToggle>Button</LoadingButtonToggle>
         <LoadingButtonToggle isSelected>Button</LoadingButtonToggle>

@@ -10,9 +10,17 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { avatar1Src, avatar2Src, avatar3Src } from "../../../assets/images/Images";
 
+const defaultCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <AvatarGroup>
         <AvatarGroupAvatar
           imageProps={{
@@ -37,9 +45,17 @@ const DefaultExample = () => {
   );
 };
 
+const avatarsWithTextCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar fallbackText="AV" />
+  <AvatarGroupAvatar fallbackText="SI" />
+  <AvatarGroupAvatar fallbackText="JK" />
+</AvatarGroup>
+`;
+
 const AvatarsWithTextExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={avatarsWithTextCode}>
       <AvatarGroup>
         <AvatarGroupAvatar fallbackText="AV" />
         <AvatarGroupAvatar fallbackText="SI" />
@@ -49,9 +65,17 @@ const AvatarsWithTextExample = () => {
   );
 };
 
+const avatarsWithIconCode = `
+<AvatarGroup>
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+</AvatarGroup>
+`;
+
 const AvatarsWithIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={avatarsWithIconCode}>
       <AvatarGroup>
         <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
         <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
@@ -61,9 +85,17 @@ const AvatarsWithIconExample = () => {
   );
 };
 
+const avatarsCombinedCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatar fallbackText="JK" />
+</AvatarGroup>
+`;
+
 const AvatarsCombinedExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={avatarsCombinedCode}>
       <AvatarGroup>
         <AvatarGroupAvatar
           imageProps={{
@@ -78,12 +110,20 @@ const AvatarsCombinedExample = () => {
   );
 };
 
+const withActionCode = `
+<AvatarGroup
+  actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}
+>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const WithActionExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}
-      >
+    <ShowcaseFrame code={withActionCode}>
+      <AvatarGroup actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}>
         <AvatarGroupAvatar
           imageProps={{
             src: avatar1Src,
@@ -107,12 +147,18 @@ const WithActionExample = () => {
   );
 };
 
+const withInfoCode = `
+<AvatarGroup infoSlot={<AvatarGroupInfo label="+3" />}>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const WithInfoExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        infoSlot={<AvatarGroupInfo label="+3" />}
-      >
+    <ShowcaseFrame code={withInfoCode}>
+      <AvatarGroup infoSlot={<AvatarGroupInfo label="+3" />}>
         <AvatarGroupAvatar imageProps={{ src: avatar1Src, alt: "Avatar 1" }} />
         <AvatarGroupAvatar imageProps={{ src: avatar2Src, alt: "Avatar 2" }} />
         <AvatarGroupAvatar imageProps={{ src: avatar3Src, alt: "Avatar 3" }} />
@@ -121,9 +167,17 @@ const WithInfoExample = () => {
   );
 };
 
+const sizesCode = `
+<AvatarGroup size="sm">
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const Sizes = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsColumn>
         <AvatarGroup size="sm">
           <AvatarGroupAvatar

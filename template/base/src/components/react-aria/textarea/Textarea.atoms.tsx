@@ -87,7 +87,7 @@ export const TextareaBox = (props: TextareaBoxProps) => {
 };
 
 export type TextareaBoxWithTagsProps = UTextareaBoxRootProps & {
-  tagSlots?: React.ReactNode[];
+  tagSlots?: React.ReactNode;
 };
 export const TextareaBoxWithTags = ({ tagSlots, ...props }: TextareaBoxWithTagsProps) => {
   const textareaProps = useTextareaRootParentProps();

@@ -2,8 +2,12 @@ import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.compon
 import { DocsRoute } from "../../../docs/docs.types";
 import { Rate } from "./Rate.atoms";
 
+const defaultCode = `
+<Rate />
+`;
+
 export const Default = () => (
-  <ShowcaseFrame>
+  <ShowcaseFrame code={defaultCode}>
     <Rate />
   </ShowcaseFrame>
 );

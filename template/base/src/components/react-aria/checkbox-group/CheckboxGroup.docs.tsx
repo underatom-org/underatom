@@ -1,40 +1,20 @@
 import { useState } from "react";
-import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsGrid } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Button } from "../button/Button.atoms";
-import { CheckboxGroup, CheckboxGroupCheckbox, CheckboxGroupProps } from "./CheckboxGroup.atoms";
+import { CheckboxGroup, CheckboxGroupCheckbox } from "./CheckboxGroup.atoms";
 
-export const Default = () => {
-  return (
-    <VariantsGrid<CheckboxGroupProps>
-      renderVariant={(props) => {
-        return (
-          <div
-            style={{
-              width: 300,
-            }}
-          >
-            <CheckboxGroup {...props} label="Checkbox Group" description="Checkbox Group">
-              <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
-              <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
-              <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
-            </CheckboxGroup>
-          </div>
-        );
-      }}
-      variantPropsMap={[
-        [{ size: "sm" }, { size: "md" }, { size: "lg" }],
-        [{}, { isDisabled: true }],
-        [{}, { isRequired: true }],
-        [{}, { isInvalid: true }],
-      ]}
-    />
-  );
-};
+const defaultCode = `
+<CheckboxGroup label="Checkbox Group" description="Checkbox Group">
+  <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
+  <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
+  <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
+</CheckboxGroup>
+`;
 
 export const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <CheckboxGroup label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
@@ -44,10 +24,46 @@ export const DefaultExample = () => {
   );
 };
 
+const indeterminateCode = `
+export const IndeterminateExample = () => {
+  const [isIndeterminate, setIsIndeterminate] = useState(false);
+
+  return (
+    <>
+      <Button onPress={() => setIsIndeterminate((prev) => !prev)}>Toggle indeterminate</Button>
+
+      <CheckboxGroup label="Checkbox Group" description="Checkbox Group">
+        <CheckboxGroupCheckbox
+          key="1"
+          label="Checkbox 1"
+          description="Description"
+          value="1"
+          isIndeterminate={isIndeterminate}
+        />
+        <CheckboxGroupCheckbox
+          key="2"
+          label="Checkbox 2"
+          description="Description"
+          value="2"
+          isIndeterminate={isIndeterminate}
+        />
+        <CheckboxGroupCheckbox
+          key="3"
+          label="Checkbox 3"
+          description="Description"
+          value="3"
+          isIndeterminate={isIndeterminate}
+        />
+      </CheckboxGroup>
+    </>
+  );
+};
+`;
+
 export const IndeterminateExample = () => {
   const [isIndeterminate, setIsIndeterminate] = useState(false);
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={indeterminateCode}>
       <VariantsColumn>
         <Button onPress={() => setIsIndeterminate((prev) => !prev)}>Toggle indeterminate</Button>
         <CheckboxGroup label="Checkbox Group" description="Checkbox Group">
@@ -117,9 +133,17 @@ export const IndeterminateExample = () => {
 //   );
 // };
 
+const groupDisabledCode = `
+<CheckboxGroup isDisabled label="Checkbox Group" description="Checkbox Group">
+  <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
+  <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
+  <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
+</CheckboxGroup>
+`;
+
 export const GroupDisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={groupDisabledCode}>
       <CheckboxGroup isDisabled label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
@@ -129,9 +153,17 @@ export const GroupDisabledExample = () => {
   );
 };
 
+const disabledCode = `
+<CheckboxGroup label="Checkbox Group" description="Checkbox Group">
+  <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
+  <CheckboxGroupCheckbox isDisabled key="2" label="Checkbox 2" description="Description" value="2" />
+  <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
+</CheckboxGroup>
+`;
+
 export const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <CheckboxGroup label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox isDisabled key="2" label="Checkbox 2" description="Description" value="2" />
@@ -141,9 +173,17 @@ export const DisabledExample = () => {
   );
 };
 
+const invalidGroupCode = `
+<CheckboxGroup isInvalid label="Checkbox Group" description="Checkbox Group">
+  <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
+  <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
+  <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
+</CheckboxGroup>
+`;
+
 export const InvalidGroupExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={invalidGroupCode}>
       <CheckboxGroup isInvalid label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
@@ -153,9 +193,17 @@ export const InvalidGroupExample = () => {
   );
 };
 
+const requiredCode = `
+<CheckboxGroup isRequired label="Checkbox Group" description="Checkbox Group">
+  <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
+  <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
+  <CheckboxGroupCheckbox key="3" label="Checkbox 3" description="Description" value="3" />
+</CheckboxGroup>
+`;
+
 export const RequiredExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={requiredCode}>
       <CheckboxGroup isRequired label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />

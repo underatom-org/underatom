@@ -101,7 +101,7 @@ export const InputBox = ({ trailingIcon, leadingIcon, onClear, ...props }: Input
 
 export type InputBoxWithSegmentsProps = UInputBoxRootProps & {
   trailingIcon?: (className: string) => React.ReactNode;
-  segmentSlots: React.ReactNode[];
+  segmentSlots: React.ReactNode;
   onClear?: () => void;
 };
 export const InputBoxWithSegments = ({ trailingIcon, segmentSlots, onClear, ...props }: InputBoxWithSegmentsProps) => {
@@ -123,7 +123,7 @@ export const InputBoxWithSegments = ({ trailingIcon, segmentSlots, onClear, ...p
 
 export type InputBoxWithTagsProps = UInputBoxRootProps & {
   trailingIcon?: (className: string) => React.ReactNode;
-  tagSlots?: React.ReactNode[];
+  tagSlots?: React.ReactNode;
   onClear?: () => void;
 };
 export const InputBoxWithTags = ({ trailingIcon, tagSlots, onClear, ...props }: InputBoxWithTagsProps) => {

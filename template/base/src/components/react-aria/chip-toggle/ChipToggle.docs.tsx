@@ -21,17 +21,27 @@ import {
 } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
+const defaultCode = `
+<ChipToggle>Toggle</ChipToggle>
+`;
+
 const Default = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <ChipToggle>Toggle</ChipToggle>
     </ShowcaseFrame>
   );
 };
 
+const sizesCode = `
+<ChipToggle size="sm">Toggle</ChipToggle>
+<ChipToggle size="md">Toggle</ChipToggle>
+<ChipToggle size="lg">Toggle</ChipToggle>
+`;
+
 const Sizes = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsRow>
         <ChipToggle size="sm">Toggle</ChipToggle>
         <ChipToggle size="md">Toggle</ChipToggle>
@@ -41,9 +51,15 @@ const Sizes = () => {
   );
 };
 
+const dismissibleCode = `
+<ChipToggle onDismiss={() => console.log("dismiss")}>
+  Toggle
+</ChipToggle>
+`;
+
 const Dismissible = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={dismissibleCode}>
       <VariantsRow>
         <ChipToggle>Toggle</ChipToggle>
         <ChipToggle onDismiss={() => console.log("dismiss")}>Toggle</ChipToggle>
@@ -52,9 +68,13 @@ const Dismissible = () => {
   );
 };
 
+const disabledCode = `
+<ChipToggle isDisabled>Toggle</ChipToggle>
+`;
+
 const Disabled = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <VariantsRow>
           <ChipToggle isDisabled>Toggle</ChipToggle>
@@ -126,9 +146,27 @@ const Disabled = () => {
   );
 };
 
+const withAvatarCode = `
+<ChipToggleWithAvatar avatarSlot={<ChipToggleAvatar imageProps={{ src: "", alt: "" }} />}>
+  Toggle
+</ChipToggleWithAvatar>
+
+<ChipToggleWithAvatar avatarSlot={<ChipToggleAvatar fallbackText="S" />}>
+  Toggle
+</ChipToggleWithAvatar>
+
+<ChipToggleWithAvatar
+  avatarSlot={
+    <ChipToggleAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+  }
+>
+  Toggle
+</ChipToggleWithAvatar>
+`;
+
 const WithAvatar = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withAvatarCode}>
       <VariantsGrid<ChipToggleWithAvatarProps>
         isHorizontal
         renderVariant={(props) => <ChipToggleWithAvatar {...props}>Chip</ChipToggleWithAvatar>}
@@ -145,9 +183,16 @@ const WithAvatar = () => {
   );
 };
 
+const withDotCode = `
+<ChipToggleWithDot dotColor="primary">Toggle</ChipToggleWithDot>
+<ChipToggleWithDot dotColor="base">Toggle</ChipToggleWithDot>
+<ChipToggleWithDot dotColor="green">Toggle</ChipToggleWithDot>
+<ChipToggleWithDot dotColor="red">Toggle</ChipToggleWithDot>
+`;
+
 const WithDot = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withDotCode}>
       <VariantsGrid<ChipToggleWithDotProps>
         isHorizontal
         renderVariant={(props) => <ChipToggleWithDot {...props}>Chip</ChipToggleWithDot>}
@@ -160,9 +205,15 @@ const WithDot = () => {
   );
 };
 
+const withIconCode = `
+<ChipToggleWithIcon icon={(className) => <Atom className={className} />}>
+  Toggle
+</ChipToggleWithIcon>
+`;
+
 const WithIcon = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIconCode}>
       <VariantsRow>
         <ChipToggleWithIcon icon={(className) => <Atom className={className} />}>Chip</ChipToggleWithIcon>
         <ChipToggleWithIcon isSelected icon={(className) => <Atom className={className} />}>

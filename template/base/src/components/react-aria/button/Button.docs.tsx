@@ -19,9 +19,13 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 
+const variantsCode = `
+<Button variant="primary">Button</Button>
+`;
+
 const VariantsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={variantsCode}>
       <VariantsGrid<ButtonProps>
         isHorizontal
         renderVariant={(props) => {
@@ -41,9 +45,23 @@ const VariantsExample = () => {
   );
 };
 
+const groupsCode = `
+<div style={{ display: "flex" }}>
+  <Button attachment="start">Start</Button>
+  <Button attachment="center">Center</Button>
+  <Button attachment="end">End</Button>
+</div>
+
+<div style={{ display: "flex" }}>
+  <IconButton icon={(className) => <Atom className={className} />} attachment="start" />
+  <IconButton icon={(className) => <Atom className={className} />} attachment="center" />
+  <IconButton icon={(className) => <Atom className={className} />} attachment="end" />
+</div>
+`;
+
 const GroupsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={groupsCode}>
       <VariantsRow>
         <VariantsGrid<ButtonProps>
           renderVariant={(props) => (
@@ -84,9 +102,15 @@ const GroupsExample = () => {
   );
 };
 
+const sizesCode = `
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<ButtonProps>
         renderVariant={(props) => {
           return <Button {...props}>Button</Button>;
@@ -106,9 +130,15 @@ const SizesExample = () => {
   );
 };
 
+const fullwidthCode = `
+<div style={{ width: 300 }}>
+  <Button fullWidth>Button</Button>
+</div>
+`;
+
 const FullwidthExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fullwidthCode}>
       <VariantsGrid<ButtonProps>
         renderVariant={(props) => {
           return (
@@ -137,9 +167,13 @@ const FullwidthExample = () => {
   );
 };
 
+const disabledCode = `
+<Button isDisabled>Button</Button>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsRow>
         <VariantsGrid<ButtonProps>
           renderVariant={(props) => {
@@ -216,9 +250,13 @@ const DisabledExample = () => {
   );
 };
 
+const iconButtonCode = `
+<IconButton icon={(className) => <AtomIcon className={className} />} />
+`;
+
 const IconButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={iconButtonCode}>
       <VariantsGrid<IconButtonProps>
         isHorizontal
         renderVariant={(props) => {
@@ -230,9 +268,13 @@ const IconButtonExample = () => {
   );
 };
 
+const anchorButtonCode = `
+<AnchorButton>Button</AnchorButton>
+`;
+
 const AnchorButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={anchorButtonCode}>
       <VariantsGrid<AnchorButtonProps>
         isHorizontal
         renderVariant={(props) => {
@@ -252,9 +294,13 @@ const AnchorButtonExample = () => {
   );
 };
 
+const buttonWithDotCode = `
+<ButtonWithDot dotColor="green">Button</ButtonWithDot>
+`;
+
 const ButtonWithDotExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithDotCode}>
       <VariantsGrid<ButtonWithDotProps>
         renderVariant={(props) => {
           return <ButtonWithDot {...props}>Button</ButtonWithDot>;
@@ -268,9 +314,15 @@ const ButtonWithDotExample = () => {
   );
 };
 
+const buttonWithLeftIconCode = `
+<ButtonWithLeftIcon icon={(className) => <AtomIcon className={className} />} >
+  Button
+</ButtonWithLeftIcon>
+`;
+
 const ButtonWithLeftIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithLeftIconCode}>
       <VariantsGrid<ButtonWithLeftIconProps>
         isHorizontal
         renderVariant={(props) => {
@@ -294,9 +346,15 @@ const ButtonWithLeftIconExample = () => {
   );
 };
 
+const buttonWithRightIconCode = `
+<ButtonWithRightIcon icon={(className) => <AtomIcon className={className} />}>
+  Button
+</ButtonWithRightIcon>
+`;
+
 const ButtonWithRightIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithRightIconCode}>
       <VariantsGrid<ButtonWithRightIconProps>
         isHorizontal
         renderVariant={(props) => {
@@ -320,9 +378,13 @@ const ButtonWithRightIconExample = () => {
   );
 };
 
+const loadingButtonCode = `
+<LoadingButton>Button</LoadingButton>
+`;
+
 const LoadingButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={loadingButtonCode}>
       <VariantsGrid<LoadingButtonProps>
         isHorizontal
         renderVariant={(props) => {

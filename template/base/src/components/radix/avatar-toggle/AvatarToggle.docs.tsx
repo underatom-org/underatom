@@ -30,25 +30,43 @@ export const AvatarToggleWithContent = (props: Omit<AvatarToggleProps, "children
   );
 };
 
+const defaultCode = `
+<AvatarToggle>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <AvatarToggleWithContent />
     </ShowcaseFrame>
   );
 };
 
+const selectedCode = `
+<AvatarToggle isSelected>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const SelectedExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={selectedCode}>
       <AvatarToggleWithContent isSelected />
     </ShowcaseFrame>
   );
 };
 
+const sizesCode = `
+<AvatarToggle size="sm">
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<AvatarToggleProps>
         renderVariant={(props) => (
           <div style={{ display: "flex" }}>
@@ -82,9 +100,15 @@ const SizesExample = () => {
   );
 };
 
+const disabledCode = `
+<AvatarToggle isDisabled>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <VariantsRow>
           <AvatarToggle isDisabled>
@@ -125,9 +149,15 @@ const DisabledExample = () => {
   );
 };
 
+const withIconCode = `
+<AvatarToggle>
+  <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+</AvatarToggle>
+`;
+
 const WithIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIconCode}>
       <VariantsRow>
         <AvatarToggle>
           <AvatarToggleContent
@@ -146,9 +176,15 @@ const WithIconExample = () => {
   );
 };
 
+const withTextCode = `
+<AvatarToggle>
+  <AvatarToggleContent fallbackText="AV" />
+</AvatarToggle>
+`;
+
 const WithTextExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withTextCode}>
       <VariantsRow>
         <AvatarToggle>
           <AvatarToggleContent

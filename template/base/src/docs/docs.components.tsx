@@ -5,10 +5,10 @@
 import { IconCode } from "../assets/Icons";
 import { Body, Code, H1, H2, H3, Subheader } from "../components/no-headless/typography/Typography.atoms";
 import { Window } from "../components/no-headless/window/Window.atoms";
-import { IconButton } from "../components/react-aria/button/Button.atoms";
 import { useMediaQuery } from "./utils";
 import { ReactNode, useState } from "react";
 import { SandpackCodeEditor, SandpackLayout, SandpackProvider } from "@codesandbox/sandpack-react";
+import { IconButtonToggle } from "../components/react-aria/button-toggle/ButtonToggle.atoms";
 
 export type VariantProps = Record<string, any>;
 export type VariantPropsMap = VariantProps[][];
@@ -111,8 +111,8 @@ export const ShowcaseFrame = ({
           {children}
         </div>
         <div style={{ display: "flex", justifyContent: "flex-end", paddingBottom: 16, paddingRight: 16 }}>
-          <IconButton
-            variant="base"
+          <IconButtonToggle
+            isSelected={showCode}
             icon={(className) => <IconCode className={className} />}
             onPress={() => setShowCode(!showCode)}
           />
@@ -157,7 +157,7 @@ export const ShowcaseFrame = ({
             }}
             files={{
               "/index.js": {
-                code: code ?? "",
+                code: code?.trim() ?? "",
               },
             }}
             style={{ maxWidth: isMobile ? "90vw" : "700px" }}

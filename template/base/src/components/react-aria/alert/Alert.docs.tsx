@@ -12,9 +12,24 @@ import { Atom } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid } from "../../../docs/docs.components";
 
+const defaultCode = `
+<Alert
+  status="primary"
+  icon={(className) => <Atom className={className} />}
+  title="Title"
+  subtitle="Subtitle"
+  description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
+  dismissSlot={<AlertDismiss />}
+  primaryActionSlot={
+    <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
+  }
+  secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
+/>
+`;
+
 const Default = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <VariantsGrid<AlertProps>
         renderVariant={(props) => {
           return (
@@ -46,9 +61,24 @@ const Default = () => {
   );
 };
 
+const withStatusCode = `
+<AlertWithStatus
+  status="primary"
+  icon={(className) => <Atom className={className} />}
+  title="Title"
+  subtitle="Subtitle"
+  description="Our servers will undergo maintenance on [date] from [start time] to [end time] (UTC)"
+  statusSlot={<AlertStatus icon={(className) => <Atom className={className} />} />}
+  primaryActionSlot={
+    <AlertActionWithIcon icon={(className) => <Atom className={className} />}>Action</AlertActionWithIcon>
+  }
+  secondaryActionSlot={<AlertAction variant="base">Cancel</AlertAction>}
+/>
+`;
+
 const WithStatus = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withStatusCode}>
       <VariantsGrid<AlertWithStatusProps>
         renderVariant={(props) => {
           return (
