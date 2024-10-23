@@ -424,7 +424,7 @@ const ButtonDocs = () => {
   return (
     <Page
       title="Button"
-      subtitle="Buttons are used to trigger actions. They can be used to submit a form, navigate to a new page, or perform a certain action."
+      subtitle="Buttons can be used to submit a form, navigate to a new page, or perform a certain action."
       command="npx underatom@latest add button"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

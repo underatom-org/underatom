@@ -16,7 +16,7 @@ const RateDocs = () => {
   return (
     <Page
       title="Rate"
-      subtitle="Rate"
+      subtitle="Allows users to rate."
       command="npx underatom@latest add rate"
       usageCode={defaultCode}
       defaultExample={<Default />}

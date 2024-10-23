@@ -308,7 +308,7 @@ const TextareaDocs = () => {
   return (
     <Page
       title="Textarea"
-      subtitle=""
+      subtitle="A component for displaying a textarea field."
       command="npx underatom@latest add textarea"
       usageCode={defaultCode}
       defaultExample={<Default />}

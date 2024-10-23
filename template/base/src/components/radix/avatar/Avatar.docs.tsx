@@ -274,11 +274,7 @@ const AvatarDocs = () => {
   return (
     <Page
       title="Avatar"
-      subtitle={
-        <>
-          Composable avatar component based on the Radix <Code>Avatar</Code>.
-        </>
-      }
+      subtitle="Composable avatar component with various attachments."
       command="npx underatom@latest add avatar"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

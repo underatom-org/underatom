@@ -114,7 +114,7 @@ const AlertDocs = () => {
   return (
     <Page
       title="Alert"
-      subtitle=""
+      subtitle="A component for displaying an alert message."
       command="npx underatom@latest add alert"
       usageCode={defaultCode}
       defaultExample={<Default />}

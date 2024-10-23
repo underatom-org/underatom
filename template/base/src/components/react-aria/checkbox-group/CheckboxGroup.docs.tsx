@@ -217,7 +217,7 @@ const CheckboxGroupDocs = () => {
   return (
     <Page
       title="CheckboxGroup"
-      subtitle=""
+      subtitle="A component for displaying a group of checkboxes."
       command="npx underatom@latest add checkbox-group"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

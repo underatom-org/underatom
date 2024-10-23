@@ -720,7 +720,7 @@ const AccordionDocs = () => {
   return (
     <Page
       title="Accordion"
-      subtitle="Accordion"
+      subtitle="A collapsible container that displays content in a vertically stacked list of items."
       command="npx underatom@latest add accordion"
       usageCode={defaultCode}
       defaultExample={<Default />}

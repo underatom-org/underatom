@@ -238,7 +238,7 @@ const WithNotificationExample = () => {
 const AvatarButtonDocs = () => (
   <Page
     title="AvatarButton"
-    subtitle="Subtitle"
+    subtitle="Clickable avatar component."
     command="npx underatom@latest add avatar-button"
     usageCode={defaultCode}
     defaultExample={<DefaultExample />}

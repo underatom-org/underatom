@@ -788,48 +788,16 @@ const ActionPanelDocs = () => {
       defaultExample={<DefaultExample />}
     >
       <Section title="Showcase">
-        <Example
-          title="Togglable items"
-          description={
-            <>
-              Using the <Code>ActionPanelGroupCheckboxItem</Code> atom allows togglable items. Also the group needs to
-              have the <Code>togglable</Code> prop set to <Code>true</Code>.
-            </>
-          }
-        >
+        <Example title="Togglable items">
           <TogglableExample />
         </Example>
-        <Example
-          title="Togglable avatar items"
-          description={
-            <>
-              The <Code>ActionPanelGroupItemBoxWithAvatar</Code> atom can be used as a <Code>boxSlot</Code> for the
-              <Code>ActionPanelGroupCheckboxItem</Code>.
-            </>
-          }
-        >
+        <Example title="Togglable avatar items">
           <TogglableAvatarsExample />
         </Example>
-        <Example
-          title="Multiline avatar items"
-          description={
-            <>
-              The <Code>ActionPanelGroupItemBoxWithAvatarAndDescription</Code> atom can be used as a{" "}
-              <Code>boxSlot</Code> to achieve a multiline avatar item.
-            </>
-          }
-        >
+        <Example title="Multiline avatar items">
           <WithAvatarsMultilineExample />
         </Example>
-        <Example
-          title="Multiline icon items"
-          description={
-            <>
-              The <Code>ActionPanelGroupItemBoxWithDescription</Code> atom can be used as a <Code>boxSlot</Code> to
-              achieve a multiline icon item.
-            </>
-          }
-        >
+        <Example title="Multiline icon items">
           <WithIconsMultiline />
         </Example>
       </Section>

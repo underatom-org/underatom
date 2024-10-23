@@ -482,7 +482,7 @@ const InputDocs = () => {
   return (
     <Page
       title="Input"
-      subtitle=""
+      subtitle="Text input field with optional slots to extend functionality."
       command="npx underatom@latest add input"
       usageCode={defaultCode}
       defaultExample={<Default />}

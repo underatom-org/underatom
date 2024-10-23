@@ -161,8 +161,8 @@ const IconExample = () => {
 const SwitchDocs = () => {
   return (
     <Page
-      title="Switch "
-      subtitle="Switch"
+      title="Switch"
+      subtitle="A switch component, works like the HTML input type checkbox."
       command="npx underatom@latest add switch"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

@@ -1,4 +1,4 @@
-import { Example, Page, Section, ShowcaseFrame, VariantsGrid } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { RadioGroup, RadioGroupRadio } from "./RadioGroup.atoms";
 
@@ -150,7 +150,7 @@ const RadioGroupDocs = () => {
   return (
     <Page
       title="RadioGroup"
-      subtitle="RadioGroup"
+      subtitle="A component for displaying a group of radio buttons."
       command="npx underatom@latest add radio-group"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

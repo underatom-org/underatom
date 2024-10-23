@@ -114,7 +114,7 @@ const TagDocs = () => {
   return (
     <Page
       title="Tag"
-      subtitle="Tag component"
+      subtitle="Display small amount of information in a compact format."
       command="npx underatom@latest add tag"
       usageCode={defaultCode}
       defaultExample={<Default />}

@@ -197,7 +197,7 @@ const ChipDocs = () => {
   return (
     <Page
       title="Chip"
-      subtitle=""
+      subtitle="A clickable tag component."
       command="npx underatom@latest add chip"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

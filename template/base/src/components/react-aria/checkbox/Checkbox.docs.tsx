@@ -106,7 +106,7 @@ const Docs = () => {
   return (
     <Page
       title="Checkbox"
-      subtitle=""
+      subtitle="A component for displaying a checkbox field."
       command="npx underatom@latest add checkbox"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

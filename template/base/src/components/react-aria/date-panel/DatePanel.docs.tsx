@@ -651,7 +651,7 @@ const DatePanelDocs = () => {
   return (
     <Page
       title="DatePanel"
-      subtitle=""
+      subtitle="Calendar component for selecting a single date or a range of dates."
       command="npx underatom@latest add date-panel"
       usageCode={defaultCode}
       defaultExample={<Default />}

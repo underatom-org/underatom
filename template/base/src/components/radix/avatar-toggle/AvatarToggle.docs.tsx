@@ -206,7 +206,7 @@ const WithTextExample = () => {
 const AvatarToggleDocs = () => (
   <Page
     title="AvatarToggle"
-    subtitle="Subtitle"
+    subtitle="A toggleable avatar component."
     command="npx underatom@latest add avatar-toggle"
     usageCode={defaultCode}
     defaultExample={<DefaultExample />}

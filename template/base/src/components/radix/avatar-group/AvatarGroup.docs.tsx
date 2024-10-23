@@ -248,7 +248,7 @@ const AvatarGroupDocs = () => {
   return (
     <Page
       title="AvatarGroup"
-      subtitle="Subtitle"
+      subtitle="A component for displaying a group of avatars."
       command="npx underatom@latest add avatar-group"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

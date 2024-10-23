@@ -27,6 +27,7 @@ import {
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
+import { Code } from "../../no-headless/typography/Typography.atoms";
 
 const defaultCode = `
 import * as Select from "@radix-ui/react-select";
@@ -594,7 +595,11 @@ const SelectPanelDocs = () => {
   return (
     <Page
       title="SelectPanel"
-      subtitle="SelectPanel"
+      subtitle={
+        <>
+          Composable select panel component, to be used with the radix <Code>Select</Code> component.
+        </>
+      }
       command="npx underatom@latest add select-panel"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

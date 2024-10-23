@@ -228,7 +228,7 @@ const ChipToggleDocs = () => {
   return (
     <Page
       title="ChipToggle"
-      subtitle=""
+      subtitle="A toggleable chip component."
       command="npx underatom@latest add chip-toggle"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

@@ -12,6 +12,7 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { IconHome, IconSettings, IconUserCircle } from "@tabler/icons-react";
 import { useState } from "react";
+import { Code } from "../../no-headless/typography/Typography.atoms";
 
 /*
   ====================================
@@ -681,7 +682,12 @@ const TabsDocs = () => {
   return (
     <Page
       title="Tabs"
-      subtitle="Tabs"
+      subtitle={
+        <>
+          A component for displaying a tabbed interface. Comes in three variants: <Code>fill</Code>,{" "}
+          <Code>underline</Code>, and <Code>handle</Code>.
+        </>
+      }
       command="npx underatom@latest add tabs"
       usageCode={fillDefaultCode}
       defaultExample={<FillDefaultExample />}

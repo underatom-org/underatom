@@ -111,7 +111,7 @@ const SideNavDocs = () => {
   return (
     <Page
       title="SideNav"
-      subtitle="SideNav"
+      subtitle="Side navigation with collapsible groups."
       command="npx underatom@latest add side-nav"
       usageCode={defaultCode}
       defaultExample={<DefaultExample />}

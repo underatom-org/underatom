@@ -19,6 +19,7 @@ import {
 } from "../select-panel/SelectPanel.atoms";
 import { useState } from "react";
 import { avatar1Src } from "../../../assets/images/Images";
+import { Code } from "../../no-headless/typography/Typography.atoms";
 
 const SelectTriggerHelper = (
   props: SelectTriggerProps & {
@@ -524,7 +525,11 @@ export const WithTagsExample = () => {
 export const Docs = () => (
   <Page
     title="SelectTrigger"
-    subtitle="Subtitle"
+    subtitle={
+      <>
+        A component for displaying a select trigger. To be used with the radix <Code>Select</Code> component.
+      </>
+    }
     command="npx underatom@latest add select-trigger"
     usageCode={defaultCode}
     defaultExample={<DefaultExample />}
