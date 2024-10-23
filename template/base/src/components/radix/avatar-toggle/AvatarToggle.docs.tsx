@@ -38,7 +38,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <AvatarToggleWithContent />
     </ShowcaseFrame>
   );
@@ -204,32 +204,33 @@ const WithTextExample = () => {
 };
 
 const AvatarToggleDocs = () => (
-  <>
-    <Page title="AvatarToggle" subtitle="Subtitle" command="npx underatom@latest add avatar-toggle">
-      <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
-        <Example title="Selected">
-          <SelectedExample />
-        </Example>
-        <Example title="Sizes">
-          <SizesExample />
-        </Example>
-        <Example title="Disabled">
-          <DisabledExample />
-        </Example>
-      </Section>
-      <Section title="Atoms">
-        <Example title="With Icon">
-          <WithIconExample />
-        </Example>
-        <Example title="With Text">
-          <WithTextExample />
-        </Example>
-      </Section>
-    </Page>
-  </>
+  <Page
+    title="AvatarToggle"
+    subtitle="Subtitle"
+    command="npx underatom@latest add avatar-toggle"
+    usageCode={defaultCode}
+    defaultExample={<DefaultExample />}
+  >
+    <Section title="Showcase">
+      <Example title="Selected">
+        <SelectedExample />
+      </Example>
+      <Example title="Sizes">
+        <SizesExample />
+      </Example>
+      <Example title="Disabled">
+        <DisabledExample />
+      </Example>
+    </Section>
+    <Section title="Atoms">
+      <Example title="With Icon">
+        <WithIconExample />
+      </Example>
+      <Example title="With Text">
+        <WithTextExample />
+      </Example>
+    </Section>
+  </Page>
 );
 
 const avatarToggleRoute = "/avatar-toggle";

@@ -19,8 +19,24 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 
+const defaultCode = `
+<Button>Button</Button>
+`;
+
+const DefaultExample = () => {
+  return (
+    <ShowcaseFrame>
+      <Button>Button</Button>
+    </ShowcaseFrame>
+  );
+};
+
 const variantsCode = `
 <Button variant="primary">Button</Button>
+<Button variant="base">Button</Button>
+<Button variant="danger">Button</Button>
+<Button variant="ghost">Button</Button>
+<Button variant="link">Button</Button>
 `;
 
 const VariantsExample = () => {
@@ -410,6 +426,8 @@ const ButtonDocs = () => {
       title="Button"
       subtitle="Buttons are used to trigger actions. They can be used to submit a form, navigate to a new page, or perform a certain action."
       command="npx underatom@latest add button"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
     >
       <Section title="Showcase">
         <Example

@@ -29,7 +29,7 @@ const defaultCode = `
 
 const Default = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <VariantsGrid<AlertProps>
         renderVariant={(props) => {
           return (
@@ -112,13 +112,14 @@ const WithStatus = () => {
 
 const AlertDocs = () => {
   return (
-    <Page title="Alert" subtitle="" command="npx underatom@latest add alert">
+    <Page
+      title="Alert"
+      subtitle=""
+      command="npx underatom@latest add alert"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
-        <Example title="Variants">
-          <Default />
-        </Example>
-      </Section>
-      <Section title="Atoms">
         <Example title="With Status">
           <WithStatus />
         </Example>

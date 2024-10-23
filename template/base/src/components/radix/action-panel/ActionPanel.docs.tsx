@@ -144,7 +144,7 @@ const DefaultExample = () => {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <button>Menu</button>
@@ -775,68 +775,65 @@ const WithIconsMultiline = () => {
 
 const ActionPanelDocs = () => {
   return (
-    <>
-      <Page
-        title="ActionPanel"
-        subtitle={
-          <>
-            Action panels are used to display a list of actions. To be used in combination with the Radix{" "}
-            <Code>DropdownMenu</Code> component.
-          </>
-        }
-        command="npx underatom@latest add action-panel"
-      >
-        <Section title="Showcase">
-          <Example title="" description="Complex example with multiple groups and items.">
-            <DefaultExample />
-          </Example>
-          <Example
-            title="Togglable items"
-            description={
-              <>
-                Using the <Code>ActionPanelGroupCheckboxItem</Code> atom allows togglable items. Also the group needs to
-                have the <Code>togglable</Code> prop set to <Code>true</Code>.
-              </>
-            }
-          >
-            <TogglableExample />
-          </Example>
-          <Example
-            title="Togglable avatar items"
-            description={
-              <>
-                The <Code>ActionPanelGroupItemBoxWithAvatar</Code> atom can be used as a <Code>boxSlot</Code> for the
-                <Code>ActionPanelGroupCheckboxItem</Code>.
-              </>
-            }
-          >
-            <TogglableAvatarsExample />
-          </Example>
-          <Example
-            title="Multiline avatar items"
-            description={
-              <>
-                The <Code>ActionPanelGroupItemBoxWithAvatarAndDescription</Code> atom can be used as a{" "}
-                <Code>boxSlot</Code> to achieve a multiline avatar item.
-              </>
-            }
-          >
-            <WithAvatarsMultilineExample />
-          </Example>
-          <Example
-            title="Multiline icon items"
-            description={
-              <>
-                The <Code>ActionPanelGroupItemBoxWithDescription</Code> atom can be used as a <Code>boxSlot</Code> to
-                achieve a multiline icon item.
-              </>
-            }
-          >
-            <WithIconsMultiline />
-          </Example>
-        </Section>
-      </Page>
-    </>
+    <Page
+      title="ActionPanel"
+      subtitle={
+        <>
+          Action panels are used to display a list of actions. To be used in combination with the Radix{" "}
+          <Code>DropdownMenu</Code> component.
+        </>
+      }
+      command="npx underatom@latest add action-panel"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
+      <Section title="Showcase">
+        <Example
+          title="Togglable items"
+          description={
+            <>
+              Using the <Code>ActionPanelGroupCheckboxItem</Code> atom allows togglable items. Also the group needs to
+              have the <Code>togglable</Code> prop set to <Code>true</Code>.
+            </>
+          }
+        >
+          <TogglableExample />
+        </Example>
+        <Example
+          title="Togglable avatar items"
+          description={
+            <>
+              The <Code>ActionPanelGroupItemBoxWithAvatar</Code> atom can be used as a <Code>boxSlot</Code> for the
+              <Code>ActionPanelGroupCheckboxItem</Code>.
+            </>
+          }
+        >
+          <TogglableAvatarsExample />
+        </Example>
+        <Example
+          title="Multiline avatar items"
+          description={
+            <>
+              The <Code>ActionPanelGroupItemBoxWithAvatarAndDescription</Code> atom can be used as a{" "}
+              <Code>boxSlot</Code> to achieve a multiline avatar item.
+            </>
+          }
+        >
+          <WithAvatarsMultilineExample />
+        </Example>
+        <Example
+          title="Multiline icon items"
+          description={
+            <>
+              The <Code>ActionPanelGroupItemBoxWithDescription</Code> atom can be used as a <Code>boxSlot</Code> to
+              achieve a multiline icon item.
+            </>
+          }
+        >
+          <WithIconsMultiline />
+        </Example>
+      </Section>
+    </Page>
   );
 };
 

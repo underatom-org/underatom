@@ -60,7 +60,7 @@ import * as Select from "@radix-ui/react-select";
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Select.Root>
         <Select.Trigger style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <Select.Value placeholder="Select an option" />
@@ -592,11 +592,14 @@ const IconMultilineExample = () => {
 
 const SelectPanelDocs = () => {
   return (
-    <Page title="SelectPanel" subtitle="SelectPanel" command="npx underatom@latest add select-panel">
+    <Page
+      title="SelectPanel"
+      subtitle="SelectPanel"
+      command="npx underatom@latest add select-panel"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="Multiple Groups">
           <MultipleGroupsExample />
         </Example>

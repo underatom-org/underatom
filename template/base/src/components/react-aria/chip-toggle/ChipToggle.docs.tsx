@@ -25,7 +25,7 @@ const defaultCode = `
 <ChipToggle>Toggle</ChipToggle>
 `;
 
-const Default = () => {
+const DefaultExample = () => {
   return (
     <ShowcaseFrame code={defaultCode}>
       <ChipToggle>Toggle</ChipToggle>
@@ -226,10 +226,13 @@ const WithIcon = () => {
 
 const ChipToggleDocs = () => {
   return (
-    <Page title="ChipToggle" subtitle="" command="npx underatom@latest add chip-toggle">
-      <Example>
-        <Default />
-      </Example>
+    <Page
+      title="ChipToggle"
+      subtitle=""
+      command="npx underatom@latest add chip-toggle"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
         <Example title="Sizes">
           <Sizes />

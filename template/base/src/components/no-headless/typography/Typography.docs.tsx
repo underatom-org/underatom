@@ -155,6 +155,8 @@ const TextDocs = () => {
       title="Typography"
       subtitle="Generic text components split into multiple atoms."
       command="npx underatom@latest add typography"
+      usageCode={baseColorCode}
+      defaultExample={<BaseColorExample />}
     >
       <Section title="Showcase">
         <Example title="H1">
@@ -177,11 +179,6 @@ const TextDocs = () => {
         </Example>
         <Example title="Code">
           <CodeExample />
-        </Example>
-      </Section>
-      <Section title="Colors">
-        <Example title="Base" description="The base color of the text.">
-          <BaseColorExample />
         </Example>
         <Example title="Secondary" description="The secondary color of the text.">
           <SecondaryColorExample />

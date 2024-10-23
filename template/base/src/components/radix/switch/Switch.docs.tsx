@@ -10,7 +10,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Switch />
     </ShowcaseFrame>
   );
@@ -160,11 +160,14 @@ const IconExample = () => {
 
 const SwitchDocs = () => {
   return (
-    <Page title="Switch " subtitle="Switch" command="npx underatom@latest add switch">
+    <Page
+      title="Switch "
+      subtitle="Switch"
+      command="npx underatom@latest add switch"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="With Label">
           <WithLabelExample />
         </Example>

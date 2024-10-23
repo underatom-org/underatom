@@ -11,7 +11,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <RadioGroup label="Label" description="Description">
         <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
         <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
@@ -148,11 +148,14 @@ export const RequiredExample = () => {
 
 const RadioGroupDocs = () => {
   return (
-    <Page title="RadioGroup" subtitle="RadioGroup" command="npx underatom@latest add radio-group">
+    <Page
+      title="RadioGroup"
+      subtitle="RadioGroup"
+      command="npx underatom@latest add radio-group"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         {/* <Example title="Sizes">
           <SizesExample />
         </Example> */}

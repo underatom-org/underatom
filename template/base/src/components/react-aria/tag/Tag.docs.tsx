@@ -10,7 +10,7 @@ const defaultCode = `
 
 const Default = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Tag>Tag</Tag>
     </ShowcaseFrame>
   );
@@ -112,10 +112,13 @@ const WithAvatar = () => {
 
 const TagDocs = () => {
   return (
-    <Page title="Tag" subtitle="Tag component" command="npx underatom@latest add tag">
-      <Example title="Default">
-        <Default />
-      </Example>
+    <Page
+      title="Tag"
+      subtitle="Tag component"
+      command="npx underatom@latest add tag"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
         <Example title="Dismissible">
           <Dismissible />

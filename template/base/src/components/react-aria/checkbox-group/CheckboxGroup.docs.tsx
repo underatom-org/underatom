@@ -14,7 +14,7 @@ const defaultCode = `
 
 export const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <CheckboxGroup label="Checkbox Group" description="Checkbox Group">
         <CheckboxGroupCheckbox key="1" label="Checkbox 1" description="Description" value="1" />
         <CheckboxGroupCheckbox key="2" label="Checkbox 2" description="Description" value="2" />
@@ -215,11 +215,14 @@ export const RequiredExample = () => {
 
 const CheckboxGroupDocs = () => {
   return (
-    <Page title="CheckboxGroup" subtitle="" command="npx underatom@latest add checkbox-group">
+    <Page
+      title="CheckboxGroup"
+      subtitle=""
+      command="npx underatom@latest add checkbox-group"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="Indeterminate">
           <IndeterminateExample />
         </Example>

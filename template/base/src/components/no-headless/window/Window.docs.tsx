@@ -1,4 +1,4 @@
-import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
+import { Page, ShowcaseFrame } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Body } from "../typography/Typography.atoms";
 
@@ -12,7 +12,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <div
         style={{
           display: "flex",
@@ -33,13 +33,9 @@ const WindowDocs = () => {
       title="Window"
       subtitle="A window is a container that can be used to display content."
       command="npx underatom@latest add window"
-    >
-      <Section title="Showcase">
-        <Example title="">
-          <DefaultExample />
-        </Example>
-      </Section>
-    </Page>
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    />
   );
 };
 

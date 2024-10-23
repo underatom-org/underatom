@@ -166,7 +166,7 @@ const fillDefaultCode = `
 
 export const FillDefaultExample = () => {
   return (
-    <ShowcaseFrame code={fillDefaultCode}>
+    <ShowcaseFrame>
       <TabsWithContentHelper>
         <ItemSlotsHelper />
       </TabsWithContentHelper>
@@ -679,11 +679,14 @@ export const HandleWithLoadingExample = () => {
 
 const TabsDocs = () => {
   return (
-    <Page title="Tabs" subtitle="Tabs" command="npx underatom@latest add tabs">
+    <Page
+      title="Tabs"
+      subtitle="Tabs"
+      command="npx underatom@latest add tabs"
+      usageCode={fillDefaultCode}
+      defaultExample={<FillDefaultExample />}
+    >
       <Section title="Fill Variant">
-        <Example title="Default">
-          <FillDefaultExample />
-        </Example>
         <Example title="Sizes">
           <FillSizesExample />
         </Example>

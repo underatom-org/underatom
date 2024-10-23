@@ -67,7 +67,7 @@ const NextButton = <DatePanelButton icon={(className) => <CaretRight className={
 
 const Default = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <DatePanelIntermediate />
     </ShowcaseFrame>
   );
@@ -649,11 +649,14 @@ const RangeMultipleMonths = () => {
 
 const DatePanelDocs = () => {
   return (
-    <Page title="DatePanel" subtitle="" command="npx underatom@latest add date-panel">
+    <Page
+      title="DatePanel"
+      subtitle=""
+      command="npx underatom@latest add date-panel"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <Default />
-        </Example>
         <Example title="Invalid">
           <Invalid />
         </Example>

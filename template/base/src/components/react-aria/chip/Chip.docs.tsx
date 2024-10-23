@@ -14,6 +14,18 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
+const defaultCode = `
+<Chip>Chip</Chip>
+`;
+
+const DefaultExample = () => {
+  return (
+    <ShowcaseFrame>
+      <Chip>Chip</Chip>
+    </ShowcaseFrame>
+  );
+};
+
 const clickableCode = `
 <Chip onPress={() => console.log("click")}>Chip</Chip>
 `;
@@ -183,7 +195,13 @@ const WithIconExample = () => {
 
 const ChipDocs = () => {
   return (
-    <Page title="Chip" subtitle="" command="npx underatom@latest add chip">
+    <Page
+      title="Chip"
+      subtitle=""
+      command="npx underatom@latest add chip"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
         <Example title="Clickable">
           <ClickableExample />

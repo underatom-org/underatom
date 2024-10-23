@@ -35,7 +35,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <AvatarButtonWithContent />
     </ShowcaseFrame>
   );
@@ -236,36 +236,37 @@ const WithNotificationExample = () => {
 };
 
 const AvatarButtonDocs = () => (
-  <>
-    <Page title="AvatarButton" subtitle="Subtitle" command="npx underatom@latest add avatar-button">
-      <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
-        <Example title="Variants">
-          <VariantsExample />
-        </Example>
-        <Example title="Sizes">
-          <SizesExample />
-        </Example>
-        <Example title="Disabled">
-          <DisabledExample />
-        </Example>
-        <Example title="Indicator">
-          <WithIndicatorExample />
-        </Example>
-        <Example title="Status">
-          <WithStatusExample />
-        </Example>
-        <Example title="Badge">
-          <WithBadgeExample />
-        </Example>
-        <Example title="Notification">
-          <WithNotificationExample />
-        </Example>
-      </Section>
-    </Page>
-  </>
+  <Page
+    title="AvatarButton"
+    subtitle="Subtitle"
+    command="npx underatom@latest add avatar-button"
+    usageCode={defaultCode}
+    defaultExample={<DefaultExample />}
+  >
+    <Section title="Showcase">
+      <Example title="Variants">
+        <VariantsExample />
+      </Example>
+      <Example title="Sizes">
+        <SizesExample />
+      </Example>
+      <Example title="Disabled">
+        <DisabledExample />
+      </Example>
+      <Example title="Indicator">
+        <WithIndicatorExample />
+      </Example>
+      <Example title="Status">
+        <WithStatusExample />
+      </Example>
+      <Example title="Badge">
+        <WithBadgeExample />
+      </Example>
+      <Example title="Notification">
+        <WithNotificationExample />
+      </Example>
+    </Section>
+  </Page>
 );
 
 const avatarButtonRoute = "/avatar-button";

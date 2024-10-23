@@ -110,7 +110,7 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 export const DefaultExample = () => (
-  <ShowcaseFrame code={defaultCode}>
+  <ShowcaseFrame>
     <SelectTriggerHelper>
       <SelectTriggerBox textProps={{ placeholder: "Select a programming language..." }} />
     </SelectTriggerHelper>
@@ -522,11 +522,14 @@ export const WithTagsExample = () => {
 };
 
 export const Docs = () => (
-  <Page title="SelectTrigger" subtitle="Subtitle" command="npx underatom@latest add select-trigger">
+  <Page
+    title="SelectTrigger"
+    subtitle="Subtitle"
+    command="npx underatom@latest add select-trigger"
+    usageCode={defaultCode}
+    defaultExample={<DefaultExample />}
+  >
     <Section title="Showcase">
-      <Example title="Default">
-        <DefaultExample />
-      </Example>
       <Example title="Invalid">
         <InvalidExample />
       </Example>

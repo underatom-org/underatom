@@ -41,7 +41,7 @@ import {
 import { useState } from "react";
 import { EmptyIllustration } from "../../../assets/illustrations/Illustrations";
 import { DocsRoute } from "../../../docs/docs.types";
-import { Example, Page, ShowcaseFrame } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { avatar1Src, avatar2Src } from "../../../assets/images/Images";
 
 const Footer = () => {
@@ -173,7 +173,7 @@ const DefaultExample = () => {
   };
 
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Command
         emptySlot={<CommandEmpty text="Empty" image={{ src: EmptyIllustration }} />}
         searchSlot={
@@ -722,21 +722,20 @@ const CommandDocs = () => {
         title="Command"
         subtitle="Composable command menu with search, groups, destructive actions, and more."
         command="npx underatom@latest add command"
+        usageCode={defaultCode}
+        defaultExample={<DefaultExample />}
       >
-        {/* <Section title="Showcase"> */}
-        <Example title="Showcase" description="A complex example of what can be done with the Command component.">
-          <DefaultExample />
-        </Example>
-        <Example title="Togglabe Items" description="Items that can be toggled on and off.">
-          <ToggleItemsExample />
-        </Example>
-        <Example title="Items with Buttons" description="Items with focusable buttons for actions.">
-          <WithButtonsExample />
-        </Example>
-        <Example title="Default group" description="A default group without label.">
-          <ItemsWithIconsExample />
-        </Example>
-        {/* </Section> */}
+        <Section title="Examples">
+          <Example title="Togglabe Items" description="Items that can be toggled on and off.">
+            <ToggleItemsExample />
+          </Example>
+          <Example title="Items with Buttons" description="Items with focusable buttons for actions.">
+            <WithButtonsExample />
+          </Example>
+          <Example title="Default group" description="A default group without label.">
+            <ItemsWithIconsExample />
+          </Example>
+        </Section>
       </Page>
     </>
   );

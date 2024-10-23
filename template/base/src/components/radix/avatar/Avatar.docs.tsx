@@ -61,7 +61,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <ImageAvatarHelper />
     </ShowcaseFrame>
   );
@@ -280,11 +280,10 @@ const AvatarDocs = () => {
         </>
       }
       command="npx underatom@latest add avatar"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
     >
       <Section title="Showcase">
-        <Example title="Default" description="The avatar with the default props.">
-          <DefaultExample />
-        </Example>
         <Example title="Variants" description="Avatar with only text or icon.">
           <VariantsExample />
         </Example>

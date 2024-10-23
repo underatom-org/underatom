@@ -38,7 +38,7 @@ const defaultCode = `
 
 const Default = () => {
   return (
-    <TextareaShowcaseFrame code={defaultCode}>
+    <TextareaShowcaseFrame>
       <DefaultTextarea />
     </TextareaShowcaseFrame>
   );
@@ -306,10 +306,13 @@ const WithTagsSizes = () => {
 
 const TextareaDocs = () => {
   return (
-    <Page title="Textarea" subtitle="" command="npx underatom@latest add textarea">
-      <Example title="Default">
-        <Default />
-      </Example>
+    <Page
+      title="Textarea"
+      subtitle=""
+      command="npx underatom@latest add textarea"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
         <Example title="Required">
           <Required />

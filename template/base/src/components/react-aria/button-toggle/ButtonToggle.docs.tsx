@@ -26,7 +26,7 @@ const basicCode = `
 
 const BasicExample = () => {
   return (
-    <ShowcaseFrame code={basicCode}>
+    <ShowcaseFrame>
       <ButtonToggle>Button</ButtonToggle>
     </ShowcaseFrame>
   );
@@ -236,18 +236,10 @@ const ButtonToggleDocs = () => {
       title="ButtonToggle"
       subtitle="Toggle buttons are used to toggle between two states."
       command="npx underatom@latest add button-toggle"
+      usageCode={basicCode}
+      defaultExample={<BasicExample />}
     >
       <Section title="Showcase">
-        <Example
-          title="Default"
-          description={
-            <>
-              Buttons are toggled by clicking or pressing the <Code>space</Code> or <Code>enter</Code> key.
-            </>
-          }
-        >
-          <BasicExample />
-        </Example>
         <Example title="Group" description="Buttons can be grouped using the attachment property.">
           <GroupExample />
         </Example>

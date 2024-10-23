@@ -20,7 +20,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <AvatarGroup>
         <AvatarGroupAvatar
           imageProps={{
@@ -246,11 +246,14 @@ const Sizes = () => {
 
 const AvatarGroupDocs = () => {
   return (
-    <Page title="AvatarGroup" subtitle="Subtitle" command="npx underatom@latest add avatar-group">
+    <Page
+      title="AvatarGroup"
+      subtitle="Subtitle"
+      command="npx underatom@latest add avatar-group"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="Sizes">
           <Sizes />
         </Example>

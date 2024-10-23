@@ -31,7 +31,7 @@ const defaultCode = `
 
 const Default = () => {
   return (
-    <InputShowcaseFrame code={defaultCode}>
+    <InputShowcaseFrame>
       <Input label="Name" placeholder="Enter your name...">
         <InputBox />
       </Input>
@@ -480,10 +480,13 @@ const WithTagsSizes = () => {
 
 const InputDocs = () => {
   return (
-    <Page title="Input" subtitle="" command="npx underatom@latest add input">
-      <Example title="Default">
-        <Default />
-      </Example>
+    <Page
+      title="Input"
+      subtitle=""
+      command="npx underatom@latest add input"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
         <Example title="Required">
           <Required />

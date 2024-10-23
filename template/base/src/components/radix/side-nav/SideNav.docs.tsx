@@ -58,7 +58,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <SideNav accordionProps={{ defaultValue: ["1", "2", "3"], type: "multiple" }}>
         <SideNavGroup value="1" headerSlot={<SideNavGroupHeader label="Dashboard" hasCaret />}>
           <SideNavGroupItem value="1">
@@ -109,15 +109,13 @@ const DefaultExample = () => {
 
 const SideNavDocs = () => {
   return (
-    <>
-      <Page title="SideNav" subtitle="SideNav" command="npx underatom@latest add side-nav">
-        <Section title="Showcase">
-          <Example title="Default">
-            <DefaultExample />
-          </Example>
-        </Section>
-      </Page>
-    </>
+    <Page
+      title="SideNav"
+      subtitle="SideNav"
+      command="npx underatom@latest add side-nav"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    />
   );
 };
 

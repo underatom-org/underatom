@@ -10,7 +10,7 @@ const defaultCode = `
 
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Checkbox label="Checkbox" />
     </ShowcaseFrame>
   );
@@ -104,11 +104,14 @@ const RequiredExample = () => {
 
 const Docs = () => {
   return (
-    <Page title="Checkbox" subtitle="" command="npx underatom@latest add checkbox">
+    <Page
+      title="Checkbox"
+      subtitle=""
+      command="npx underatom@latest add checkbox"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="With Description">
           <WithDescriptionExample />
         </Example>

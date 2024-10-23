@@ -37,7 +37,7 @@ const defaultCode = `
 
 const Default = () => {
   return (
-    <ShowcaseFrame code={defaultCode}>
+    <ShowcaseFrame>
       <Accordion type="multiple" variant="attached">
         <AccordionItem value="1" headerSlot={<AccordionItemHeader label="Quantum Mechanics" />} attachment="start">
           <Body>{QUANTUM_MECHANICS_TEXT}</Body>
@@ -718,11 +718,14 @@ const Disabled = () => {
 
 const AccordionDocs = () => {
   return (
-    <Page title="Accordion" subtitle="Accordion" command="npx underatom@latest add accordion">
+    <Page
+      title="Accordion"
+      subtitle="Accordion"
+      command="npx underatom@latest add accordion"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <Default />
-        </Example>
         <Example title="With Icon">
           <WithIcon />
         </Example>
