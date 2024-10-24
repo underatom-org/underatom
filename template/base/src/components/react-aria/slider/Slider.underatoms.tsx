@@ -116,12 +116,10 @@ export const USliderBarFill = (props: USliderBarFillProps) => {
 
   let fillStyle;
   if (thumbCount === 1) {
-    // Single thumb: fill from start to thumb
     fillStyle = isVertical
       ? { top: 0, height: `${firstThumbPercent * 100}%` }
       : { left: 0, width: `${firstThumbPercent * 100}%` };
   } else {
-    // Two thumbs: fill between thumbs
     const startPercent = Math.min(firstThumbPercent, secondThumbPercent!);
     const endPercent = Math.max(firstThumbPercent, secondThumbPercent!);
     fillStyle = isVertical
@@ -138,7 +136,7 @@ export const USliderBarFill = (props: USliderBarFillProps) => {
   return (
     <div
       {...props}
-      className={sliderBarFillClass({ className: props.className, sliderProps }) + " FILL"}
+      className={sliderBarFillClass({ className: props.className, sliderProps })}
       style={{
         position: "absolute",
         ...fillStyle,

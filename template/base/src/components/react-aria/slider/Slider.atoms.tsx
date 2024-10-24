@@ -1,9 +1,3 @@
-/*
-  ====================================
-  SliderTickLabel
-  ====================================
-*/
-
 import React from "react";
 import {
   SliderBarLayout,
@@ -48,10 +42,8 @@ export type SliderProps = USliderRootProps & {
   description?: string;
   tooltipSlot?: ReactNode;
   icon?: (className: string) => string;
-  tickLabelSlots?: ReactNode;
-  tickSlots?: ReactNode;
 };
-export const Slider = ({ label, description, tooltipSlot, icon, tickLabelSlots, tickSlots, ...props }: SliderProps) => {
+export const Slider = ({ label, description, tooltipSlot, icon, ...props }: SliderProps) => {
   return (
     <SliderLayout
       renderRoot={(children, className) => (
@@ -65,9 +57,9 @@ export const Slider = ({ label, description, tooltipSlot, icon, tickLabelSlots, 
       asteriskSlot={<USliderAsterisk />}
       valueSlot={<USliderValue />}
       iconSlot={icon && <USliderIcon>{icon}</USliderIcon>}
-      barSlot={<SliderBar tickSlots={tickSlots} />}
+      barSlot={<SliderBar />}
       tooltipSlot={null}
-      tickLabelSlots={tickLabelSlots}
+      tickLabelSlots={null}
     />
   );
 };
@@ -78,10 +70,8 @@ export const Slider = ({ label, description, tooltipSlot, icon, tickLabelSlots, 
   ====================================
 */
 
-export type SliderBarProps = USliderBarRootProps & {
-  tickSlots: ReactNode;
-};
-export const SliderBar = ({ tickSlots, ...props }: SliderBarProps) => {
+export type SliderBarProps = USliderBarRootProps;
+export const SliderBar = (props: SliderBarProps) => {
   const sliderProps = useSliderInternalProvider();
   let state = React.useContext(SliderStateContext)!;
 
@@ -97,7 +87,7 @@ export const SliderBar = ({ tickSlots, ...props }: SliderBarProps) => {
       thumbSlot={state.values.map((_, i) => (
         <SliderBarThumb key={i} index={i} />
       ))}
-      tickSlots={tickSlots}
+      tickSlots={null}
     />
   );
 };
