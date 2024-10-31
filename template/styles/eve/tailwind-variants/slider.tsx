@@ -8,7 +8,7 @@ import type {
 } from "~/base/src/styles/slider";
 
 export const sliderBarThumbClass = ({ className }: SliderBarThumbType) => {
-  return `group/sliderBarThumb border-solid border-primary-300 border-1 bg-base-50 shadow-sm rounded-[50px] ${className}`;
+  return `group/sliderBarThumb border-solid border-primary-300 border-1 bg-base-50 shadow-sm data-[ring=true]:shadow-sm data-[disabled]:shadow-sm rounded-[50px] data-[dragging=true]:shadow-md ${className}`;
 };
 
 export const sliderBarThumbIconClass = ({ className }: SliderBarThumbType) => {
@@ -23,7 +23,11 @@ export const SliderBarThumbLayout = ({
   renderRoot: RenderRoot;
   styleProps: SliderBarThumbType;
   iconSlot: React.ReactNode;
-}) => renderRoot(<>{iconSlot}</>, `h-5 w-5 flex flex-row justify-center items-center gap-5 ${className}`);
+}) =>
+  renderRoot(
+    <>{iconSlot}</>,
+    `h-[14px] focus:h-[14px] disabled:h-[14px] w-[14px] focus:w-[14px] disabled:w-[14px] flex flex-row justify-center items-center gap-5 data-[dragging=true]:h-[18px] data-[dragging=true]:w-[18px] active:transition-[width,height] ${className}`,
+  );
 
 export const sliderTooltipClass = ({ className }: SliderTooltipType) => {
   return `group/sliderTooltip bg-primary-950 rounded-sm ${className}`;
@@ -123,7 +127,7 @@ export const sliderAsteriskClass = ({ className }: SliderType) => {
 };
 
 export const sliderValueClass = ({ className }: SliderType) => {
-  return `text-base-950 text-sm font-text font-medium ${className}`;
+  return `text-base-800 text-sm font-text font-medium ${className}`;
 };
 
 export const sliderDescriptionClass = ({ className }: SliderType) => {
@@ -140,8 +144,8 @@ export const SliderLayout = ({
   tooltipSlot,
   labelSlot,
   asteriskSlot,
-  barSlot,
   valueSlot,
+  barSlot,
   tickLabelSlots,
   descriptionSlot,
   iconSlot,
@@ -151,8 +155,8 @@ export const SliderLayout = ({
   tooltipSlot: React.ReactNode;
   labelSlot: React.ReactNode;
   asteriskSlot: React.ReactNode;
-  barSlot: React.ReactNode;
   valueSlot: React.ReactNode;
+  barSlot: React.ReactNode;
   tickLabelSlots: React.ReactNode;
   descriptionSlot: React.ReactNode;
   iconSlot: React.ReactNode;
@@ -160,14 +164,14 @@ export const SliderLayout = ({
   renderRoot(
     <>
       {tooltipSlot}
-      <div className="h-fit w-full flex flex-row items-center gap-[2px]">
-        {labelSlot}
-        {asteriskSlot}
-      </div>
-      <div className="h-fit w-full flex flex-row justify-center items-center gap-[2px]">
-        {barSlot}
+      <div className="h-fit w-full flex flex-row justify-between items-center gap-[2px]">
+        <div className="h-fit w-fit flex flex-row items-center gap-[2px]">
+          {labelSlot}
+          {asteriskSlot}
+        </div>
         {valueSlot}
       </div>
+      {barSlot}
       <div className="h-fit w-full flex flex-row justify-between items-center gap-5">{tickLabelSlots}</div>
       {descriptionSlot}
       {iconSlot}

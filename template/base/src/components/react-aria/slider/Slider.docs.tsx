@@ -37,16 +37,6 @@ const ColorsExample = () => {
   );
 };
 
-const VerticalExample = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsColumn>
-        <Slider label="Label" description="Description" color="primary" orientation="vertical" />
-      </VariantsColumn>
-    </ShowcaseFrame>
-  );
-};
-
 const DisabledExample = () => {
   return (
     <ShowcaseFrame>
@@ -90,9 +80,6 @@ const SliderDocs = () => {
       </Example>
       <Example title="Colors">
         <ColorsExample />
-      </Example>
-      <Example title="Vertical">
-        <VerticalExample />
       </Example>
       <Example title="Disabled">
         <DisabledExample />

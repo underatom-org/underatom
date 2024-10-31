@@ -40,14 +40,18 @@ import React from "react";
 
 export const { Provider: SliderInternalProvider, useComponentContext: useSliderInternalProvider } =
   getGenericContext<USliderRootProps>("SliderInternalProvider");
-export type USliderRootProps = SliderProps &
+export type USliderRootProps = Omit<SliderProps, "orientation"> &
   SliderStyleProps & {
     children?: ReactNode;
     className?: string;
   };
 export const USliderRoot = (props: USliderRootProps) => {
   return (
-    <Slider {...props} className={sliderClass({ className: props.className, sliderProps: props })}>
+    <Slider
+      {...props}
+      orientation="horizontal"
+      className={sliderClass({ className: props.className, sliderProps: props })}
+    >
       <SliderInternalProvider value={props}>{props.children}</SliderInternalProvider>
     </Slider>
   );
