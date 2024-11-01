@@ -2,6 +2,7 @@ import { Atom } from "../../../assets/Icons";
 import { avatar1Src } from "../../../assets/images/Images";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
+import { useMediaQuery } from "../../../docs/utils";
 import {
   Textarea,
   TextareaBox,
@@ -15,8 +16,9 @@ import {
 } from "./Textarea.atoms";
 
 const TextareaShowcaseFrame = ({ children, code }: { children: React.ReactNode; code?: string }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={140} code={code}>
+    <ShowcaseFrame paddingX={isMobile ? 40 : 140} code={code}>
       {children}
     </ShowcaseFrame>
   );

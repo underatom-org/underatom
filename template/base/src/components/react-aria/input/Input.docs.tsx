@@ -2,6 +2,7 @@ import { Atom } from "../../../assets/Icons";
 import { avatar1Src } from "../../../assets/images/Images";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
+import { useMediaQuery } from "../../../docs/utils";
 import { Button } from "../button/Button.atoms";
 import {
   Input,
@@ -16,8 +17,9 @@ import {
 } from "./Input.atoms";
 
 const InputShowcaseFrame = ({ children, code }: { children: React.ReactNode; code?: string }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={200} code={code}>
+    <ShowcaseFrame paddingX={isMobile ? 30 : 200} code={code}>
       {children}
     </ShowcaseFrame>
   );
@@ -356,8 +358,9 @@ const withTagsCode = `
 `;
 
 const WithTags = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80} code={withTagsCode}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80} code={withTagsCode}>
       <InputWithTagsHelper />
     </ShowcaseFrame>
   );
@@ -393,8 +396,9 @@ const withTagsInvalidCode = `
 `;
 
 const WithTagsInvalid = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80} code={withTagsInvalidCode}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80} code={withTagsInvalidCode}>
       <InputWithTagsHelper isInvalid />
     </ShowcaseFrame>
   );
@@ -430,8 +434,9 @@ const withTagsDisabledCode = `
 `;
 
 const WithTagsDisabled = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80} code={withTagsDisabledCode}>
+    <ShowcaseFrame paddingX={isMobile ? 10 : 80} code={withTagsDisabledCode}>
       <InputWithTagsHelper isDisabled />
     </ShowcaseFrame>
   );
@@ -467,13 +472,18 @@ const withTagsSizesCode = `
 `;
 
 const WithTagsSizes = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame paddingX={80} code={withTagsSizesCode}>
-      <VariantsColumn>
-        <InputWithTagsHelper size="sm" />
-        <InputWithTagsHelper size="md" />
-        <InputWithTagsHelper size="lg" />
-      </VariantsColumn>
+    <ShowcaseFrame
+      code={withTagsSizesCode}
+      paddingX={isMobile ? 20 : 80}
+      style={{ justifyContent: isMobile ? "unset" : "center" }}
+    >
+      <div>
+        <InputWithTagsHelper size="sm" style={{ minWidth: 464 }} />
+        <InputWithTagsHelper size="md" style={{ minWidth: 464 }} />
+        <InputWithTagsHelper size="lg" style={{ minWidth: 464 }} />
+      </div>
     </ShowcaseFrame>
   );
 };

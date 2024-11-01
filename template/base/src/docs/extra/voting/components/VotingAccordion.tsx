@@ -69,11 +69,13 @@ export const VotingAccordion: React.FC<VotingAccordionProps> = ({
             }
             contentSlot={
               <>
-                {option.subOptions.map((subOption: OptionDto) => {
+                {option.subOptions.map((subOption: OptionDto, index) => {
                   const subOptionVoteValue = getVoteValue(option.id, subOption.id);
+                  const isLastItem = index == option.subOptions.length - 1;
                   return (
                     <VotingItem
                       withVoting={withVoting}
+                      withDivider={!isLastItem}
                       key={subOption.id}
                       label={subOption.label}
                       optionId={option.id}

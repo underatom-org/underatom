@@ -291,7 +291,7 @@ export const AttachmentExample = () => (
 `;
 
 export const AttachmentExample = () => (
-  <ShowcaseFrame code={attachmentCode}>
+  <ShowcaseFrame code={attachmentCode} paddingX={30}>
     <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
       <SelectTriggerHelper helperStyle={{ width: 200 }} attachment="start" description="Select a property type">
         <SelectTriggerBox textProps={{ placeholder: "Property type" }} />

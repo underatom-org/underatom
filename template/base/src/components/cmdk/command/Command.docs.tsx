@@ -43,11 +43,20 @@ import { EmptyIllustration } from "../../../assets/illustrations/Illustrations";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { avatar1Src, avatar2Src } from "../../../assets/images/Images";
+import { useMediaQuery } from "../../../docs/utils";
 
 const Footer = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <CommandFooter>
-      <CommandFooterElement leftLabel="Press" kbdSlot1={<CommandFooterElementKBD label="/" />} rightLabel="to search" />
+      {!isMobile && (
+        <CommandFooterElement
+          leftLabel="Press"
+          kbdSlot1={<CommandFooterElementKBD label="/" />}
+          rightLabel="to search"
+        />
+      )}
       <CommandFooterElement
         kbdSlot1={<CommandFooterElementKBD label="SHIFT" />}
         kbdSlot2={<CommandFooterElementKBD label="G" />}

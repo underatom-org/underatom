@@ -13,6 +13,12 @@ import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../
 import { IconHome, IconSettings, IconUserCircle } from "@tabler/icons-react";
 import { useState } from "react";
 import { Code } from "../../no-headless/typography/Typography.atoms";
+import { useMediaQuery } from "../../../docs/utils";
+
+const ShowcaseFrame2 = (props: React.ComponentPropsWithoutRef<typeof ShowcaseFrame>) => {
+  const isMobile = useMediaQuery("(max-width: 568px)");
+  return <ShowcaseFrame {...props} style={{ justifyContent: isMobile ? "unset" : "center" }} />;
+};
 
 /*
   ====================================
@@ -260,11 +266,11 @@ const fillWithBadgeCode = `
 
 export const FillWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode}>
+    <ShowcaseFrame code={fillWithBadgeCode}2>
       <TabsWithContentHelper variant="fill">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
@@ -288,11 +294,11 @@ const fillWithNotificationCode = `
 
 export const FillWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode}>
+    <ShowcaseFrame code={fillWithNotificationCode}2>
       <TabsWithContentHelper variant="fill">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
@@ -503,21 +509,21 @@ export const UnderlineDisabledExample = () => {
 
 export const UnderlineWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "underline")}>
+    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "underline")}2>
       <TabsWithContentHelper variant="underline">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
 export const UnderlineWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "underline")}>
+    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "underline")}2>
       <TabsWithContentHelper variant="underline">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 export const UnderlineWithIndicatorExample = () => {
@@ -613,21 +619,21 @@ export const HandleDisabledExample = () => {
 
 export const HandleWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "handle")}>
+    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "handle")}2>
       <TabsWithContentHelper variant="handle">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 
 export const HandleWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "handle")}>
+    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "handle")}2>
       <TabsWithContentHelper variant="handle">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>
-    </ShowcaseFrame>
+    </ShowcaseFrame2>
   );
 };
 export const HandleWithIndicatorExample = () => {

@@ -58,8 +58,11 @@ import * as Select from "@radix-ui/react-select";
   </Select.Portal>
 </Select.Root>
 `;
+import { useMediaQuery } from "../../../docs/utils";
 
 const DefaultExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame>
       <Select.Root>
@@ -69,7 +72,7 @@ const DefaultExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : 300 }}>
             <SelectPanelGroup title="Programming languages">
               <SelectPanelGroupItem value="javascript">
                 <SelectPanelGroupItemBox label="Javascript" />
@@ -154,6 +157,8 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 const MultipleGroupsExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame code={multipleGroupsCode}>
       <Select.Root>
@@ -163,7 +168,7 @@ const MultipleGroupsExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : 300 }}>
             <SelectPanelGroup title="Fruits">
               <SelectPanelGroupItem value="Cherry">
                 <SelectPanelGroupItemBox
@@ -245,6 +250,8 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 const StatusExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame code={statusCode}>
       <Select.Root>
@@ -254,7 +261,7 @@ const StatusExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}>
             <SelectPanelGroup title="Status">
               <SelectPanelGroupItem value="pending">
                 <SelectPanelGroupItemBoxWithDot dotColor="red" label="Pending" />
@@ -320,6 +327,8 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 const AvatarSingleLineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame code={avatarSingleLineCode}>
       <Select.Root>
@@ -329,7 +338,7 @@ const AvatarSingleLineExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}>
             <SelectPanelGroup title="People">
               <SelectPanelGroupItem value="Joey Parsons">
                 <SelectPanelGroupItemBoxWithAvatar
@@ -421,6 +430,8 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 const AvatarMultilineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame code={avatarMultilineCode}>
       <Select.Root>
@@ -430,7 +441,7 @@ const AvatarMultilineExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}>
             <SelectPanelGroup title="People">
               <SelectPanelGroupItem value="Joey Parsons">
                 <SelectPanelGroupItemBoxWithAvatarAndDescription
@@ -533,6 +544,8 @@ import * as Select from "@radix-ui/react-select";
 `;
 
 const IconMultilineExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   return (
     <ShowcaseFrame code={iconMultilineCode}>
       <Select.Root>
@@ -542,7 +555,7 @@ const IconMultilineExample = () => {
         </Select.Trigger>
 
         <Select.Portal>
-          <SelectPanel style={{ minWidth: 400 }}>
+          <SelectPanel style={{ minWidth: !isMobile ? 400 : "unset", maxWidth: isMobile ? 500 : "unset" }}>
             <SelectPanelGroup title="Social media">
               <SelectPanelGroupItem value="Facebook">
                 <SelectPanelGroupItemBoxWithDescription

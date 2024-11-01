@@ -164,10 +164,12 @@ export const ShowcaseFrame = ({
   children,
   paddingX = 40,
   code,
+  style,
 }: {
   children: React.ReactNode;
   paddingX?: number;
   code?: string;
+  style?: React.CSSProperties;
 }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [showCode, setShowCode] = useState(false);
@@ -177,7 +179,7 @@ export const ShowcaseFrame = ({
       <Window variant="default" style={{ maxWidth: isMobile ? "90vw" : "700px" }}>
         <div
           style={{
-            padding: 40,
+            padding: isMobile ? 10 : 40,
             paddingLeft: paddingX,
             paddingRight: paddingX,
             display: "flex",
@@ -185,6 +187,7 @@ export const ShowcaseFrame = ({
             alignItems: "center",
             minHeight: 300,
             overflow: "auto",
+            ...style,
           }}
         >
           {children}
@@ -265,12 +268,21 @@ export const Example = ({
 };
 
 export const VariantsRow = ({ children }: { children: React.ReactNode }) => {
-  return <div style={{ display: "flex", gap: "16px", justifyContent: "center" }}>{children}</div>;
+  return <div style={{ display: "flex", gap: "16px", justifyContent: "center", flexWrap: "wrap" }}>{children}</div>;
 };
 
 export const VariantsColumn = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px", alignItems: "center", width: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "16px",
+        alignItems: "center",
+        width: "100%",
+        flexWrap: "wrap",
+      }}
+    >
       {children}
     </div>
   );

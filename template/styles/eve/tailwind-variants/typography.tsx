@@ -15,7 +15,7 @@ export const typographyClass = ({ className, typographyProps }: TypographyType) 
         body: "",
         label: "",
         sublabel: "",
-        code: "border-solid border-base-200 border-1 bg-base-50 rounded-md ",
+        code: "border-solid border-base-200 border-1 bg-base-50 rounded-md  break-all",
       },
     },
 

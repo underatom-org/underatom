@@ -615,15 +615,16 @@ export const UCommandGroupItemBoxButtonRoot = ({ className, ...props }: UCommand
   const commandGroupProps = useCommandGroupInternalProvider();
   const commandGroupItemProps = useCommandGroupItemInternalProvider();
   const { isFocusVisible, focusProps } = useFocusRing();
+  const disabled = !!commandGroupItemProps.disabled || !!props.disabled;
 
   return (
     <button
+      {...mergeProps(buttonProps, focusProps)}
       ref={innerRef}
       data-active={isPressed}
       data-ring={isFocusVisible}
-      data-disabled={!!props.disabled}
+      data-disabled={disabled}
       className={commandGroupItemBoxButtonClass({ className, commandGroupItemProps, commandGroupProps, commandProps })}
-      {...mergeProps(buttonProps, focusProps)}
     >
       {props.children}
     </button>

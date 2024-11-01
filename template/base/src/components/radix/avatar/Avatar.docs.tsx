@@ -10,7 +10,7 @@ import {
   AvatarProps,
   AvatarStatus,
 } from "./Avatar.atoms";
-import { Atom } from "../../../assets/Icons";
+import { Atom, IconPencil } from "../../../assets/Icons";
 import { DocsRoute } from "../../../docs/docs.types";
 import {
   Example,
@@ -142,9 +142,9 @@ const WithActionExample = () => {
   return (
     <ShowcaseFrame code={withActionCode}>
       <VariantsRow>
-        <ImageAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
-        <TextAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
-        <IconAvatarHelper actionSlot={<AvatarAction icon={(className) => <Atom className={className} />} />} />
+        <ImageAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
+        <TextAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
+        <IconAvatarHelper actionSlot={<AvatarAction icon={(className) => <IconPencil className={className} />} />} />
       </VariantsRow>
     </ShowcaseFrame>
   );

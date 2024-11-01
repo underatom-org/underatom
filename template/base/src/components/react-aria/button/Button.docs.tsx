@@ -18,6 +18,7 @@ import {
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
+import { useMediaQuery } from "../../../docs/utils";
 
 const defaultCode = `
 <Button>Button</Button>
@@ -43,6 +44,7 @@ const VariantsExample = () => {
   return (
     <ShowcaseFrame code={variantsCode}>
       <VariantsGrid<ButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <Button {...props}>Button</Button>;
@@ -153,6 +155,7 @@ const fullwidthCode = `
 `;
 
 const FullwidthExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
     <ShowcaseFrame code={fullwidthCode}>
       <VariantsGrid<ButtonProps>
@@ -160,7 +163,7 @@ const FullwidthExample = () => {
           return (
             <div
               style={{
-                width: props.fullWidth ? 300 : "fit-content",
+                width: props.fullWidth ? (isMobile ? 200 : 400) : "fit-content",
                 display: "flex",
               }}
             >
@@ -292,6 +295,7 @@ const AnchorButtonExample = () => {
   return (
     <ShowcaseFrame code={anchorButtonCode}>
       <VariantsGrid<AnchorButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <AnchorButton {...props}>Button</AnchorButton>;
@@ -316,8 +320,9 @@ const buttonWithDotCode = `
 
 const ButtonWithDotExample = () => {
   return (
-    <ShowcaseFrame code={buttonWithDotCode}>
+    <ShowcaseFrame code={buttonWithDotCode} style={{ padding: 24 }} paddingX={24}>
       <VariantsGrid<ButtonWithDotProps>
+        style={{ justifyContent: "center" }}
         renderVariant={(props) => {
           return <ButtonWithDot {...props}>Button</ButtonWithDot>;
         }}
@@ -340,6 +345,7 @@ const ButtonWithLeftIconExample = () => {
   return (
     <ShowcaseFrame code={buttonWithLeftIconCode}>
       <VariantsGrid<ButtonWithLeftIconProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return (
@@ -372,6 +378,7 @@ const ButtonWithRightIconExample = () => {
   return (
     <ShowcaseFrame code={buttonWithRightIconCode}>
       <VariantsGrid<ButtonWithRightIconProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return (
@@ -402,6 +409,7 @@ const LoadingButtonExample = () => {
   return (
     <ShowcaseFrame code={loadingButtonCode}>
       <VariantsGrid<LoadingButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <LoadingButton {...props}>Button</LoadingButton>;

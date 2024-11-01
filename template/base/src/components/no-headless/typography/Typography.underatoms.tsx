@@ -10,6 +10,7 @@ const elementMap: Record<NonNullable<TypographyStyleProps["type"]>, keyof JSX.In
   subheader: "div",
   code: "span",
   label: "span",
+  sublabel: "span",
 };
 
 const displayMap: Record<NonNullable<TypographyStyleProps["type"]>, string> = {
@@ -20,6 +21,7 @@ const displayMap: Record<NonNullable<TypographyStyleProps["type"]>, string> = {
   subheader: "flex",
   code: "inline-flex",
   label: "inline-flex",
+  sublabel: "inline-flex",
 };
 
 export const { Provider: TypographyInternalProvider, useComponentContext: useTypographyInternalProvider } =

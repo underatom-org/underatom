@@ -432,7 +432,7 @@ const WithBadgeWithIcon = () => {
 };
 
 const withVotingHeaderCode = `
-<Accordion type="multiple" variant="separated">
+<Accordion type="multiple" variant="separated" style={{ minWidth: 400 }}>
   <AccordionItem
     value="1"
     headerSlot={
@@ -479,7 +479,7 @@ const WithVotingHeader = () => {
   return (
     <ShowcaseFrame code={withVotingHeaderCode}>
       <VariantsColumn>
-        <Accordion type="multiple" variant="separated">
+        <Accordion type="multiple" variant="separated" style={{ minWidth: 400 }}>
           <AccordionItem
             value="1"
             headerSlot={
@@ -520,7 +520,7 @@ const WithVotingHeader = () => {
             <Body>{ASTROPHYSICS_TEXT}</Body>
           </AccordionItem>
         </Accordion>
-        <Accordion type="multiple" variant="attached">
+        <Accordion type="multiple" variant="attached" style={{ minWidth: 400 }}>
           <AccordionItem
             value="1"
             attachment="start"
@@ -617,6 +617,7 @@ const Disabled = () => {
     <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <VariantsGrid<AccordionProps>
+          style={{ minWidth: 400 }}
           renderVariant={(props) => {
             return (
               <Accordion {...props}>
@@ -663,6 +664,7 @@ const Disabled = () => {
           variantPropsMap={[[{ variant: "separated" }, { variant: "attached" }]]}
         />
         <VariantsGrid<AccordionProps>
+          style={{ minWidth: 400 }}
           renderVariant={(props) => {
             return (
               <Accordion {...props}>
