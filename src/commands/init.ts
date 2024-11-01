@@ -32,6 +32,7 @@ export const initOptionsSchema = z.object({
   silent: z.boolean(),
   isNewProject: z.boolean(),
   srcDir: z.boolean().optional(),
+  path: z.string().optional(),
 });
 
 export const init = new Command()
@@ -44,6 +45,7 @@ export const init = new Command()
   .option("-c, --cwd <cwd>", "the working directory. defaults to the current directory.", process.cwd())
   .option("-s, --silent", "mute output.", false)
   .option("--src-dir", "use the src directory when creating a new project.", false)
+  .option("--path <path>", "the path to the components registry.", undefined)
   .action(async (components: string[], opts: { cwd: string }) => {
     try {
       const options = initOptionsSchema.parse({
@@ -111,6 +113,7 @@ export async function runInit(
     overwrite: true,
     silent: options.silent,
     isNewProject: options.isNewProject || projectInfo?.framework.name === "next-app",
+    path: options.path,
   });
 
   // If a new project is using src dir, let's update the tailwind content config.

@@ -1,4 +1,4 @@
-import { IconRosette } from "@tabler/icons-react";
+import { IconRosette } from "../../../../assets/Icons";
 import { ButtonWithLeftIcon } from "../../../../components/react-aria/button/Button.atoms";
 import { X } from "../../../../assets/Icons";
 import {

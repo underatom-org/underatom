@@ -18,11 +18,33 @@ import {
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { Code } from "../../no-headless/typography/Typography.atoms";
+import { useMediaQuery } from "../../../docs/utils";
+
+const defaultCode = `
+<Button>Button</Button>
+`;
+
+const DefaultExample = () => {
+  return (
+    <ShowcaseFrame>
+      <Button>Button</Button>
+    </ShowcaseFrame>
+  );
+};
+
+const variantsCode = `
+<Button variant="primary">Button</Button>
+<Button variant="base">Button</Button>
+<Button variant="danger">Button</Button>
+<Button variant="ghost">Button</Button>
+<Button variant="link">Button</Button>
+`;
 
 const VariantsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={variantsCode}>
       <VariantsGrid<ButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <Button {...props}>Button</Button>;
@@ -41,9 +63,23 @@ const VariantsExample = () => {
   );
 };
 
+const groupsCode = `
+<div style={{ display: "flex" }}>
+  <Button attachment="start">Start</Button>
+  <Button attachment="center">Center</Button>
+  <Button attachment="end">End</Button>
+</div>
+
+<div style={{ display: "flex" }}>
+  <IconButton icon={(className) => <Atom className={className} />} attachment="start" />
+  <IconButton icon={(className) => <Atom className={className} />} attachment="center" />
+  <IconButton icon={(className) => <Atom className={className} />} attachment="end" />
+</div>
+`;
+
 const GroupsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={groupsCode}>
       <VariantsRow>
         <VariantsGrid<ButtonProps>
           renderVariant={(props) => (
@@ -84,9 +120,15 @@ const GroupsExample = () => {
   );
 };
 
+const sizesCode = `
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<ButtonProps>
         renderVariant={(props) => {
           return <Button {...props}>Button</Button>;
@@ -106,15 +148,22 @@ const SizesExample = () => {
   );
 };
 
+const fullwidthCode = `
+<div style={{ width: 300 }}>
+  <Button fullWidth>Button</Button>
+</div>
+`;
+
 const FullwidthExample = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fullwidthCode}>
       <VariantsGrid<ButtonProps>
         renderVariant={(props) => {
           return (
             <div
               style={{
-                width: props.fullWidth ? 300 : "fit-content",
+                width: props.fullWidth ? (isMobile ? 200 : 400) : "fit-content",
                 display: "flex",
               }}
             >
@@ -137,9 +186,13 @@ const FullwidthExample = () => {
   );
 };
 
+const disabledCode = `
+<Button isDisabled>Button</Button>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsRow>
         <VariantsGrid<ButtonProps>
           renderVariant={(props) => {
@@ -216,9 +269,13 @@ const DisabledExample = () => {
   );
 };
 
+const iconButtonCode = `
+<IconButton icon={(className) => <AtomIcon className={className} />} />
+`;
+
 const IconButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={iconButtonCode}>
       <VariantsGrid<IconButtonProps>
         isHorizontal
         renderVariant={(props) => {
@@ -230,10 +287,15 @@ const IconButtonExample = () => {
   );
 };
 
+const anchorButtonCode = `
+<AnchorButton>Button</AnchorButton>
+`;
+
 const AnchorButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={anchorButtonCode}>
       <VariantsGrid<AnchorButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <AnchorButton {...props}>Button</AnchorButton>;
@@ -252,10 +314,15 @@ const AnchorButtonExample = () => {
   );
 };
 
+const buttonWithDotCode = `
+<ButtonWithDot dotColor="green">Button</ButtonWithDot>
+`;
+
 const ButtonWithDotExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithDotCode} style={{ padding: 24 }} paddingX={24}>
       <VariantsGrid<ButtonWithDotProps>
+        style={{ justifyContent: "center" }}
         renderVariant={(props) => {
           return <ButtonWithDot {...props}>Button</ButtonWithDot>;
         }}
@@ -268,10 +335,17 @@ const ButtonWithDotExample = () => {
   );
 };
 
+const buttonWithLeftIconCode = `
+<ButtonWithLeftIcon icon={(className) => <AtomIcon className={className} />} >
+  Button
+</ButtonWithLeftIcon>
+`;
+
 const ButtonWithLeftIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithLeftIconCode}>
       <VariantsGrid<ButtonWithLeftIconProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return (
@@ -294,10 +368,17 @@ const ButtonWithLeftIconExample = () => {
   );
 };
 
+const buttonWithRightIconCode = `
+<ButtonWithRightIcon icon={(className) => <AtomIcon className={className} />}>
+  Button
+</ButtonWithRightIcon>
+`;
+
 const ButtonWithRightIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={buttonWithRightIconCode}>
       <VariantsGrid<ButtonWithRightIconProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return (
@@ -320,10 +401,15 @@ const ButtonWithRightIconExample = () => {
   );
 };
 
+const loadingButtonCode = `
+<LoadingButton>Button</LoadingButton>
+`;
+
 const LoadingButtonExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={loadingButtonCode}>
       <VariantsGrid<LoadingButtonProps>
+        style={{ justifyContent: "center" }}
         isHorizontal
         renderVariant={(props) => {
           return <LoadingButton {...props}>Button</LoadingButton>;
@@ -346,8 +432,10 @@ const ButtonDocs = () => {
   return (
     <Page
       title="Button"
-      subtitle="Buttons are used to trigger actions. They can be used to submit a form, navigate to a new page, or perform a certain action."
+      subtitle="Buttons can be used to submit a form, navigate to a new page, or perform a certain action."
       command="npx underatom@latest add button"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
     >
       <Section title="Showcase">
         <Example

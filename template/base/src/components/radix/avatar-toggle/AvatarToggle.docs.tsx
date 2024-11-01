@@ -17,21 +17,24 @@ import {
 } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
-export const AvatarToggleWithContent = (props: Omit<AvatarToggleProps, "contentSlot">) => {
+export const AvatarToggleWithContent = (props: Omit<AvatarToggleProps, "children">) => {
   return (
-    <AvatarToggle
-      {...props}
-      contentSlot={
-        <AvatarToggleContent
-          imageProps={{
-            src: avatar1Src,
-            alt: "Avatar",
-          }}
-        />
-      }
-    />
+    <AvatarToggle {...props}>
+      <AvatarToggleContent
+        imageProps={{
+          src: avatar1Src,
+          alt: "Avatar",
+        }}
+      />
+    </AvatarToggle>
   );
 };
+
+const defaultCode = `
+<AvatarToggle>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
 
 const DefaultExample = () => {
   return (
@@ -41,17 +44,29 @@ const DefaultExample = () => {
   );
 };
 
+const selectedCode = `
+<AvatarToggle isSelected>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const SelectedExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={selectedCode}>
       <AvatarToggleWithContent isSelected />
     </ShowcaseFrame>
   );
 };
 
+const sizesCode = `
+<AvatarToggle size="sm">
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<AvatarToggleProps>
         renderVariant={(props) => (
           <div style={{ display: "flex" }}>
@@ -62,7 +77,7 @@ const SizesExample = () => {
           [{ size: "sm" }, { size: "md" }, { size: "lg" }, { size: "xl" }],
           [
             {
-              contentSlot: (
+              children: (
                 <AvatarToggleContent
                   imageProps={{
                     src: avatar1Src,
@@ -73,10 +88,10 @@ const SizesExample = () => {
               ),
             },
             {
-              contentSlot: <AvatarToggleContent fallbackText="S" />,
+              children: <AvatarToggleContent fallbackText="S" />,
             },
             {
-              contentSlot: <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
+              children: <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
             },
           ],
         ]}
@@ -84,126 +99,138 @@ const SizesExample = () => {
     </ShowcaseFrame>
   );
 };
+
+const disabledCode = `
+<AvatarToggle isDisabled>
+  <AvatarToggleContent imageProps={{ src: "", alt: "" }} />
+</AvatarToggle>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <VariantsRow>
-          <AvatarToggle
-            contentSlot={
-              <AvatarToggleContent
-                imageProps={{
-                  src: avatar1Src,
-                  alt: "Avatar",
-                }}
-                fallbackText="AV"
-              />
-            }
-            isDisabled
-          />
-          <AvatarToggle contentSlot={<AvatarToggleContent fallbackText="S" />} isDisabled />
-          <AvatarToggle
-            contentSlot={<AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-            isDisabled
-          />
+          <AvatarToggle isDisabled>
+            <AvatarToggleContent
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          </AvatarToggle>
+          <AvatarToggle isDisabled>
+            <AvatarToggleContent fallbackText="S" />
+          </AvatarToggle>
+          <AvatarToggle isDisabled>
+            <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+          </AvatarToggle>
         </VariantsRow>
         <VariantsRow>
-          <AvatarToggle
-            contentSlot={
-              <AvatarToggleContent
-                imageProps={{
-                  src: avatar1Src,
-                  alt: "Avatar",
-                }}
-                fallbackText="AV"
-              />
-            }
-            isDisabled
-            isSelected
-          />
-          <AvatarToggle contentSlot={<AvatarToggleContent fallbackText="S" />} isDisabled isSelected />
-          <AvatarToggle
-            contentSlot={<AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-            isDisabled
-            isSelected
-          />
+          <AvatarToggle isDisabled isSelected>
+            <AvatarToggleContent
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          </AvatarToggle>
+          <AvatarToggle isDisabled isSelected>
+            <AvatarToggleContent fallbackText="S" />
+          </AvatarToggle>
+          <AvatarToggle isDisabled isSelected>
+            <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+          </AvatarToggle>
         </VariantsRow>
       </VariantsColumn>
     </ShowcaseFrame>
   );
 };
 
+const withIconCode = `
+<AvatarToggle>
+  <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+</AvatarToggle>
+`;
+
 const WithIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIconCode}>
       <VariantsRow>
-        <AvatarToggle
-          contentSlot={
-            <AvatarToggleContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarToggle
-          contentSlot={<AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-        />
+        <AvatarToggle>
+          <AvatarToggleContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarToggle>
+        <AvatarToggle>
+          <AvatarToggleContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        </AvatarToggle>
       </VariantsRow>
     </ShowcaseFrame>
   );
 };
 
+const withTextCode = `
+<AvatarToggle>
+  <AvatarToggleContent fallbackText="AV" />
+</AvatarToggle>
+`;
+
 const WithTextExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withTextCode}>
       <VariantsRow>
-        <AvatarToggle
-          contentSlot={
-            <AvatarToggleContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarToggle contentSlot={<AvatarToggleContent fallbackText="AV" />} />
+        <AvatarToggle>
+          <AvatarToggleContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarToggle>
+        <AvatarToggle>
+          <AvatarToggleContent fallbackText="AV" />
+        </AvatarToggle>
       </VariantsRow>
     </ShowcaseFrame>
   );
 };
 
 const AvatarToggleDocs = () => (
-  <>
-    <Page title="AvatarToggle" subtitle="Subtitle" command="npx underatom@latest add avatar-toggle">
-      <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
-        <Example title="Selected">
-          <SelectedExample />
-        </Example>
-        <Example title="Sizes">
-          <SizesExample />
-        </Example>
-        <Example title="Disabled">
-          <DisabledExample />
-        </Example>
-      </Section>
-      <Section title="Atoms">
-        <Example title="With Icon">
-          <WithIconExample />
-        </Example>
-        <Example title="With Text">
-          <WithTextExample />
-        </Example>
-      </Section>
-    </Page>
-  </>
+  <Page
+    title="AvatarToggle"
+    subtitle="A toggleable avatar component."
+    command="npx underatom@latest add avatar-toggle"
+    usageCode={defaultCode}
+    defaultExample={<DefaultExample />}
+  >
+    <Section title="Showcase">
+      <Example title="Selected">
+        <SelectedExample />
+      </Example>
+      <Example title="Sizes">
+        <SizesExample />
+      </Example>
+      <Example title="Disabled">
+        <DisabledExample />
+      </Example>
+    </Section>
+    <Section title="Atoms">
+      <Example title="With Icon">
+        <WithIconExample />
+      </Example>
+      <Example title="With Text">
+        <WithTextExample />
+      </Example>
+    </Section>
+  </Page>
 );
 
 const avatarToggleRoute = "/avatar-toggle";

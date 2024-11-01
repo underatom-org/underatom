@@ -10,200 +10,235 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { avatar1Src, avatar2Src, avatar3Src } from "../../../assets/images/Images";
 
+const defaultCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const DefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
-          <AvatarGroupAvatar
-            imageProps={{
-              src: avatar1Src,
-              alt: "Avatar 1",
-            }}
-          />,
-          <AvatarGroupAvatar
-            imageProps={{
-              src: avatar2Src,
-              alt: "Avatar 2",
-            }}
-          />,
-          <AvatarGroupAvatar
-            imageProps={{
-              src: avatar3Src,
-              alt: "Avatar 3",
-            }}
-          />,
-        ]}
-      />
+      <AvatarGroup>
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar1Src,
+            alt: "Avatar 1",
+          }}
+        />
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar2Src,
+            alt: "Avatar 2",
+          }}
+        />
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar3Src,
+            alt: "Avatar 3",
+          }}
+        />
+      </AvatarGroup>
     </ShowcaseFrame>
   );
 };
+
+const avatarsWithTextCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar fallbackText="AV" />
+  <AvatarGroupAvatar fallbackText="SI" />
+  <AvatarGroupAvatar fallbackText="JK" />
+</AvatarGroup>
+`;
 
 const AvatarsWithTextExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
-          <AvatarGroupAvatar fallbackText="AV" />,
-          <AvatarGroupAvatar fallbackText="SI" />,
-          <AvatarGroupAvatar fallbackText="JK" />,
-        ]}
-      />
+    <ShowcaseFrame code={avatarsWithTextCode}>
+      <AvatarGroup>
+        <AvatarGroupAvatar fallbackText="AV" />
+        <AvatarGroupAvatar fallbackText="SI" />
+        <AvatarGroupAvatar fallbackText="JK" />
+      </AvatarGroup>
     </ShowcaseFrame>
   );
 };
+
+const avatarsWithIconCode = `
+<AvatarGroup>
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+</AvatarGroup>
+`;
 
 const AvatarsWithIconExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
-          <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
-          <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
-          <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
-        ]}
-      />
+    <ShowcaseFrame code={avatarsWithIconCode}>
+      <AvatarGroup>
+        <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+      </AvatarGroup>
     </ShowcaseFrame>
   );
 };
+
+const avatarsCombinedCode = `
+<AvatarGroup>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <AtomIcon className={className} />} />
+  <AvatarGroupAvatar fallbackText="JK" />
+</AvatarGroup>
+`;
 
 const AvatarsCombinedExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
-          <AvatarGroupAvatar
-            imageProps={{
-              src: avatar1Src,
-              alt: "Avatar",
-            }}
-          />,
-          <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
-          <AvatarGroupAvatar fallbackText="JK" />,
-        ]}
-      />
+    <ShowcaseFrame code={avatarsCombinedCode}>
+      <AvatarGroup>
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar1Src,
+            alt: "Avatar",
+          }}
+        />
+        <AvatarGroupAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        <AvatarGroupAvatar fallbackText="JK" />
+      </AvatarGroup>
     </ShowcaseFrame>
   );
 };
 
+const withActionCode = `
+<AvatarGroup
+  actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}
+>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
 const WithActionExample = () => {
   return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
+    <ShowcaseFrame code={withActionCode}>
+      <AvatarGroup actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}>
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar1Src,
+            alt: "Avatar 1",
+          }}
+        />
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar2Src,
+            alt: "Avatar 2",
+          }}
+        />
+        <AvatarGroupAvatar
+          imageProps={{
+            src: avatar3Src,
+            alt: "Avatar 3",
+          }}
+        />
+      </AvatarGroup>
+    </ShowcaseFrame>
+  );
+};
+
+const withInfoCode = `
+<AvatarGroup infoSlot={<AvatarGroupInfo label="+3" />}>
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
+const WithInfoExample = () => {
+  return (
+    <ShowcaseFrame code={withInfoCode}>
+      <AvatarGroup infoSlot={<AvatarGroupInfo label="+3" />}>
+        <AvatarGroupAvatar imageProps={{ src: avatar1Src, alt: "Avatar 1" }} />
+        <AvatarGroupAvatar imageProps={{ src: avatar2Src, alt: "Avatar 2" }} />
+        <AvatarGroupAvatar imageProps={{ src: avatar3Src, alt: "Avatar 3" }} />
+      </AvatarGroup>
+    </ShowcaseFrame>
+  );
+};
+
+const sizesCode = `
+<AvatarGroup size="sm">
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+  <AvatarGroupAvatar imageProps={{ src: "", alt: "" }} />
+</AvatarGroup>
+`;
+
+const Sizes = () => {
+  return (
+    <ShowcaseFrame code={sizesCode}>
+      <VariantsColumn>
+        <AvatarGroup size="sm">
           <AvatarGroupAvatar
             imageProps={{
               src: avatar1Src,
               alt: "Avatar 1",
             }}
-          />,
+          />
           <AvatarGroupAvatar
             imageProps={{
               src: avatar2Src,
               alt: "Avatar 2",
             }}
-          />,
+          />
           <AvatarGroupAvatar
             imageProps={{
               src: avatar3Src,
               alt: "Avatar 3",
             }}
-          />,
-        ]}
-        actionSlot={<AvatarGroupAction icon={(className) => <X className={className} />} />}
-      />
-    </ShowcaseFrame>
-  );
-};
-
-const WithInfoExample = () => {
-  return (
-    <ShowcaseFrame>
-      <AvatarGroup
-        avatarSlots={[
-          <AvatarGroupAvatar imageProps={{ src: avatar1Src, alt: "Avatar 1" }} />,
-          <AvatarGroupAvatar imageProps={{ src: avatar2Src, alt: "Avatar 2" }} />,
-          <AvatarGroupAvatar imageProps={{ src: avatar3Src, alt: "Avatar 3" }} />,
-        ]}
-        infoSlot={<AvatarGroupInfo label="+3" />}
-      />
-    </ShowcaseFrame>
-  );
-};
-
-const Sizes = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsColumn>
-        <AvatarGroup
-          size="sm"
-          avatarSlots={[
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar 1",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar2Src,
-                alt: "Avatar 2",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar3Src,
-                alt: "Avatar 3",
-              }}
-            />,
-          ]}
-        />
-        <AvatarGroup
-          size="md"
-          avatarSlots={[
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar 1",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar2Src,
-                alt: "Avatar 2",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar3Src,
-                alt: "Avatar 3",
-              }}
-            />,
-          ]}
-        />
-        <AvatarGroup
-          size="lg"
-          avatarSlots={[
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar 1",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar2Src,
-                alt: "Avatar 2",
-              }}
-            />,
-            <AvatarGroupAvatar
-              imageProps={{
-                src: avatar3Src,
-                alt: "Avatar 3",
-              }}
-            />,
-          ]}
-        />
+          />
+        </AvatarGroup>
+        <AvatarGroup size="md">
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar 1",
+            }}
+          />
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar2Src,
+              alt: "Avatar 2",
+            }}
+          />
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar3Src,
+              alt: "Avatar 3",
+            }}
+          />
+        </AvatarGroup>
+        <AvatarGroup size="lg">
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar 1",
+            }}
+          />
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar2Src,
+              alt: "Avatar 2",
+            }}
+          />
+          <AvatarGroupAvatar
+            imageProps={{
+              src: avatar3Src,
+              alt: "Avatar 3",
+            }}
+          />
+        </AvatarGroup>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -211,11 +246,14 @@ const Sizes = () => {
 
 const AvatarGroupDocs = () => {
   return (
-    <Page title="AvatarGroup" subtitle="Subtitle" command="npx underatom@latest add avatar-group">
+    <Page
+      title="AvatarGroup"
+      subtitle="A component for displaying a group of avatars."
+      command="npx underatom@latest add avatar-group"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="Sizes">
           <Sizes />
         </Example>

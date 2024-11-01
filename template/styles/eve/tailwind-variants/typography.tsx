@@ -14,7 +14,8 @@ export const typographyClass = ({ className, typographyProps }: TypographyType) 
         subheader: "",
         body: "",
         label: "",
-        code: "border-solid border-base-200 border-1 bg-base-50 rounded-md",
+        sublabel: "",
+        code: "border-solid border-base-200 border-1 bg-base-50 rounded-md  break-all",
       },
     },
 
@@ -31,12 +32,13 @@ export const typographyTextClass = ({ className, typographyProps }: TypographyTy
     base: "",
     variants: {
       type: {
-        h1: "text-3xl font-display font-medium",
-        h2: "text-2xl font-display font-medium",
-        h3: "text-xl font-text font-medium",
-        subheader: "text-lg font-text font-normal",
+        h1: "text-3xl font-display font-bold",
+        h2: "text-2xl font-display font-bold",
+        h3: "text-xl font-text font-bold",
+        subheader: "text-lg font-text font-medium",
         body: "text-md font-text font-normal",
         label: "text-sm font-text font-medium",
+        sublabel: "text-xs font-text font-medium",
         code: "text-[16px] font-['DMMono'] leading-[24px] font-normal",
       },
       color: { base: "text-base-900", secondary: "text-base-700" },
@@ -65,7 +67,9 @@ export const TypographyLayout = ({
     <>{textSlot}</>,
     tv({
       base: "h-fit w-fit flex flex-row justify-center items-center",
-      variants: { type: { h1: "", h2: "", h3: "", subheader: "", body: "", label: "", code: "py-[1px] px-[6px]" } },
+      variants: {
+        type: { h1: "", h2: "", h3: "", subheader: "", body: "", label: "", sublabel: "", code: "py-[1px] px-[6px]" },
+      },
 
       defaultVariants: { type: typographyDefaults.type },
     })({

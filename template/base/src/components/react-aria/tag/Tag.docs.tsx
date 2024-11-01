@@ -4,6 +4,10 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
+const defaultCode = `
+<Tag>Tag</Tag>
+`;
+
 const Default = () => {
   return (
     <ShowcaseFrame>
@@ -12,17 +16,27 @@ const Default = () => {
   );
 };
 
+const dismissibleCode = `
+<Tag onDismiss={() => console.log("dismissed")}>Tag</Tag>
+`;
+
 const Dismissible = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={dismissibleCode}>
       <Tag onDismiss={() => console.log("dismissed")}>Tag</Tag>
     </ShowcaseFrame>
   );
 };
 
+const sizesCode = `
+<Tag size="sm">Tag</Tag>
+<Tag size="md">Tag</Tag>
+<Tag size="lg">Tag</Tag>
+`;
+
 const Sizes = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsRow>
         <Tag size="sm">Tag</Tag>
         <Tag size="md">Tag</Tag>
@@ -32,9 +46,16 @@ const Sizes = () => {
   );
 };
 
+const withDotCode = `
+<TagWithDot dotColor="primary">Tag</TagWithDot>
+<TagWithDot dotColor="base">Tag</TagWithDot>
+<TagWithDot dotColor="green">Tag</TagWithDot>
+<TagWithDot dotColor="red">Tag</TagWithDot>
+`;
+
 const WithDot = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withDotCode}>
       <VariantsRow>
         <TagWithDot dotColor="primary">Tag</TagWithDot>
         <TagWithDot dotColor="base">Tag</TagWithDot>
@@ -45,17 +66,39 @@ const WithDot = () => {
   );
 };
 
+const withIconCode = `
+<TagWithIcon icon={(className) => <Atom className={className} />}>
+  Tag
+</TagWithIcon>
+`;
+
 const WithIcon = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIconCode}>
       <TagWithIcon icon={(className) => <Atom className={className} />}>Tag</TagWithIcon>
     </ShowcaseFrame>
   );
 };
 
+const withAvatarCode = `
+<TagWithAvatar avatarSlot={<TagAvatar imageProps={{ src: avatar1Src, alt: "Avatar" }} />}>
+  Tag
+</TagWithAvatar>
+
+<TagWithAvatar avatarSlot={<TagAvatar fallbackText="C" />}>Tag</TagWithAvatar>
+
+<TagWithAvatar
+  avatarSlot={
+    <TagAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+  }
+>
+  Tag
+</TagWithAvatar>
+`;
+
 const WithAvatar = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withAvatarCode}>
       <VariantsRow>
         <TagWithAvatar avatarSlot={<TagAvatar imageProps={{ src: avatar1Src, alt: "Avatar" }} />}>Tag</TagWithAvatar>
         <TagWithAvatar avatarSlot={<TagAvatar fallbackText="C" />}>Tag</TagWithAvatar>
@@ -69,10 +112,13 @@ const WithAvatar = () => {
 
 const TagDocs = () => {
   return (
-    <Page title="Tag" subtitle="Tag component" command="npx underatom@latest add tag">
-      <Example title="Default">
-        <Default />
-      </Example>
+    <Page
+      title="Tag"
+      subtitle="Display small amount of information in a compact format."
+      command="npx underatom@latest add tag"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
         <Example title="Dismissible">
           <Dismissible />

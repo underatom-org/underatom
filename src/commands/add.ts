@@ -30,7 +30,7 @@ export const add = new Command()
   .option("-o, --overwrite", "overwrite existing files.", false)
   .option("-c, --cwd <cwd>", "the working directory. defaults to the current directory.", process.cwd())
   .option("-a, --all", "add all available components", false)
-  .option("-p, --path <path>", "the path to add the component to.")
+  .option("-p, --path <path>", "the registry URL.")
   .option("-s, --silent", "mute output.", false)
   .option("--src-dir", "use the src directory when creating a new project.", false)
   .action(async (components: string[], opts: { cwd: string }) => {
@@ -111,7 +111,7 @@ export const add = new Command()
   });
 
 async function promptForRegistryComponents(options: z.infer<typeof addOptionsSchema>) {
-  const registryIndex = fetchComponents();
+  const registryIndex = await fetchComponents(options.path);
   if (!registryIndex) {
     logger.break();
     handleError(new Error("Failed to fetch registry index."));

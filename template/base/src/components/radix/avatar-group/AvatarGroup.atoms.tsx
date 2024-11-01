@@ -31,14 +31,13 @@ import { ReactNode } from "react";
   ====================================
 */
 
-export type AvatarGroupProps = Omit<UAvatarGroupRootProps, "children"> & {
+export type AvatarGroupProps = UAvatarGroupRootProps & {
   className?: string;
   actionSlot?: React.ReactNode;
-  avatarSlots: React.ReactNode[];
   infoSlot?: React.ReactNode;
 };
 
-export const AvatarGroup = ({ actionSlot, avatarSlots, infoSlot, ...props }: AvatarGroupProps) => {
+export const AvatarGroup = ({ actionSlot, children, infoSlot, ...props }: AvatarGroupProps) => {
   return (
     <AvatarGroupLayout
       renderRoot={(children, className) => (
@@ -48,7 +47,7 @@ export const AvatarGroup = ({ actionSlot, avatarSlots, infoSlot, ...props }: Ava
       )}
       styleProps={{ className: props.className, avatarGroupProps: props }}
       actionSlot={actionSlot}
-      avatarSlots={avatarSlots}
+      avatarSlots={children}
       infoSlot={infoSlot}
     />
   );

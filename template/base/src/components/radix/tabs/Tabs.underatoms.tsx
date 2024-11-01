@@ -152,6 +152,7 @@ export const UTabsItemBadgeRoot = (props: UTabsItemBadgeRootProps) => {
         tabsProps,
         tabsItemProps,
       })}
+      style={{ width: "max-content" }}
     >
       <TabsItemBadgeInternalProvider value={props}>{props.children}</TabsItemBadgeInternalProvider>
     </div>

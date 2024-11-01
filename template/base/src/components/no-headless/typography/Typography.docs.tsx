@@ -2,41 +2,63 @@ import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.compon
 import { DocsRoute } from "../../../docs/docs.types";
 import { H1, H2, H3, Body, Subheader, Label, Code } from "./Typography.atoms";
 
+const heading1Code = `
+<H1>The Evolution of Communication</H1>
+`;
+
 const Heading1Example = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={heading1Code}>
       <H1>The Evolution of Communication</H1>
     </ShowcaseFrame>
   );
 };
 
+const subheaderCode = `
+<Subheader>The Digital Age</Subheader>
+`;
+
 const SubheaderExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={subheaderCode}>
       <Subheader>The Digital Age</Subheader>
     </ShowcaseFrame>
   );
 };
 
+const heading2Code = `
+<H2>Rise of Social Media</H2>
+`;
+
 const Heading2Example = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={heading2Code}>
       <H2>Rise of Social Media</H2>
     </ShowcaseFrame>
   );
 };
 
+const heading3Code = `
+<H3>People stopped writing letters</H3>
+`;
+
 const Heading3Example = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={heading3Code}>
       <H3>People stopped writing letters</H3>
     </ShowcaseFrame>
   );
 };
 
+const bodyCode = `
+<Body>
+Tech experts, recognizing the loss of personal touch in digital communication, advocated for a revival of letter writing.
+</Body>
+`;
+
 const BodyTextExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={bodyCode}>
       <Body>
         Tech experts, recognizing the loss of personal touch in digital communication, advocated for a revival of letter
         writing.
@@ -45,9 +67,14 @@ const BodyTextExample = () => {
   );
 };
 
+const labelCode = `
+<Label>Name</Label>
+<Body color="secondary">John Doe</Body>
+`;
+
 const LabelTextExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={labelCode}>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <Label>Name</Label>
         <Body color="secondary">John Doe</Body>
@@ -56,17 +83,30 @@ const LabelTextExample = () => {
   );
 };
 
+const codeCode = `
+<Code>const x = 1;</Code>
+`;
+
 const CodeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={codeCode}>
       <Code>const x = 1;</Code>
     </ShowcaseFrame>
   );
 };
 
+const baseColorCode = `
+<H1>The Evolution of Communication</H1>
+<H2>The Digital Age</H2>
+<H3>Rise of Social Media</H3>
+<Body>Tech experts, recognizing the loss of personal touch in digital communication, advocated for a revival of letter writing.</Body>
+<Label>Name</Label>
+<Code>const x = 1;</Code>
+`;
+
 const BaseColorExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={baseColorCode}>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <H1>The Evolution of Communication</H1>
         <H2>The Digital Age</H2>
@@ -82,9 +122,18 @@ const BaseColorExample = () => {
   );
 };
 
+const secondaryColorCode = `
+<H1 color="secondary">The Evolution of Communication</H1>
+<H2 color="secondary">The Digital Age</H2>
+<H3 color="secondary">Rise of Social Media</H3>
+<Body color="secondary">Tech experts, recognizing the loss of personal touch in digital communication, advocated for a revival of letter writing.</Body>
+<Label color="secondary">Name</Label>
+<Code color="secondary">const x = 1;</Code>
+`;
+
 const SecondaryColorExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={secondaryColorCode}>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <H1 color="secondary">The Evolution of Communication</H1>
         <H2 color="secondary">The Digital Age</H2>
@@ -106,6 +155,8 @@ const TextDocs = () => {
       title="Typography"
       subtitle="Generic text components split into multiple atoms."
       command="npx underatom@latest add typography"
+      usageCode={baseColorCode}
+      defaultExample={<BaseColorExample />}
     >
       <Section title="Showcase">
         <Example title="H1">
@@ -128,11 +179,6 @@ const TextDocs = () => {
         </Example>
         <Example title="Code">
           <CodeExample />
-        </Example>
-      </Section>
-      <Section title="Colors">
-        <Example title="Base" description="The base color of the text.">
-          <BaseColorExample />
         </Example>
         <Example title="Secondary" description="The secondary color of the text.">
           <SecondaryColorExample />

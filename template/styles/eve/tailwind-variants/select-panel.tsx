@@ -440,7 +440,7 @@ export const SelectPanelGroupItemBoxWithDescriptionLayout = ({
       <div className="h-fit w-fit flex flex-row items-center gap-[6px]">
         {iconBoxSlot}
         <div className="h-fit w-fit flex flex-col justify-center [&>*:not(:first-child)]:[margin-top:-4px]">
-          <div className="h-fit w-[109px] flex flex-row items-baseline gap-1">
+          <div className="h-fit w-fit flex flex-row items-baseline gap-1">
             {labelSlot}
             {supportingSlot}
           </div>

@@ -53,10 +53,9 @@ import React from "react";
 export type InputProps = UInputRootProps & {
   label?: string;
   description?: string;
-  boxSlot: React.ReactNode;
 };
 
-export const Input = ({ label, description, boxSlot, ...props }: InputProps) => (
+export const Input = ({ label, description, children, ...props }: InputProps) => (
   <InputLayout
     renderRoot={(children, className) => (
       <UInputRoot {...props} className={className}>
@@ -67,7 +66,7 @@ export const Input = ({ label, description, boxSlot, ...props }: InputProps) => 
     labelSlot={<UInputLabel>{label}</UInputLabel>}
     descriptionSlot={<UInputDescription>{description}</UInputDescription>}
     asteriskSlot={<UInputAsterisk />}
-    boxSlot={boxSlot}
+    boxSlot={children}
   />
 );
 
@@ -102,7 +101,7 @@ export const InputBox = ({ trailingIcon, leadingIcon, onClear, ...props }: Input
 
 export type InputBoxWithSegmentsProps = UInputBoxRootProps & {
   trailingIcon?: (className: string) => React.ReactNode;
-  segmentSlots: React.ReactNode[];
+  segmentSlots: React.ReactNode;
   onClear?: () => void;
 };
 export const InputBoxWithSegments = ({ trailingIcon, segmentSlots, onClear, ...props }: InputBoxWithSegmentsProps) => {
@@ -124,7 +123,7 @@ export const InputBoxWithSegments = ({ trailingIcon, segmentSlots, onClear, ...p
 
 export type InputBoxWithTagsProps = UInputBoxRootProps & {
   trailingIcon?: (className: string) => React.ReactNode;
-  tagSlots?: React.ReactNode[];
+  tagSlots?: React.ReactNode;
   onClear?: () => void;
 };
 export const InputBoxWithTags = ({ trailingIcon, tagSlots, onClear, ...props }: InputBoxWithTagsProps) => {

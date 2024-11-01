@@ -14,6 +14,7 @@ export async function addComponents(
     overwrite?: boolean;
     silent?: boolean;
     isNewProject?: boolean;
+    path?: string;
   },
 ) {
   options = {
@@ -26,7 +27,7 @@ export async function addComponents(
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start();
-  const tree = registryResolveItemsTree(components, options.isNewProject ?? false);
+  const tree = await registryResolveItemsTree(components, options.isNewProject ?? false, options.path);
   if (!tree) {
     registrySpinner?.fail();
     return handleError(new Error("Failed to fetch components from registry."));

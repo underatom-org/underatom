@@ -41,11 +41,10 @@ import * as Accordion from "@radix-ui/react-accordion";
   ====================================
 */
 
-export type SideNavProps = Omit<USideNavRootProps, "children"> & {
-  groupSlots: ReactNode[];
+export type SideNavProps = USideNavRootProps & {
   accordionProps: Accordion.AccordionSingleProps | Accordion.AccordionMultipleProps;
 };
-export const SideNav = ({ groupSlots, ...props }: SideNavProps) => {
+export const SideNav = ({ children, ...props }: SideNavProps) => {
   return (
     <SideNavLayout
       renderRoot={(children, className) => {
@@ -56,7 +55,7 @@ export const SideNav = ({ groupSlots, ...props }: SideNavProps) => {
         );
       }}
       styleProps={{ className: props.className, sideNavProps: props }}
-      groupSlots={groupSlots}
+      groupSlots={children}
     />
   );
 };
@@ -170,10 +169,8 @@ export const SideNavGroupHeader = ({ hasCaret, label, ...props }: SideNavGroupHe
   ====================================
 */
 
-export type SideNavGroupItemProps = Omit<USideNavGroupItemRootProps, "children"> & {
-  boxSlot: ReactNode;
-};
-export const SideNavGroupItem = ({ boxSlot, ...props }: SideNavGroupItemProps) => {
+export type SideNavGroupItemProps = USideNavGroupItemRootProps;
+export const SideNavGroupItem = ({ children, ...props }: SideNavGroupItemProps) => {
   const sideNavProps = useSideNavInternalProvider();
   return (
     <SideNavGroupItemLayout
@@ -183,15 +180,13 @@ export const SideNavGroupItem = ({ boxSlot, ...props }: SideNavGroupItemProps) =
         </USideNavGroupItemRoot>
       )}
       styleProps={{ className: props.className, sideNavProps }}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };
 
-export type SideNavGroupItemLinkProps = Omit<USideNavGroupItemLinkRootProps, "children"> & {
-  boxSlot: ReactNode;
-};
-export const SideNavGroupItemLink = ({ boxSlot, ...props }: SideNavGroupItemLinkProps) => {
+export type SideNavGroupItemLinkProps = USideNavGroupItemLinkRootProps;
+export const SideNavGroupItemLink = ({ children, ...props }: SideNavGroupItemLinkProps) => {
   const sideNavProps = useSideNavInternalProvider();
   return (
     <SideNavGroupItemLayout
@@ -201,7 +196,7 @@ export const SideNavGroupItemLink = ({ boxSlot, ...props }: SideNavGroupItemLink
         </USideNavGroupItemLinkRoot>
       )}
       styleProps={{ className: props.className, sideNavProps }}
-      boxSlot={boxSlot}
+      boxSlot={children}
     />
   );
 };
@@ -214,9 +209,8 @@ export const SideNavGroupItemLink = ({ boxSlot, ...props }: SideNavGroupItemLink
 
 export type SideNavGroupProps = USideNavGroupRootProps & {
   headerSlot: ReactNode;
-  itemSlots: ReactNode[];
 };
-export const SideNavGroup = ({ headerSlot, itemSlots, ...props }: SideNavGroupProps) => {
+export const SideNavGroup = ({ headerSlot, children, ...props }: SideNavGroupProps) => {
   const sideNavProps = useSideNavInternalProvider();
   return (
     <SideNavGroupLayout
@@ -227,7 +221,7 @@ export const SideNavGroup = ({ headerSlot, itemSlots, ...props }: SideNavGroupPr
       )}
       styleProps={{ className: props.className, sideNavProps }}
       headerSlot={headerSlot}
-      itemSlots={<USideNavGroupContent>{itemSlots}</USideNavGroupContent>}
+      itemSlots={<USideNavGroupContent>{children}</USideNavGroupContent>}
     />
   );
 };

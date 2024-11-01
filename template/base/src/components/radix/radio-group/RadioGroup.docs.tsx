@@ -1,45 +1,21 @@
-import { Example, Page, Section, ShowcaseFrame, VariantsGrid } from "../../../docs/docs.components";
+import { Example, Page, Section, ShowcaseFrame } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
-import { RadioGroup, RadioGroupProps, RadioGroupRadio } from "./RadioGroup.atoms";
+import { RadioGroup, RadioGroupRadio } from "./RadioGroup.atoms";
 
-export const Default = () => {
-  return (
-    <VariantsGrid<RadioGroupProps>
-      renderVariant={(props) => {
-        return (
-          <div
-            style={{
-              width: 300,
-            }}
-          >
-            <RadioGroup
-              {...props}
-              label="Label"
-              description="Description"
-              radioGroupRadioSlots={[
-                <RadioGroupRadio key="1" label="Option 1" value="1" invalid />,
-                <RadioGroupRadio key="2" label="Option 2" value="2" />,
-              ]}
-            />
-          </div>
-        );
-      }}
-      variantPropsMap={[[{ size: "sm" }, { size: "md" }, { size: "lg" }]]}
-    />
-  );
-};
+const defaultCode = `
+<RadioGroup label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
 
 const DefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <RadioGroup
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+      <RadioGroup label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
@@ -80,90 +56,106 @@ const DefaultExample = () => {
 //   );
 // };
 
+const disabledGroupCode = `
+<RadioGroup disabled label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
+
 export const DisabledGroupExample = () => {
   return (
-    <ShowcaseFrame>
-      <RadioGroup
-        disabled
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+    <ShowcaseFrame code={disabledGroupCode}>
+      <RadioGroup disabled label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
+
+const disabledCode = `
+<RadioGroup label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio disabled key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
 
 export const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
-      <RadioGroup
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio disabled key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+    <ShowcaseFrame code={disabledCode}>
+      <RadioGroup label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio disabled key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
+
+const invalidGroupCode = `
+<RadioGroup invalid label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
 
 export const InvalidGroupExample = () => {
   return (
-    <ShowcaseFrame>
-      <RadioGroup
-        invalid
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+    <ShowcaseFrame code={invalidGroupCode}>
+      <RadioGroup invalid label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
+
+const invalidCode = `
+<RadioGroup label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio invalid key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
 
 export const InvalidExample = () => {
   return (
-    <ShowcaseFrame>
-      <RadioGroup
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio invalid key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+    <ShowcaseFrame code={invalidCode}>
+      <RadioGroup label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio invalid key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
 
+const requiredCode = `
+<RadioGroup required label="Label" description="Description">
+  <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+  <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+</RadioGroup>
+`;
+
 export const RequiredExample = () => {
   return (
-    <ShowcaseFrame>
-      <RadioGroup
-        required
-        label="Label"
-        description="Description"
-        radioGroupRadioSlots={[
-          <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />,
-          <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />,
-        ]}
-      />
+    <ShowcaseFrame code={requiredCode}>
+      <RadioGroup required label="Label" description="Description">
+        <RadioGroupRadio key="1" label="Option 1" value="1" description="This is a description" />
+        <RadioGroupRadio key="2" label="Option 2" value="2" description="This is a description" />
+      </RadioGroup>
     </ShowcaseFrame>
   );
 };
+
 const RadioGroupDocs = () => {
   return (
-    <Page title="RadioGroup" subtitle="RadioGroup" command="npx underatom@latest add radio-group">
+    <Page
+      title="RadioGroup"
+      subtitle="A component for displaying a group of radio buttons."
+      command="npx underatom@latest add radio-group"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         {/* <Example title="Sizes">
           <SizesExample />
         </Example> */}
