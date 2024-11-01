@@ -10,7 +10,7 @@ import {
 } from "./Tabs.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
-import { IconHome, IconSettings, IconUserCircle } from "@tabler/icons-react";
+import { IconHome, IconSettings, IconUserCircle } from "../../../assets/Icons";
 import { useState } from "react";
 import { Code } from "../../no-headless/typography/Typography.atoms";
 import { useMediaQuery } from "../../../docs/utils";
@@ -266,7 +266,7 @@ const fillWithBadgeCode = `
 
 export const FillWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode}2>
+    <ShowcaseFrame2 code={fillWithBadgeCode}>
       <TabsWithContentHelper variant="fill">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
@@ -294,7 +294,7 @@ const fillWithNotificationCode = `
 
 export const FillWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode}2>
+    <ShowcaseFrame2 code={fillWithNotificationCode}>
       <TabsWithContentHelper variant="fill">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>
@@ -509,7 +509,7 @@ export const UnderlineDisabledExample = () => {
 
 export const UnderlineWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "underline")}2>
+    <ShowcaseFrame2 code={fillWithBadgeCode.replace("fill", "underline")}>
       <TabsWithContentHelper variant="underline">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
@@ -519,7 +519,7 @@ export const UnderlineWithBadgeExample = () => {
 
 export const UnderlineWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "underline")}2>
+    <ShowcaseFrame2 code={fillWithNotificationCode.replace("fill", "underline")}>
       <TabsWithContentHelper variant="underline">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>
@@ -619,7 +619,7 @@ export const HandleDisabledExample = () => {
 
 export const HandleWithBadgeExample = () => {
   return (
-    <ShowcaseFrame code={fillWithBadgeCode.replace("fill", "handle")}2>
+    <ShowcaseFrame2 code={fillWithBadgeCode.replace("fill", "handle")}>
       <TabsWithContentHelper variant="handle">
         <ItemSlotsWithBadgeHelper />
       </TabsWithContentHelper>
@@ -629,7 +629,7 @@ export const HandleWithBadgeExample = () => {
 
 export const HandleWithNotificationExample = () => {
   return (
-    <ShowcaseFrame code={fillWithNotificationCode.replace("fill", "handle")}2>
+    <ShowcaseFrame2 code={fillWithNotificationCode.replace("fill", "handle")}>
       <TabsWithContentHelper variant="handle">
         <ItemSlotsWithNotificationHelper />
       </TabsWithContentHelper>

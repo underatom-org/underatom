@@ -1,4 +1,10 @@
-export type IconType = (props: { className?: string; style?: React.CSSProperties; fill?: string }) => JSX.Element;
+export type IconType = (props: {
+  className?: string;
+  style?: React.CSSProperties;
+  fill?: string;
+  color?: string;
+  size?: number;
+}) => JSX.Element;
 
 export const CaretDown: IconType = () => <></>;
 export const CaretRight: IconType = () => <></>;
@@ -52,3 +58,9 @@ export const IconCircleCheck: IconType = () => <></>;
 export const IconCircleX: IconType = () => <></>;
 export const IconInfoCircle: IconType = () => <></>;
 export const IconPencil: IconType = () => <></>;
+export const IconHome: IconType = () => <></>;
+export const IconUserCircle: IconType = () => <></>;
+export const IconInfinity: IconType = () => <></>;
+export const IconStars: IconType = () => <></>;
+export const IconDiscountCheckFilled: IconType = () => <></>;
+export const IconRosette: IconType = () => <></>;

@@ -1,4 +1,4 @@
-import { IconDiscountCheckFilled } from "@tabler/icons-react";
+import { IconDiscountCheckFilled } from "../../../../assets/Icons";
 import { Body, H3 } from "../../../../components/no-headless/typography/Typography.atoms";
 
 export const ThankYouCard = () => {

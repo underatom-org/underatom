@@ -12,7 +12,7 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn, VariantsGrid } from "../../../docs/docs.components";
 import { Body } from "../../no-headless/typography/Typography.atoms";
 import { Atom } from "../../../assets/Icons";
-import { IconInfinity, IconStars } from "@tabler/icons-react";
+import { IconInfinity, IconStars } from "../../../assets/Icons";
 
 const QUANTUM_MECHANICS_TEXT =
   "Quantum mechanics is a fundamental theory in physics that describes nature at the smallest scales of energy levels of atoms and subatomic particles. It provides a mathematical description of much of the dual particle-like and wave-like behavior and interactions of energy and matter.";

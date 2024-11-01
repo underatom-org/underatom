@@ -6,7 +6,7 @@ import { Check, IconCode, IconCopy } from "../assets/Icons";
 import { Body, H1, H2, H3, Subheader } from "../components/no-headless/typography/Typography.atoms";
 import { Window } from "../components/no-headless/window/Window.atoms";
 import { useMediaQuery } from "./utils";
-import { ReactNode, useEffect, useState } from "react";
+import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import { SandpackCodeEditor, SandpackLayout, SandpackProvider } from "@codesandbox/sandpack-react";
 import { IconButtonToggle } from "../components/react-aria/button-toggle/ButtonToggle.atoms";
 import { IconButton } from "../components/react-aria/button/Button.atoms";
@@ -19,10 +19,12 @@ export const VariantsGrid = <T extends Record<string, any>>({
   renderVariant,
   variantPropsMap,
   isHorizontal = false,
+  style,
 }: {
   renderVariant: (props: T) => ReactNode;
   variantPropsMap: (Partial<T> & { [dataAttribute: DataAttributeKey]: unknown })[][];
   isHorizontal?: boolean;
+  style?: CSSProperties;
 }) => (
   <VariantsGridInternal
     renderVariant={renderVariant}
@@ -30,6 +32,7 @@ export const VariantsGrid = <T extends Record<string, any>>({
     index={0}
     variantProps={{} as any}
     isHorizontal={isHorizontal}
+    style={style}
   />
 );
 
@@ -39,12 +42,14 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
   index,
   variantProps,
   isHorizontal,
+  style,
 }: {
   renderVariant: (props: T) => ReactNode;
   variantPropsMap: VariantPropsMap;
   index: number;
   variantProps: T;
   isHorizontal: boolean;
+  style?: CSSProperties;
 }) => {
   if (index === variantPropsMap.length) return renderVariant(variantProps);
 
@@ -66,6 +71,7 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
               flexDirection: "row",
               // alignItems: "center",
             }),
+        ...style,
       }}
     >
       {variantPropsByProp.map((variant, i) => (
@@ -76,6 +82,7 @@ export const VariantsGridInternal = <T extends Record<string, any>>({
           index={index + 1}
           variantProps={{ ...variantProps, ...variant }}
           isHorizontal={isHorizontal}
+          style={style}
         />
       ))}
     </div>
