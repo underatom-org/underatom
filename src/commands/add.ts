@@ -20,7 +20,11 @@ export const addOptionsSchema = z.object({
   path: z.string().optional(),
   silent: z.boolean(),
   srcDir: z.boolean().optional(),
+  key: z.string().optional(),
+  design: z.enum(["eve", "retro"]),
 });
+
+export type AddOptions = z.infer<typeof addOptionsSchema>;
 
 export const add = new Command()
   .name("add")
@@ -32,6 +36,8 @@ export const add = new Command()
   .option("-a, --all", "add all available components", false)
   .option("-p, --path <path>", "the registry URL.")
   .option("-s, --silent", "mute output.", false)
+  .option("-k, --key <key>", "licence key.")
+  .option("-d, --design <design>", "design system.", "eve")
   .option("--src-dir", "use the src directory when creating a new project.", false)
   .action(async (components: string[], opts: { cwd: string }) => {
     try {
@@ -91,6 +97,8 @@ export const add = new Command()
           silent: true,
           isNewProject: true,
           srcDir: options.srcDir,
+          design: options.design,
+          key: options.key,
         });
       }
 
@@ -103,15 +111,15 @@ export const add = new Command()
         throw new Error(`Failed to read config at ${highlighter.info(options.cwd)}.`);
       }
 
-      await addComponents(options.components, config, options);
+      await addComponents(options.components, config, { ...options, isNewProject: false });
     } catch (error) {
       logger.break();
       handleError(error);
     }
   });
 
-async function promptForRegistryComponents(options: z.infer<typeof addOptionsSchema>) {
-  const registryIndex = await fetchComponents(options.path);
+async function promptForRegistryComponents(options: AddOptions) {
+  const registryIndex = await fetchComponents(options.design, options.path, options.key);
   if (!registryIndex) {
     logger.break();
     handleError(new Error("Failed to fetch registry index."));

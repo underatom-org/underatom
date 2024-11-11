@@ -42,8 +42,6 @@
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --ext .ts,.tsx --resolve-plugins-relative-to . -c .eslintrc",
-    "react:tv": "node dist/index-docs.js --dev --name sandbox/tailwind-variants --designSystem eve --stylingLibrary tailwind-variants",
-    "watch:react:tv": "watch 'node dist/index-docs.js --dev --watchMode --name sandbox/tailwind-variants --designSystem eve --stylingLibrary tailwind-variants' template/styles template/base/src",
     "pretty": "prettier --write .",
     "test": "jest --no-cache --passWithNoTests",
     "gen:api": "orval",
