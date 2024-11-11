@@ -4,30 +4,51 @@ import { Checkbox } from "./Checkbox.atoms";
 import { useState } from "react";
 import { Button } from "../../react-aria/button/Button.atoms";
 
+const defaultCode = `
+<Checkbox size="md" label="Checkbox" />
+`;
+
 const DefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <Checkbox size="md" label="Checkbox" />
+      <Checkbox label="Checkbox" />
     </ShowcaseFrame>
   );
 };
 
+const withDescriptionCode = `
+<Checkbox label="Checkbox" description="This is a description" />
+`;
+
 const WithDescriptionExample = () => {
   return (
-    <ShowcaseFrame>
-      <Checkbox size="md" label="Checkbox" description="This is a description" />
+    <ShowcaseFrame code={withDescriptionCode}>
+      <Checkbox label="Checkbox" description="This is a description" />
     </ShowcaseFrame>
   );
 };
+
+const indeterminateCode = `
+const IndeterminateExample = () => {
+  const [isIndeterminate, setIsIndeterminate] = useState(false);
+
+  return (
+    <>
+      <Button onPress={() => setIsIndeterminate((prev) => !prev)}>Toggle indeterminate</Button>
+      <Checkbox label="Checkbox" description="Checkbox description" isIndeterminate={isIndeterminate} />
+    </>
+  );
+};
+`;
 
 const IndeterminateExample = () => {
   const [isIndeterminate, setIsIndeterminate] = useState(false);
 
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={indeterminateCode}>
       <VariantsColumn>
         <Button onPress={() => setIsIndeterminate((prev) => !prev)}>Toggle indeterminate</Button>
-        <Checkbox size="md" label="Checkbox" description="Checkbox description" isIndeterminate={isIndeterminate} />
+        <Checkbox label="Checkbox" description="Checkbox description" isIndeterminate={isIndeterminate} />
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -45,37 +66,52 @@ const IndeterminateExample = () => {
 //   );
 // };
 
+const disabledCode = `
+<Checkbox label="Checkbox" description="Checkbox description" isDisabled />
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
-      <Checkbox size="md" label="Checkbox" description="Checkbox description" isDisabled />
+    <ShowcaseFrame code={disabledCode}>
+      <Checkbox label="Checkbox" description="Checkbox description" isDisabled />
     </ShowcaseFrame>
   );
 };
+
+const invalidCode = `
+<Checkbox label="Checkbox" description="Checkbox description" isInvalid />
+`;
 
 const InvalidExample = () => {
   return (
-    <ShowcaseFrame>
-      <Checkbox size="md" label="Checkbox" description="Checkbox description" isInvalid />
+    <ShowcaseFrame code={invalidCode}>
+      <Checkbox label="Checkbox" description="Checkbox description" isInvalid />
     </ShowcaseFrame>
   );
 };
 
+const requiredCode = `
+<Checkbox label="Checkbox" description="Checkbox description" isRequired />
+`;
+
 const RequiredExample = () => {
   return (
-    <ShowcaseFrame>
-      <Checkbox size="md" label="Checkbox" description="Checkbox description" isRequired />
+    <ShowcaseFrame code={requiredCode}>
+      <Checkbox label="Checkbox" description="Checkbox description" isRequired />
     </ShowcaseFrame>
   );
 };
 
 const Docs = () => {
   return (
-    <Page title="Checkbox" subtitle="" command="npx underatom@latest add checkbox">
+    <Page
+      title="Checkbox"
+      subtitle="A component for displaying a checkbox field."
+      command="npx underatom@latest add checkbox"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
         <Example title="With Description">
           <WithDescriptionExample />
         </Example>

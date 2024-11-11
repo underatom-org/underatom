@@ -91,11 +91,10 @@ import { ReactNode } from "react";
 */
 export type CommandProps = UCommandRootProps & {
   searchSlot: ReactNode;
-  groupSlots: ReactNode;
   footerSlot: ReactNode;
   emptySlot: ReactNode;
 };
-export const Command = ({ searchSlot, groupSlots, footerSlot, emptySlot, ...props }: CommandProps) => (
+export const Command = ({ searchSlot, children, footerSlot, emptySlot, ...props }: CommandProps) => (
   <CommandLayout
     renderRoot={(children, className) => (
       <UCommandRoot {...props} className={className}>
@@ -104,7 +103,7 @@ export const Command = ({ searchSlot, groupSlots, footerSlot, emptySlot, ...prop
     )}
     styleProps={{ className: props.className, commandProps: props }}
     searchSlot={searchSlot}
-    groupSlots={groupSlots}
+    groupSlots={children}
     footerSlot={footerSlot}
     emptySlot={emptySlot}
   />
@@ -165,11 +164,10 @@ export const CommandSearchClear = (props: CommandSearchClearProps) => {
   ====================================
 */
 
-export type CommandFooterProps = Omit<UCommandFooterRootProps, "children"> & {
-  elementSlots: ReactNode;
+export type CommandFooterProps = UCommandFooterRootProps & {
   buttonSlot?: ReactNode;
 };
-export const CommandFooter = ({ elementSlots, buttonSlot, ...props }: CommandFooterProps) => {
+export const CommandFooter = ({ children, buttonSlot, ...props }: CommandFooterProps) => {
   const commandProps = useCommandInternalProvider();
   return (
     <CommandFooterLayout
@@ -179,7 +177,7 @@ export const CommandFooter = ({ elementSlots, buttonSlot, ...props }: CommandFoo
         </UCommandFooterRoot>
       )}
       styleProps={{ className: props.className, commandProps }}
-      elementSlots={elementSlots}
+      elementSlots={children}
       buttonSlot={buttonSlot}
     />
   );
@@ -347,10 +345,10 @@ export const CommandEmpty = ({ text, image, ...props }: CommandEmptyProps) => {
 
 export type CommandGroupProps = Omit<UCommandGroupRootProps, "children"> & {
   title?: string;
-  itemSlots: ReactNode[];
+  children: ReactNode;
 };
 
-export const CommandGroup = ({ title, itemSlots, ...props }: CommandGroupProps) => {
+export const CommandGroup = ({ title, children, ...props }: CommandGroupProps) => {
   const commandProps = useCommandInternalProvider();
   return (
     <CommandGroupLayout
@@ -361,7 +359,7 @@ export const CommandGroup = ({ title, itemSlots, ...props }: CommandGroupProps) 
       )}
       styleProps={{ className: props.className, commandProps, commandGroupProps: props }}
       titleSlot={title && <UCommandGroupTitle>{title}</UCommandGroupTitle>}
-      itemSlots={itemSlots}
+      itemSlots={children}
     />
   );
 };
@@ -372,11 +370,10 @@ export const CommandGroup = ({ title, itemSlots, ...props }: CommandGroupProps) 
   ====================================
 */
 
-export type CommandGroupItemProps = Omit<UCommandGroupItemRootProps, "children"> & {
-  boxSlot: ReactNode;
+export type CommandGroupItemProps = UCommandGroupItemRootProps & {
   kbdSlot?: ReactNode;
 };
-export const CommandGroupItem = ({ boxSlot, kbdSlot, ...props }: CommandGroupItemProps) => {
+export const CommandGroupItem = ({ children, kbdSlot, ...props }: CommandGroupItemProps) => {
   const commandProps = useCommandInternalProvider();
   const commandGroupProps = useCommandGroupInternalProvider();
   return (
@@ -387,7 +384,7 @@ export const CommandGroupItem = ({ boxSlot, kbdSlot, ...props }: CommandGroupIte
         </UCommandGroupItemRoot>
       )}
       styleProps={{ className: props.className, commandProps, commandGroupProps, commandGroupItemProps: props }}
-      boxSlot={boxSlot}
+      boxSlot={children}
       kBDSlot={kbdSlot}
       checkIconSlot={<UCommandGroupItemCheckIcon />}
     />

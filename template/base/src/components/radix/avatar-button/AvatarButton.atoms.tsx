@@ -41,15 +41,14 @@ import { AvatarImageProps } from "@radix-ui/react-avatar";
   ====================================
 */
 
-export type AvatarButtonProps = Omit<UAvatarButtonRootProps, "children"> & {
-  contentSlot: React.ReactNode;
+export type AvatarButtonProps = UAvatarButtonRootProps & {
   notificationSlot?: React.ReactNode;
   badgeSlot?: React.ReactNode;
   indicatorSlot?: React.ReactNode;
   statusSlot?: React.ReactNode;
 };
 export const AvatarButton = ({
-  contentSlot,
+  children,
   badgeSlot,
   indicatorSlot,
   notificationSlot,
@@ -66,7 +65,7 @@ export const AvatarButton = ({
         );
       }}
       styleProps={{ className: props.className, avatarButtonProps: props }}
-      contentSlot={contentSlot}
+      contentSlot={children}
       notificationSlot={notificationSlot}
       badgeSlot={badgeSlot}
       indicatorSlot={indicatorSlot}

@@ -7,7 +7,7 @@ import type { RenderRoot } from "../_utils";
 */
 
 export type WindowStyleProps = {
-  variant?: "default";
+  variant?: "default" | "code";
 };
 
 export type WindowType = {

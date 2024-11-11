@@ -2,6 +2,7 @@ import { Atom } from "../../../assets/Icons";
 import { avatar1Src } from "../../../assets/images/Images";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 import { DocsRoute } from "../../../docs/docs.types";
+import { useMediaQuery } from "../../../docs/utils";
 import {
   Textarea,
   TextareaBox,
@@ -14,20 +15,28 @@ import {
   TextareaProps,
 } from "./Textarea.atoms";
 
-const TextareaShowcaseFrame = ({ children }: { children: React.ReactNode }) => {
-  return <ShowcaseFrame paddingX={140}>{children}</ShowcaseFrame>;
+const TextareaShowcaseFrame = ({ children, code }: { children: React.ReactNode; code?: string }) => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  return (
+    <ShowcaseFrame paddingX={isMobile ? 40 : 140} code={code}>
+      {children}
+    </ShowcaseFrame>
+  );
 };
 
 const DefaultTextarea = (props: Partial<TextareaProps>) => {
   return (
-    <Textarea
-      {...props}
-      label="Leave a review"
-      textareaProps={{ placeholder: "Write a review...", rows: 4 }}
-      boxSlot={<TextareaBox />}
-    />
+    <Textarea {...props} label="Leave a review" textareaProps={{ placeholder: "Write a review...", rows: 4 }}>
+      <TextareaBox />
+    </Textarea>
   );
 };
+
+const defaultCode = `
+<Textarea label="Leave a review" textareaProps={{ placeholder: "Write a review...", rows: 4 }}>
+  <TextareaBox />
+</Textarea>
+`;
 
 const Default = () => {
   return (
@@ -37,33 +46,76 @@ const Default = () => {
   );
 };
 
+const requiredCode = `
+<Textarea
+  isRequired
+  label="Leave a review"
+  textareaProps={{ placeholder: "Write a review...", rows: 4 }}
+>
+  <TextareaBox />
+</Textarea>
+`;
+
 const Required = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={requiredCode}>
       <DefaultTextarea isRequired />
     </TextareaShowcaseFrame>
   );
 };
 
+const withDescriptionCode = `
+<Textarea
+  description="Your review will help us improve our products."
+  label="Leave a review"
+  textareaProps={{ placeholder: "Write a review...", rows: 4 }}
+>
+  <TextareaBox />
+</Textarea>
+`;
+
 const WithDescription = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={withDescriptionCode}>
       <DefaultTextarea description="Your review will help us improve our products." />
     </TextareaShowcaseFrame>
   );
 };
 
+const invalidCode = `
+<Textarea
+  isInvalid
+  description="Your review is too mean."
+  label="Leave a review"
+  textareaProps={{ placeholder: "Write a review...", rows: 4 }}
+>
+  <TextareaBox />
+</Textarea>
+`;
+
 const Invalid = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={invalidCode}>
       <DefaultTextarea isInvalid description="Your review is too mean." />
     </TextareaShowcaseFrame>
   );
 };
 
+const disabledCode = `
+<Textarea
+  isDisabled
+  isRequired
+  description="Your review is very important to us."
+  label="Leave a review"
+  textareaProps={{ placeholder: "Write a review...", rows: 4 }}
+>
+  <TextareaBox />
+</Textarea>
+`;
+
 const Disabled = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={disabledCode}>
       <DefaultTextarea isDisabled isRequired description="Your review is very important to us." />
     </TextareaShowcaseFrame>
   );
@@ -71,16 +123,13 @@ const Disabled = () => {
 
 const TextareaWithTagsHelper = (props: Partial<TextareaProps>) => {
   return (
-    <Textarea
-      {...props}
-      label="Recipients"
-      textareaProps={{ placeholder: "Write an email...", rows: 4 }}
-      boxSlot={
-        <TextareaBoxWithTags
-          tagSlots={[
-            <TextareaBoxTag label="Tag" />,
-            <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />,
-            <TextareaBoxTagWithDot label="Tag" />,
+    <Textarea {...props} label="Recipients" textareaProps={{ placeholder: "Write an email...", rows: 4 }}>
+      <TextareaBoxWithTags
+        tagSlots={
+          <>
+            <TextareaBoxTag label="Tag" />
+            <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />
+            <TextareaBoxTagWithDot label="Tag" />
             <TextareaBoxTagWithAvatar
               label="Tag"
               avatarSlot={
@@ -93,41 +142,161 @@ const TextareaWithTagsHelper = (props: Partial<TextareaProps>) => {
                 />
               }
               onDismiss={() => console.log("dismissed")}
-            />,
-          ]}
-        />
-      }
-    />
+            />
+          </>
+        }
+      />
+    </Textarea>
   );
 };
 
+const withTagsCode = `
+<Textarea label="Recipients" textareaProps={{ placeholder: "Write an email...", rows: 4 }}>
+  <TextareaBoxWithTags
+    tagSlots={
+      <>
+        <TextareaBoxTag label="Tag" />
+        <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />
+        <TextareaBoxTagWithDot label="Tag" />
+        <TextareaBoxTagWithAvatar
+          label="Tag"
+          avatarSlot={
+            <TextareaBoxAvatar
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          }
+          onDismiss={() => console.log("dismissed")}
+        />
+      </>
+    }
+  />
+</Textarea>
+`;
+
 const WithTags = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={withTagsCode}>
       <TextareaWithTagsHelper />
     </TextareaShowcaseFrame>
   );
 };
 
+const withTagsInvalidCode = `
+<Textarea
+  isInvalid
+  label="Recipients"
+  textareaProps={{ placeholder: "Write an email...", rows: 4 }}
+>
+  <TextareaBoxWithTags
+    tagSlots={
+      <>
+        <TextareaBoxTag label="Tag" />
+        <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />
+        <TextareaBoxTagWithDot label="Tag" />
+        <TextareaBoxTagWithAvatar
+          label="Tag"
+          avatarSlot={
+            <TextareaBoxAvatar
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          }
+          onDismiss={() => console.log("dismissed")}
+        />
+      </>
+    }
+  />
+</Textarea>
+`;
+
 const WithTagsInvalid = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={withTagsInvalidCode}>
       <TextareaWithTagsHelper isInvalid />
     </TextareaShowcaseFrame>
   );
 };
 
+const withTagsDisabledCode = `
+<Textarea
+  isDisabled
+  label="Recipients"
+  textareaProps={{ placeholder: "Write an email...", rows: 4 }}
+>
+  <TextareaBoxWithTags
+    tagSlots={
+      <>
+        <TextareaBoxTag label="Tag" />
+        <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />
+        <TextareaBoxTagWithDot label="Tag" />
+        <TextareaBoxTagWithAvatar
+          label="Tag"
+          avatarSlot={
+            <TextareaBoxAvatar
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          }
+          onDismiss={() => console.log("dismissed")}
+        />
+      </>
+    }
+  />
+</Textarea>
+`;
+
 const WithTagsDisabled = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={withTagsDisabledCode}>
       <TextareaWithTagsHelper isDisabled />
     </TextareaShowcaseFrame>
   );
 };
 
+const withTagsSizesCode = `
+<Textarea
+  size="sm"
+  label="Recipients"
+  textareaProps={{ placeholder: "Write an email...", rows: 4 }}
+>
+  <TextareaBoxWithTags
+    tagSlots={
+      <>
+        <TextareaBoxTag label="Tag" />
+        <TextareaBoxTagWithIcon icon={(className) => <Atom className={className} />} label="Tag" />
+        <TextareaBoxTagWithDot label="Tag" />
+        <TextareaBoxTagWithAvatar
+          label="Tag"
+          avatarSlot={
+            <TextareaBoxAvatar
+              imageProps={{
+                src: avatar1Src,
+                alt: "Avatar",
+              }}
+              fallbackText="AV"
+            />
+          }
+          onDismiss={() => console.log("dismissed")}
+        />
+      </>
+    }
+  />
+</Textarea>
+`;
+
 const WithTagsSizes = () => {
   return (
-    <TextareaShowcaseFrame>
+    <TextareaShowcaseFrame code={withTagsSizesCode}>
       <VariantsColumn>
         <TextareaWithTagsHelper size="sm" />
         <TextareaWithTagsHelper size="md" />
@@ -139,10 +308,13 @@ const WithTagsSizes = () => {
 
 const TextareaDocs = () => {
   return (
-    <Page title="Textarea" subtitle="" command="npx underatom@latest add textarea">
-      <Example title="Default">
-        <Default />
-      </Example>
+    <Page
+      title="Textarea"
+      subtitle="A component for displaying a textarea field."
+      command="npx underatom@latest add textarea"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
         <Example title="Required">
           <Required />

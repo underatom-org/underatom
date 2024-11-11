@@ -10,8 +10,15 @@ import {
 } from "./Tabs.atoms";
 import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
-import { IconHome, IconSettings, IconUserCircle } from "@tabler/icons-react";
+import { IconHome, IconSettings, IconUserCircle } from "../../../assets/Icons";
 import { useState } from "react";
+import { Code } from "../../no-headless/typography/Typography.atoms";
+import { useMediaQuery } from "../../../docs/utils";
+
+const ShowcaseFrame2 = (props: React.ComponentPropsWithoutRef<typeof ShowcaseFrame>) => {
+  const isMobile = useMediaQuery("(max-width: 568px)");
+  return <ShowcaseFrame {...props} style={{ justifyContent: isMobile ? "unset" : "center" }} />;
+};
 
 /*
   ====================================
@@ -128,20 +135,15 @@ const TabsWithDismissHelper = (props: Partial<TabsProps>) => {
   const [value, setValue] = useState<string>("1");
 
   return (
-    <TabsWithContentHelper
-      {...props}
-      value={value}
-      onValueChange={setValue}
-      itemSlots={
-        <ItemSlotsWithDismissHelper
-          onDismiss={(v) => {
-            if (v === value) {
-              setValue("");
-            }
-          }}
-        />
-      }
-    />
+    <TabsWithContentHelper {...props} value={value} onValueChange={setValue}>
+      <ItemSlotsWithDismissHelper
+        onDismiss={(v) => {
+          if (v === value) {
+            setValue("");
+          }
+        }}
+      />
+    </TabsWithContentHelper>
   );
 };
 
@@ -151,86 +153,313 @@ const TabsWithDismissHelper = (props: Partial<TabsProps>) => {
   ====================================
 */
 
+const fillDefaultCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" />
+  <TabsItem value="2" label="Profile" />
+  <TabsItem value="3" label="Settings" />
+</Tabs>
+`;
+
 export const FillDefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <TabsWithContentHelper itemSlots={<ItemSlotsHelper />} />
+      <TabsWithContentHelper>
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
+
+const fillSizesCode = `
+<Tabs
+  variant="fill"
+  size="md"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" />
+  <TabsItem value="2" label="Profile" />
+  <TabsItem value="3" label="Settings" />
+</Tabs>
+`;
 
 export const FillSizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillSizesCode}>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="fill" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="fill" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
 };
+
+const fillDisabledCode = `
+<Tabs
+  variant="fill"
+  disabled
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" />
+  <TabsItem value="2" label="Profile" />
+  <TabsItem value="3" label="Settings" />
+</Tabs>
+`;
 
 export const FillDisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillDisabledCode}>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="fill" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="fill">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
 };
 
+const fillWithBadgeCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" badgeSlot={<TabsItemBadge label="New" color="primary" />} />
+  <TabsItem value="2" label="Profile" badgeSlot={<TabsItemBadge label="Updated" color="green" />} />
+  <TabsItem value="3" label="Settings" badgeSlot={<TabsItemBadge label="Action needed" color="red" />} />
+</Tabs>
+`;
+
 export const FillWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithBadgeCode}>
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
+
+const fillWithNotificationCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" />
+  <TabsItem value="2" label="Profile" notificationSlot={<TabsItemNotification label="+9" />} />
+  <TabsItem value="3" label="Settings" />
+</Tabs>
+`;
 
 export const FillWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithNotificationCode}>
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
+
+const fillWithIndicatorCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItem value="1" label="Home" />
+  <TabsItem value="2" label="Profile" indicatorColor="primary" />
+  <TabsItem value="3" label="Settings" indicatorColor="red" />
+</Tabs>
+`;
+
 export const FillWithIndicatorExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+    <ShowcaseFrame code={fillWithIndicatorCode}>
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
+const fillWithDismissCode = `
+const FillWithDismissExample = (props: Partial<TabsProps>) => {
+  const [value, setValue] = useState<string>("1");
+  const [dismissed, setDismissed] = useState<string[]>([]);
+  const handleDismiss = (value: string) => {
+    setDismissed((prev) => [...prev, value]);
+    onDismiss(value);
+  };
+
+  return (
+    <Tabs
+      variant="fill"
+      defaultValue="1"
+      contentSlots={
+        <>
+          <TabsContent value="1">Home</TabsContent>
+          <TabsContent value="2">Profile</TabsContent>
+          <TabsContent value="3">Settings</TabsContent>
+        </>
+      }
+    >
+      {!dismissed.includes("1") && <TabsItem value="1" label="Home" onDismiss={() => handleDismiss("1")} />}
+      {!dismissed.includes("2") && <TabsItem value="2" label="Profile" onDismiss={() => handleDismiss("2")} />}
+      {!dismissed.includes("3") && (
+        <TabsItem disabled value="3" label="Settings" onDismiss={() => handleDismiss("3")} />
+      )}
+    </Tabs>
+  );
+};
+`;
+
 export const FillWithDismissExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillWithDismissCode}>
       <TabsWithDismissHelper variant="fill" />
     </ShowcaseFrame>
   );
 };
 
+const fillFullWidthCode = `
+<Tabs
+  variant="fill"
+  fullWidth
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItemWithIcon value="1" label="Home" icon={(className) => <IconHome className={className} />} />
+  <TabsItemWithIcon value="2" label="Profile" icon={(className) => <IconUserCircle className={className} />} />
+  <TabsItemWithIcon
+    disabled
+    value="3"
+    label="Settings"
+    icon={(className) => <IconSettings className={className} />}
+  />
+</Tabs>
+`;
+
 export const FillFullWidthExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="fill" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillFullWidthCode}>
+      <TabsWithContentHelper fullWidth variant="fill">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
+
+const fillWithIconCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <TabsItemWithIcon value="1" label="Home" icon={(className) => <IconHome className={className} />} />
+  <TabsItemWithIcon value="2" label="Profile" icon={(className) => <IconUserCircle className={className} />} />
+  <TabsItemWithIcon
+    disabled
+    value="3"
+    label="Settings"
+    icon={(className) => <IconSettings className={className} />}
+  />
+</Tabs>
+`;
 
 export const FillWithIconExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillWithIconCode}>
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
+const fillWithLoadingCode = `
+<Tabs
+  variant="fill"
+  defaultValue="1"
+  contentSlots={
+    <>
+      <TabsContent value="1">Home</TabsContent>
+      <TabsContent value="2">Profile</TabsContent>
+      <TabsContent value="3">Settings</TabsContent>
+    </>
+  }
+>
+  <LoadingTabsItem value="1" label="Home" />
+  <LoadingTabsItem value="2" label="Profile" />
+  <LoadingTabsItem disabled value="3" label="Settings" />
+</Tabs>
+`;
+
 export const FillWithLoadingExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="fill" itemSlots={<ItemSlotsLoadingHelper />} />
+    <ShowcaseFrame code={fillWithLoadingCode}>
+      <TabsWithContentHelper variant="fill">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -243,18 +472,24 @@ export const FillWithLoadingExample = () => {
 
 export const UnderlineDefaultExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsHelper />} />
+    <ShowcaseFrame code={fillDefaultCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const UnderlineSizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillSizesCode.replace("fill", "underline")}>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="underline" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="underline" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -262,9 +497,11 @@ export const UnderlineSizesExample = () => {
 
 export const UnderlineDisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillDisabledCode.replace("fill", "underline")}>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="underline" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="underline">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -272,30 +509,36 @@ export const UnderlineDisabledExample = () => {
 
 export const UnderlineWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithBadgeCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
 
 export const UnderlineWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithNotificationCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
 export const UnderlineWithIndicatorExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+    <ShowcaseFrame code={fillWithIndicatorCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const UnderlineWithDismissExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillWithDismissCode.replace("fill", "underline")}>
       <TabsWithDismissHelper variant="underline" />
     </ShowcaseFrame>
   );
@@ -303,24 +546,30 @@ export const UnderlineWithDismissExample = () => {
 
 export const UnderlineFullWidthExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="underline" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillFullWidthCode.replace("fill", "underline")}>
+      <TabsWithContentHelper fullWidth variant="underline">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const UnderlineWithIconExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillWithIconCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const UnderlineWithLoadingExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="underline" itemSlots={<ItemSlotsLoadingHelper />} />
+    <ShowcaseFrame code={fillWithLoadingCode.replace("fill", "underline")}>
+      <TabsWithContentHelper variant="underline">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
@@ -333,18 +582,24 @@ export const UnderlineWithLoadingExample = () => {
 
 export const HandleDefaultExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsHelper />} />
+    <ShowcaseFrame code={fillDefaultCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const HandleSizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillSizesCode.replace("fill", "handle")}>
       <VariantsColumn>
-        <TabsWithContentHelper size="md" variant="handle" itemSlots={<ItemSlotsHelper />} />
-        <TabsWithContentHelper size="lg" variant="handle" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper size="md" variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
+        <TabsWithContentHelper size="lg" variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -352,9 +607,11 @@ export const HandleSizesExample = () => {
 
 export const HandleDisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillDisabledCode.replace("fill", "handle")}>
       <VariantsColumn>
-        <TabsWithContentHelper disabled variant="handle" itemSlots={<ItemSlotsHelper />} />
+        <TabsWithContentHelper disabled variant="handle">
+          <ItemSlotsHelper />
+        </TabsWithContentHelper>
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -362,30 +619,36 @@ export const HandleDisabledExample = () => {
 
 export const HandleWithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithBadgeHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithBadgeCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithBadgeHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
 
 export const HandleWithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithNotificationHelper />} />
-    </ShowcaseFrame>
+    <ShowcaseFrame2 code={fillWithNotificationCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithNotificationHelper />
+      </TabsWithContentHelper>
+    </ShowcaseFrame2>
   );
 };
 export const HandleWithIndicatorExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithIndicatorHelper />} />
+    <ShowcaseFrame code={fillWithIndicatorCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithIndicatorHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const HandleWithDismissExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={fillWithDismissCode.replace("fill", "handle")}>
       <TabsWithDismissHelper variant="handle" />
     </ShowcaseFrame>
   );
@@ -393,35 +656,49 @@ export const HandleWithDismissExample = () => {
 
 export const HandleFullWidthExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper fullWidth variant="handle" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillFullWidthCode.replace("fill", "handle")}>
+      <TabsWithContentHelper fullWidth variant="handle">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const HandleWithIconExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsWithIconHelper />} />
+    <ShowcaseFrame code={fillWithIconCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsWithIconHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 export const HandleWithLoadingExample = () => {
   return (
-    <ShowcaseFrame>
-      <TabsWithContentHelper variant="handle" itemSlots={<ItemSlotsLoadingHelper />} />
+    <ShowcaseFrame code={fillWithLoadingCode.replace("fill", "handle")}>
+      <TabsWithContentHelper variant="handle">
+        <ItemSlotsLoadingHelper />
+      </TabsWithContentHelper>
     </ShowcaseFrame>
   );
 };
 
 const TabsDocs = () => {
   return (
-    <Page title="Tabs" subtitle="Tabs" command="npx underatom@latest add tabs">
+    <Page
+      title="Tabs"
+      subtitle={
+        <>
+          A component for displaying a tabbed interface. Comes in three variants: <Code>fill</Code>,{" "}
+          <Code>underline</Code>, and <Code>handle</Code>.
+        </>
+      }
+      command="npx underatom@latest add tabs"
+      usageCode={fillDefaultCode}
+      defaultExample={<FillDefaultExample />}
+    >
       <Section title="Fill Variant">
-        <Example title="Default">
-          <FillDefaultExample />
-        </Example>
         <Example title="Sizes">
           <FillSizesExample />
         </Example>

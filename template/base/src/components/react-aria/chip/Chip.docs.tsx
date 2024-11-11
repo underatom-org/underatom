@@ -14,19 +14,39 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
-const ClickableExample = () => {
+const defaultCode = `
+<Chip>Chip</Chip>
+`;
+
+const DefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <VariantsRow>
-        <Chip onPress={() => console.log("click")}>Chip</Chip>
-      </VariantsRow>
+      <Chip>Chip</Chip>
     </ShowcaseFrame>
   );
 };
 
+const clickableCode = `
+<Chip onPress={() => console.log("click")}>Chip</Chip>
+`;
+
+const ClickableExample = () => {
+  return (
+    <ShowcaseFrame code={clickableCode}>
+      <Chip onPress={() => console.log("click")}>Chip</Chip>
+    </ShowcaseFrame>
+  );
+};
+
+const sizesCode = `
+<Chip size="sm">Small</Chip>
+<Chip size="md">Medium</Chip>
+<Chip size="lg">Large</Chip>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<ChipProps>
         isHorizontal
         renderVariant={(props) => <Chip {...props}>Chip</Chip>}
@@ -36,9 +56,13 @@ const SizesExample = () => {
   );
 };
 
+const dismissibleCode = `
+<Chip onDismiss={() => console.log("handle dismiss")}>Chip</Chip>
+`;
+
 const DismissibleExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={dismissibleCode}>
       <VariantsRow>
         <Chip>Chip</Chip>
         <Chip onDismiss={() => console.log("dismiss")}>Chip</Chip>
@@ -47,9 +71,13 @@ const DismissibleExample = () => {
   );
 };
 
+const disabledCode = `
+<Chip isDisabled>Chip</Chip>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsRow>
         <Chip isDisabled>Chip</Chip>
         <ChipWithAvatar
@@ -83,9 +111,27 @@ const DisabledExample = () => {
   );
 };
 
+const withAvatarCode = `
+<ChipWithAvatar avatarSlot={<ChipAvatar imageProps={{ src: "", alt: "" }} />}>
+  Chip
+</ChipWithAvatar>
+
+<ChipWithAvatar avatarSlot={<ChipAvatar fallbackText="S" />}>
+  Chip
+</ChipWithAvatar>
+
+<ChipWithAvatar
+  avatarSlot={
+    <ChipAvatarWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+  }
+>
+  Chip
+</ChipWithAvatar>
+`;
+
 const WithAvatarExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withAvatarCode}>
       <VariantsGrid<ChipWithAvatarProps>
         isHorizontal
         renderVariant={(props) => <ChipWithAvatar {...props}>Chip</ChipWithAvatar>}
@@ -114,9 +160,16 @@ const WithAvatarExample = () => {
   );
 };
 
+const withDotCode = `
+<ChipWithDot dotColor="primary">Chip</ChipWithDot>
+<ChipWithDot dotColor="base">Chip</ChipWithDot>
+<ChipWithDot dotColor="green">Chip</ChipWithDot>
+<ChipWithDot dotColor="red">Chip</ChipWithDot>
+`;
+
 const WithDotExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withDotCode}>
       <VariantsGrid<ChipWithDotProps>
         isHorizontal
         renderVariant={(props) => <ChipWithDot {...props}>Chip</ChipWithDot>}
@@ -126,9 +179,15 @@ const WithDotExample = () => {
   );
 };
 
+const withIconCode = `
+<ChipWithIcon icon={(className) => <Atom className={className} />}>
+  Chip
+</ChipWithIcon>
+`;
+
 const WithIconExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIconCode}>
       <ChipWithIcon icon={(className) => <Atom className={className} />}>Chip</ChipWithIcon>
     </ShowcaseFrame>
   );
@@ -136,7 +195,13 @@ const WithIconExample = () => {
 
 const ChipDocs = () => {
   return (
-    <Page title="Chip" subtitle="" command="npx underatom@latest add chip">
+    <Page
+      title="Chip"
+      subtitle="A clickable tag component."
+      command="npx underatom@latest add chip"
+      usageCode={defaultCode}
+      defaultExample={<DefaultExample />}
+    >
       <Section title="Showcase">
         <Example title="Clickable">
           <ClickableExample />

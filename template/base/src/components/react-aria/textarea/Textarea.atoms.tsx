@@ -47,10 +47,9 @@ import React from "react";
 export type TextareaProps = UTextareaRootProps & {
   label?: string;
   description?: string;
-  boxSlot: React.ReactNode;
 };
 
-export const Textarea = ({ label, description, boxSlot, ...props }: TextareaProps) => (
+export const Textarea = ({ label, description, children, ...props }: TextareaProps) => (
   <TextareaLayout
     renderRoot={(children, className) => (
       <UTextareaRoot {...props} className={className}>
@@ -61,7 +60,7 @@ export const Textarea = ({ label, description, boxSlot, ...props }: TextareaProp
     labelSlot={<UTextareaLabel>{label}</UTextareaLabel>}
     descriptionSlot={<UTextareaDescription>{description}</UTextareaDescription>}
     asteriskSlot={<UTextareaAsterisk />}
-    boxSlot={boxSlot}
+    boxSlot={children}
   />
 );
 
@@ -88,7 +87,7 @@ export const TextareaBox = (props: TextareaBoxProps) => {
 };
 
 export type TextareaBoxWithTagsProps = UTextareaBoxRootProps & {
-  tagSlots?: React.ReactNode[];
+  tagSlots?: React.ReactNode;
 };
 export const TextareaBoxWithTags = ({ tagSlots, ...props }: TextareaBoxWithTagsProps) => {
   const textareaProps = useTextareaRootParentProps();

@@ -52,12 +52,11 @@ import { forwardRef, ReactNode } from "react";
   SelectTrigger
   ====================================
 */
-export type SelectTriggerProps = Omit<USelectTriggerRootProps, "children"> & {
+export type SelectTriggerProps = USelectTriggerRootProps & {
   label?: string;
   description?: string;
-  boxSlot?: ReactNode;
 };
-export const SelectTrigger = ({ label, description, boxSlot, ...props }: SelectTriggerProps) => (
+export const SelectTrigger = ({ label, description, children, ...props }: SelectTriggerProps) => (
   <SelectTriggerLayout
     renderRoot={(children, className) => (
       <USelectTriggerRoot {...props} className={className}>
@@ -68,7 +67,7 @@ export const SelectTrigger = ({ label, description, boxSlot, ...props }: SelectT
     labelSlot={label && <USelectTriggerLabel>{label}</USelectTriggerLabel>}
     descriptionSlot={description && <USelectTriggerDescription>{description}</USelectTriggerDescription>}
     asteriskSlot={props.required && <USelectTriggerAsterisk />}
-    boxSlot={<>{boxSlot}</>}
+    boxSlot={children}
   />
 );
 

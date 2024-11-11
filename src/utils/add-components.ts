@@ -6,27 +6,23 @@ import { spinner } from "@/src/utils/spinner";
 import { updateDependencies } from "@/src/utils/updaters/update-dependencies";
 import { updateFiles } from "@/src/utils/updaters/update-files";
 import { updateTailwindConfig } from "@/src/utils/updaters/update-tailwind-config";
+import type { AddOptions } from "~/commands/add";
 
 export async function addComponents(
   components: string[],
   config: Config,
-  options: {
-    overwrite?: boolean;
-    silent?: boolean;
-    isNewProject?: boolean;
-  },
+  options: Pick<AddOptions, "silent" | "overwrite" | "design" | "path" | "key"> & { isNewProject: boolean },
 ) {
-  options = {
-    overwrite: false,
-    silent: false,
-    isNewProject: false,
-    ...options,
-  };
-
   const registrySpinner = spinner(`Checking registry.`, {
     silent: options.silent,
   })?.start();
-  const tree = registryResolveItemsTree(components, options.isNewProject ?? false);
+  const tree = await registryResolveItemsTree(
+    components,
+    options.isNewProject ?? false,
+    options.design,
+    options.path,
+    options.key,
+  );
   if (!tree) {
     registrySpinner?.fail();
     return handleError(new Error("Failed to fetch components from registry."));

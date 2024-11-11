@@ -24,9 +24,8 @@ import {
 export type RadioGroupProps = URadioGroupRootProps & {
   label: string;
   description: string;
-  radioGroupRadioSlots: React.ReactNode[];
 };
-export const RadioGroup = ({ radioGroupRadioSlots, label, description, ...props }: RadioGroupProps) => {
+export const RadioGroup = ({ children, label, description, ...props }: RadioGroupProps) => {
   return (
     <RadioGroupLayout
       renderRoot={(children, className) => (
@@ -38,7 +37,7 @@ export const RadioGroup = ({ radioGroupRadioSlots, label, description, ...props 
       labelSlot={<URadioGroupLabel>{label}</URadioGroupLabel>}
       descriptionSlot={<URadioGroupDescription>{description}</URadioGroupDescription>}
       asteriskSlot={<URadioGroupAsterisk />}
-      radioSlots={radioGroupRadioSlots}
+      radioSlots={children}
     />
   );
 };

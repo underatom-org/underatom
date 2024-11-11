@@ -41,10 +41,8 @@ import {
   ====================================
 */
 
-export type TabsProps = UTabsRootProps & {
-  itemSlots: React.ReactNode;
-};
-export const Tabs = ({ itemSlots, ...props }: TabsProps) => {
+export type TabsProps = UTabsRootProps;
+export const Tabs = ({ children, ...props }: TabsProps) => {
   return (
     <TabsLayout
       styleProps={{ className: props.className, tabsProps: props }}
@@ -53,7 +51,7 @@ export const Tabs = ({ itemSlots, ...props }: TabsProps) => {
           {children}
         </UTabsRoot>
       )}
-      itemSlots={itemSlots}
+      itemSlots={children}
     />
   );
 };

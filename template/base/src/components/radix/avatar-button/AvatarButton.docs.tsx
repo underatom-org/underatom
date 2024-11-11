@@ -14,21 +14,24 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Example, Page, Section, ShowcaseFrame, VariantsGrid, VariantsRow } from "../../../docs/docs.components";
 import { avatar1Src } from "../../../assets/images/Images";
 
-export const AvatarButtonWithContent = (props: Omit<AvatarButtonProps, "contentSlot">) => {
+export const AvatarButtonWithContent = (props: Omit<AvatarButtonProps, "children">) => {
   return (
-    <AvatarButton
-      {...props}
-      contentSlot={
-        <AvatarButtonContent
-          imageProps={{
-            src: avatar1Src,
-            alt: "Avatar",
-          }}
-        />
-      }
-    />
+    <AvatarButton {...props}>
+      <AvatarButtonContent
+        imageProps={{
+          src: avatar1Src,
+          alt: "Avatar",
+        }}
+      />
+    </AvatarButton>
   );
 };
+
+const defaultCode = `
+<AvatarButton>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
 
 const DefaultExample = () => {
   return (
@@ -38,9 +41,40 @@ const DefaultExample = () => {
   );
 };
 
+const variantsCode = `
+<AvatarButton>
+  <AvatarButtonContent fallbackText="S" />
+</AvatarButton>
+
+<AvatarButton>
+  <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+</AvatarButton>
+`;
+
+const VariantsExample = () => {
+  return (
+    <ShowcaseFrame code={variantsCode}>
+      <VariantsRow>
+        <AvatarButton>
+          <AvatarButtonContent fallbackText="S" />
+        </AvatarButton>
+        <AvatarButton>
+          <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        </AvatarButton>
+      </VariantsRow>
+    </ShowcaseFrame>
+  );
+};
+
+const sizesCode = `
+<AvatarButton size="sm">
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const SizesExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={sizesCode}>
       <VariantsGrid<AvatarButtonProps>
         renderVariant={(props) => (
           <div style={{ display: "flex" }}>
@@ -51,7 +85,7 @@ const SizesExample = () => {
           [{ size: "sm" }, { size: "md" }, { size: "lg" }, { size: "xl" }],
           [
             {
-              contentSlot: (
+              children: (
                 <AvatarButtonContent
                   imageProps={{
                     src: avatar1Src,
@@ -62,10 +96,10 @@ const SizesExample = () => {
               ),
             },
             {
-              contentSlot: <AvatarButtonContent fallbackText="S" />,
+              children: <AvatarButtonContent fallbackText="S" />,
             },
             {
-              contentSlot: <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
+              children: <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />,
             },
           ],
         ]}
@@ -73,35 +107,54 @@ const SizesExample = () => {
     </ShowcaseFrame>
   );
 };
+
+const disabledCode = `
+<AvatarButton isDisabled>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-          isDisabled
-        />
-        <AvatarButton contentSlot={<AvatarButtonContent fallbackText="S" />} isDisabled />
-        <AvatarButton
-          contentSlot={<AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-          isDisabled
-        />
+        <AvatarButton isDisabled>
+          <AvatarButtonContent
+            imageProps={{
+              src: avatar1Src,
+              alt: "Avatar",
+            }}
+            fallbackText="AV"
+          />
+        </AvatarButton>
+        <AvatarButton isDisabled>
+          <AvatarButtonContent fallbackText="S" />
+        </AvatarButton>
+        <AvatarButton isDisabled>
+          <AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />
+        </AvatarButton>
       </VariantsRow>
     </ShowcaseFrame>
   );
 };
 
+const withIndicatorCode = `
+<AvatarButton
+  indicatorSlot={<AvatarButtonIndicator imageProps={{ src: "", alt: "" }} />}
+>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+
+<AvatarButton
+  indicatorSlot={<AvatarButtonIndicatorWithIcon icon={(className) => <AtomIcon className={className} />} />}
+>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const WithIndicatorExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withIndicatorCode}>
       <VariantsRow>
         <AvatarButtonWithContent
           indicatorSlot={
@@ -121,9 +174,17 @@ const WithIndicatorExample = () => {
   );
 };
 
+const withStatusCode = `
+<AvatarButton
+  statusSlot={<AvatarButtonStatus status="online" />}
+>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const WithStatusExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withStatusCode}>
       <VariantsRow>
         <AvatarButtonWithContent statusSlot={<AvatarButtonStatus status="online" />} />
         <AvatarButtonWithContent statusSlot={<AvatarButtonStatus status="offline" />} />
@@ -134,9 +195,17 @@ const WithStatusExample = () => {
   );
 };
 
+const withBadgeCode = `
+<AvatarButton
+  badgeSlot={<AvatarButtonBadge label="Live" color="primary" />}
+>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const WithBadgeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withBadgeCode}>
       <VariantsRow>
         <AvatarButtonWithContent badgeSlot={<AvatarButtonBadge label="Live" color="primary" />} />
         <AvatarButtonWithContent badgeSlot={<AvatarButtonBadge label="Live" color="red" />} />
@@ -147,9 +216,17 @@ const WithBadgeExample = () => {
   );
 };
 
+const withNotificationCode = `
+<AvatarButton
+  notificationSlot={<AvatarButtonNotification counterText="4" color="primary" />}
+>
+  <AvatarButtonContent imageProps={{ src: "", alt: "" }} />
+</AvatarButton>
+`;
+
 const WithNotificationExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withNotificationCode}>
       <VariantsRow>
         <AvatarButtonWithContent notificationSlot={<AvatarButtonNotification counterText="4" color="primary" />} />
         <AvatarButtonWithContent notificationSlot={<AvatarButtonNotification counterText="4" color="red" />} />
@@ -158,86 +235,38 @@ const WithNotificationExample = () => {
   );
 };
 
-const WithIconExample = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarButton
-          contentSlot={<AvatarButtonContentWithIcon fallbackIcon={(className) => <Atom className={className} />} />}
-        />
-      </VariantsRow>
-    </ShowcaseFrame>
-  );
-};
-
-const WithTextExample = () => {
-  return (
-    <ShowcaseFrame>
-      <VariantsRow>
-        <AvatarButton
-          contentSlot={
-            <AvatarButtonContent
-              imageProps={{
-                src: avatar1Src,
-                alt: "Avatar",
-              }}
-              fallbackText="AV"
-            />
-          }
-        />
-        <AvatarButton contentSlot={<AvatarButtonContent fallbackText="AV" />} />
-      </VariantsRow>
-    </ShowcaseFrame>
-  );
-};
-
 const AvatarButtonDocs = () => (
-  <>
-    <Page title="AvatarButton" subtitle="Subtitle" command="npx underatom@latest add avatar-button">
-      <Section title="Showcase">
-        <Example title="Default">
-          <DefaultExample />
-        </Example>
-        <Example title="Sizes">
-          <SizesExample />
-        </Example>
-        <Example title="Disabled">
-          <DisabledExample />
-        </Example>
-        <Example title="Indicator">
-          <WithIndicatorExample />
-        </Example>
-        <Example title="Status">
-          <WithStatusExample />
-        </Example>
-        <Example title="Badge">
-          <WithBadgeExample />
-        </Example>
-        <Example title="Notification">
-          <WithNotificationExample />
-        </Example>
-      </Section>
-      <Section title="Atoms">
-        <Example title="With Icon">
-          <WithIconExample />
-        </Example>
-        <Example title="With Text">
-          <WithTextExample />
-        </Example>
-      </Section>
-    </Page>
-  </>
+  <Page
+    title="AvatarButton"
+    subtitle="Clickable avatar component."
+    command="npx underatom@latest add avatar-button"
+    usageCode={defaultCode}
+    defaultExample={<DefaultExample />}
+  >
+    <Section title="Showcase">
+      <Example title="Variants">
+        <VariantsExample />
+      </Example>
+      <Example title="Sizes">
+        <SizesExample />
+      </Example>
+      <Example title="Disabled">
+        <DisabledExample />
+      </Example>
+      <Example title="Indicator">
+        <WithIndicatorExample />
+      </Example>
+      <Example title="Status">
+        <WithStatusExample />
+      </Example>
+      <Example title="Badge">
+        <WithBadgeExample />
+      </Example>
+      <Example title="Notification">
+        <WithNotificationExample />
+      </Example>
+    </Section>
+  </Page>
 );
 
 const avatarButtonRoute = "/avatar-button";

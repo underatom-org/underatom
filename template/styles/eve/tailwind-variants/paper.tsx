@@ -5,7 +5,7 @@ import { tv } from "../../../configs/tailwind-variants/eve/extendedTV";
 
 export const paperClass = ({ className, paperProps }: PaperType) => {
   const rootClass = tv({
-    base: "group/paper border-solid border-primary-200 border-1 bg-primary-50 rounded-md",
+    base: "group/paper border-solid border-base-200 border-1 bg-base-50 rounded-md",
     variants: { elevation: { sm: "shadow-sm", md: "shadow-md", lg: "shadow-lg" } },
 
     defaultVariants: { elevation: paperDefaults.elevation },

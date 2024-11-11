@@ -24,23 +24,46 @@ const BaseGrid = ({ offset }: { offset?: DateDuration }) => {
     <DatePanelGrid
       offset={offset}
       headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
-      bodySlot={
-        <DatePanelGridBody>
-          {(date) => <DatePanelGridBodyCell date={date} buttonSlot={<DatePanelGridBodyCellButton date={date} />} />}
-        </DatePanelGridBody>
-      }
-    />
+    >
+      <DatePanelGridBody>
+        {(date) => (
+          <DatePanelGridBodyCell date={date}>
+            <DatePanelGridBodyCellButton date={date} />
+          </DatePanelGridBodyCell>
+        )}
+      </DatePanelGridBody>
+    </DatePanelGrid>
   );
 };
 
 const DatePanelIntermediate = (props: Partial<DatePanelProps>) => (
   <DatePanel
     {...props}
-    buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-    buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-    gridSlot={<BaseGrid />}
-  />
+    previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+    nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+  >
+    <BaseGrid />
+  </DatePanel>
 );
+
+const defaultCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel previousButton={PreviousButton} nextButton={NextButton}>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
 
 const Default = () => {
   return (
@@ -50,21 +73,98 @@ const Default = () => {
   );
 };
 
+const invalidCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel isInvalid previousButton={PreviousButton} nextButton={NextButton}>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
+
 const Invalid = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={invalidCode}>
       <DatePanelIntermediate isInvalid />
     </ShowcaseFrame>
   );
 };
 
+const disabledCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel isDisabled previousButton={PreviousButton} nextButton={NextButton}>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
+
 const Disabled = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <DatePanelIntermediate isDisabled />
     </ShowcaseFrame>
   );
 };
+
+const unavailableDatesCode = `
+const UnavailableDates = () => {
+  let now = today(getLocalTimeZone());
+  let disabledRanges = [
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
+  ];
+
+  let { locale } = useLocale();
+  let isDateUnavailable = (date: DateValue) =>
+    isWeekend(date, locale) ||
+    disabledRanges.some((interval) => date.compare(interval[0]!) >= 0 && date.compare(interval[1]!) <= 0);
+
+  const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+  const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+  return (
+    <DatePanel
+      isDateUnavailable={isDateUnavailable}
+      previousButton={PreviousButton}
+      nextButton={NextButton}
+    >
+      <DatePanelGrid
+        headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+      >
+        <DatePanelGridBody>
+          {(date) => (
+            <DatePanelGridBodyCell date={date}>
+              <DatePanelGridBodyCellButton date={date} />
+            </DatePanelGridBodyCell>
+          )}
+        </DatePanelGridBody>
+      </DatePanelGrid>
+    </DatePanel>
+  );
+};
+`;
 
 const UnavailableDates = () => {
   let now = today(getLocalTimeZone());
@@ -80,31 +180,101 @@ const UnavailableDates = () => {
     disabledRanges.some((interval) => date.compare(interval[0]!) >= 0 && date.compare(interval[1]!) <= 0);
 
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={unavailableDatesCode}>
       <DatePanelIntermediate isDateUnavailable={isDateUnavailable} />
     </ShowcaseFrame>
   );
 };
 
+const defaultValueCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel
+  defaultValue={parseDate("2020-02-03")}
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
+
 const DefaultValue = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultValueCode}>
       <DatePanelIntermediate defaultValue={parseDate("2020-02-03")} />
     </ShowcaseFrame>
   );
 };
 
+const readOnlyCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel
+  isReadOnly
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
+
 const ReadOnly = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={readOnlyCode}>
       <DatePanelIntermediate isReadOnly />
     </ShowcaseFrame>
   );
 };
 
+const minAndMaxValuesCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<DatePanel
+  minValue={today(getLocalTimeZone())}
+  maxValue={today(getLocalTimeZone()).add({ days: 7 })}
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</DatePanel>
+`;
+
 const MinAndMaxValues = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={minAndMaxValuesCode}>
       <DatePanelIntermediate
         minValue={today(getLocalTimeZone())}
         maxValue={today(getLocalTimeZone()).add({ days: 7 })}
@@ -113,71 +283,198 @@ const MinAndMaxValues = () => {
   );
 };
 
-const MultipleMonths = () => {
-  return (
-    <ShowcaseFrame>
-      <DatePanelMultipleMonths
-        visibleDuration={{ months: 3 }}
-        buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-        buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-        gridsSlot={
-          <>
-            <BaseGrid />
-            <BaseGrid offset={{ months: 1 }} />
-            <BaseGrid offset={{ months: 2 }} />
-          </>
-        }
-      />
-    </ShowcaseFrame>
-  );
-};
-
-const RangeBaseGrid = ({ offset }: { offset?: DateDuration }) => {
+const multipleMonthsCode = `
+const BaseGrid = ({ offset }: { offset?: DateDuration }) => {
   return (
     <DatePanelGrid
       offset={offset}
       headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
-      bodySlot={
-        <DatePanelGridBody>
-          {(date) => <DatePanelGridBodyCell date={date} buttonSlot={<DatePanelGridBodyCellButton date={date} />} />}
-        </DatePanelGridBody>
-      }
-    />
+    >
+      <DatePanelGridBody>
+        {(date) => (
+          <DatePanelGridBodyCell date={date}>
+            <DatePanelGridBodyCellButton date={date} />
+          </DatePanelGridBodyCell>
+        )}
+      </DatePanelGridBody>
+    </DatePanelGrid>
   );
 };
 
-const RangeDatePanelIntermediate = (props: Omit<RangeDatePanelProps, "buttonSlot1" | "buttonSlot2" | "gridSlot">) => (
+const MultipleMonths = () => {
+  const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+  const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+  return (
+    <DatePanelMultipleMonths
+      visibleDuration={{ months: 3 }}
+      previousButton={PreviousButton}
+      nextButton={NextButton}
+    >
+      <BaseGrid />
+      <BaseGrid offset={{ months: 1 }} />
+      <BaseGrid offset={{ months: 2 }} />
+    </DatePanelMultipleMonths>
+  );
+};
+`;
+
+const MultipleMonths = () => {
+  return (
+    <ShowcaseFrame code={multipleMonthsCode}>
+      <DatePanelMultipleMonths
+        visibleDuration={{ months: 3 }}
+        previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+        nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+      >
+        <BaseGrid />
+        <BaseGrid offset={{ months: 1 }} />
+        <BaseGrid offset={{ months: 2 }} />
+      </DatePanelMultipleMonths>
+    </ShowcaseFrame>
+  );
+};
+
+const RangeDatePanelIntermediate = (props: Omit<RangeDatePanelProps, "previousButton" | "nextButton" | "children">) => (
   <RangeDatePanel
     {...props}
-    buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-    buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-    gridSlot={<RangeBaseGrid />}
-  />
+    previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+    nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+  >
+    <BaseGrid />
+  </RangeDatePanel>
 );
+
+const defaultRangeCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
 
 const DefaultRange = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultRangeCode}>
       <RangeDatePanelIntermediate />
     </ShowcaseFrame>
   );
 };
 
+const invalidRangeCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  isInvalid
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
+
 const InvalidRange = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={invalidRangeCode}>
       <RangeDatePanelIntermediate isInvalid />
     </ShowcaseFrame>
   );
 };
 
+const disabledRangeCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  isDisabled
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
+
 const DisabledRange = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledRangeCode}>
       <RangeDatePanelIntermediate isDisabled />
     </ShowcaseFrame>
   );
 };
+
+const rangeUnavailableDatesCode = `
+const RangeUnavailableDates = () => {
+  let now = today(getLocalTimeZone());
+  let disabledRanges = [
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
+  ];
+
+  let { locale } = useLocale();
+  let isDateUnavailable = (date: DateValue) =>
+    isWeekend(date, locale) ||
+    disabledRanges.some((interval) => date.compare(interval[0]!) >= 0 && date.compare(interval[1]!) <= 0);
+
+  const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+  const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+  return (
+    <RangeDatePanel
+      isDateUnavailable={isDateUnavailable}
+      previousButton={PreviousButton}
+      nextButton={NextButton}
+    >
+      <DatePanelGrid
+        headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+      >
+        <DatePanelGridBody>
+          {(date) => (
+            <DatePanelGridBodyCell date={date}>
+              <DatePanelGridBodyCellButton date={date} />
+            </DatePanelGridBodyCell>
+          )}
+        </DatePanelGridBody>
+      </DatePanelGrid>
+    </RangeDatePanel>
+  );
+};
+`;
 
 const RangeUnavailableDates = () => {
   let now = today(getLocalTimeZone());
@@ -193,31 +490,101 @@ const RangeUnavailableDates = () => {
     disabledRanges.some((interval) => date.compare(interval[0]!) >= 0 && date.compare(interval[1]!) <= 0);
 
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={rangeUnavailableDatesCode}>
       <RangeDatePanelIntermediate isDateUnavailable={isDateUnavailable} />
     </ShowcaseFrame>
   );
 };
 
+const rangeDefaultValueCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  defaultValue={{ start: parseDate("2020-02-03"), end: parseDate("2020-02-05") }}
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
+
 const RangeDefaultValue = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={rangeDefaultValueCode}>
       <RangeDatePanelIntermediate defaultValue={{ start: parseDate("2020-02-03"), end: parseDate("2020-02-05") }} />
     </ShowcaseFrame>
   );
 };
 
+const rangeReadOnlyCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  isReadOnly
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
+
 const RangeReadOnly = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={rangeReadOnlyCode}>
       <RangeDatePanelIntermediate isReadOnly />
     </ShowcaseFrame>
   );
 };
 
+const rangeMinAndMaxValuesCode = `
+const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
+<RangeDatePanel
+  minValue={today(getLocalTimeZone())}
+  maxValue={today(getLocalTimeZone()).add({ days: 7 })}
+  previousButton={PreviousButton}
+  nextButton={NextButton}
+>
+  <DatePanelGrid
+    headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+  >
+    <DatePanelGridBody>
+      {(date) => (
+        <DatePanelGridBodyCell date={date}>
+          <DatePanelGridBodyCellButton date={date} />
+        </DatePanelGridBodyCell>
+      )}
+    </DatePanelGridBody>
+  </DatePanelGrid>
+</RangeDatePanel>
+`;
+
 const RangeMinAndMaxValues = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={rangeMinAndMaxValuesCode}>
       <RangeDatePanelIntermediate
         minValue={today(getLocalTimeZone())}
         maxValue={today(getLocalTimeZone()).add({ days: 7 })}
@@ -226,32 +593,70 @@ const RangeMinAndMaxValues = () => {
   );
 };
 
+const rangeMultipleMonthsCode = `
+const BaseGrid = ({ offset }: { offset?: DateDuration }) => {
+  return (
+    <DatePanelGrid
+      offset={offset}
+      headerSlot={<DatePanelGridHeader>{(day) => <DatePanelGridHeaderCell text={day} />}</DatePanelGridHeader>}
+    >
+      <DatePanelGridBody>
+        {(date) => (
+          <DatePanelGridBodyCell date={date}>
+            <DatePanelGridBodyCellButton date={date} />
+          </DatePanelGridBodyCell>
+        )}
+      </DatePanelGridBody>
+    </DatePanelGrid>
+  );
+};
+
 const RangeMultipleMonths = () => {
+  const PreviousButton = <DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />
+  const NextButton = <DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />
+
   return (
     <ShowcaseFrame>
       <RangeDatePanelMultipleMonths
         visibleDuration={{ months: 3 }}
-        buttonSlot1={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
-        buttonSlot2={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
-        gridsSlot={
-          <>
-            <RangeBaseGrid />
-            <RangeBaseGrid offset={{ months: 1 }} />
-            <RangeBaseGrid offset={{ months: 2 }} />
-          </>
-        }
-      />
+        previousButton={PreviousButton}
+        nextButton={NextButton}
+      >
+        <BaseGrid />
+        <BaseGrid offset={{ months: 1 }} />
+        <BaseGrid offset={{ months: 2 }} />
+      </RangeDatePanelMultipleMonths>
+    </ShowcaseFrame>
+  );
+};
+`;
+
+const RangeMultipleMonths = () => {
+  return (
+    <ShowcaseFrame code={rangeMultipleMonthsCode}>
+      <RangeDatePanelMultipleMonths
+        visibleDuration={{ months: 3 }}
+        previousButton={<DatePanelButton icon={(className) => <CaretLeft className={className} />} slot="previous" />}
+        nextButton={<DatePanelButton icon={(className) => <CaretRight className={className} />} slot="next" />}
+      >
+        <BaseGrid />
+        <BaseGrid offset={{ months: 1 }} />
+        <BaseGrid offset={{ months: 2 }} />
+      </RangeDatePanelMultipleMonths>
     </ShowcaseFrame>
   );
 };
 
 const DatePanelDocs = () => {
   return (
-    <Page title="DatePanel" subtitle="" command="npx underatom@latest add date-panel">
+    <Page
+      title="DatePanel"
+      subtitle="Calendar component for selecting a single date or a range of dates."
+      command="npx underatom@latest add date-panel"
+      usageCode={defaultCode}
+      defaultExample={<Default />}
+    >
       <Section title="Showcase">
-        <Example title="Default">
-          <Default />
-        </Example>
         <Example title="Invalid">
           <Invalid />
         </Example>

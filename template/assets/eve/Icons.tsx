@@ -1,4 +1,3 @@
-export * from "@tabler/icons-react";
 import {
   IconChevronDown,
   IconAtom,
@@ -59,4 +58,16 @@ export {
   IconReplace,
   IconTrash,
   IconBrandGoogle,
+  IconCode,
+  IconPencil,
+  IconHome,
+  IconUserCircle,
+  IconInfinity,
+  IconStars,
+  IconDiscountCheckFilled,
+  IconRosette,
+  IconCircleX,
+  IconInfoCircle,
+  IconMenu2,
+  IconCircleCheck,
 } from "@tabler/icons-react";

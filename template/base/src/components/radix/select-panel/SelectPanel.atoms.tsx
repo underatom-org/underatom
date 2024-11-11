@@ -54,10 +54,8 @@ import { ReactNode, forwardRef } from "react";
   ====================================
 */
 
-export type SelectPanelProps = USelectPanelRootProps & {
-  groupSlots: ReactNode[];
-};
-export const SelectPanel = forwardRef<HTMLDivElement, SelectPanelProps>(({ groupSlots, ...props }, forwardedRef) => (
+export type SelectPanelProps = USelectPanelRootProps;
+export const SelectPanel = forwardRef<HTMLDivElement, SelectPanelProps>(({ children, ...props }, forwardedRef) => (
   <SelectPanelLayout
     renderRoot={(children, className) => (
       <USelectPanelRoot ref={forwardedRef} {...props} className={className}>
@@ -66,7 +64,7 @@ export const SelectPanel = forwardRef<HTMLDivElement, SelectPanelProps>(({ group
     )}
     styleProps={{ className: props.className, selectPanelProps: props }}
     searchSlot={null}
-    groupSlots={groupSlots}
+    groupSlots={children}
   />
 ));
 
@@ -78,10 +76,9 @@ export const SelectPanel = forwardRef<HTMLDivElement, SelectPanelProps>(({ group
 
 export type SelectPanelGroup = USelectPanelGroupRootProps & {
   title?: string;
-  itemSlots: ReactNode[];
 };
 export const SelectPanelGroup = forwardRef<HTMLDivElement, SelectPanelGroup>(
-  ({ title, itemSlots, ...props }, forwardedRef) => {
+  ({ title, children, ...props }, forwardedRef) => {
     const selectPanelProps = useSelectPanelInternalProvider();
     return (
       <SelectPanelGroupLayout
@@ -92,7 +89,7 @@ export const SelectPanelGroup = forwardRef<HTMLDivElement, SelectPanelGroup>(
         )}
         styleProps={{ className: props.className, selectPanelProps }}
         titleSlot={title && <USelectPanelGroupTitle>{title}</USelectPanelGroupTitle>}
-        itemSlots={itemSlots}
+        itemSlots={children}
       />
     );
   },
@@ -127,10 +124,9 @@ export const SelectPanelGroup = forwardRef<HTMLDivElement, SelectPanelGroup>(
 
 export type SelectPanelGroupItemProps = USelectPanelGroupItemRootProps & {
   hasCaret?: boolean;
-  boxSlot?: ReactNode;
 };
 export const SelectPanelGroupItem = forwardRef<HTMLDivElement, SelectPanelGroupItemProps>(
-  ({ hasCaret, boxSlot, ...props }, ref) => {
+  ({ hasCaret, children, ...props }, ref) => {
     const selectPanelProps = useSelectPanelInternalProvider();
     return (
       <SelectPanelGroupItemLayout
@@ -141,7 +137,7 @@ export const SelectPanelGroupItem = forwardRef<HTMLDivElement, SelectPanelGroupI
         )}
         styleProps={{ className: props.className, selectPanelProps }}
         checkIconSlot={<USelectPanelGroupItemCheckIcon />}
-        boxSlot={boxSlot}
+        boxSlot={children}
       />
     );
   },
