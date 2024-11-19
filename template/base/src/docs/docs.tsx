@@ -64,6 +64,7 @@ import { IconMenu2, X } from "../assets/Icons";
 import { POSTHOG_API_KEY, POSTHOG_HOST, POSTHOG_UI_HOST } from "./docs.constants";
 import posthog from "posthog-js";
 import { Label } from "../components/no-headless/typography/Typography.atoms";
+import { sliderRouteObj } from "../components/react-aria/slider/Slider.docs";
 
 const queryClient = new QueryClient();
 
@@ -107,6 +108,7 @@ const routes = [
   rateRouteObj,
   switchRouteObj,
   checkboxRouteObj,
+  sliderRouteObj,
 ];
 const groups = [...new Set(routes.map((route) => route.group))];
 const routesByGroup = Object.fromEntries(

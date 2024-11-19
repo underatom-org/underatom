@@ -2,33 +2,50 @@ import { DocsRoute } from "../../../docs/docs.types";
 import { Slider } from "./Slider.atoms";
 import { Example, Page, ShowcaseFrame, VariantsColumn } from "../../../docs/docs.components";
 
+const defaultCode = `
+<Slider defaultValue={50} />
+`;
+
 const DefaultExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={defaultCode}>
       <Slider defaultValue={50} />
     </ShowcaseFrame>
   );
 };
 
+const withLabelCode = `
+<Slider label="Label" defaultValue={50} />
+`;
+
 const WithLabelExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withLabelCode}>
       <Slider label="Label" defaultValue={50} />
     </ShowcaseFrame>
   );
 };
 
+const withDescriptionCode = `
+<Slider label="Label" description="Description" defaultValue={50} />
+`;
+
 const WithDescriptionExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={withDescriptionCode}>
       <Slider label="Label" description="Description" defaultValue={50} />
     </ShowcaseFrame>
   );
 };
 
+const ColorsCode = `
+<Slider label="Primary Slider" description="Description" color="primary" defaultValue={60} />
+<Slider label="Base Slider" description="Description" color="base" defaultValue={55} />
+`;
+
 const ColorsExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={ColorsCode}>
       <VariantsColumn>
         <Slider label="Primary Slider" description="Description" color="primary" defaultValue={60} />
         <Slider label="Base Slider" description="Description" color="base" defaultValue={55} />
@@ -37,9 +54,13 @@ const ColorsExample = () => {
   );
 };
 
+const disabledCode = `
+<Slider label="Label" description="Description" color="primary" isDisabled defaultValue={50} />
+`;
+
 const DisabledExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={disabledCode}>
       <VariantsColumn>
         <Slider label="Label" description="Description" color="primary" isDisabled defaultValue={50} />
       </VariantsColumn>
@@ -47,9 +68,13 @@ const DisabledExample = () => {
   );
 };
 
+const stepCode = `
+<Slider label="Label" description="Description" color="primary" step={5} defaultValue={50} />
+`;
+
 const StepExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={stepCode}>
       <VariantsColumn>
         <Slider label="Label" description="Description" color="primary" step={5} defaultValue={50} />
       </VariantsColumn>
@@ -57,9 +82,13 @@ const StepExample = () => {
   );
 };
 
+const rangeCode = `
+<Slider label="Label" description="Description" color="primary" defaultValue={[20, 30]} />
+`;
+
 const RangeExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={rangeCode}>
       <VariantsColumn>
         <Slider label="Label" description="Description" color="primary" defaultValue={[20, 30]} />
       </VariantsColumn>
@@ -67,9 +96,13 @@ const RangeExample = () => {
   );
 };
 
+const invalidCode = `
+<Slider invalid defaultValue={50} />
+`;
+
 const InvalidExample = () => {
   return (
-    <ShowcaseFrame>
+    <ShowcaseFrame code={invalidCode}>
       <Slider invalid defaultValue={50} />
     </ShowcaseFrame>
   );
@@ -77,10 +110,13 @@ const InvalidExample = () => {
 
 const SliderDocs = () => {
   return (
-    <Page title="Slider" subtitle="Slider">
-      <Example title="Default">
-        <DefaultExample />
-      </Example>
+    <Page
+      title="Slider"
+      subtitle="Slider"
+      defaultExample={<DefaultExample />}
+      usageCode={defaultCode}
+      command="npx underatom@latest add slider"
+    >
       <Example title="With Label">
         <WithLabelExample />
       </Example>
