@@ -5,7 +5,7 @@ import { Example, Page, ShowcaseFrame, VariantsColumn } from "../../../docs/docs
 const DefaultExample = () => {
   return (
     <ShowcaseFrame>
-      <Slider />
+      <Slider defaultValue={50} />
     </ShowcaseFrame>
   );
 };
@@ -13,7 +13,7 @@ const DefaultExample = () => {
 const WithLabelExample = () => {
   return (
     <ShowcaseFrame>
-      <Slider label="Label" />
+      <Slider label="Label" defaultValue={50} />
     </ShowcaseFrame>
   );
 };
@@ -21,7 +21,7 @@ const WithLabelExample = () => {
 const WithDescriptionExample = () => {
   return (
     <ShowcaseFrame>
-      <Slider label="Label" description="Description" />
+      <Slider label="Label" description="Description" defaultValue={50} />
     </ShowcaseFrame>
   );
 };
@@ -30,8 +30,8 @@ const ColorsExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Slider label="Primary Slider" description="Description" color="primary" />
-        <Slider label="Base Slider" description="Description" color="base" />
+        <Slider label="Primary Slider" description="Description" color="primary" defaultValue={60} />
+        <Slider label="Base Slider" description="Description" color="base" defaultValue={55} />
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -41,7 +41,7 @@ const DisabledExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Slider label="Label" description="Description" color="primary" isDisabled />
+        <Slider label="Label" description="Description" color="primary" isDisabled defaultValue={50} />
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -51,7 +51,7 @@ const StepExample = () => {
   return (
     <ShowcaseFrame>
       <VariantsColumn>
-        <Slider label="Label" description="Description" color="primary" step={5} />
+        <Slider label="Label" description="Description" color="primary" step={5} defaultValue={50} />
       </VariantsColumn>
     </ShowcaseFrame>
   );
@@ -66,6 +66,15 @@ const RangeExample = () => {
     </ShowcaseFrame>
   );
 };
+
+const InvalidExample = () => {
+  return (
+    <ShowcaseFrame>
+      <Slider invalid defaultValue={50} />
+    </ShowcaseFrame>
+  );
+};
+
 const SliderDocs = () => {
   return (
     <Page title="Slider" subtitle="Slider">
@@ -83,6 +92,9 @@ const SliderDocs = () => {
       </Example>
       <Example title="Disabled">
         <DisabledExample />
+      </Example>
+      <Example title="Invalid">
+        <InvalidExample />
       </Example>
       <Example title="Step">
         <StepExample />

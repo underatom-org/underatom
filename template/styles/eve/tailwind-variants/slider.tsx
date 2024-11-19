@@ -6,9 +6,30 @@ import type {
   SliderBarType,
   SliderType,
 } from "~/base/src/styles/slider";
+import { sliderDefaults } from "~/base/src/styles/slider";
+import { tv } from "../../../configs/tailwind-variants/eve/extendedTV";
 
 export const sliderBarThumbClass = ({ className }: SliderBarThumbType) => {
-  return `group/sliderBarThumb border-solid border-primary-300 border-1 bg-base-50 shadow-sm data-[ring=true]:shadow-sm data-[disabled]:shadow-sm rounded-[50px] data-[dragging=true]:shadow-md ${className}`;
+  return `
+  group/sliderBarThumb
+  border-solid
+  border-primary-300
+  border-1
+  bg-base-50
+  shadow-sm
+  data-[ring=true]:shadow-sm
+  rounded-[50px]
+  data-[dragging=true]:shadow-md
+  group-data-[disabled=true]/slider:border-primary-200
+  data-[disabled]:border-primary-200
+  group-data-[disabled=true]/slider:bg-base-100
+  data-[disabled]:bg-base-100
+  data-[disabled]:shadow-none
+  group-data-[disabled=true]/slider:shadow-none
+  group-data-[disabled=true]/slider:data-[dragging=true]:shadow-none
+  group-data-[disabled=true]/slider:data-[ring=true]:shadow-none
+  ${className}
+  `;
 };
 
 export const sliderBarThumbIconClass = ({ className }: SliderBarThumbType) => {
@@ -26,7 +47,23 @@ export const SliderBarThumbLayout = ({
 }) =>
   renderRoot(
     <>{iconSlot}</>,
-    `h-[14px] focus:h-[14px] disabled:h-[14px] w-[14px] focus:w-[14px] disabled:w-[14px] flex flex-row justify-center items-center gap-5 data-[dragging=true]:h-[18px] data-[dragging=true]:w-[18px] active:transition-[width,height] ${className}`,
+    `
+  h-[14px]
+  data-[ring=true]:h-[14px]
+  data-[disabled]:h-[14px]
+  w-[14px]
+  data-[ring=true]:w-[14px]
+  data-[disabled]:w-[14px]
+  flex
+  flex-row
+  justify-center
+  items-center
+  gap-5
+  data-[dragging=true]:h-[18px]
+  data-[dragging=true]:w-[18px]
+  data-[dragging=true]:transition-[width,height]
+  ${className}
+  `,
   );
 
 export const sliderTooltipClass = ({ className }: SliderTooltipType) => {
@@ -79,11 +116,32 @@ export const SliderTickLabelLayout = ({
   );
 
 export const sliderBarClass = ({ className }: SliderBarType) => {
-  return `group/sliderBar border-solid border-base-200 border-1 bg-base-50 rounded-[50px] ${className}`;
+  return `
+  group/sliderBar
+  border-solid
+  border-base-200
+  group-data-[disabled=true]/slider:group-data-[invalid=true]/slider:border-base-200
+  border-1
+  bg-base-50
+  rounded-[50px]
+  group-data-[disabled=true]/slider:bg-base-100
+  group-data-[invalid=true]/slider:border-danger-800
+  ${className}
+  `;
 };
 
-export const sliderBarFillClass = ({ className }: SliderBarType) => {
-  return `w-[75px] h-[6px] bg-primary-950 rounded-[50px] ${className}`;
+export const sliderBarFillClass = ({ className, sliderProps }: SliderBarType) => {
+  const fillClass = tv({
+    base: "w-[75px] h-[6px] rounded-[50px] group-data-[invalid=true]/slider:bg-danger-500 group-data-[disabled=true]/slider:bg-base-400 group-data-[disabled=true]/slider:group-data-[invalid=true]/slider:bg-base-400",
+    variants: { color: { primary: "bg-primary-950", base: "bg-base-950" } },
+
+    defaultVariants: { color: sliderDefaults.color },
+  });
+  return fillClass({
+    class: className,
+
+    color: sliderProps?.color,
+  });
 };
 
 export const sliderBarTickClass = ({ className }: SliderBarType) => {
@@ -119,19 +177,28 @@ export const sliderClass = ({ className }: SliderType) => {
 };
 
 export const sliderLabelClass = ({ className }: SliderType) => {
-  return `text-base-950 text-sm font-text font-medium ${className}`;
+  return `text-base-950 text-sm font-text font-medium group-data-[disabled=true]/slider:text-base-400 ${className}`;
 };
 
 export const sliderAsteriskClass = ({ className }: SliderType) => {
-  return `text-danger-500 text-sm font-text font-medium ${className}`;
+  return `
+  group-data-[required=true]/slider:[display:unset]
+  group-data-[required=true]/slider:text-danger-500
+  group-data-[required=true]/slider:text-sm
+  group-data-[required=true]/slider:font-text
+  group-data-[required=true]/slider:font-medium
+  group-data-[disabled=true]/slider:group-data-[required=true]/slider:text-base-400
+  hidden
+  ${className}
+  `;
 };
 
 export const sliderValueClass = ({ className }: SliderType) => {
-  return `text-base-800 text-sm font-text font-medium ${className}`;
+  return `text-base-800 text-sm font-text font-medium group-data-[invalid=true]/slider:text-danger-500 group-data-[disabled=true]/slider:text-base-400 group-data-[disabled=true]/slider:group-data-[invalid=true]/slider:text-base-400 ${className}`;
 };
 
 export const sliderDescriptionClass = ({ className }: SliderType) => {
-  return `text-primary-700 text-sm font-text font-normal ${className}`;
+  return `text-base-800 text-sm font-text font-normal group-data-[invalid=true]/slider:text-danger-500 group-data-[disabled=true]/slider:text-base-400 group-data-[disabled=true]/slider:group-data-[invalid=true]/slider:text-base-400 ${className}`;
 };
 
 export const sliderIconClass = ({ className }: SliderType) => {

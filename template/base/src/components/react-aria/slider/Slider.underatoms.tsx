@@ -44,11 +44,13 @@ export type USliderRootProps = Omit<SliderProps, "orientation"> &
   SliderStyleProps & {
     children?: ReactNode;
     className?: string;
+    invalid?: boolean;
   };
 export const USliderRoot = (props: USliderRootProps) => {
   return (
     <Slider
       {...props}
+      data-invalid={!!props.invalid}
       orientation="horizontal"
       className={sliderClass({ className: props.className, sliderProps: props })}
     >
@@ -112,7 +114,6 @@ export type USliderBarFillProps = ComponentPropsWithoutRef<"div">;
 export const USliderBarFill = (props: USliderBarFillProps) => {
   const sliderProps = useSliderInternalProvider();
   let state = React.useContext(SliderStateContext)!;
-  const isVertical = state.orientation === "vertical";
 
   const thumbCount = state.values.length;
   const firstThumbPercent = state.getThumbPercent(0);
@@ -120,21 +121,14 @@ export const USliderBarFill = (props: USliderBarFillProps) => {
 
   let fillStyle;
   if (thumbCount === 1) {
-    fillStyle = isVertical
-      ? { top: 0, height: `${firstThumbPercent * 100}%` }
-      : { left: 0, width: `${firstThumbPercent * 100}%` };
+    fillStyle = { left: 0, width: `${firstThumbPercent * 100}%` };
   } else {
     const startPercent = Math.min(firstThumbPercent, secondThumbPercent!);
     const endPercent = Math.max(firstThumbPercent, secondThumbPercent!);
-    fillStyle = isVertical
-      ? {
-          top: `${startPercent * 100}%`,
-          height: `${(endPercent - startPercent) * 100}%`,
-        }
-      : {
-          left: `${startPercent * 100}%`,
-          width: `${(endPercent - startPercent) * 100}%`,
-        };
+    fillStyle = {
+      left: `${startPercent * 100}%`,
+      width: `${(endPercent - startPercent) * 100}%`,
+    };
   }
 
   return (

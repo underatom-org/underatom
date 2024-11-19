@@ -37,6 +37,7 @@ import { SliderStateContext } from "react-aria-components";
   Slider
   ====================================
 */
+
 export type SliderProps = USliderRootProps & {
   label?: string;
   description?: string;
@@ -79,6 +80,7 @@ export const SliderBar = (props: SliderBarProps) => {
     <SliderBarLayout
       renderRoot={(children, className) => (
         <USliderBarRoot {...props} className={className}>
+          <USliderBarFill />
           {children}
         </USliderBarRoot>
       )}
@@ -112,6 +114,7 @@ export const SliderTooltip = (props: SliderTooltipProps) => {
     />
   );
 };
+
 /*
   ====================================
   SliderBarThumb
@@ -135,6 +138,7 @@ export const SliderBarThumb = ({ icon, ...props }: SliderBarThumbProps) => {
     />
   );
 };
+
 /*
   ====================================
   SliderTickLabel
